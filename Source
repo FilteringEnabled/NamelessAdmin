@@ -3087,25 +3087,18 @@ Duration = 5;
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All"))();
 else
 	local target = getPlr(Username)
-			local old = getChar().HumanoidRootPart.CFrame
-			local tool = getBp():FindFirstChildOfClass("Tool") or getChar():FindFirstChildOfClass("Tool")
-			tool.Grip = CFrame.new(-4,-2,-2)
-			if target == nil or tool == nil then return end
-			local attWeld = attachTool(tool,CFrame.new(0,0,0))
-			attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0)) 
-			firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
-			firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
-	 tool.AncestryChanged:Wait() 
-	if plr.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		--plr.Character["Right Arm"]:Destroy()
-		game.Players.LocalPlayer.Character["Right Arm"].RightGrip:Destroy() --r6
-	elseif plr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		--plr.Character["RightHand"]:Destroy()
-		game.Players.LocalPlayer.Character.RightHand.RightGrip:Destroy() --r15
-	  end
-	getChar().HumanoidRootPart.CFrame = old
+	local old = getChar().HumanoidRootPart.CFrame
+	local tool = getBp():FindFirstChildOfClass("Tool") or getChar():FindFirstChildOfClass("Tool")
+	if target == nil or tool == nil then return end
+	local attWeld = attachTool(tool,CFrame.new(0,0,0))
+	attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0)) 
+	firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
+	firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
+	tool.AncestryChanged:Wait()
+	wait(0.3)
+	respawn()
 	plr.CharacterAdded:Wait()
-	getChar():WaitForChild("HumanoidRootPart").CFrame = old
+getChar():WaitForChild("HumanoidRootPart").CFrame = old
 	  wait()
 	  local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
 	  local Notify = AkaliNotif.Notify;
