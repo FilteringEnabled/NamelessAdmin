@@ -113,7 +113,7 @@ wait();
 
 Notify({
 Description = msg;
-Title = "Nameless Admin ERROR NOTIFIER";
+Title = "TEMPLE ERROR NOTIFIER";
 Duration = 7;
 
 });
@@ -208,7 +208,7 @@ TextLabel_2.BackgroundTransparency = 1.000
 TextLabel_2.Position = UDim2.new(0, 0, 0.844091356, 0)
 TextLabel_2.Size = UDim2.new(0, 211, 0, 13)
 TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "Nameless Admin Admin - 2023"
+TextLabel_2.Text = "Temple Admin - 2023"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextScaled = true
 TextLabel_2.TextSize = 14.000
@@ -252,7 +252,7 @@ TextLabel_3.BackgroundTransparency = 1.000
 TextLabel_3.Position = UDim2.new(0.0675235763, 0, 0.00629098061, 0)
 TextLabel_3.Size = UDim2.new(0, 97, 0, 13)
 TextLabel_3.Font = Enum.Font.SourceSans
-TextLabel_3.Text = "Nameless Admin"
+TextLabel_3.Text = "Temple"
 TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.TextScaled = true
 TextLabel_3.TextSize = 14.000
@@ -264,7 +264,7 @@ local function LSWYJ_fake_script() -- TextLabel.LocalScript
 	local script = Instance.new('LocalScript', TextLabel)
 
 	local playername = game.Players.LocalPlayer.Name
-	local text = "Welcome " .. playername .. " to Nameless Admin!  🛕"
+	local text = "Welcome " .. playername .. " to Temple!  🛕"
 	script.Parent.Text = text
 end
 coroutine.wrap(LSWYJ_fake_script)()
@@ -907,7 +907,7 @@ wait();
 
 Notify({
 Description = "Hat orbit loaded, if you wanna orbit other people type in the chat .orbit playername";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 10;
 
 });
@@ -1785,7 +1785,7 @@ wait();
 
 Notify({
 Description = "Rejoining...";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -1965,7 +1965,7 @@ wait();
 
 Notify({
 Description = accountage;
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Temple - Account Age Notifier";
 Duration = 7;
 
 });
@@ -2453,7 +2453,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 		
 		Notify({
 		Description = "Vehicle fly enabled";
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 	
 });
@@ -2472,7 +2472,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 		
 		Notify({
 		Description = "Vehicle fly disabled";
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 	
 });
@@ -2554,7 +2554,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 					
 					Notify({
 					Description = "Player has been successfully killed";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 					});
@@ -2725,7 +2725,7 @@ wait();
 
 Notify({
 Description = "Break layered clothing executed, if you havent already equip shirt, jacket, pants and shoes (Layered Clothing ones)";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -2934,7 +2934,7 @@ wait();
 
 Notify({
 Description = "Voided player";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -3080,7 +3080,7 @@ wait();
 
 Notify({
 Description = "Bringing everyone...";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -3114,7 +3114,7 @@ else
 	  
 	  Notify({
 	  Description = "Brought the player";
-	  Title = "Nameless Admin";
+	  Title = "Temple";
 	  Duration = 5;
 	  
 });
@@ -3176,7 +3176,7 @@ cmd.add({"skydive", "sky"}, {"skydive <player> (sky)", "Skydives the player"}, f
 		
 		Notify({
 		Description = "Skydiving everyone...";
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 	
 });
@@ -3310,7 +3310,7 @@ cmd.add({"localtime", "yourtime"}, {"localtime (yourtime)", "Chats your current 
 end)
 
 cmd.add({"cartornado", "ctornado"}, {"cartornado (ctornado)", "Tornados a car just sit in the car"}, function(...)
- -- Nameless Admin on mobile
+ -- Temple on mobile
 -- Fe Vehicle Fling Alpha
 
 -- Start UP
@@ -3667,7 +3667,7 @@ cmd.add({"antisit"}, {"antisit", "Antisit"}, function()
 					
 					Notify({
 					Description = "Anti sit enabled";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 });
@@ -3683,7 +3683,7 @@ cmd.add({"unantisit"}, {"unantisit", "Disable antisit command"}, function()
 					
 					Notify({
 					Description = "Anti sit disabled";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 });
@@ -3904,7 +3904,7 @@ wait();
 
 Notify({
 Description = "Keybind: Q";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -3929,7 +3929,7 @@ Duration = 5;
 				
 				Notify({
 				Description = "Anti AFK has been enabled";
-				Title = "Nameless Admin";
+				Title = "Temple";
 				Duration = 5;
 				
 });
@@ -3966,7 +3966,7 @@ Duration = 5;
 						
 						Notify({
 						Description = "Anti attach enabled";
-						Title = "Nameless Admin";
+						Title = "Temple";
 						Duration = 5;
 						
 });
@@ -3982,7 +3982,7 @@ Duration = 5;
 							
 							Notify({
 							Description = "Anti attach disabled";
-							Title = "Nameless Admin";
+							Title = "Temple";
 							Duration = 5;
 							
 });
@@ -3994,7 +3994,7 @@ Duration = 5;
 							
 							Notify({
 							Description = "Anti attach already disabled";
-							Title = "Nameless Admin";
+							Title = "Temple";
 							Duration = 5;
 							
 });
@@ -4009,7 +4009,7 @@ Duration = 5;
 							
 							Notify({
 							Description = "Spawn has been set";
-							Title = "Nameless Admin";
+							Title = "Temple";
 							Duration = 5;
 							
 });
@@ -4129,7 +4129,7 @@ end)
 						
 						Notify({
 						Description = "Anti AFK disabled";
-						Title = "Nameless Admin";
+						Title = "Temple";
 						Duration = 5;
 						
 });
@@ -4141,7 +4141,7 @@ end)
 						
 						Notify({
 						Description = "Anti AFK already disabled";
-						Title = "Nameless Admin";
+						Title = "Temple";
 						Duration = 5;
 						
 });
@@ -4156,7 +4156,7 @@ wait();
 
 Notify({
 Description = "For a better experience, use R6 if you want tools do ;dupetools 5";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4221,7 +4221,7 @@ tool.Parent = Players.LocalPlayer.Backpack
 					
 					Notify({
 					Description = "Anti kill enabled";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 });
@@ -4253,7 +4253,7 @@ end)
 				
 				Notify({
 				Description = "Anti kill disabled";
-				Title = "Nameless Admin";
+				Title = "Temple";
 				Duration = 5;
 				
 });
@@ -4289,7 +4289,7 @@ end)
 				
 				Notify({
 				Description = "Anti fling enabled";
-				Title = "Nameless Admin";
+				Title = "Temple";
 				Duration = 5;
 				
 });
@@ -4333,7 +4333,7 @@ wait();
 
 Notify({
 Description = "ControlNPCs executed, CTRL + Click on an NPC";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4397,7 +4397,7 @@ wait();
 
 Notify({
 Description = "AttachPart executed, CTRL + Click on a part";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4576,7 +4576,7 @@ wait();
 
 Notify({
 Description = "Netless has been activated, re-run this script if you die";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4590,7 +4590,7 @@ wait();
 
 Notify({
 Description = "Get ready to launch...";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4625,7 +4625,7 @@ wait();
 
 Notify({
 Description = "Kidnapping... next time take a van, or not";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4710,7 +4710,7 @@ cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 end)
 
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin Admin V1 | Made by Qipu & 0866', 'All')
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Temple Admin V1 | Made by Qipu & 0866', 'All')
 end)
 
 cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
@@ -4725,7 +4725,7 @@ wait();
 
 Notify({
 Description = "Display names successfully removed";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4782,7 +4782,7 @@ OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
 	if (getgenv().ED_AntiKick.CheckCaller and not checkcaller() or true) and stringlower(getnamecallmethod()) == "kick" then
 		if getgenv().ED_AntiKick.SendNotifications then
 			StarterGui:SetCore("SendNotification", {
-				Title = "Nameless Admin",
+				Title = "Temple",
 				Text = "The script has successfully intercepted an attempted kick.",
 				Icon = "rbxassetid://6238540373",
 				Duration = 2,
@@ -4803,7 +4803,7 @@ wait();
 
 Notify({
 Description = "Anti kick executed";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4823,7 +4823,7 @@ cmd.add({"backdoorscan", "backdoor"}, {"backdoorscan (backdoor)", "Scans for any
 	
 	Notify({
 	Description = "Backdoor scanning...";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -4842,7 +4842,7 @@ wait();
 
 Notify({
 Description = "Searching";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -4866,7 +4866,7 @@ wait();
 
 Notify({
 Description = "Searched, please wait while we are teleporting you";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -5295,7 +5295,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 		
 		Notify({
 		Description = "Vehicle fly enabled";
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 	
 });
@@ -5314,7 +5314,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 		
 		Notify({
 		Description = "Not flying anymore";
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 	
 });
@@ -5864,7 +5864,7 @@ cmd.add({"hide", "unshow"}, {"hide <player> (unshow)", "places the selected play
 	
 	Notify({
 	Description = "Hid the player";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -5903,7 +5903,7 @@ cmd.add({"unhide", "show"}, {"show <player> (unhide)", "places the selected play
 	
 	Notify({
 	Description = "Hid the player";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -6444,7 +6444,7 @@ wait();
 
 Notify({
 Description = "Copied the username of " .. target.DisplayName .. "";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 7;
 
 });
@@ -6461,7 +6461,7 @@ wait();
 
 Notify({
 Description = "Copied the display name of " .. target.Name .. "";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 7;
 
 });
@@ -6697,7 +6697,7 @@ cmd.add({"touchfling", "tfling"}, {"touchfling (tfling)", "Fling anyone that tou
 	
 	Notify({
 	Description = "Touchfling executed, press E to toggle";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -6791,7 +6791,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 		
 		Notify({
 		Description = description;
-		Title = "Nameless Admin";
+		Title = "Temple";
 		Duration = 5;
 		
 		});
@@ -6846,7 +6846,7 @@ cmd.add({"uadelete", "unanchoreddelete"}, {"unanchoredelete (uadelete)", "Gives 
 	
 	Notify({
 	Description = "Btools loading, wait 2 seconds.";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -6923,7 +6923,7 @@ cmd.add({"netbypass", "netb"}, {"netbypass (netb)", "Net bypass"}, function()
 	
 	Notify({
 	Description = "Netbypass enabled";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -7041,7 +7041,7 @@ wait();
 
 Notify({
 Description = "Flinging everyone, reset to stop it";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -7309,7 +7309,7 @@ cmd.add({"stealaudio", "getaudio", "steal", "logaudio"}, {"stealaudio <player> (
 	
 	Notify({
 	Description = "Audio link has been copied to your clipboard";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -7406,7 +7406,7 @@ cmd.add({"fechat"}, {"fechat", "/e chat displayname"}, function()
 	
 	Notify({
 	Description = "FEChat enabled, /e chat displayname to use";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -7421,7 +7421,7 @@ cmd.add({"translatechat"}, {"translatechat", "translates the chat using google t
 	
 	Notify({
 	Description = "Chat translated";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -7463,7 +7463,7 @@ cmd.add({"hatresize"}, {"hatresize", "Makes your hats very big r15 only"}, funct
 	
 	Notify({
 	Description = "Hat resize loaded, rthro needed.";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -7479,7 +7479,7 @@ cmd.add({"legresize"}, {"legresize", "Makes your legs very big r15 only"}, funct
 	
 	Notify({
 	Description = "Leg resize loaded, R15 only";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -7495,7 +7495,7 @@ wait();
 
 Notify({
 Description = "Making you small.. r15 needed";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -7635,7 +7635,7 @@ cmd.add({"bang2", "fuck2"}, {"bang2 <player>", "Bangs the player by attaching to
 			
 			Notify({
 			Description = "Banging player...";
-			Title = "Nameless Admin";
+			Title = "Temple";
 			Duration = 5;
 			
 			});
@@ -7715,7 +7715,7 @@ wait();
 
 Notify({
 Description = "Airwalk: OFF";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -7732,7 +7732,7 @@ wait();
 
 Notify({
 Description = "Airwalk: On";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -7827,7 +7827,7 @@ end)
 	
 	Notify({
 	Description = "Boombox muted. Status: Client Sided";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -7839,7 +7839,7 @@ end)
 	
 	Notify({
 	Description = "Boombox muted. Status: FE";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -8009,7 +8009,7 @@ end)
 				
 				Notify({
 				Description = "Boombox glitched. Status: Client Sided";
-				Title = "Nameless Admin";
+				Title = "Temple";
 				Duration = 5;
 				
 				});
@@ -8022,7 +8022,7 @@ end)
 				
 				Notify({
 				Description = "Boombox glitched. Status: FE";
-				Title = "Nameless Admin";
+				Title = "Temple";
 				Duration = 5;
 				
 				});
@@ -8042,7 +8042,7 @@ end)
 	
 	Notify({
 	Description = "Unloopmuted everyone";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 	});
@@ -8096,7 +8096,7 @@ wait();
 
 Notify({
 Description = "Boombox glitched. Status: Client Sided";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -8109,7 +8109,7 @@ wait();
 
 Notify({
 Description = "Boombox glitched. Status: FE";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -8128,7 +8128,7 @@ end)
 			
 			Notify({
 			Description = "Boombox unglitched. Status: Client Sided";
-			Title = "Nameless Admin";
+			Title = "Temple";
 			Duration = 5;
 			
 			});
@@ -8141,7 +8141,7 @@ end)
 			
 			Notify({
 			Description = "Boombox unglitched. Status: FE";
-			Title = "Nameless Admin";
+			Title = "Temple";
 			Duration = 5;
 			
 			});
@@ -8527,7 +8527,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 					
 					Notify({
 					Description = "Player has been successfully killed";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 					});
@@ -8570,7 +8570,7 @@ target = getPlr(Username)
 					
 					Notify({
 					Description = "Purchase prompts have been disabled";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 					});
@@ -8585,7 +8585,7 @@ target = getPlr(Username)
 					
 					Notify({
 					Description = "Purchase prompts have been enabled";
-					Title = "Nameless Admin";
+					Title = "Temple";
 					Duration = 5;
 					
 					});
@@ -8600,7 +8600,7 @@ wait();
 
 Notify({
 Description = "Titan loaded... R15 needed";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -8666,7 +8666,7 @@ wait();
 
 Notify({
 Description = "Hold parts loaded, ctrl + click on a part";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -8796,7 +8796,7 @@ cmd.add({"spin"}, {"spin {amount}", "Makes your character spin as fast as you wa
 	
 	Notify({
 	Description = "Spinning...";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -8826,7 +8826,7 @@ wait();
 
 Notify({
 Description = "Spin disabled";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -8850,7 +8850,7 @@ cmd.add({"crossr6", "cross"}, {"cross (crossr6)", "Makes your character a cross 
 	
 	Notify({
 	Description = "Cross loaded, R6 only";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -9654,7 +9654,7 @@ end
 	
 	Notify({
 	Description = "Name has been hidden, this only works on billboard guis / custom name fonts";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -9684,7 +9684,7 @@ cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (una
 	
 	Notify({
 	Description = "Made unanchored parts have no gravity";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -9699,7 +9699,7 @@ cmd.add({"fireclickdetectors", "fcd"}, {"fireclickdetectors (fcd)", "Fires every
 	
 	Notify({
 	Description = "Fired all click detectors";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -9884,7 +9884,7 @@ wait();
 
 Notify({
 Description = "Hitbox changed";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -9916,7 +9916,7 @@ wait();
 
 Notify({
 Description = "Hitbox disabled";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -9948,7 +9948,7 @@ wait();
 
 Notify({
 Description = "Car breaker loaded, sit on a vehicle need to be the driver";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -10031,7 +10031,7 @@ wait();
 
 Notify({
 Description = "Fired all touch interests";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -10052,7 +10052,7 @@ cmd.add({"infjump", "infinitejump"}, {"infjump (infinitejump)", "Makes you be ab
 	
 	Notify({
 	Description = "Infinite jump enabled";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10080,7 +10080,7 @@ wait();
 
 Notify({
 Description = "Infinite jump disabled";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -10108,7 +10108,7 @@ cmd.add({"xray", "xrayon"}, {"xray (xrayon)", "Makes you be able to see through 
 	
 	Notify({
 	Description = "Xray enabled";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10124,7 +10124,7 @@ cmd.add({"unxray", "xrayoff"}, {"unxray (xrayoff)", "Makes you not be able to se
 	
 	Notify({
 	Description = "Xray disabled";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10140,7 +10140,7 @@ cmd.add({"pastebinscraper", "pastebinscrape"}, {"pastebinscraper (pastebinscrape
 	
 	Notify({
 	Description = "Pastebin scraper loaded";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10159,7 +10159,7 @@ cmd.add({"amongus", "amogus"}, {"amongus (amogus)", "among us in real life, sus 
 	
 	Notify({
 	Description = "Amog us...";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10242,7 +10242,7 @@ cmd.add({"blackhole"}, {"blackhole", "Makes unanchored parts teleport to the bla
 	
 	Notify({
 	Description = "Blackhole has been loaded, press e to change the position to where your mouse is";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10456,7 +10456,7 @@ TextLabel.BackgroundTransparency = 1.000
 TextLabel.Position = UDim2.new(0.0786837786, 0, 0.300626367, 0)
 TextLabel.Size = UDim2.new(0, 156, 0, 8)
 TextLabel.Font = Enum.Font.SourceSansLight
-TextLabel.Text = "Give Hats UI - Nameless Admin"
+TextLabel.Text = "Give Hats UI - Temple"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 17.000
 
@@ -10700,7 +10700,7 @@ cmd.add({"fireproximityprompts", "fpp"}, {"fireproximityprompts (fpp)", "Fires e
 	
 	Notify({
 	Description = "Fired all proximity prompts";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10748,7 +10748,7 @@ cmd.add({"chatspy"}, {"chatspy", "Spies on chat, enables chat, spies whispers et
 	
 	Notify({
 	Description = "Chat spy enabled";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10826,7 +10826,7 @@ cmd.add({"oganims"}, {"oganims", "Old animations from 2006"}, function()
 	
 	Notify({
 	Description = "OG animations set";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -10934,7 +10934,7 @@ cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or somet
 	
 	Notify({
 	Description = "Use the tool named invisibility (YOU CAN USE TOOLS WITH THIS)";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11064,7 +11064,7 @@ wait();
 
 Notify({
 Description = "Chat spy enabled";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -11142,7 +11142,7 @@ wait();
 
 Notify({
 Description = "Fired all remotes";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -11168,7 +11168,7 @@ cmd.add({"uafollow", "unanchoredfollow"}, {"uafollow (unanchoredfollow)", "Makes
 	
 	Notify({
 	Description = "Unanchored follow executed";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11268,7 +11268,7 @@ wait();
 
 Notify({
 Description = "Grabbed all tools";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -11362,7 +11362,7 @@ cmd.add({"partgrabber"}, {"partgrabber", "Press Q"}, function()
 	
 	Notify({
 	Description = "Part grabber executed, press Q on a part";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11460,7 +11460,7 @@ cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchore
 	
 	Notify({
 	Description = "Tping unanchored parts to the player, if it doesnt teleport walk over to the unanchored part";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11566,7 +11566,7 @@ cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchore
 	
 	Notify({
 	Description = "Unfroze unanchored parts";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11593,7 +11593,7 @@ cmd.add({"highlightua", "highlightunanchored"}, {"highlightua (hightlightunancho
 	
 	Notify({
 	Description = "Highlighted all unanchored parts";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11615,7 +11615,7 @@ cmd.add({"unhighlightua", "unhighlightunanchored"}, {"unhighlightua (unhightligh
 	
 	Notify({
 	Description = "Unhighlighted unanchored parts";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11648,7 +11648,7 @@ cmd.add({"countua", "countunanchoreed"}, {"countua (countunanchored)", "Counts a
 	
 	Notify({
 	Description = "Parts have been counted, check console.";
-	Title = "Nameless Admin";
+	Title = "Temple";
 	Duration = 5;
 	
 });
@@ -11670,7 +11670,7 @@ wait();
 
 Notify({
 Description = "Set local player id to the owner id";
-Title = "Nameless Admin";
+Title = "Temple";
 Duration = 5;
 
 });
@@ -11686,7 +11686,7 @@ cmd.add({"invisiblefling", "invisfling"}, {"invisfling (invisiblefling)", "Invis
 
 	spawn(function()
 		local message = Instance.new("Message",workspace)
-		message.Text = "Nameless Admin is loading in Invisible Fling.. Wait 11 seconds."
+		message.Text = "Temple is loading in Invisible Fling.. Wait 11 seconds."
 		wait(11)
 		message:Destroy()
 		end)
@@ -12055,61 +12055,44 @@ gui.resizeable = function(ui, min, max)
 	end
 end
 gui.draggable = function(ui, dragui)
-gui.draggable = function(ui, dragui)
-local UserInputService = game:GetService("UserInputService")
-local runService = (game:GetService("RunService"));
-
-local dragui = ui
-
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-function Lerp(a, b, m)
-	return a + (b - a) * m
-end;
-
-local lastMousePos
-local lastGoalPos
-local DRAG_SPEED = (8); -- // The speed of the UI darg.
-function Update(dt)
-	if not (startPos) then return end;
-	if not (dragging) and (lastGoalPos) then
-		dragui.Position = UDim2.new(startPos.X.Scale, Lerp(dragui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(dragui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
-		return 
-	end;
-
-	local delta = (lastMousePos - UserInputService:GetMouseLocation())
-	local xGoal = (startPos.X.Offset - delta.X);
-	local yGoal = (startPos.Y.Offset - delta.Y);
-	lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
-	dragui.Position = UDim2.new(startPos.X.Scale, Lerp(dragui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(dragui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
-end;
-
-dragui.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		dragging = true
-		dragStart = input.Position
-		startPos = dragui.Position
-		lastMousePos = UserInputService:GetMouseLocation()
-
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
+	if not dragui then dragui = ui end
+	local UserInputService = game:GetService("UserInputService")
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		ui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	end
-end)
-
-dragui.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		dragInput = input
-	end
-end)
-
-runService.Heartbeat:Connect(Update)
-end
+	
+	dragui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = ui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	dragui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
 end
 gui.menuify = function(menu)
 	local exit = menu:FindFirstChild("Exit", true)
