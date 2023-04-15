@@ -145,11 +145,6 @@ local wait = function(int)
 	return (tick() - t), t
 end
 spawn(function()
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -163,8 +158,6 @@ local TopBar = Instance.new("Frame")
 local ImageLabel_2 = Instance.new("ImageLabel")
 local ImageLabel_3 = Instance.new("ImageLabel")
 local TextLabel_3 = Instance.new("TextLabel")
-
---Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -311,7 +304,6 @@ local function XXNIOE_fake_script() -- Frame.LocalScript
 	Frame:TweenPosition(UDim2.new(0.011, 0,1, 10), "Out", "Quint",1,true)
 end
 coroutine.wrap(XXNIOE_fake_script)()
-
 end)
 
 	function r15(plr)
@@ -330,6 +322,8 @@ function getPlr(str, localPlayer)
         until randomPlayer ~= localPlayer
         return randomPlayer
 
+    elseif str:lower() == "me" then
+        return localPlayer
     else
         for i,v in pairs(game.Players:GetPlayers()) do
             if v ~= localPlayer and (v.Name:lower():match(str) or v.DisplayName:lower():match(str)) then
@@ -12263,11 +12257,10 @@ localPlayer.Chatted:Connect(function(str)
 	lib.parseCommand(str)
 end)
 
-
 --[[ GUI VARIABLES ]]--
 local ScreenGui
 if not RunService:IsStudio() then
-	ScreenGui = game:GetObjects("rbxassetid://13104441850")[1]
+	ScreenGui = game:GetObjects("rbxassetid://13137731358")[1]
 else
 	repeat wait() until player:FindFirstChild("AdminUI", true)
 	ScreenGui = player:FindFirstChild("AdminUI", true)
@@ -12277,6 +12270,8 @@ local description = ScreenGui.Description
 local cmdBar = ScreenGui.CmdBar
 	local centerBar = cmdBar.CenterBar
 		local cmdInput = centerBar.Input
+	local cmdAutofill = cmdBar.Autofill
+		local cmdExample = cmdAutofill.Cmd
 	local leftFill = cmdBar.LeftFill
 	local rightFill = cmdBar.RightFill
 local chatLogsFrame = ScreenGui.ChatLogs
@@ -12299,6 +12294,7 @@ local resizeXY = {
 	BottomRight	= {Vector2.new(1, 1),	Vector2.new(0, 0),	"rbxassetid://2911852219"},
 }
 
+cmdExample.Parent = nil
 chatExample.Parent = nil
 commandExample.Parent = nil
 resizeFrame.Parent = nil
@@ -12516,13 +12512,84 @@ gui.barSelect = function(speed)
 	gui.tween(centerBar, "Sine", "Out", speed or 0.25, {Size = UDim2.new(0, 250, 1, 15)})
 	gui.tween(leftFill, "Quad", "Out", speed or 0.3, {Position = UDim2.new(0, 0, 0.5, 0)})
 	gui.tween(rightFill, "Quad", "Out", speed or 0.3, {Position = UDim2.new(1, 0, 0.5, 0)})
+	gui.loadCommands()
 end
 gui.barDeselect = function(speed)
-	gui.tween(centerBar, "Sine", "Out", speed or 0.25, {Size = UDim2.new(0, 250, 0, 0)})
-	gui.tween(leftFill, "Sine", "In", speed or 0.3, {Position = UDim2.new(-0.5, 100, 0.5, 0)})
-	gui.tween(rightFill, "Sine", "In", speed or 0.3, {Position = UDim2.new(1.5, -100, 0.5, 0)})
+    gui.tween(centerBar, "Sine", "Out", speed or 0.25, {Size = UDim2.new(0, 250, 0, 0)})
+    gui.tween(leftFill, "Sine", "In", speed or 0.3, {Position = UDim2.new(-0.5, 100, 0.5, 0)})
+    gui.tween(rightFill, "Sine", "In", speed or 0.3, {Position = UDim2.new(1.5, -100, 0.5, 0)})
+    for i, v in ipairs(cmdAutofill:GetChildren()) do
+        if v:IsA("Frame") then
+            if i > 5 then break end -- Stop after 5 autofills
+            wrap(function()
+                wait(math.random(1, 200)/2000)
+                gui.tween(v, "Back", "In", 0.35, {Size = UDim2.new(0, 0, 0, 25)})
+            end)
+        end
+    end
 end
-
+gui.loadCommands = function()
+	for i, v in pairs(cmdAutofill:GetChildren()) do
+		if v.Name ~= "UIListLayout" then
+			Destroy(v)
+		end
+	end
+	local last = nil
+	local i = 0
+	for name, tbl in pairs(Commands) do
+		local info = tbl[2]
+		local btn = cmdExample:Clone()
+		btn.Parent = cmdAutofill
+		btn.Name = name
+		btn.Input.Text = info[1]
+		i = i + 1
+		
+		local size = btn.Size
+		btn.Size = UDim2.new(0, 0, 0, 25)
+		btn.Size = size
+	end
+end
+gui.searchCommands = function()
+	local str = cmdInput.Text:gmatch("[^ ;]+")()
+	if str then str = str:lower() else str = "" end
+	
+	local visibleFrames = {}
+	for i, v in ipairs(cmdAutofill:GetChildren()) do
+		if v:IsA("Frame") then
+			if i <= 5 then -- Only update the first 5 autofills
+				if Commands[v.Name] then
+					v.Input.Text = str ~= "" and v.Name:find(str) == 1 and v.Name or Commands[v.Name][2][1]
+				end
+			end
+			v.Visible = false
+			if Commands[v.Name] and (str == "" or v.Name:find(str)) then
+				v.Visible = true
+				table.insert(visibleFrames, v)
+			end
+		end
+	end
+	
+	local lastFrame
+	for i, v in ipairs(visibleFrames) do
+		local n = (i ^ -0.5) * 125
+		local yPos = (i - 1) * 28
+		
+		if lastFrame then
+			local newPos = UDim2.new(0.5, 0, 0, yPos)
+			gui.tween(v, "Quint", "Out", 0.3, {
+				Size = UDim2.new(0.5, n, 0, 25),
+				Position = newPos,
+			})
+		else
+			gui.tween(v, "Quint", "Out", 0.3, {
+				Size = UDim2.new(0.5, n, 0, 25),
+				Position = UDim2.new(0.5, 0, 0, yPos),
+			})
+		end
+		
+		lastFrame = v
+	end
+end
 
 --[[ GUI FUNCTIONALITY ]]--
 mouse.KeyDown:Connect(function(k)
@@ -12530,7 +12597,7 @@ mouse.KeyDown:Connect(function(k)
 		gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
-end
+	end
 end)
 
 cmdInput.FocusLost:Connect(function(enterPressed)
@@ -12539,8 +12606,18 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 			lib.parseCommand(opt.prefix .. cmdInput.Text)
 		end)
 	end
-wait()
 	gui.barDeselect()
+	  wait(0.35)
+    for i, v in ipairs(cmdAutofill:GetChildren()) do
+        if v:IsA("Frame") then
+            v.Visible = false
+        end
+        end
+end)
+
+cmdInput.Changed:Connect(function(p)
+	if p ~= "Text" then return end
+	gui.searchCommands()
 end)
 
 gui.barDeselect(0)
@@ -12604,7 +12681,3 @@ function Destroy(guiObject)
 		guiObject.Parent = nil
 	end
 end
-game.CoreGui.RobloxGui.NotificationFrame.Visible = false
-
---            !!!!!!THANKS TO 0866 FOR LITERALLY THE WHOLE UI AND MAKING THE ADMIN WORK !!!!!!
---            !!!!!!THANKS TO 0866 FOR LITERALLY THE WHOLE UI AND MAKING THE ADMIN WORK !!!!!!
