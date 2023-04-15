@@ -12260,7 +12260,7 @@ end)
 --[[ GUI VARIABLES ]]--
 local ScreenGui
 if not RunService:IsStudio() then
-	ScreenGui = game:GetObjects("rbxassetid://13137731358")[1]
+	ScreenGui = game:GetObjects("rbxassetid://13137909723")[1]
 else
 	repeat wait() until player:FindFirstChild("AdminUI", true)
 	ScreenGui = player:FindFirstChild("AdminUI", true)
