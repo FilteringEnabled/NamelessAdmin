@@ -145,165 +145,113 @@ local wait = function(int)
 	return (tick() - t), t
 end
 spawn(function()
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local TextLabel = Instance.new("TextLabel")
-local UICorner_2 = Instance.new("UICorner")
-local ImageLabel = Instance.new("ImageLabel")
-local UICorner_3 = Instance.new("UICorner")
-local TextLabel_2 = Instance.new("TextLabel")
-local Topbar = Instance.new("Frame")
-local TopBar = Instance.new("Frame")
-local ImageLabel_2 = Instance.new("ImageLabel")
-local ImageLabel_3 = Instance.new("ImageLabel")
-local TextLabel_3 = Instance.new("TextLabel")
+	local lol = Instance.new("ScreenGui")
+lol.Parent = game.Players.LocalPlayer.PlayerGui
+lol.ResetOnSpawn = false
+lol.Name = "uhhhh"
+local TheBG = Instance.new("Frame")
+TheBG.Name = "TheBG"
+TheBG.BackgroundColor3 = Color3.fromHex("#0A0A0C")
+TheBG.BackgroundTransparency = 0.55
+TheBG.ClipsDescendants = true
+TheBG.Position = UDim2.new(0, 0, -1, -36)
+TheBG.Size = UDim2.new(1, 0, 1, 36)
+TheBG.ZIndex = -5
+TheBG.Visible = false
+TheBG.Parent = lol
+wait(0.2)
+-- Gui to Lua
+-- Version: 3.2
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+-- Instances:
 
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-Frame.BackgroundTransparency = 0.100
-Frame.Position = UDim2.new(0.0112470742, 0, 0.882000029, 0)
-Frame.Size = UDim2.new(0, 212, 0, 86)
+local StartUp = Instance.new("ScreenGui")
+local AdminName = Instance.new("TextLabel")
+local Version = Instance.new("TextLabel")
 
-UICorner.Parent = Frame
+--Properties:
 
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.28413564, 0, 0.337954551, 0)
-TextLabel.Size = UDim2.new(0, 142, 0, 30)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "hello"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
-TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+StartUp.Name = "StartUp"
+StartUp.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+StartUp.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-UICorner_2.Parent = TextLabel
+AdminName.Name = "AdminName"
+AdminName.Parent = StartUp
+AdminName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AdminName.BackgroundTransparency = 1.000
+AdminName.Position = UDim2.new(0.321999997, 0, 0.416000009, 0)
+AdminName.Size = UDim2.new(0, 546, 0, 56)
+AdminName.Font = Enum.Font.SourceSans
+AdminName.Text = "Nameless Admin"
+AdminName.TextColor3 = Color3.fromRGB(255, 255, 255)
+AdminName.TextSize = 100.000
+AdminName.TextStrokeTransparency = 0.000
 
-ImageLabel.Parent = Frame
-ImageLabel.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-ImageLabel.BackgroundTransparency = 0.100
-ImageLabel.Position = UDim2.new(0.0330188684, 0, 0.238264278, 0)
-ImageLabel.Size = UDim2.new(0, 45, 0, 44)
-ImageLabel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-
-UICorner_3.CornerRadius = UDim.new(1, 0)
-UICorner_3.Parent = ImageLabel
-
-TextLabel_2.Parent = Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.Position = UDim2.new(0, 0, 0.844091356, 0)
-TextLabel_2.Size = UDim2.new(0, 211, 0, 13)
-TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "Nameless Admin Admin - 2023"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14.000
-TextLabel_2.TextWrapped = true
-
-Topbar.Name = "Topbar"
-Topbar.Parent = Frame
-Topbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Topbar.BackgroundTransparency = 1.000
-Topbar.Size = UDim2.new(1, 0, 0, 25)
-
-TopBar.Name = "TopBar"
-TopBar.Parent = Topbar
-TopBar.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-TopBar.BackgroundTransparency = 0.150
-TopBar.BorderSizePixel = 0
-TopBar.Position = UDim2.new(0.234630361, 0, -0.00352294929, 0)
-TopBar.Size = UDim2.new(0, 111, 0, 14)
-
-ImageLabel_2.Parent = TopBar
-ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_2.BackgroundTransparency = 1.000
-ImageLabel_2.Position = UDim2.new(1.00000012, 0, 0.00629098061, 0)
-ImageLabel_2.Size = UDim2.new(0, 14, 0, 13)
-ImageLabel_2.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel_2.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_2.ImageTransparency = 0.150
-
-ImageLabel_3.Parent = TopBar
-ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_3.BackgroundTransparency = 1.000
-ImageLabel_3.Position = UDim2.new(-0.0954438597, 0, 0, 0)
-ImageLabel_3.Size = UDim2.new(0, 12, 0, 14)
-ImageLabel_3.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_3.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_3.ImageTransparency = 0.150
-
-TextLabel_3.Parent = TopBar
-TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_3.BackgroundTransparency = 1.000
-TextLabel_3.Position = UDim2.new(0.0675235763, 0, 0.00629098061, 0)
-TextLabel_3.Size = UDim2.new(0, 97, 0, 13)
-TextLabel_3.Font = Enum.Font.SourceSans
-TextLabel_3.Text = "Nameless Admin"
-TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_3.TextScaled = true
-TextLabel_3.TextSize = 14.000
-TextLabel_3.TextWrapped = true
+Version.Name = "Version"
+Version.Parent = StartUp
+Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Version.BackgroundTransparency = 1.000
+Version.Position = UDim2.new(0.420597434, 0, 0.461642385, 0)
+Version.Size = UDim2.new(0, 249, 0, 45)
+Version.Font = Enum.Font.SourceSans
+Version.Text = "Version 1.0"
+Version.TextColor3 = Color3.fromRGB(255, 255, 255)
+Version.TextSize = 70.000
+Version.TextTransparency = 1.000
 
 -- Scripts:
 
-local function LSWYJ_fake_script() -- TextLabel.LocalScript 
-	local script = Instance.new('LocalScript', TextLabel)
+local function GOOBRM_fake_script() -- StartUp.Start 
+	local script = Instance.new('LocalScript', StartUp)
 
-	local playername = game.Players.LocalPlayer.Name
-	local text = "Welcome " .. playername .. " to Nameless Admin!"
-	script.Parent.Text = text
-end
-coroutine.wrap(LSWYJ_fake_script)()
-local function IARV_fake_script() -- ImageLabel.LocalScript 
-	local script = Instance.new('LocalScript', ImageLabel)
-
-	local Players = game:GetService("Players")
-	
-	local player = Players.LocalPlayer
-	
-	-- Fetch the thumbnail
-	local userId = player.UserId
-	local thumbType = Enum.ThumbnailType.HeadShot
-	local thumbSize = Enum.ThumbnailSize.Size420x420
-	local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
-	
-	-- Set the ImageLabel's content to the user thumbnail
-	local imageLabel = script.Parent
-	imageLabel.Image = content
-end
-coroutine.wrap(IARV_fake_script)()
-local function YHGIGYX_fake_script() -- TextLabel_2.LocalScript 
-	local script = Instance.new('LocalScript', TextLabel_2)
-
-	
-	-- Get the current time as a table
-	local timeTable = os.date("*t")
-	
-	-- Extract the hour and minute
-	local hour = timeTable.hour
-	local minute = timeTable.min
-	
-		script.Parent.Text = string.format("%02d:%02d", hour, minute)
-end
-coroutine.wrap(YHGIGYX_fake_script)()
-local function XXNIOE_fake_script() -- Frame.LocalScript 
-	local script = Instance.new('LocalScript', Frame)
-
-	local Frame =  script.Parent
-	Frame.Position = UDim2.new(0.011, 0,2, 20)
+	local AdminName = script.Parent.AdminName
+	local VersionName = script.Parent.Version
+	AdminName.Position = UDim2.new(0.322, 0,-2, 0)
 	wait(0.2)
-	Frame:TweenPosition(UDim2.new(0.011, 0,0.882, 0), "Out", "Quint",1,true)
-	wait(5)
-	Frame:TweenPosition(UDim2.new(0.011, 0,1, 10), "Out", "Quint",1,true)
+	AdminName:TweenPosition(UDim2.new(0.322, 0,0.416, 0), "Out", "Quint",1,true)
+	wait(0.2)
+	VersionName:TweenPosition(UDim2.new(0.419, 0,0.508, 0), "Out", "Quint",1,true)
+	for i=1, 10 do
+		wait(0.02)
+		VersionName.TextTransparency -= 0.1
+		VersionName.TextStrokeTransparency -= 0.1
+	end
+	wait(1)
+	for i=1, 10 do
+		wait(0.02)
+		VersionName.TextTransparency += 0.1
+		VersionName.TextStrokeTransparency += 0.1
+		AdminName.TextTransparency += 0.1
+		AdminName.TextStrokeTransparency += 0.1
+	end
+	wait(1)
+	AdminName:Destroy()
+	VersionName:Destroy()
+	script.Parent:Destroy()
+	
+	
 end
-coroutine.wrap(XXNIOE_fake_script)()
+coroutine.wrap(GOOBRM_fake_script)()
+local function UKVHYKU_fake_script() -- StartUp.LocalScript 
+	local script = Instance.new('LocalScript', StartUp)
+
+	local Blur = Instance.new("BlurEffect")
+	Blur.Name = "kewlblur"
+	Blur.Parent = game.Lighting
+	Blur.Size = 0
+	for i=1, 10 do
+		wait(0.05)
+		Blur.Size += 1
+	end
+	wait(1.44)
+	for i=1, 10 do
+		wait(0.05)
+		Blur.Size -= 1
+	end
+	wait(1)
+	Blur:Destroy()
+end
+coroutine.wrap(UKVHYKU_fake_script)()
 end)
 
 	function r15(plr)
@@ -312,6 +260,11 @@ end)
 		end
 	end
 	
+	function getRoot(char)
+	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+	return rootPart
+end
+
 function getPlr(str, localPlayer)
     if str:lower() == "random" then
         local players = game.Players:GetPlayers()
@@ -651,11 +604,6 @@ nsLoop = game:GetService("RunService").Stepped:Connect(function()
 end)
 
 local lp = game:GetService("Players").LocalPlayer
-
-function getRoot(char)
-	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
-	return rootPart
-end
 
 lib.lock = function(instance, par)
 	locks[instance] = true
@@ -3756,9 +3704,6 @@ end)
 			end)
 
 			cmd.add({"triggerbot", "tbot"}, {"triggerbot (tbot)", "Executes a script that automatically clicks the mouse when the mouse is on a player"}, function()
-
-
-
 local ToggleKey = Enum.KeyCode.Q
 
 
@@ -3775,35 +3720,23 @@ local Toggled = false
 ---==GUI==---
 local GUI = Instance.new("ScreenGui")
 local On = Instance.new("TextLabel")
-local Loaded = Instance.new("TextLabel")
+local uicorner = Instance.new("UICorner")
 GUI.Name = "GUI"
 GUI.Parent = game.CoreGui --game.Players.LocalPlayer:WaitForChild("PlayerGui")
 On.Name = "On"
 On.Parent = GUI
-On.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-On.BackgroundTransparency = 0.20000000298023
+On.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+On.BackgroundTransparency = 0.1
 On.BorderSizePixel = 0
 On.Position = UDim2.new(0.880059958, 0, 0.328616381, 0)
 On.Size = UDim2.new(0, 160, 0, 20)
-On.Font = Enum.Font.Garamond
+On.Font = Enum.Font.SourceSans
 On.Text = "TriggerBot On: false"
 On.TextColor3 = Color3.new(1, 1, 1)
 On.TextScaled = true
 On.TextSize = 14
 On.TextWrapped = true
-Loaded.Name = "Loaded"
-Loaded.Parent = GUI
-Loaded.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-Loaded.BackgroundTransparency = 0.20000000298023
-Loaded.BorderSizePixel = 0
-Loaded.Position = UDim2.new(0.806596696, 0, 0.949685514, 0)
-Loaded.Size = UDim2.new(0, 258, 0, 32)
-Loaded.Font = Enum.Font.Garamond
-Loaded.Text = "BrokenCoding's Trigger Bot V4 Loaded"
-Loaded.TextColor3 = Color3.new(1, 1, 1)
-Loaded.TextScaled = true
-Loaded.TextSize = 14
-Loaded.TextWrapped = true
+uicorner.Parent = On
 ---End Gui--
 
 local FindTeams = function()
@@ -5917,24 +5850,6 @@ cmd.add({"hide", "unshow"}, {"hide <player> (unshow)", "places the selected play
 	Duration = 5;
 	
 });
-function getPlr(str, localPlayer)
-    if str:lower() == "random" then
-        local players = game.Players:GetPlayers()
-        local randomPlayer = nil
-        repeat
-            local randomIndex = math.random(1, #players)
-            randomPlayer = players[randomIndex]
-        until randomPlayer ~= localPlayer
-        return randomPlayer
-
-    else
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= localPlayer and (v.Name:lower():match(str) or v.DisplayName:lower():match(str)) then
-                return v
-            end
-        end
-    end
-end
 
 local Username = (...)
 local target = getPlr(Username)
@@ -5951,29 +5866,11 @@ cmd.add({"unhide", "show"}, {"show <player> (unhide)", "places the selected play
 	wait();
 	
 	Notify({
-	Description = "Hid the player";
+	Description = "Unhid the player";
 	Title = "Nameless Admin";
 	Duration = 5;
 	
 });
-function getPlr(str, localPlayer)
-    if str:lower() == "random" then
-        local players = game.Players:GetPlayers()
-        local randomPlayer = nil
-        repeat
-            local randomIndex = math.random(1, #players)
-            randomPlayer = players[randomIndex]
-        until randomPlayer ~= localPlayer
-        return randomPlayer
-
-    else
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= localPlayer and (v.Name:lower():match(str) or v.DisplayName:lower():match(str)) then
-                return v
-            end
-        end
-    end
-end
 
 local Username = (...)
 local target = getPlr(Username)
@@ -5984,338 +5881,11 @@ end
 end)
 
 cmd.add({"aimbot", "aimbotui", "aimbotgui"}, {"aimbot (aimbotui, aimbotgui)", "aimbot and yeah"}, function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/hax"))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/fatesc/fates-esp/main/main.lua'))()
 end)
 
 cmd.add({"animspoofer", "animationspoofer", "spoofanim", "animspoof"}, {"animationspoofer (animspoof, spoofanim)", "Loads up an animation spoofer, spoofs animations that use rbxassetid"}, function()
-	-- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local screenxD = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Container = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local Topbar = Instance.new("Frame")
-local Icon = Instance.new("ImageLabel")
-local Exit = Instance.new("TextButton")
-local ImageLabel = Instance.new("ImageLabel")
-local Minimize = Instance.new("TextButton")
-local ImageLabel_2 = Instance.new("ImageLabel")
-local TopBar = Instance.new("Frame")
-local ImageLabel_3 = Instance.new("ImageLabel")
-local ImageLabel_4 = Instance.new("ImageLabel")
-local Title = Instance.new("TextLabel")
-local UICorner_2 = Instance.new("UICorner")
-local scroll = Instance.new("ScrollingFrame")
-local uilist = Instance.new("UIListLayout")
-
---Properties:
-
-screenxD.Name = "🗿"
-screenxD.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-screenxD.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-screenxD.ResetOnSpawn = false
-
-Frame.Parent = screenxD
-Frame.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-Frame.BackgroundTransparency = 0.140
-Frame.BorderColor3 = Color3.fromRGB(139, 139, 139)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.448806673, 0, 0.354765713, 0)
-Frame.Size = UDim2.new(0, 400, 0, 260)
-
-local drag = Instance.new("Frame",screenxD)
-drag.BackgroundColor3 = Color3.fromRGB(114,137,218)
-drag.BorderSizePixel = 1
-drag.BackgroundTransparency = 1
-drag.Position = UDim2.new(0.107,0,0.216,0)
-drag.Size = UDim2.new(0,256,0,20)
-
-Container.Name = "Container"
-Container.Parent = Frame
-Container.AnchorPoint = Vector2.new(0.5, 1)
-Container.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-Container.BackgroundTransparency = 0.100
-Container.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Container.BorderSizePixel = 0
-Container.ClipsDescendants = true
-Container.Position = UDim2.new(0.5, 0, 0.996153831, -5)
-Container.Size = UDim2.new(1, -10, 1, -30)
-
-UICorner.CornerRadius = UDim.new(0, 9)
-UICorner.Parent = Container
-
-Topbar.Name = "Topbar"
-Topbar.Parent = Frame
-Topbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Topbar.BackgroundTransparency = 1.000
-Topbar.Size = UDim2.new(1, 0, 0, 25)
-
-Icon.Name = "Icon"
-Icon.Parent = Topbar
-Icon.AnchorPoint = Vector2.new(0, 0.5)
-Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Icon.BackgroundTransparency = 1.000
-Icon.Position = UDim2.new(0, 10, 0.5, 0)
-Icon.Size = UDim2.new(0, 13, 0, 13)
-Icon.Image = "rbxgameasset://Images/menuIcon"
-
-Exit.Name = "Exit"
-Exit.Parent = Topbar
-Exit.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-Exit.BackgroundTransparency = 0.150
-Exit.BorderSizePixel = 0
-Exit.Position = UDim2.new(0.877499998, 0, 0.0430004895, 0)
-Exit.Size = UDim2.new(-0.00949996989, 40, 1, -10)
-Exit.Font = Enum.Font.Gotham
-Exit.Text = "X"
-Exit.TextColor3 = Color3.fromRGB(255, 255, 255)
-Exit.TextSize = 13.000
-
-ImageLabel.Parent = Exit
-ImageLabel.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-ImageLabel.BackgroundTransparency = 1.000
-ImageLabel.Position = UDim2.new(0.999998331, 0, 0, 0)
-ImageLabel.Size = UDim2.new(0, 9, 0, 16)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel.ImageTransparency = 0.150
-
-Minimize.Name = "Minimize"
-Minimize.Parent = Topbar
-Minimize.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-Minimize.BackgroundTransparency = 0.150
-Minimize.BorderSizePixel = 0
-Minimize.Position = UDim2.new(0.814999998, 0, 0.0429999977, 0)
-Minimize.Size = UDim2.new(0, 25, 1, -10)
-Minimize.Font = Enum.Font.Gotham
-Minimize.Text = "-"
-Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
-Minimize.TextSize = 18.000
-
-ImageLabel_2.Parent = Minimize
-ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_2.BackgroundTransparency = 1.000
-ImageLabel_2.Position = UDim2.new(-0.395148933, 0, 0, 0)
-ImageLabel_2.Size = UDim2.new(0, 10, 0, 14)
-ImageLabel_2.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_2.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_2.ImageTransparency = 0.150
-
-TopBar.Name = "TopBar"
-TopBar.Parent = Topbar
-TopBar.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-TopBar.BackgroundTransparency = 0.150
-TopBar.BorderSizePixel = 0
-TopBar.Position = UDim2.new(0.258215338, 0, 0.0364770517, 0)
-TopBar.Size = UDim2.new(0, 186, 0, 16)
-
-ImageLabel_3.Parent = TopBar
-ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_3.BackgroundTransparency = 1.000
-ImageLabel_3.Position = UDim2.new(1, 0, -0.00346946716, 0)
-ImageLabel_3.Size = UDim2.new(0, 14, 0, 16)
-ImageLabel_3.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel_3.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_3.ImageTransparency = 0.150
-
-ImageLabel_4.Parent = TopBar
-ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_4.BackgroundTransparency = 1.000
-ImageLabel_4.Position = UDim2.new(-0.0763963237, 0, 0, 0)
-ImageLabel_4.Size = UDim2.new(0, 15, 0, 16)
-ImageLabel_4.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_4.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_4.ImageTransparency = 0.150
-
-Title.Name = "Title"
-Title.Parent = TopBar
-Title.AnchorPoint = Vector2.new(0, 0.5)
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.BorderSizePixel = 0
-Title.Position = UDim2.new(-0.150533721, 32, 0.415876389, 0)
-Title.Size = UDim2.new(0.522161067, 80, 1.11675644, -7)
-Title.Font = Enum.Font.SourceSansLight
-Title.Text = "Animation Spoofer"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 17.000
-Title.TextWrapped = true
-
-UICorner_2.CornerRadius = UDim.new(0, 9)
-UICorner_2.Parent = Frame
-
-scroll.Parent = Frame
-scroll.AnchorPoint = Vector2.new(0.5, 0.5)
-scroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-scroll.BackgroundTransparency = 1.000
-scroll.BorderColor3 = Color3.fromRGB(16, 16, 16)
-scroll.BorderSizePixel = 0
-scroll.Position = UDim2.new(0.50150007, 0, 0.536538482, 0)
-scroll.Size = UDim2.new(1.00300002, -10, 0.926923096, -10)
-scroll.BottomImage = "rbxgameasset://Images/scrollBottom (1)"
-scroll.MidImage = "rbxgameasset://Images/scrollMid"
-scroll.ScrollBarThickness = 4
-scroll.TopImage = "rbxgameasset://Images/scrollTop"
-
-uilist.Parent = scroll
-uilist.SortOrder = Enum.SortOrder.LayoutOrder
-uilist.Padding = UDim.new(0, 3)
--- Scripts:
-
-local function RIDUFTH_fake_script() -- Frame.LocalScript 
-	local script = Instance.new('LocalScript', Frame)
-
-	local UserInputService = game:GetService("UserInputService")
-	local runService = (game:GetService("RunService"));
-	
-	local gui = script.Parent
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	function Lerp(a, b, m)
-		return a + (b - a) * m
-	end;
-	
-	local lastMousePos
-	local lastGoalPos
-	local DRAG_SPEED = (8); -- // The speed of the UI darg.
-	function Update(dt)
-		if not (startPos) then return end;
-		if not (dragging) and (lastGoalPos) then
-			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
-			return 
-		end;
-	
-		local delta = (lastMousePos - UserInputService:GetMouseLocation())
-		local xGoal = (startPos.X.Offset - delta.X);
-		local yGoal = (startPos.Y.Offset - delta.Y);
-		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
-		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
-	end;
-	
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-			lastMousePos = UserInputService:GetMouseLocation()
-	
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	
-	runService.Heartbeat:Connect(Update)
-end
-coroutine.wrap(RIDUFTH_fake_script)()
-local function VVFJUX_fake_script() -- Exit.LocalScript 
-	local script = Instance.new('LocalScript', Exit)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent:Destroy()
-	end)
-end
-coroutine.wrap(VVFJUX_fake_script)()
-
-
-
-local UIS = game:GetService("UserInputService")
-local function dragify(Frame,boool)
-	local frametomove = Frame
-	local dragToggle,dragInput,dragStart,startPos
-	local dragSpeed = 0
-	local function updateInput(input)
-		local Delta = input.Position - dragStart
-		frametomove.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-	end
-	Frame.InputBegan:Connect(function(input)
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
-			dragToggle = true
-			dragStart = input.Position
-			startPos = frametomove.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragToggle = false
-				end
-			end)	
-		end
-	end)
-	Frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	UIS.InputChanged:Connect(function(input)
-		if input == dragInput and dragToggle then
-			updateInput(input)
-		end
-	end)
-end
-dragify(drag)
-
-local function createbutton(id)
-	local str = string.match(tostring(id) , "%d+")
-	local button = Instance.new("TextButton",scroll)
-	button.BorderSizePixel = 0
-	button.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-	button.Size = UDim2.new(1,0,0,50)
-	button.Text = ""
-	local name = Instance.new("TextLabel",button)
-	name.BackgroundTransparency = 1
-	name.Size = UDim2.new(1,0,0.5,0)
-	name.TextSize = 14
-	name.Font = Enum.Font.Gotham
-	name.TextColor3 = Color3.fromRGB(255,255,255)
-	name.TextXAlignment = Enum.TextXAlignment.Center
-	local id = name:Clone()
-	id.Parent = button
-	id.AnchorPoint = Vector2.new(0,1)
-	id.Position = UDim2.new(0,0,1,0)
-	id.Text = str
-	name.Text = game:GetService("MarketplaceService"):GetProductInfo(tonumber(str)).Name
-	button.Activated:Connect(function()
-		setclipboard(str)
-	end)
-end
-
-local animationtabl = {}
-
-while true do
-	local localPlayer = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
-	if localPlayer then
-		local a = localPlayer:GetPlayingAnimationTracks()
-		for i, track in pairs(a) do
-			task.spawn(function()
-				local pass = true
-				for _,v in pairs(animationtabl) do
-					if v == track.Animation.AnimationId then
-						pass = false
-					end
-				end
-				if pass then
-					table.insert(animationtabl,track.Animation.AnimationId)
-					createbutton(track.Animation.AnimationId)
-				end
-			end)
-		end
-	end
-	task.wait()
-end
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/AnimSpoofer"))()
 end)
 
 cmd.add({"tooldance", "td"}, {"tooldance <mode> <size>", "Make your tools dance\nModes: tor/sph/inf/rng/whl/wht/voi"}, function(mode, size)
@@ -7151,7 +6721,6 @@ local SkidFling = function(TargetPlayer)
            getgenv().OldPos = RootPart.CFrame
        end
        if THumanoid and THumanoid.Sit and not AllBool then
-           return Message("Error Occurred", "Targeting is sitting", 5) -- u can remove dis part if u want lol
        end
        if THead then
            workspace.CurrentCamera.CameraSubject = THead
@@ -7258,7 +6827,6 @@ local SkidFling = function(TargetPlayer)
        elseif not TRootPart and not THead and Accessory and Handle then
            SFBasePart(Handle)
        else
-           return Message("Error Occurred", "Target is missing everything", 5)
        end
        
        BV:Destroy()
@@ -7278,11 +6846,9 @@ local SkidFling = function(TargetPlayer)
        until (RootPart.Position - getgenv().OldPos.p).Magnitude < 25
        workspace.FallenPartsDestroyHeight = getgenv().FPDH
    else
-       return Message("Error Occurred", "Random error", 5)
    end
 end
 
-if not Welcome then Message("Script by AnthonyIsntHere", "Enjoy!", 5) end
 getgenv().Welcome = true
 if Targets[1] then for _,x in next, Targets do GetPlayer(x) end else return end
 
@@ -7300,10 +6866,8 @@ for _,x in next, Targets do
                SkidFling(TPlayer)
            end
        else
-           Message("Error Occurred", "This user is whitelisted! (Owner)", 5)
        end
    elseif not GetPlayer(x) and not AllBool then
-       Message("Error Occurred", "Username Invalid", 5)
    end
 end
 end)
@@ -7972,7 +7536,39 @@ end
 	until Loopvoid == false
 end)
 
-cmd.add({"bang2", "fuck2"}, {"bang2 <player>", "Bangs the player by attaching to them"}, function(...)
+cmd.add({"freegamepass", "freegp"}, {"freegamepass (freegp)", "Makes the client think you own every gamepass in the game"}, function()
+local mt = getrawmetatable(game);
+local old = mt.__namecall
+local readonly = setreadonly or make_writeable
+
+local MarketplaceService = game:GetService("MarketplaceService");
+
+readonly(mt, false);
+
+mt.__namecall = function(self, ...)
+   local args = {...}
+   local method = table.remove(args)
+
+   if (self == MarketplaceService and method:find("UserOwnsGamePassAsync")) then
+       return true and 1
+   end
+
+   return old(self, ...)
+end
+		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
+
+wait();
+
+Notify({
+Description = "Free gamepass has been executed, keep in mind this wont always work.";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+end)
+
+cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to them"}, function(...)
 	RunService = game:GetService("RunService")
 	
 	function getTorso(x)
@@ -8050,45 +7646,13 @@ local oldCF = LocalPlayer.Character.HumanoidRootPart.CFrame
         
 end)
 
-cmd.add({"unbang2", "unfuck2"}, {"unbang2", "Unbangs the player"}, function()
+cmd.add({"unbang", "unfuck"}, {"unbang", "Unbangs the player"}, function()
     	if bangLoop then
 		bangLoop = bangLoop:Disconnect()
 		bang:Stop()
 		bangAnim:Destroy()
 		bangDied:Disconnect()
 end
-end)
-
-cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player"}, function(...)
-	local Username = (...)
-	
-		game.Players.LocalPlayer.Character.Animate.Disabled = false
-					local target = getPlr(Username)
-					local old = getChar().HumanoidRootPart.CFrame
-					local tool = getBp():FindFirstChildOfClass("Tool") or getChar():FindFirstChildOfClass("Tool")
-					tool.Grip = CFrame.new(0, -5, 1) * CFrame.Angles(math.rad(-90), math.rad(0), math.rad(0))--math.rad(-90) 
-					if target == nil or tool == nil then 
-					plr.CharacterAdded:Wait()
-					getChar():WaitForChild("HumanoidRootPart").CFrame = old
-					return end
-					local attWeld = attachTool(tool,CFrame.new(0,0,0))
-					attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0)) 
-					target.Character.Humanoid.PlatformStand = true
-					firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
-					firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
-			tool.AncestryChanged:Wait() 
-		bangAnim = Instance.new("Animation")
-					bangAnim.AnimationId = "rbxassetid://148840371"
-					wait(1)
-						bangAnim = Instance.new("Animation")
-					bangAnim.AnimationId = "rbxassetid://148840371"
-					wait()
-						bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
-			bang:Play(.0001, 1, 10)
-			getChar().HumanoidRootPart.CFrame = old
-			plr.CharacterAdded:Wait()
-			getChar():WaitForChild("HumanoidRootPart").CFrame = old
-			bang:Stop()
 end)
 
 cmd.add({"unairwalk", "unaw"}, {"unairwalk (unaw)", "Stops the airwalk command"}, function()
@@ -9583,447 +9147,7 @@ coroutine.wrap(WKEHM_fake_script)()
 end)
 
 cmd.add({"rc7"}, {"rc7", "RC7 Internal UI"}, function()
-	-- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local ScreenGui = Instance.new("ScreenGui")
-local Open = Instance.new("TextButton")
-local Main = Instance.new("ImageLabel")
-local EditorFrame = Instance.new("ScrollingFrame")
-local Source = Instance.new("TextBox")
-local Tokens_ = Instance.new("TextLabel")
-local Strings_ = Instance.new("TextLabel")
-local RemoteHighlight_ = Instance.new("TextLabel")
-local Numbers_ = Instance.new("TextLabel")
-local Keywords_ = Instance.new("TextLabel")
-local Globals_ = Instance.new("TextLabel")
-local Comments_ = Instance.new("TextLabel")
-local Open_2 = Instance.new("TextButton")
-local clear = Instance.new("TextButton")
-local exec = Instance.new("TextButton")
-local Exit = Instance.new("TextButton")
-local Lines = Instance.new("TextLabel")
-local ScrollingFrame = Instance.new("ScrollingFrame")
-
---Properties:
-
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Open.Name = "Open"
-Open.Parent = ScreenGui
-Open.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Open.BorderSizePixel = 0
-Open.Position = UDim2.new(0, 0, 0.976239681, 0)
-Open.Size = UDim2.new(0, 24, 0, 14)
-Open.Visible = false
-Open.Font = Enum.Font.SourceSans
-Open.Text = ""
-Open.TextColor3 = Color3.fromRGB(0, 0, 0)
-Open.TextSize = 14.000
-
-Main.Name = "Main"
-Main.Parent = ScreenGui
-Main.Active = true
-Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Main.BorderSizePixel = 0
-Main.Position = UDim2.new(0.649910629, 0, 0.389118433, 0)
-Main.Size = UDim2.new(0, 337, 0, 341)
-Main.Image = "http://www.roblox.com/asset/?id=12263991723"
-
-EditorFrame.Name = "EditorFrame"
-EditorFrame.Parent = Main
-EditorFrame.Active = true
-EditorFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-EditorFrame.BorderSizePixel = 0
-EditorFrame.Position = UDim2.new(0.0339522101, 0, 0.102768078, 0)
-EditorFrame.Size = UDim2.new(0, 284, 0, 224)
-EditorFrame.CanvasSize = UDim2.new(0, 0, 1000, 0)
-EditorFrame.ScrollBarThickness = 0
-
-Source.Name = "Source"
-Source.Parent = EditorFrame
-Source.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Source.BorderSizePixel = 0
-Source.Position = UDim2.new(0.0021330067, 0, 0, 0)
-Source.Size = UDim2.new(0, 283, 0, 9999999)
-Source.Font = Enum.Font.SourceSans
-Source.MultiLine = true
-Source.Text = ""
-Source.TextColor3 = Color3.fromRGB(0, 0, 0)
-Source.TextSize = 19.000
-Source.TextWrapped = true
-Source.TextXAlignment = Enum.TextXAlignment.Left
-Source.TextYAlignment = Enum.TextYAlignment.Top
-
-Tokens_.Name = "Tokens_"
-Tokens_.Parent = Source
-Tokens_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Tokens_.BackgroundTransparency = 1.000
-Tokens_.Size = UDim2.new(0, 200, 0, 50)
-Tokens_.Font = Enum.Font.SourceSans
-Tokens_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Tokens_.TextSize = 14.000
-Tokens_.TextTransparency = 1.000
-
-Strings_.Name = "Strings_"
-Strings_.Parent = Source
-Strings_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Strings_.BackgroundTransparency = 1.000
-Strings_.Size = UDim2.new(0, 200, 0, 50)
-Strings_.Font = Enum.Font.SourceSans
-Strings_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Strings_.TextSize = 14.000
-Strings_.TextTransparency = 1.000
-
-RemoteHighlight_.Name = "RemoteHighlight_"
-RemoteHighlight_.Parent = Source
-RemoteHighlight_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-RemoteHighlight_.BackgroundTransparency = 1.000
-RemoteHighlight_.Size = UDim2.new(0, 200, 0, 50)
-RemoteHighlight_.Font = Enum.Font.SourceSans
-RemoteHighlight_.TextColor3 = Color3.fromRGB(0, 0, 0)
-RemoteHighlight_.TextSize = 14.000
-RemoteHighlight_.TextTransparency = 1.000
-
-Numbers_.Name = "Numbers_"
-Numbers_.Parent = Source
-Numbers_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Numbers_.BackgroundTransparency = 1.000
-Numbers_.Size = UDim2.new(0, 200, 0, 50)
-Numbers_.Font = Enum.Font.SourceSans
-Numbers_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Numbers_.TextSize = 14.000
-Numbers_.TextTransparency = 1.000
-
-Keywords_.Name = "Keywords_"
-Keywords_.Parent = Source
-Keywords_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Keywords_.BackgroundTransparency = 1.000
-Keywords_.Size = UDim2.new(0, 200, 0, 50)
-Keywords_.Font = Enum.Font.SourceSans
-Keywords_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Keywords_.TextSize = 14.000
-Keywords_.TextTransparency = 1.000
-
-Globals_.Name = "Globals_"
-Globals_.Parent = Source
-Globals_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Globals_.BackgroundTransparency = 1.000
-Globals_.Size = UDim2.new(0, 200, 0, 50)
-Globals_.Font = Enum.Font.SourceSans
-Globals_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Globals_.TextSize = 14.000
-Globals_.TextTransparency = 1.000
-
-Comments_.Name = "Comments_"
-Comments_.Parent = Source
-Comments_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Comments_.BackgroundTransparency = 1.000
-Comments_.Size = UDim2.new(0, 200, 0, 50)
-Comments_.Font = Enum.Font.SourceSans
-Comments_.TextColor3 = Color3.fromRGB(0, 0, 0)
-Comments_.TextSize = 14.000
-Comments_.TextTransparency = 1.000
-
-Open_2.Name = "Open"
-Open_2.Parent = Main
-Open_2.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-Open_2.BackgroundTransparency = 1.000
-Open_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Open_2.BorderSizePixel = 0
-Open_2.Position = UDim2.new(0.0339522101, 0, 0.760739207, 0)
-Open_2.Size = UDim2.new(0, 92, 0, 27)
-Open_2.Font = Enum.Font.SourceSansBold
-Open_2.Text = "Open"
-Open_2.TextColor3 = Color3.fromRGB(20, 74, 110)
-Open_2.TextSize = 19.000
-Open_2.TextWrapped = true
-
-clear.Name = "clear"
-clear.Parent = Main
-clear.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-clear.BackgroundTransparency = 1.000
-clear.BorderColor3 = Color3.fromRGB(0, 0, 0)
-clear.BorderSizePixel = 0
-clear.Position = UDim2.new(0.595106542, 0, 0.760739207, 0)
-clear.Size = UDim2.new(0, 95, 0, 26)
-clear.Font = Enum.Font.SourceSansBold
-clear.Text = "Clear"
-clear.TextColor3 = Color3.fromRGB(20, 74, 110)
-clear.TextSize = 19.000
-clear.TextWrapped = true
-
-exec.Name = "exec"
-exec.Parent = Main
-exec.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-exec.BackgroundTransparency = 1.000
-exec.BorderColor3 = Color3.fromRGB(0, 0, 0)
-exec.BorderSizePixel = 0
-exec.Position = UDim2.new(0.310228467, 0, 0.760739207, 0)
-exec.Size = UDim2.new(0, 95, 0, 27)
-exec.Font = Enum.Font.SourceSansBold
-exec.Text = "Execute"
-exec.TextColor3 = Color3.fromRGB(20, 74, 110)
-exec.TextSize = 19.000
-exec.TextWrapped = true
-
-Exit.Name = "Exit"
-Exit.Parent = Main
-Exit.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Exit.BackgroundTransparency = 1.000
-Exit.BorderSizePixel = 0
-Exit.Position = UDim2.new(0.877005637, 0, 0, 0)
-Exit.Size = UDim2.new(0, 40, 0, 22)
-Exit.Font = Enum.Font.SourceSans
-Exit.Text = ""
-Exit.TextColor3 = Color3.fromRGB(0, 0, 0)
-Exit.TextSize = 14.000
-
-Lines.Name = "Lines"
-Lines.Parent = Main
-Lines.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Lines.BackgroundTransparency = 1.000
-Lines.Size = UDim2.new(0, 200, 0, 50)
-Lines.Font = Enum.Font.SourceSans
-Lines.TextColor3 = Color3.fromRGB(0, 0, 0)
-Lines.TextSize = 14.000
-Lines.TextTransparency = 1.000
-
-ScrollingFrame.Parent = Main
-ScrollingFrame.Active = true
-ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScrollingFrame.BorderSizePixel = 0
-ScrollingFrame.Position = UDim2.new(0.0358030051, 0, 0.842850685, 0)
-ScrollingFrame.Size = UDim2.new(0, 268, 0, 50)
-ScrollingFrame.ScrollBarThickness = 0
-
--- Scripts:
-
-local function THTBRH_fake_script() -- Open.LocalScript 
-	local script = Instance.new('LocalScript', Open)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Main.Visible = true
-		wait()
-		script.Parent.Visible = false
-	end)
-end
-coroutine.wrap(THTBRH_fake_script)()
-local function HTAP_fake_script() -- Open_2.LocalScript 
-	local script = Instance.new('LocalScript', Open_2)
-
-	script.Parent.MouseButton1Click:Connect(function()
-	script.Parent.Parent.Parent.ScriptHub.Visible = true
-	end)
-end
-coroutine.wrap(HTAP_fake_script)()
-local function GUBCKAL_fake_script() -- Exit.LocalScript 
-	local script = Instance.new('LocalScript', Exit)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Main.Visible = false
-		wait()
-		script.Parent.Parent.Parent.Open.Visible = true
-	end)
-end
-coroutine.wrap(GUBCKAL_fake_script)()
-local function PLHW_fake_script() -- Main.LocalScript 
-	local script = Instance.new('LocalScript', Main)
-
-	script.Parent.Draggable = true
-end
-coroutine.wrap(PLHW_fake_script)()
-
-
-local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while", "is_synapse_function","is_protosmasher_caller", "execute","foreach","foreachi","insert","syn","HttpGet","HttpPost","__index","__namecall","__add","__call","__tostring","__tonumber","__div"}
-local global_env = {"getrawmetatable", "game", "Workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16","run_secure_function","create_secure_function","hookfunc","hookfunction","newcclosure","replaceclosure","islclosure","getgc","gcinfo","rconsolewarn","rconsoleprint","rconsoleinfo","rconsoleinput","rconsoleinputasync","rconsoleclear","rconsoleerr",}
-
-local src = Source
-local lin = Lines
-
-local Highlight = function(string, keywords)
-local K = {}
-local S = string
-local Token =
-{
-["="] = true,
-["."] = true,
-[","] = true,
-["("] = true,
-[")"] = true,
-["["] = true,
-["]"] = true,
-["{"] = true,
-["}"] = true,
-[":"] = true,
-["*"] = true,
-["/"] = true,
-["+"] = true,
-["-"] = true,
-["%"] = true,
-[";"] = true,
-["~"] = true
-}
-for i, v in pairs(keywords) do
-K[v] = true
-end
-S = S:gsub(".", function(c)
-if Token[c] ~= nil then
-return "\32"
-else
-return c
-end
-end)
-S = S:gsub("%S+", function(c)
-if K[c] ~= nil then
-return c
-else
-return (" "):rep(#c)
-end
-end)
-
-return S
-end
-
-local hTokens = function(string)
-local Token =
-{
-["="] = true,
-["."] = true,
-[","] = true,
-["("] = true,
-[")"] = true,
-["["] = true,
-["]"] = true,
-["{"] = true,
-["}"] = true,
-[":"] = true,
-["*"] = true,
-["/"] = true,
-["+"] = true,
-["-"] = true,
-["%"] = true,
-[";"] = true,
-["~"] = true
-}
-local A = ""
-local B = [[]]
-string:gsub(".", function(c)
-if Token[c] ~= nil then
-A = A .. c
-elseif c == "\n" then
-A = A .. "\n"
-elseif c == "\t" then
-A = A .. "\t"
-else
-A = A .. "\32"
-end
-end)
-return A
-end
-
-
-local strings = function(string)
-local highlight = ""
-local quote = false
-string:gsub(".", function(c)
-if quote == false and c == "\"" then
-quote = true
-elseif quote == true and c == "\"" then
-quote = false
-end
-if quote == false and c == "\"" then
-highlight = highlight .. "\""
-elseif c == "\n" then
-highlight = highlight .. "\n"
-elseif c == "\t" then
-highlight = highlight .. "\t"
-elseif quote == true then
-highlight = highlight .. c
-elseif quote == false then
-highlight = highlight .. "\32"
-end
-end)
-
-return highlight
-end
-
-local comments = function(string)
-local ret = ""
-string:gsub("[^\r\n]+", function(c)
-local comm = false
-local i = 0
-c:gsub(".", function(n)
-i = i + 1
-if c:sub(i, i + 1) == "--" then
-comm = true
-end
-if comm == true then
-ret = ret .. n
-else
-ret = ret .. "\32"
-end
-end)
-ret = ret
-end)
-
-return ret
-end
-
-local numbers = function(string)
-local A = ""
-string:gsub(".", function(c)
-if tonumber(c) ~= nil then
-A = A .. c
-elseif c == "\n" then
-A = A .. "\n"
-elseif c == "\t" then
-A = A .. "\t"
-else
-A = A .. "\32"
-end
-end)
-
-return A
-end
-
-local highlight_source = function(type)
-if type == "Text" then
-src.Text = Source.Text:gsub("\13", "")
-src.Text = Source.Text:gsub("\t", "      ")
-local s = src.Text
-src.Keywords_.Text = Highlight(s, lua_keywords)
-src.Globals_.Text = Highlight(s, global_env)
-src.RemoteHighlight_.Text = Highlight(s, {"FireServer", "fireServer", "InvokeServer", "invokeServer"})
-src.Tokens_.Text = hTokens(s)
-src.Numbers_.Text = numbers(s)
-src.Strings_.Text = strings(s)
-local lin = 1
-s:gsub("\n", function()
-lin = lin + 1
-end)
-Lines.Text = ""
-for i = 1, lin do
-Lines.Text = Lines.Text .. i .. "\n"
-end
-end
-end
-
-highlight_source("Text")
-
-src.Changed:Connect(highlight_source)
-exec.MouseButton1Click:Connect(function()
-assert(loadstring(Source.Text))()
-end)
-clear.MouseButton1Click:Connect(function()
-   Source.Text = ""
-end)
-
-Main.Active = true
-Main.Draggable = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/rc7"))()
 end)
 
 cmd.add({"scriptviewer", "viewscripts"}, {"scriptviewer (viewscripts)", "Can view scripts made by 0866"}, function()
@@ -10082,22 +9206,26 @@ cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (una
 end)
 
 cmd.add({"fireclickdetectors", "fcd"}, {"fireclickdetectors (fcd)", "Fires every click detector that's in workspace"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
-	
-	wait();
-	
-	Notify({
-	Description = "Fired all click detectors";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-});
+local ccamount = 0
+
 	for i,v in pairs(game:GetDescendants()) do
         if v:IsA("ClickDetector") then
+               ccamount = ccamount + 1
             fireclickdetector(v)
         end
-    end
+	end
+
+		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
+
+wait();
+
+Notify({
+Description = "Fired " .. ccamount .. " amount of click detectors";
+Title = "Nameless Admin - Account Age Notifier";
+Duration = 7;
+
+});
 end)
 
 cmd.add({"tweengotocampos", "tweentocampos", "tweentcp"}, {"tweengotocampos (tweentocampos, tweentcp)", "Another version of goto camera position but bypassing more anti-cheats"}, function(...)
@@ -10414,24 +9542,28 @@ end)
 end)
 
 cmd.add({"firetouchinterests", "fti"}, {"firetouchinterests (fti)", "Fires every Touch Interest that's in workspace"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+local ftiamount = 0
 
-wait();
-
-Notify({
-Description = "Fired all touch interests";
-Title = "Nameless Admin";
-Duration = 5;
-
-});
-	for _,v in pairs(workspace:GetDescendants()) do
+		for _,v in pairs(workspace:GetDescendants()) do
         if v:IsA("TouchTransmitter") then
+                           ftiamount = ftiamount + 1
         firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
         wait()
         firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
         end
         end
+
+		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
+
+wait();
+
+Notify({
+Description = "Fired " .. ftiamount .. " amount of touch interests";
+Title = "Nameless Admin - Account Age Notifier";
+Duration = 7;
+
+});
 end)
 
 cmd.add({"infjump", "infinitejump"}, {"infjump (infinitejump)", "Makes you be able to jump infinitly"}, function()
@@ -10748,357 +9880,30 @@ cmd.add({"fullbright", "fullb"}, {"fullbright (fullb)", "Makes games that are re
 end)
 
 cmd.add({"givehat", "givehatui"}, {"givehat (givehatui)", "Executes a hat giver gui check in console for hat names"}, function()
-	print("What accessories you have on")
-for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-if v:IsA("Accessory") then
-print("What accessories you have on")
-print(v.Name)
-end
-end
-wait()
-local plr = game:GetService"Players".LocalPlayer
-
-function mOut(txt, type)
-	if type == 1 then
-	spawn(function()
-	local m = Instance.new("Message", game.CoreGui)
-	m.Text = txt
-	task.wait(3)
-	m:Destroy()
-	end)
-	elseif type == 2 then
-	spawn(function()
-	local h = Instance.new("Hint", game.CoreGui)
-	h.Text = txt
-	task.wait(3)
-	h:Destroy()
-	end)
-	end
-	end
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local ScreenGui = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local TopBar = Instance.new("Frame")
-local ImageLabel = Instance.new("ImageLabel")
-local ImageLabel_2 = Instance.new("ImageLabel")
-local TextLabel = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
-local Punish = Instance.new("TextBox")
-local UICorner_2 = Instance.new("UICorner")
-local SilentCMD = Instance.new("TextBox")
-local UICorner_3 = Instance.new("UICorner")
-local SilentC = Instance.new("TextButton")
-local UICorner_4 = Instance.new("UICorner")
-local X = Instance.new("TextButton")
-local ImageLabel_3 = Instance.new("ImageLabel")
-local ImageLabel_4 = Instance.new("ImageLabel")
-
-ScreenGui.ResetOnSpawn = false
-Main.Active = true
-Main.Draggable = true
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Main.Name = "Main"
-Main.Parent = ScreenGui
-Main.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-Main.BackgroundTransparency = 0.100
-Main.Position = UDim2.new(0.373764783, 0, 0.108603969, 0)
-Main.Size = UDim2.new(0, 368, 0, 196)
-
-TopBar.Name = "TopBar"
-TopBar.Parent = Main
-TopBar.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-TopBar.BackgroundTransparency = 0.100
-TopBar.BorderColor3 = Color3.fromRGB(27, 42, 53)
-TopBar.BorderSizePixel = 0
-TopBar.Position = UDim2.new(0.240853682, 0, 0.00510204071, 0)
-TopBar.Size = UDim2.new(0, 187, 0, 19)
-
-ImageLabel.Parent = TopBar
-ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.BackgroundTransparency = 1.000
-ImageLabel.Position = UDim2.new(-0.103134401, 0, 0.00032958985, 0)
-ImageLabel.Size = UDim2.new(0, 19, 0, 19)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel.ImageTransparency = 0.100
-
-ImageLabel_2.Parent = TopBar
-ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_2.BackgroundTransparency = 1.000
-ImageLabel_2.Position = UDim2.new(1, 0, 0.00032958985, 0)
-ImageLabel_2.Size = UDim2.new(0, 13, 0, 19)
-ImageLabel_2.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel_2.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_2.ImageTransparency = 0.100
-
-TextLabel.Parent = TopBar
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.0786837786, 0, 0.300626367, 0)
-TextLabel.Size = UDim2.new(0, 156, 0, 8)
-TextLabel.Font = Enum.Font.SourceSansLight
-TextLabel.Text = "Give Hats UI - Nameless Admin"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 17.000
-
-UICorner.CornerRadius = UDim.new(0, 9)
-UICorner.Parent = Main
-
-Punish.Name = "Punish"
-Punish.Parent = Main
-Punish.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-Punish.BackgroundTransparency = 0.100
-Punish.Position = UDim2.new(0.210124969, 0, 0.195345342, 0)
-Punish.Size = UDim2.new(0, 214, 0, 40)
-Punish.Font = Enum.Font.SourceSans
-Punish.PlaceholderText = "Player Name"
-Punish.Text = ""
-Punish.TextColor3 = Color3.fromRGB(255, 255, 255)
-Punish.TextSize = 14.000
-
-UICorner_2.CornerRadius = UDim.new(0, 9)
-UICorner_2.Parent = Punish
-
-SilentCMD.Name = "SilentCMD"
-SilentCMD.Parent = Main
-SilentCMD.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-SilentCMD.BackgroundTransparency = 0.100
-SilentCMD.Position = UDim2.new(0.210528508, 0, 0.475957602, 0)
-SilentCMD.Size = UDim2.new(0, 214, 0, 40)
-SilentCMD.Font = Enum.Font.SourceSans
-SilentCMD.PlaceholderText = "Hat name"
-SilentCMD.Text = ""
-SilentCMD.TextColor3 = Color3.fromRGB(255, 255, 255)
-SilentCMD.TextSize = 14.000
-
-UICorner_3.CornerRadius = UDim.new(0, 9)
-UICorner_3.Parent = SilentCMD
-
-SilentC.Name = "SilentC"
-SilentC.Parent = Main
-SilentC.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-SilentC.BackgroundTransparency = 0.100
-SilentC.Position = UDim2.new(0.326086968, 0, 0.760204077, 0)
-SilentC.Size = UDim2.new(0, 127, 0, 35)
-SilentC.Font = Enum.Font.SourceSans
-SilentC.Text = "Give hat"
-SilentC.TextColor3 = Color3.fromRGB(255, 255, 255)
-SilentC.TextSize = 14.000
-
-UICorner_4.CornerRadius = UDim.new(0, 9)
-UICorner_4.Parent = SilentC
-
-X.Name = "X"
-X.Parent = Main
-X.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-X.BackgroundTransparency = 0.100
-X.BorderSizePixel = 0
-X.Position = UDim2.new(0.883152187, 0, 0.00513565307, 0)
-X.Size = UDim2.new(0, 23, 0, 19)
-X.Font = Enum.Font.SourceSans
-X.Text = "X"
-X.TextColor3 = Color3.fromRGB(255, 255, 255)
-X.TextSize = 14.000
-
-ImageLabel_3.Parent = X
-ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_3.BackgroundTransparency = 1.000
-ImageLabel_3.Position = UDim2.new(-0.69654429, 0, 0, 0)
-ImageLabel_3.Size = UDim2.new(0, 16, 0, 18)
-ImageLabel_3.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_3.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_3.ImageTransparency = 0.100
-
-ImageLabel_4.Parent = X
-ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_4.BackgroundTransparency = 1.000
-ImageLabel_4.Position = UDim2.new(1, 0, 0.000329759379, 0)
-ImageLabel_4.Size = UDim2.new(0, 13, 0, 19)
-ImageLabel_4.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel_4.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_4.ImageTransparency = 0.100
-
--- Scripts:
-
-local function VLBD_fake_script() -- X.LocalScript 
-	local script = Instance.new('LocalScript', X)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent:Destroy()
-	end)
-end
-coroutine.wrap(VLBD_fake_script)()
-
-
-function getPlayer(shortcut)
-	local player = nil
-	local g = game.Players:GetPlayers()
-	for i = 1, #g do
-	if string.lower(string.sub(g[i].Name,1,string.len(shortcut))) == string.lower(shortcut) then
-	if g[i] ~= nil then
-	player = g[i]
-	break
-	end
-	end
-	end
-	return player
-	end
-	
-	function getHat(shortcuts)
-	local hat = nil
-	for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-	if v:IsA("Accessory") then
-	if string.lower(string.sub(v.Name,1,string.len(shortcuts))) == string.lower(shortcuts) then
-	if v.Name ~= nil then
-	hat = v
-	break
-	end
-	end
-	end
-	end
-	return hat
-	end
-	
-	local runcode = true
-	local spawntime = game.Players.RespawnTime + 3
-	
-	local hatstored = {}
-	
-	SilentC.MouseButton1Click:Connect(function()
-	local char = game.Players.LocalPlayer.Character
-	if runcode then
-	runcode = true
-	local dfc = game.ReplicatedStorage.DefaultChatSystemChatEvents
-	local smr = dfc.SayMessageRequest
-	
-	local hatse = getHat(SilentCMD.Text)
-	local arg = getPlayer(Punish.Text)
-	
-	if table.find(hatstored, hatse.Name) then
-	mOut("Hat is already given away, error", 1)
-	return end
-	
-	argplr = game.Players[arg.Name].Character
-	
-	local rs = game:GetService("RunService")
-	local fc
-	local dc
-	local dic
-	local coc
-	char.Archivable = true
-	headname = char.Head.Name
-	local cchar = char:Clone()
-	cchar.Parent = Workspace
-	wait()
-	Main.Visible = false
-	runcode = true
-	table.clear(hatstored)
-	wait(0.2)
-	Main.Visible = true
-	runcode = true
-	
-	local con
-	con = char.Humanoid.Died:Connect(function()
-	cchar:Destroy()
-	Main.Visible = false
-	runcode = true
-	mOut("Wait For "..tostring(spawntime).." Second", 1)
-	table.clear(hatstored)
-	task.wait(spawntime)
-	Main.Visible = true
-	runcode = true
-	con:Disconnect()
-	end)
-	
-	if fakeadmin then
-	smr:FireServer(";givehat "..hatse.Name.." "..arg.Name, "All")
-	end
-	
-	cchar.HumanoidRootPart.CFrame = char.HumanoidRootPart.CFrame
-	for i, x in pairs(cchar:GetDescendants()) do
-	if x:IsA("BasePart") then
-	x.Transparency = 1
-	end
-	end
-	for i, v in pairs(cchar.Head:GetDescendants()) do
-	if v.className == "Decal" or v.className == "Texture" then
-	v.Transparency = 1
-	end
-	end
-	
-	for i,v in pairs(char:GetDescendants()) do
-	if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then
-	fc = rs.Heartbeat:Connect(function()
-	if char.Humanoid.Health <= 0 then fc:Disconnect() return end
-	v.Velocity = Vector3.new(30, 4, 0)
-	v.RotVelocity = Vector3.new(30, 4, 0)
-	end)
-	end
-	
-	dic = rs.RenderStepped:Connect(function()
-	setscriptable(plr, "SimulationRadius", true)
-	plr.SimulationRadius = math.huge * math.huge, math.huge * math.huge * 1 / 0 * 1 / 0 * 1 / 0 * 1 / 0 * 1 / 0
-	end)
-	
-	coc = plr.SimulationRadiusChanged:Connect(function(radius)
-	   radius = math.huge
-	   return radius
-	end)
-	
-	char[hatse.Name].Handle.AccessoryWeld:Destroy()
-	
-	dc = rs.RenderStepped:Connect(function()
-	if char.Humanoid.Health <= 0 then dc:Disconnect() cchar:Destroy() coc:Disconnect() dic:Disconnect() return end
-	cchar.HumanoidRootPart.CFrame = argplr.HumanoidRootPart.CFrame
-	char[hatse.Name].Handle.CFrame = cchar[hatse.Name].Handle.CFrame
-	end)
-	table.insert(hatstored, hatse.Name)
-	end
-	runcode = true
-	end
-	
-	X.MouseButton1Click:Connect(function()
-	Main.Visible = false
-	end)
-	
-	mOut("Hat Giver Has Loaded", 2)
-	wait(0.2)
-	print("What accessories you have on")
-	for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-	if v:IsA("Accessory") then
-	print("What accessories you have on")
-	print(v.Name)
-	end
-	end
-	end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/hatgiver"))()
 end)
 
 cmd.add({"fireproximityprompts", "fpp"}, {"fireproximityprompts (fpp)", "Fires every Touch Interest that's in workspace"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
-	
-	wait();
-	
-	Notify({
-	Description = "Fired all proximity prompts";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-});
-	for i,v in pairs(game.Workspace:GetDescendants()) do
+fppamount = 0
+
+for i,v in pairs(game.Workspace:GetDescendants()) do
 		if v:IsA("Part") and v.Name == "BanditClick" then
+		    fppamount = fppamount + 1
 			fireproximityprompt(v.Proximity)
 		end
-	 end
+end
+ 
+ 	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
+
+wait();
+
+Notify({
+Description = "Fired " .. fppamount .. " of proximity prompts";
+Title = "Nameless Admin - Account Age Notifier";
+Duration = 7;
+
+});
 end)
 
 cmd.add({"iy", "i"}, {"iy {command} (i)", "Executes infinite yield scripts"}, function(...)
@@ -11317,133 +10122,175 @@ end
 end)
 
 cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or something"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
-	
-	wait();
-	
-	Notify({
-	Description = "Use the tool named invisibility (YOU CAN USE TOOLS WITH THIS)";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-});
-local offset = 1100
-local invisible = game.Players.LocalPlayer
-local grips = {}
-local heldTool
-local gripChanged
-local handle
-local weld
-function setDisplayDistance(distance)
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player.Character and player.Character:FindFirstChildWhichIsA("Humanoid") then
-            player.Character:FindFirstChildWhichIsA("Humanoid").NameDisplayDistance = distance
-            player.Character:FindFirstChildWhichIsA("Humanoid").HealthDisplayDistance = distance
-        end
-    end
+--[[Invisibility Toggle
+
+You can find the orginal concept here: https://v3rmillion.net/showthread.php?tid=544634
+
+This method clones the character locally, teleports the real character to a safe location, then sets the character to the clone.
+Basically, your real character is in the sky while you are on the ground.
+
+
+Because of the way this works, games with a decent anti-cheat will fuck this up.
+If you turn it off, you have to go to a safe place before going invisible.
+
+Written by: BitingTheDust ; https://v3rmillion.net/member.php?action=profile&uid=1628149
+]]
+--Settings:
+local ScriptStarted = false
+local Keybind = "E" --Set to whatever you want, has to be the name of a KeyCode Enum.
+local Transparency = true --Will make you slightly transparent when you are invisible. No reason to disable.
+local NoClip = false --Will make your fake character no clip.
+
+local Player = game:GetService("Players").LocalPlayer
+local RealCharacter = Player.Character or Player.CharacterAdded:Wait()
+
+local IsInvisible = false
+
+RealCharacter.Archivable = true
+local FakeCharacter = RealCharacter:Clone()
+local Part
+Part = Instance.new("Part", workspace)
+Part.Anchored = true
+Part.Size = Vector3.new(200, 1, 200)
+Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
+Part.CanCollide = true
+FakeCharacter.Parent = workspace
+FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+
+for i, v in pairs(RealCharacter:GetChildren()) do
+  if v:IsA("LocalScript") then
+      local clone = v:Clone()
+      clone.Disabled = true
+      clone.Parent = FakeCharacter
+  end
 end
-local tool = Instance.new("Tool", game.Players.LocalPlayer.Backpack)
-tool.Name = "Invisibility"
-tool.RequiresHandle = false
-tool.CanBeDropped = false
-tool.Equipped:Connect(
-    function()
-        wait()
-        if not invisible then
-            invisible = true
-            tool.Name = "👻"
-            if handle then
-                handle:Destroy()
-            end
-            if weld then
-                weld:Destroy()
-            end
-            handle = Instance.new("Part", workspace)
-            handle.Name = "Handle"
-            handle.Transparency = 1
-            handle.CanCollide = false
-            handle.Size = Vector3.new(2, 1, 1)
-            weld = Instance.new("Weld", handle)
-            weld.Part0 = handle
-            weld.Part1 = game.Players.LocalPlayer.Character.HumanoidRootPart
-            weld.C0 = CFrame.new(0, offset - 1.5, 0)
-            setDisplayDistance(offset + 100)
-            workspace.CurrentCamera.CameraSubject = handle
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, offset, 0)
-            game.Players.LocalPlayer.Character.Humanoid.HipHeight = offset
-            game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-            for _, child in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if child:IsA("Tool") and child ~= tool then
-                    grips[child] = child.Grip
-                end
-            end
-        elseif invisible then
-            invisible = false
-            tool.Name = "🧍"
-            if handle then
-                handle:Destroy()
-            end
-            if weld then
-                weld:Destroy()
-            end
-            for _, child in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                if child:IsA("Tool") then
-                    child.Parent = game.Players.LocalPlayer.Backpack
-                end
-            end
-            for tool, grip in pairs(grips) do
-                if tool then
-                    tool.Grip = grip
-                end
-            end
-            heldTool = nil
-            setDisplayDistance(100)
-            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -offset, 0)
-            game.Players.LocalPlayer.Character.Humanoid.HipHeight = 0
-        end
-        tool.Parent = game.Players.LocalPlayer.Backpack
-    end
+if Transparency then
+  for i, v in pairs(FakeCharacter:GetDescendants()) do
+      if v:IsA("BasePart") then
+          v.Transparency = 0.7
+      end
+  end
+end
+local CanInvis = true
+function RealCharacterDied()
+  CanInvis = false
+  RealCharacter:Destroy()
+  RealCharacter = Player.Character
+  CanInvis = true
+  isinvisible = false
+  FakeCharacter:Destroy()
+  workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+
+  RealCharacter.Archivable = true
+  FakeCharacter = RealCharacter:Clone()
+  Part:Destroy()
+  Part = Instance.new("Part", workspace)
+  Part.Anchored = true
+  Part.Size = Vector3.new(200, 1, 200)
+  Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
+  Part.CanCollide = true
+  FakeCharacter.Parent = workspace
+  FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+
+  for i, v in pairs(RealCharacter:GetChildren()) do
+      if v:IsA("LocalScript") then
+          local clone = v:Clone()
+          clone.Disabled = true
+          clone.Parent = FakeCharacter
+      end
+  end
+  if Transparency then
+      for i, v in pairs(FakeCharacter:GetDescendants()) do
+          if v:IsA("BasePart") then
+              v.Transparency = 0.7
+          end
+      end
+  end
+ RealCharacter.Humanoid.Died:Connect(function()
+ RealCharacter:Destroy()
+ FakeCharacter:Destroy()
+ end)
+ Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+end
+RealCharacter.Humanoid.Died:Connect(function()
+ RealCharacter:Destroy()
+ FakeCharacter:Destroy()
+ end)
+Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+local PseudoAnchor
+game:GetService "RunService".RenderStepped:Connect(
+  function()
+      if PseudoAnchor ~= nil then
+          PseudoAnchor.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+      end
+       if NoClip then
+      FakeCharacter.Humanoid:ChangeState(11)
+       end
+  end
 )
-game.Players.LocalPlayer.Character.ChildAdded:Connect(
-    function(child)
-        wait()
-        if invisible and child:IsA("Tool") and child ~= heldTool and child ~= tool then
-            heldTool = child
-            local lastGrip = heldTool.Grip
-            if not grips[heldTool] then
-                grips[heldTool] = lastGrip
-            end
-            for _, track in pairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
-                track:Stop()
-            end
-            game.Players.LocalPlayer.Character.Animate.Disabled = true
-            heldTool.Grip = heldTool.Grip * (CFrame.new(0, offset - 1.5, 1.5) * CFrame.Angles(math.rad(-90), 0, 0))
-            heldTool.Parent = game.Players.LocalPlayer.Backpack
-            heldTool.Parent = game.Players.LocalPlayer.Character
-            if gripChanged then
-                gripChanged:Disconnect()
-            end
-            gripChanged =
-                heldTool:GetPropertyChangedSignal("Grip"):Connect(
-                function()
-                    wait()
-                    if not invisible then
-                        gripChanged:Disconnect()
-                    end
-                    if heldTool.Grip ~= lastGrip then
-                        lastGrip =
-                            heldTool.Grip * (CFrame.new(0, offset - 1.5, 1.5) * CFrame.Angles(math.rad(-90), 0, 0))
-                        heldTool.Grip = lastGrip
-                        heldTool.Parent = game.Players.LocalPlayer.Backpack
-                        heldTool.Parent = game.Players.LocalPlayer.Character
-                    end
-                end
-            )
-        end
-    end
+
+PseudoAnchor = FakeCharacter.HumanoidRootPart
+local function Invisible()
+  if IsInvisible == false then
+      local StoredCF = RealCharacter.HumanoidRootPart.CFrame
+      RealCharacter.HumanoidRootPart.CFrame = FakeCharacter.HumanoidRootPart.CFrame
+      FakeCharacter.HumanoidRootPart.CFrame = StoredCF
+      RealCharacter.Humanoid:UnequipTools()
+      Player.Character = FakeCharacter
+      workspace.CurrentCamera.CameraSubject = FakeCharacter.Humanoid
+      PseudoAnchor = RealCharacter.HumanoidRootPart
+      for i, v in pairs(FakeCharacter:GetChildren()) do
+          if v:IsA("LocalScript") then
+              v.Disabled = false
+          end
+      end
+
+      IsInvisible = true
+  else
+      local StoredCF = FakeCharacter.HumanoidRootPart.CFrame
+      FakeCharacter.HumanoidRootPart.CFrame = RealCharacter.HumanoidRootPart.CFrame
+     
+      RealCharacter.HumanoidRootPart.CFrame = StoredCF
+     
+      FakeCharacter.Humanoid:UnequipTools()
+      Player.Character = RealCharacter
+      workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+      PseudoAnchor = FakeCharacter.HumanoidRootPart
+      for i, v in pairs(FakeCharacter:GetChildren()) do
+          if v:IsA("LocalScript") then
+              v.Disabled = true
+          end
+      end
+      IsInvisible = false
+  end
+end
+
+game:GetService("UserInputService").InputBegan:Connect(
+  function(key, gamep)
+      if gamep then
+          return
+      end
+      if key.KeyCode.Name:lower() == Keybind:lower() and CanInvis and RealCharacter and FakeCharacter then
+          if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
+              Invisible()
+          end
+      end
+  end
 )
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://232127604"
+Sound:Play()
+	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
+
+wait();
+
+Notify({
+Description = "Invisible loaded, press " .. Keybind .. " to toggle";
+Title = "Nameless Admin";
+Duration = 10;
+
+});
 end)
 
 cmd.add({"unchatspy"}, {"unchat", "Unspies on chat, enables chat, spies whispers etc."}, function()
@@ -11525,28 +10372,34 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 end)
 
 cmd.add({"fireremotes"}, {"fireremotes", "Fires every remote."}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local remoteamount = 0
+
+for i,v in pairs(game:GetDescendants()) do
+        if v:IsA("RemoteEvent") then
+ remoteamount = remoteamount + 1
+        v:FireServer()
+        if v:IsA("BindableEvent") then
+             remoteamount = remoteamount + 1
+        v:Fire()
+        if v:IsA("RemoteFunction") then
+             remoteamount = remoteamount + 1
+        v:InvokeServer()
+        end
+        end
+        end
+end
+    
+    	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
 local Notify = AkaliNotif.Notify;
 
 wait();
 
 Notify({
-Description = "Fired all remotes";
-Title = "Nameless Admin";
-Duration = 5;
+Description = "Fired " .. remoteamount .. " amount of remotes";
+Title = "Nameless Admin - Account Age Notifier";
+Duration = 7;
 
 });
-	for i,v in pairs(game:GetDescendants()) do
-        if v:IsA("RemoteEvent") then
-        v:FireServer()
-        if v:IsA("BindableEvent") then
-        v:Fire()
-        if v:IsA("RemoteFunction") then
-        v:InvokeServer()
-        end
-        end
-        end
-        end
 end)
 
 
@@ -12550,50 +11403,36 @@ gui.loadCommands = function()
 	end
 end
 gui.searchCommands = function()
-	local str = cmdInput.Text:gmatch("[^ ;]+")()
-	if str then str = str:lower() else str = "" end
-	
-	local visibleFrames = {}
-	for i, v in ipairs(cmdAutofill:GetChildren()) do
-		if v:IsA("Frame") then
-			if i <= 5 then -- Only update the first 5 autofills
-				if Commands[v.Name] then
-					v.Input.Text = str ~= "" and v.Name:find(str) == 1 and v.Name or Commands[v.Name][2][1]
-				end
-			end
-			v.Visible = false
-			if Commands[v.Name] and (str == "" or v.Name:find(str)) then
-				v.Visible = true
-				table.insert(visibleFrames, v)
-			end
-		end
-	end
-	
-	local lastFrame
-	for i, v in ipairs(visibleFrames) do
-		local n = (i ^ -0.5) * 125
-		local yPos = (i - 1) * 28
-		
-		if lastFrame then
-			local newPos = UDim2.new(0.5, 0, 0, yPos)
-			gui.tween(v, "Quint", "Out", 0.3, {
-				Size = UDim2.new(0.5, n, 0, 25),
-				Position = newPos,
-			})
-		else
-			gui.tween(v, "Quint", "Out", 0.3, {
-				Size = UDim2.new(0.5, n, 0, 25),
-				Position = UDim2.new(0.5, 0, 0, yPos),
-			})
-		end
-		
-		lastFrame = v
-	end
+    local str = (cmdInput.Text:gsub(";", "")):lower()
+    local index = 0
+    local lastFrame
+    for _, v in ipairs(cmdAutofill:GetChildren()) do
+        if v:IsA("Frame") and index < 5 then
+            local cmd = Commands[v.Name]
+            local name = cmd and cmd[2][1] or ""
+            v.Input.Text = str ~= "" and v.Name:find(str) == 1 and v.Name or name
+            v.Visible = str == "" or v.Name:find(str)
+            if v.Visible then
+                index = index + 1
+                local n = math.sqrt(index) * 125
+                local yPos = (index - 1) * 28
+                local newPos = UDim2.new(0.5, 0, 0, yPos)
+                gui.tween(v, "Quint", "Out", 0.3, {
+                    Size = UDim2.new(0.5, n, 0, 25),
+                    Position = lastFrame and newPos or UDim2.new(0.5, 0, 0, yPos),
+                })
+                lastFrame = v
+            end
+        end
+    end
 end
+
 
 --[[ GUI FUNCTIONALITY ]]--
 mouse.KeyDown:Connect(function(k)
 	if k:lower() == opt.prefix then
+	    	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = true
+	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, 0, -36),"Out","Quint",.5)
 		gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
@@ -12607,12 +11446,15 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 		end)
 	end
 	gui.barDeselect()
+    game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, -1, -36),"In","Quint",.4)
 	  wait(0.35)
     for i, v in ipairs(cmdAutofill:GetChildren()) do
         if v:IsA("Frame") then
             v.Visible = false
         end
         end
+		wait(0.15)
+		game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = false
 end)
 
 cmdInput.Changed:Connect(function(p)
