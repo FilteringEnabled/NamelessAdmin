@@ -2586,6 +2586,9 @@ end)
 cmd.add({"kill"}, {"kill [player]", "after a while i have added a working kill script thats almost instant to this admin"}, function(...)
 	Target = (...)
 
+if Target == "all" or Target == "others" then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+else
 local function Kill()
             if not getPlr(Target) then
             end
@@ -2676,6 +2679,7 @@ end
                 Kill()
             end
         end
+         end
 end)
 
 cmd.add({"toolblockspam"}, {"toolblockspam [amount]", "Spawn blocks by the given amount"}, function(amt)
@@ -3248,6 +3252,9 @@ cmd.add({"copytools", "ctools"}, {"copytools <player> (ctools)", "Copies the too
 
 cmd.add({"bring"}, {"bring <player>", "Bring the given player(s)"}, function(...)
 	local Target = (...) 
+	if Target == "all" or Target == "others" then
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+end
             local Character = Player.Character        
             local PlayerGui = Player:waitForChild("PlayerGui")
             local Backpack = Player:waitForChild("Backpack")
@@ -5056,7 +5063,7 @@ cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 end)
 
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin Admin V1 | Made by Qipu & 0866', 'All')
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin FE |.gg/MPrzT2Pm to get the script!', 'All')
 end)
 
 cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
