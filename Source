@@ -3018,9 +3018,7 @@ cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, fu
                 local players = {}
             
 else
-   
-   
-   local Target = (...)  
+   local Target = Username  
             local Character = Player.Character        
             local PlayerGui = Player:waitForChild("PlayerGui")
             local Backpack = Player:waitForChild("Backpack")
