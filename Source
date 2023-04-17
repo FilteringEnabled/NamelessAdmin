@@ -264,7 +264,7 @@ end)
 	end
 	
 	function getRoot(char)
-	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+	local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
 	return rootPart
 end
 
@@ -5057,9 +5057,72 @@ cmd.add({"toolleash", "tl"}, {"toolleash", "Makes you be able to carry your tool
     end
 end)
 
+cmd.add({"control"}, {"control <player>", "Control a player"}, function(...)
+Target = (...)
+Control = true
+
+repeat wait()
+	local TPlayer = getPlr(Target)
+			   TRootPart = TPlayer.Character.HumanoidRootPart
+			   local Character = Player.Character
+			   local PlayerGui = Player:WaitForChild("PlayerGui")
+			   local Backpack = Player:WaitForChild("Backpack")
+			   local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
+			   local RootPart = Character and Humanoid and Humanoid.RootPart or false
+			   local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
+			   if not Humanoid or not RootPart or not RightArm then
+				   return
+			   end
+			   Humanoid:UnequipTools()
+			   local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
+			   if not MainTool or not MainTool:FindFirstChild("Handle") then
+				   return
+			   end
+			   Humanoid.Name = "DAttach"
+			   local l = Character["DAttach"]:Clone()
+			   l.Parent = Character
+			   l.Name = "Humanoid"
+			   wait()
+			   Character["DAttach"]:Destroy()
+			   game.Workspace.CurrentCamera.CameraSubject = Character
+			   Character.Animate.Disabled = true
+			   wait()
+			   Character.Animate.Disabled = false
+			   Character.Humanoid:EquipTool(MainTool)
+			   wait()
+			   CF = Player.Character.PrimaryPart.CFrame
+			   if firetouchinterest then
+				   local flag = false
+				   task.defer(function()
+					   MainTool.Handle.AncestryChanged:wait()
+					   flag = true
+				   end)
+				   repeat
+					   firetouchinterest(MainTool.Handle, TRootPart, 0)
+					   firetouchinterest(MainTool.Handle, TRootPart, 1)
+					   wait()
+				   until flag
+			   else
+				   Player.Character.HumanoidRootPart.CFrame =
+				   TCharacter.HumanoidRootPart.CFrame
+				   wait()
+				   Player.Character.HumanoidRootPart.CFrame =
+				   TCharacter.HumanoidRootPart.CFrame
+				   wait()
+			   end
+			   Player.CharacterAdded:wait()
+			   wait(0.2)
+getRoot().CFrame= getPlr(Target).Character.Head.CFrame
+wait(0.05)
+until Control == false
+end)
+
+cmd.add({"uncontrol"}, {"uncontrol", "Uncontrol a player"}, function()
+Control = false
+end)
+
 cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
-
 end)
 
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
@@ -7927,7 +7990,7 @@ cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to th
 	end
 	
 	function getRoot(char)
-		local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+		local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
 		return rootPart
 	end
 	
