@@ -8619,6 +8619,7 @@ else
 		wait(4)
 		CF = Player.Character.HumanoidRootPart.CFrame
 		Player.CharacterAdded:wait():waitForChild("HumanoidRootPart").CFrame = CF
+						wait(2)
 until Loopbring == false
 end
 end)
@@ -9147,6 +9148,7 @@ else
 						Kill()
 					end
 				end
+				wait(2)
 			until Loopkill == false
 		end
 		end)
