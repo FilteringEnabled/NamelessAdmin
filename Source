@@ -2071,7 +2071,7 @@ wait();
 
 Notify({
 Description = accountage;
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Nameless Admin";
 Duration = 7;
 
 });
@@ -9965,7 +9965,7 @@ wait();
 
 Notify({
 Description = "Fired " .. ccamount .. " amount of click detectors";
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Nameless Admin";
 Duration = 7;
 
 });
@@ -10303,7 +10303,7 @@ wait();
 
 Notify({
 Description = "Fired " .. ftiamount .. " amount of touch interests";
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Nameless Admin";
 Duration = 7;
 
 });
@@ -10643,7 +10643,7 @@ wait();
 
 Notify({
 Description = "Fired " .. fppamount .. " of proximity prompts";
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Nameless Admin";
 Duration = 7;
 
 });
@@ -11139,7 +11139,7 @@ wait();
 
 Notify({
 Description = "Fired " .. remoteamount .. " amount of remotes";
-Title = "Nameless Admin - Account Age Notifier";
+Title = "Nameless Admin";
 Duration = 7;
 
 });
