@@ -4692,7 +4692,7 @@ cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 end)
 
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin | .gg/mW442YxE4j', 'All')
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin Admin V1 | Made by Qipu & 0866', 'All')
 end)
 
 cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
@@ -11523,3 +11523,5 @@ function Destroy(guiObject)
 		guiObject.Parent = nil
 	end
 end
+wait(0.1)
+game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
