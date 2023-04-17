@@ -31,6 +31,8 @@ local IYLOADED = false -- This is used for the ;iy command that executes infinit
 local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
 local Character = game.Players.LocalPlayer.Character
 local Clicked = true
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local Notify = AkaliNotif.Notify;
 _G.Spam = false
 --[[ FOR LOOP COMMANDS ]]--
 view = false
@@ -106,8 +108,8 @@ cmd.run = function(args)
 		end
 	end)
 	if not success then
-			local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+			
+
 
 wait();
 
@@ -842,8 +844,8 @@ cmd.add({"kanye"}, {"kanye", "Random kanye quote"}, function()
 end)
 
 cmd.add({"hatorbit", "ho"}, {"hatorbit (ho)", "Hat orbit"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -1720,8 +1722,8 @@ end)
 cmd.add({"rejoin", "rj"}, {"rejoin (rj)", "Rejoin the game"}, function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId)
 	wait()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -1900,8 +1902,8 @@ teller = target.AccountAge
 accountage = "The account age of " .. target.Name .. " is " .. teller
 
 
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -2388,8 +2390,8 @@ cmd.add({"vfly", "vehiclefly"}, {"vehiclefly (vfly)", "be able to fly vehicles"}
 FLYING = false
 	cmdlp.Character.Humanoid.PlatformStand = false
 	wait()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+
+		
 		
 		wait();
 		
@@ -2407,8 +2409,8 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 end)
 
 cmd.add({"unvfly", "unvehiclefly"}, {"unvehiclefly (unvfly)", "disable vehicle fly"}, function()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+
+		
 		
 		wait();
 		
@@ -2489,8 +2491,8 @@ game.Players.LocalPlayer.Character=prt
          spawn(function()
                 game.Players.LocalPlayer.CharacterAdded:Wait()
                 if target.Character.Humanoid.Health <= 15 then
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+
+					
 					
 					wait();
 					
@@ -2660,8 +2662,8 @@ cmd.add({"notools"}, {"notools", "Remove your tools"}, function()
 end)
 
 cmd.add({"breaklayeredclothing", "blc"}, {"breaklayeredclothing (blc)", "Streches your layered clothing"}, function()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+
+
 
 wait();
 
@@ -2869,8 +2871,8 @@ end
 	plr.CharacterAdded:Wait()
 	getChar():WaitForChild("HumanoidRootPart").CFrame = old
 wait()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+
+
 
 wait();
 
@@ -3015,8 +3017,8 @@ cmd.add({"bring"}, {"bring <player>", "Bring the given player(s)"}, function(...
 	local Username = (...)
 
 	if Username == "all" or Username == "others" then
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -3042,8 +3044,8 @@ else
 	plr.CharacterAdded:Wait()
 getChar():WaitForChild("HumanoidRootPart").CFrame = old
 	  wait()
-	  local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	  local Notify = AkaliNotif.Notify;
+	  
+	  
 	  
 	  wait();
 	  
@@ -3104,8 +3106,8 @@ cmd.add({"skydive", "sky"}, {"skydive <player> (sky)", "Skydives the player"}, f
 	local Username = (...)
 
 	if Username == "all" or Username == "others" then
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+		
+		
 		
 		wait();
 		
@@ -3595,8 +3597,8 @@ end)
 cmd.add({"antisit"}, {"antisit", "Antisit"}, function()
 			Player.Character.Humanoid:SetStateEnabled("Seated", false)
 					Player.Character.Humanoid.Sit = true
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+					
+					
 					
 					wait();
 					
@@ -3611,8 +3613,8 @@ end)
 cmd.add({"unantisit"}, {"unantisit", "Disable antisit command"}, function()
 		Player.Character.Humanoid:SetStateEnabled("Seated", true)
 					Player.Character.Humanoid.Sit = false
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+					
+					
 					
 					wait();
 					
@@ -3817,8 +3819,8 @@ spawn(function()
 	wait(2)
 	Loaded:Destroy()
 end)
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+
+
 
 wait();
 
@@ -3842,8 +3844,8 @@ Duration = 5;
 			end)
 
 			cmd.add({"antiafk", "noafk"}, {"antiafk (noafk)", "Makes you not be kicked for being afk for 20 mins"}, function()
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-				local Notify = AkaliNotif.Notify;
+				
+				
 				
 				wait();
 				
@@ -3879,8 +3881,8 @@ Duration = 5;
 							instance.Parent = nil
 						end
 						end)
-						local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-						local Notify = AkaliNotif.Notify;
+						
+						
 						
 						wait();
 						
@@ -3895,8 +3897,8 @@ Duration = 5;
 					cmd.add({"unantiattach", "unnoattach"}, {"unantiattach (unnoattach)", "Makes you to be able for others to attach you"}, function()
 						if AAttach then
 							AAttach:Disconnect()
-							local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-							local Notify = AkaliNotif.Notify;
+							
+							
 							
 							wait();
 							
@@ -3907,8 +3909,8 @@ Duration = 5;
 							
 });
 						else
-							local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-							local Notify = AkaliNotif.Notify;
+							
+							
 							
 							wait();
 							
@@ -3922,8 +3924,8 @@ Duration = 5;
 						end)
 
 						cmd.add({"setspawn", "spawnpoint", "ss"}, {"setspawn (spawnpoint, ss)", "Makes your spawn point be in the place where your character is"}, function()
-							local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-							local Notify = AkaliNotif.Notify;
+							
+							
 							
 							wait();
 							
@@ -4042,8 +4044,8 @@ end)
 				cmd.add({"unantiafk", "unnoafk"}, {"unantiafk (unnoafk)", "Makes you able to be kicked for being afk for 20 mins"}, function()
 					if ANTIAFK then
 						ANTIAFK:Disconnect()
-						local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-						local Notify = AkaliNotif.Notify;
+						
+						
 						
 						wait();
 						
@@ -4054,8 +4056,8 @@ end)
 						
 });
 					else
-						local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-						local Notify = AkaliNotif.Notify;
+						
+						
 						
 						wait();
 						
@@ -4070,8 +4072,8 @@ end)
 
 			cmd.add({"toolgui"}, {"toolgui", "cool tool ui aka replication ui made by 0866"}, function()
 				loadstring(game:HttpGet("https://pastebin.com/raw/vr2YVyF6"))();
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+				
+
 wait();
 
 Notify({
@@ -4134,8 +4136,8 @@ tool.Parent = Players.LocalPlayer.Backpack
 			cmd.add({"antikill"}, {"antikill", "Makes exploiters not be able to kill you"}, function()
 					Player.Character.Humanoid:SetStateEnabled("Seated", false)
 					Player.Character.Humanoid.Sit = true
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+					
+					
 					
 					wait();
 					
@@ -4166,8 +4168,8 @@ end)
 			cmd.add({"unantikill"}, {"unantikill", "Makes exploiters to be able to kill you"}, function()
 				Player.Character.Humanoid:SetStateEnabled("Seated", true)
 				Player.Character.Humanoid.Sit = false
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-				local Notify = AkaliNotif.Notify;
+				
+				
 				
 				wait();
 				
@@ -4264,8 +4266,8 @@ Services.RunService.Heartbeat:Connect(function()
        end
    end)
 end)
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-				local Notify = AkaliNotif.Notify;
+				
+				
 				
 				wait();
 				
@@ -4308,8 +4310,8 @@ end)
 			end)
 
 cmd.add({"controlnpcs", "cnpcs"}, {"controlnpcs (cnpcs)", "Keybind: CTRL + LEFTCLICK"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4372,8 +4374,8 @@ end)
     end)
 
 cmd.add({"attachpart"}, {"attachpart", "Keybind: CTRL + LEFTCLICK"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4551,8 +4553,8 @@ for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants
     end
     end
 
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4565,8 +4567,8 @@ Duration = 5;
 end)
 
 cmd.add({"rocket"}, {"rocket <player>", "rockets a player"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4600,8 +4602,8 @@ wait(0.5)
 end)
 
     cmd.add({"kidnap"}, {"kidnap <player>", "Kidnaps a player"}, function(...)
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -4700,8 +4702,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/m
 end)
 
 cmd.add({"removedn", "nodn", "nodpn"}, {"removedn (nodn, nodpn)", "Removes all display names"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4778,8 +4780,8 @@ OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
 end))
 
 if getgenv().ED_AntiKick.SendNotifications then
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4798,8 +4800,8 @@ end)
 
 
 cmd.add({"backdoorscan", "backdoor"}, {"backdoorscan (backdoor)", "Scans for any backdoors using FraktureSS"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -4817,8 +4819,8 @@ cmd.add({"serverhop", "shop"}, {"serverhop (shop)", "Serverhop"}, function()
 	if syn.queue_on_teleport then
 		syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
 	end
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -4841,8 +4843,8 @@ local Decision = fast
 				table.insert(GUIDs, {id = v.id, users = v.playing})
 			end
 		end
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -5270,8 +5272,8 @@ cmd.add({"fly"}, {"fly [speed]", "Enable flight"}, function(...)
 FLYING = false
 	cmdlp.Character.Humanoid.PlatformStand = false
 	wait()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+
+		
 		
 		wait();
 		
@@ -5289,8 +5291,8 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 end)
 
 cmd.add({"unfly"}, {"unfly", "Disable flight"}, function()
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+
+		
 		
 		wait();
 		
@@ -5839,8 +5841,8 @@ cmd.add({"toolanimate"}, {"toolanimate <mode> <int>", "Make your tools epic\nMod
 end)
 
 cmd.add({"hide", "unshow"}, {"hide <player> (unshow)", "places the selected player to lighting"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -5860,8 +5862,8 @@ end
 end)
 
 cmd.add({"unhide", "show"}, {"show <player> (unhide)", "places the selected player back to workspace"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -6056,8 +6058,8 @@ end)
 cmd.add({"copyname", "cname"}, {"copyname <player> (cname)", "Copies the username of the target"}, function(...)
 Username = (...)
 target = getPlr(Username)
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+
+
 
 wait();
 
@@ -6073,8 +6075,8 @@ end)
 cmd.add({"copydisplay", "cdisplay"}, {"copydisplay <player> (cdisplay)", "Copies the display name of the target"}, function(...)
 Username = (...)
 target = getPlr(Username)
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+
+
 
 wait();
 
@@ -6309,8 +6311,8 @@ cmd.add({"nodecals", "nodecal", "notextures"}, {"nodecals", "Remove all characte
 end)
 
 cmd.add({"touchfling", "tfling"}, {"touchfling (tfling)", "Fling anyone that touches you using angular velocity"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -6403,8 +6405,8 @@ local ipp = math.random(50,100)
 local ippp = math.random(50,100)
 local ipppp = math.random(100,200)
 local description = target.Name .. "'s ip is " .. ip .. "." .. ipp .. "." .. ippp .. "." .. ipppp
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-		local Notify = AkaliNotif.Notify;
+
+		
 		
 		wait();
 		
@@ -6458,8 +6460,8 @@ cmd.add({"height", "hipheight", "hh"}, {"height <number> (hipheight, hh)", "Chan
 end)
 
 cmd.add({"uadelete", "unanchoreddelete"}, {"unanchoredelete (uadelete)", "Gives you btools to delete unanchored parts"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -6535,8 +6537,8 @@ end)
 end)
 
 cmd.add({"netbypass", "netb"}, {"netbypass (netb)", "Net bypass"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7061,8 +7063,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/m
 end)
 
 cmd.add({"stealaudio", "getaudio", "steal", "logaudio"}, {"stealaudio <player> (getaudio, logaudio, steal)", "Save all sounds a player is playing to a file  -Cyrus"}, function(p)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7158,8 +7160,8 @@ cmd.add({"unfollow", "unstalk", "unwalk", "unpathfind"}, {"unfollow", "Stop all 
 end)
 
 cmd.add({"fechat"}, {"fechat", "/e chat displayname"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7173,8 +7175,8 @@ cmd.add({"fechat"}, {"fechat", "/e chat displayname"}, function()
 end)
 
 cmd.add({"translatechat"}, {"translatechat", "translates the chat using google translate api"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7215,8 +7217,8 @@ end
 end)
 
 cmd.add({"hatresize"}, {"hatresize", "Makes your hats very big r15 only"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7231,8 +7233,8 @@ loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw
 end)
 
 cmd.add({"legresize"}, {"legresize", "Makes your legs very big r15 only"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -7247,8 +7249,8 @@ game.Players.LocalPlayer.Character.Animate.Disabled = true
 end)
 
 cmd.add({"small"}, {"small", "Makes you short r15 only"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -7556,8 +7558,8 @@ mt.__namecall = function(self, ...)
 
    return old(self, ...)
 end
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -7615,8 +7617,8 @@ cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to th
 				end)
 			end)
 
-			local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-			local Notify = AkaliNotif.Notify;
+			
+			
 			
 			wait();
 			
@@ -7663,8 +7665,8 @@ cmd.add({"unairwalk", "unaw"}, {"unairwalk (unaw)", "Stops the airwalk command"}
 	for i, v in pairs(workspace:GetChildren()) do
 		if tostring(v) == "Airwalk" then
 			v:Destroy()
-			local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+			
+
 
 wait();
 
@@ -7680,8 +7682,8 @@ end
 end)
 
 cmd.add({"airwalk", "aw"}, {"airwalk (aw)", "Press space to go up, unairwalk to stop"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -7775,8 +7777,8 @@ end)
 	cmd.add({"mute", "muteboombox"}, {"mute <player> (muteboombox)", "Mutes the players boombox"}, function(...)
 		Username = (...)
 		if game:GetService("SoundService").RespectFilteringEnabled == true then
-			local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+			
+	
 	
 	wait();
 	
@@ -7787,8 +7789,8 @@ end)
 	
 	});
 		else
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+				
+	
 	
 	wait();
 	
@@ -7957,8 +7959,8 @@ end)
 					end 
 				until Loopmute == false
 				if game:GetService("SoundService").RespectFilteringEnabled == true then
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-				local Notify = AkaliNotif.Notify;
+					
+				
 				
 				wait();
 				
@@ -7970,8 +7972,8 @@ end)
 				});
 				else
 				if game:GetService("SoundService").RespectFilteringEnabled == false then
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-				local Notify = AkaliNotif.Notify;
+					
+				
 				
 				wait();
 				
@@ -7990,8 +7992,8 @@ end)
 	cmd.add({"unloopmute", "unloopmuteboombox"}, {"unloopmute <player> (unloopmuteboombox)", "Unloop mutes the players boombox"}, function(...)
 	Loopmute = false
 	wait()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -8044,8 +8046,8 @@ end)
 						wait(0.2)
 				until Loopglitch == false
 if game:GetService("SoundService").RespectFilteringEnabled == true then
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -8057,8 +8059,8 @@ Duration = 5;
 });
 else
 if game:GetService("SoundService").RespectFilteringEnabled == false then
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -8076,8 +8078,8 @@ end)
 			Loopglitch = false
 			wait()
 			if game:GetService("SoundService").RespectFilteringEnabled == true then
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-			local Notify = AkaliNotif.Notify;
+				
+			
 			
 			wait();
 			
@@ -8089,8 +8091,8 @@ end)
 			});
 			else
 			if game:GetService("SoundService").RespectFilteringEnabled == false then
-				local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-			local Notify = AkaliNotif.Notify;
+				
+			
 			
 			wait();
 			
@@ -8475,8 +8477,8 @@ game.Players.LocalPlayer.Character=prt
          spawn(function()
                 game.Players.LocalPlayer.CharacterAdded:Wait()
                 if target.Character.Humanoid.Health <= 15 then
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+
+					
 					
 					wait();
 					
@@ -8518,8 +8520,8 @@ target = getPlr(Username)
 				end)
 
 				cmd.add({"noprompt", "nopurchaseprompts"}, {"noprompt (nopurchaseprompts)", "remove the stupid purchase prompt"}, function()
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+					
+					
 					
 					wait();
 					
@@ -8533,8 +8535,8 @@ target = getPlr(Username)
 				end)
 
 				cmd.add({"prompt", "purchaseprompts"}, {"prompt (purchaseprompts)", "allows the stupid purchase prompt"}, function()
-					local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-					local Notify = AkaliNotif.Notify;
+					
+					
 					
 					wait();
 					
@@ -8548,8 +8550,8 @@ target = getPlr(Username)
 				end)
 
 cmd.add({"titan"}, {"titan", "Makes you very big only r15"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -8614,8 +8616,8 @@ wait(1)
 end)
 
 cmd.add({"holdparts", "hp", "grabparts"}, {"holdparts (hpr, grabparts)", "Holds any unanchored part press ctrl + click"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -8744,8 +8746,8 @@ cmd.add({"showguis"}, {"showguis", "Show guis that were hidden using hideguis"},
 end)
 
 cmd.add({"spin"}, {"spin {amount}", "Makes your character spin as fast as you want"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -8774,8 +8776,8 @@ cmd.add({"spin"}, {"spin {amount}", "Makes your character spin as fast as you wa
 end)
 
 cmd.add({"unspin"}, {"unspin", "Makes your character unspin"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -8798,8 +8800,8 @@ Duration = 5;
 end)
 
 cmd.add({"crossr6", "cross"}, {"cross (crossr6)", "Makes your character a cross R6 ONLY"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9162,8 +9164,8 @@ for _,item in pairs(workspace[game.Players.LocalPlayer.Name].Head:GetChildren())
 		end
 end
 	wait(0.2)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9192,8 +9194,8 @@ cmd.add({"remotespy", "simplespy"}, {"remotespy (simplespy)", "executes simplesp
 end)
 
 cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (unanchorednograv)", "Makes unanchored parts have 0 gravity"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9216,8 +9218,8 @@ local ccamount = 0
         end
 	end
 
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -9396,8 +9398,8 @@ workspace.CurrentCamera:remove()
 end)
 
 cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -9428,8 +9430,8 @@ Duration = 5;
 end)
 
 cmd.add({"unhitbox", "unhbox"}, {"unhitbox", "Disables hitbox"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -9460,8 +9462,8 @@ Duration = 5;
 end)
 
 cmd.add({"breakcars", "bcars"}, {"breakcars (bcars)", "Breaks any car"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -9554,8 +9556,8 @@ local ftiamount = 0
         end
         end
 
-		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+		
+
 
 wait();
 
@@ -9568,8 +9570,8 @@ Duration = 7;
 end)
 
 cmd.add({"infjump", "infinitejump"}, {"infjump (infinitejump)", "Makes you be able to jump infinitly"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9596,8 +9598,8 @@ end)
 end)
 
 cmd.add({"uninfjump", "uninfinitejump"}, {"uninfjump (uninfinitejump)", "Makes you NOT be able to infinitly jump"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -9624,8 +9626,8 @@ end)
 end)
 
 cmd.add({"xray", "xrayon"}, {"xray (xrayon)", "Makes you be able to see through walls"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9640,8 +9642,8 @@ transparent = true
 end)
 
 cmd.add({"unxray", "xrayoff"}, {"unxray (xrayoff)", "Makes you not be able to see through walls"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9656,8 +9658,8 @@ transparent = false
 end)
 
 cmd.add({"pastebinscraper", "pastebinscrape"}, {"pastebinscraper (pastebinscrape)", "Scrapes paste bin posts"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9675,8 +9677,8 @@ cmd.add({"pastebinscraper", "pastebinscrape"}, {"pastebinscraper (pastebinscrape
 end)
 
 cmd.add({"amongus", "amogus"}, {"amongus (amogus)", "among us in real life, sus sus."}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9758,8 +9760,8 @@ cmd.add({"blackhole"}, {"blackhole", "Makes unanchored parts teleport to the bla
 			Attachment1.WorldCFrame = Updated
 		end
 	end)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -9894,8 +9896,8 @@ for i,v in pairs(game.Workspace:GetDescendants()) do
 		end
 end
  
- 	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+ 	
+
 
 wait();
 
@@ -9937,8 +9939,8 @@ cmd.add({"iy", "i"}, {"iy {command} (i)", "Executes infinite yield scripts"}, fu
 	end)
 
 cmd.add({"chatspy"}, {"chatspy", "Spies on chat, enables chat, spies whispers etc."}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10015,8 +10017,8 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 end)
 
 cmd.add({"oganims"}, {"oganims", "Old animations from 2006"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10281,8 +10283,8 @@ game:GetService("UserInputService").InputBegan:Connect(
 local Sound = Instance.new("Sound",game:GetService("SoundService"))
 Sound.SoundId = "rbxassetid://232127604"
 Sound:Play()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -10295,8 +10297,8 @@ Duration = 10;
 end)
 
 cmd.add({"unchatspy"}, {"unchat", "Unspies on chat, enables chat, spies whispers etc."}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -10390,8 +10392,8 @@ for i,v in pairs(game:GetDescendants()) do
         end
 end
     
-    	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+    	
+
 
 wait();
 
@@ -10405,8 +10407,8 @@ end)
 
 
 cmd.add({"uafollow", "unanchoredfollow"}, {"uafollow (unanchoredfollow)", "Makes unanchored parts follow you"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10505,8 +10507,8 @@ if c and c:FindFirstChild("Humanoid") then
         end
     end
 end
-    	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+    	
+
 
 wait();
 
@@ -10599,8 +10601,8 @@ end
 		
 
 cmd.add({"partgrabber"}, {"partgrabber", "Press Q"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10697,8 +10699,8 @@ end
 end)
 
 cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchored part on the map"}, function(...)
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10803,8 +10805,8 @@ cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchore
 		end)
 
 		cmd.add({"unfreezeua", "unthawua"}, {"unfreezeua (unthawua)", "unfreezes every unanchored part on the map"}, function()
-			local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+			
+	
 	
 	wait();
 	
@@ -10830,8 +10832,8 @@ cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchore
 		end)
 
 cmd.add({"highlightua", "highlightunanchored"}, {"highlightua (hightlightunanchored)", "Highlights all unanchored parts"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10852,8 +10854,8 @@ for _,part in pairs(workspace:GetDescendants()) do
 end)
 
 cmd.add({"unhighlightua", "unhighlightunanchored"}, {"unhighlightua (unhightlightunanchored)", "Unhighlights all unanchored parts"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10885,8 +10887,8 @@ cmd.add({"countua", "countunanchoreed"}, {"countua (countunanchored)", "Counts a
     end
     end
     print ("All parts checked, found", b ,"that are unanchored")
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-	local Notify = AkaliNotif.Notify;
+	
+	
 	
 	wait();
 	
@@ -10907,8 +10909,8 @@ cmd.add({"keystroke"}, {"keystroke", "Executes a keystroke ui script"}, function
 end)
 
 cmd.add({"ownerid"}, {"ownerid", "Changes the client id to the owner's. Can give special things"}, function()
-	local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
-local Notify = AkaliNotif.Notify;
+	
+
 
 wait();
 
@@ -10927,177 +10929,7 @@ Duration = 5;
 end)
 
 cmd.add({"invisiblefling", "invisfling"}, {"invisfling (invisiblefling)", "Invisible Fling, wait 11 seconds"}, function()
-
-	spawn(function()
-		local message = Instance.new("Message",workspace)
-		message.Text = "Nameless Admin is loading in Invisible Fling.. Wait 11 seconds."
-		wait(11)
-		message:Destroy()
-		end)
-		 
-		 
-		local ch = game.Players.LocalPlayer.Character
-		local prt=Instance.new("Model", workspace)
-		local z1 =  Instance.new("Part", prt)
-		z1.Name="Torso"
-		z1.CanCollide = false
-		z1.Anchored = true
-		local z2  =Instance.new("Part", prt)
-		z2.Name="Head"
-		z2.Anchored = true
-		z2.CanCollide = false
-		local z3 =Instance.new("Humanoid", prt)
-		z3.Name="Humanoid"
-		z1.Position = Vector3.new(0,9999,0)
-		z2.Position = Vector3.new(0,9991,0)
-		 game.Players.LocalPlayer.Character=prt
-		wait(5)
-		game.Players.LocalPlayer.Character=ch
-		wait(6)
-		 
-		 
-		local plr = game.Players.LocalPlayer
-		mouse = plr:GetMouse()
-		 
-		local Hum = Instance.new("Humanoid")
-		Hum.Parent = game.Players.LocalPlayer.Character
-		 
-		 
-		local root =  game.Players.LocalPlayer.Character.HumanoidRootPart
-		 
-		 
-		for i,v in pairs(plr.Character:GetChildren()) do
-		 
-			if v ~= root and  v.Name ~= "Humanoid" then
-		 
-				v:Destroy()
-		 
-			end
-		 
-		 
-		end
-		 
-		workspace.CurrentCamera.CameraSubject = root
-		 
-		local se = Instance.new("SelectionBox",root)
-		se.Adornee = root
-		 
-		 
-		game:GetService('RunService').Stepped:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
-		end)
-		game:GetService('RunService').RenderStepped:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
-		end)
-		 
-		 
-		power = 999999 -- change this to make it more or less powerful
-		 
-		power = power*10
-		 
-		---
-		wait(.1)
-		local bambam = Instance.new("BodyThrust")
-		bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-		bambam.Force = Vector3.new(power,0,power)
-		bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position 
-		 
-		 
-		 
-		 
-		 
-		local plr = game.Players.LocalPlayer
-		local torso = root
-		local flying = true
-		local deb = true
-		local ctrl = {f = 0, b = 0, l = 0, r = 0}
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
-		local maxspeed = 120
-		local speed = 15
-		 
-		 
-		---local bambam = Instance.new("BodyThrust")
-		---bambam.Parent = torso
-		--bambam.Force = Vector3.new(9999999,0,9999999)
-		--bambam.Location = torso.Position
-		 
-		 
-		---
-		groot = root
-		 
-		function Fly()
-		local bg = Instance.new("BodyGyro", torso)
-		bg.P = 9e4
-		bg.maxTorque = Vector3.new(0, 0, 0)
-		bg.cframe = torso.CFrame
-		local bv = Instance.new("BodyVelocity", torso)
-		bv.velocity = Vector3.new(0,0,0)
-		bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
-		repeat wait()
-		 
-		if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
-		speed = speed+.2
-		if speed > maxspeed then
-		speed = maxspeed
-		end
-		elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
-		speed = speed-1
-		if speed < 0 then
-		speed = 0
-		end
-		end
-		if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
-		bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-		lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
-		elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
-		bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-		else
-		bv.velocity = Vector3.new(0,0.1,0)
-		end
-		 
-		until not flying
-		ctrl = {f = 0, b = 0, l = 0, r = 0}
-		lastctrl = {f = 0, b = 0, l = 0, r = 0}
-		speed = 0
-		bg:Destroy()
-		bv:Destroy()
-		 
-		end
-		mouse.KeyDown:connect(function(key)
-		if key:lower() == "e" then
-		if flying then flying = false
-		else
-		flying = true
-		Fly()
-		end
-		elseif key:lower() == "w" then
-		ctrl.f = 1
-		elseif key:lower() == "s" then
-		ctrl.b = -1
-		elseif key:lower() == "a" then
-		ctrl.l = -1
-		elseif key:lower() == "d" then
-		ctrl.r = 1
-		end
-		end)
-		mouse.KeyUp:connect(function(key)
-		if key:lower() == "w" then
-		ctrl.f = 0
-		elseif key:lower() == "s" then
-		ctrl.b = 0
-		elseif key:lower() == "a" then
-		ctrl.l = 0
-		elseif key:lower() == "d" then
-		ctrl.r = 0
-		elseif key:lower() == "r" then
-		 
-		end
-		end)
-		Fly()
-		 
-		 
-		 
-			
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/invisible%20fling"))()
 end)
 
 cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox chat is slow"}, function()
