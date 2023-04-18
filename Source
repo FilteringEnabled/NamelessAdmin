@@ -881,8 +881,8 @@ repeat
 		   RunService.Heartbeat:wait()
 until Tool.Parent ~= Character
   local OldPos = getRoot().CFrame
-	   	   Player.CharacterAdded:wait(2)
-		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+	   	   player.CharacterAdded:wait(1)
+		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
 cmd.add({"valk"}, {"valk", "Only works on dollhouse"}, function()
@@ -919,7 +919,7 @@ local UserInputService = game:GetService("UserInputService")
 
 -- function to teleport the player to the camera's position
 local function teleportPlayer()
-    local character = player.Character or Player.CharacterAdded:wait(2)
+    local character = player.Character or player.CharacterAdded:wait(1)
     local camera = game.Workspace.CurrentCamera
     local cameraPosition = camera.CFrame.Position
     character:SetPrimaryPartCFrame(CFrame.new(cameraPosition))
@@ -1858,7 +1858,7 @@ local function refresh()
 		cf = p.CFrame
 	end
 	respawn()
-	Player.CharacterAdded:wait(2); wait(0.2);
+	player.CharacterAdded:wait(1); wait(0.2);
 	character:WaitForChild("HumanoidRootPart").CFrame = cf
 end
 
@@ -2035,7 +2035,7 @@ end
 	
 wait(4)
 CF = Player.Character.HumanoidRootPart.CFrame
-Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 
 -- Teleport the first player to the position next to the second player
 getChar().HumanoidRootPart.CFrame = CFrame.new(gripPosition) + Vector3.new(0, 3, 0)
@@ -2670,7 +2670,7 @@ local function Kill()
             until Tool.Parent ~= Character or not TPlayer or not TRootPart or THumanoid.Health <= 0 or os.time() > Timer + .20
             Player.Character = nil
             NewHumanoid.Health = 0
-            Player.CharacterAdded:wait(2)
+            player.CharacterAdded:wait(1)
             repeat game:FindService("RunService").Heartbeat:wait() until Player.Character:FindFirstChild("HumanoidRootPart")
             Player.Character.HumanoidRootPart.CFrame = OldCFrame
 end
@@ -2714,7 +2714,7 @@ cmd.add({"toolblockspam"}, {"toolblockspam [amount]", "Spawn blocks by the given
 		cf = p.CFrame
 	end
 	respawn()
-	Player.CharacterAdded:wait(2); wait(0.2);
+	player.CharacterAdded:wait(1); wait(0.2);
 	character:WaitForChild("HumanoidRootPart").CFrame = cf
 		end)
 	end
@@ -3081,7 +3081,7 @@ else
             end
 
                         
-            Player.CharacterAdded:wait(2)
+            player.CharacterAdded:wait(1)
             Player.Character.HumanoidRootPart.CFrame = CF
             --workspace.CurrentCamera.CameraType = "Custom"
 
@@ -3156,8 +3156,8 @@ cmd.add({"annoy"}, {"annoy <player>", "Annoys the given player"}, function(...)
                 wait()
             end
               local OldPos = getRoot().CFrame
-	   	   Player.CharacterAdded:wait(2)
-		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+	   	   player.CharacterAdded:wait(1)
+		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
 cmd.add({"banish", "punish", "jail"}, {"punish <player> (banish, jail)", "Banishes the player using a void script, can make them not respawn if the game is old"}, function(...)
@@ -3239,7 +3239,7 @@ cmd.add({"attach"}, {"attach <player>", "Attach the given player(s)"}, function(
 				   TCharacter.HumanoidRootPart.CFrame
 				   wait()
 			   end
-			   Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+			   player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
    
 end)
 
@@ -3328,7 +3328,7 @@ end
                 
             wait(4)
             CF = Player.Character.HumanoidRootPart.CFrame
-            Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
 cmd.add({"errorlag", "animlag", "serverlag"}, {"animlag <number> (errorlag, seņrverlag)", "Repeatedly error the server with a massive string <N> at a time"}, function(n)
@@ -3465,7 +3465,7 @@ cmd.add({"skydive", "sky"}, {"skydive <player> (sky)", "Skydives the player"}, f
                 
             wait(4)
             CF = Player.Character.HumanoidRootPart.CFrame
-            Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
 cmd.add({"localtime", "yourtime"}, {"localtime (yourtime)", "Chats your current time"}, function()
@@ -3727,9 +3727,7 @@ cmd.add({"tornado"}, {"tornado <player>", "Tornados the player to be in the sky"
 		   firetouchinterest(Handle, TTorso, 1)
 		   RunService.Heartbeat:wait()
 	   until Tool.Parent ~= Character
-	   NewHumanoid.WalkSpeed = 30
-	   Player.CharacterAdded:wait(2)
-		   			    wait(1)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+	   NewHumanoid.WalkSpeed = 30      player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
 cmd.add({"remotespam", "exhaust"}, {"remotespam <number>", "Repeatedly fire all remotes <N> at a time"}, function(n)
@@ -4014,7 +4012,7 @@ local ToggleKey = Enum.KeyCode.Q
 
 
 local Player = game:GetService("Players").LocalPlayer
-local Char = Player.Character or Player.CharacterAdded:wait(2)
+local Char = Player.Character or player.CharacterAdded:wait(1)
 local Root = Char.HumanoidRootPart or Char:WaitForChild("HumanoidRootPart")
 local Camera = game.Workspace.CurrentCamera
 local Mouse = Player:GetMouse()
@@ -4515,7 +4513,7 @@ local function PlayerAdded(Player)
        Detected = false
    end
 
-   CharacterAdded(Player.Character or Player.CharacterAdded:wait(2))
+   CharacterAdded(Player.Character or player.CharacterAdded:wait(1))
    Player.CharacterAdded:Connect(CharacterAdded)
    Services.RunService.Heartbeat:Connect(function()
        if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
@@ -4939,8 +4937,8 @@ wait(0.5)
 				   TCharacter.HumanoidRootPart.CFrame
 				   wait()
 			   end
-			   Player.CharacterAdded:wait(2)
-			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+			    CF = Player.Character.HumanoidRootPart.CFrame
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
     cmd.add({"kidnap"}, {"kidnap <player>", "Kidnaps a player"}, function(...)
@@ -5010,8 +5008,8 @@ wait()
 					   TCharacter.HumanoidRootPart.CFrame
 					   wait()
 				   end
-   Player.CharacterAdded:wait(2)
-    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+    CF = Player.Character.HumanoidRootPart.CFrame
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
    end)
 
 
@@ -5123,7 +5121,7 @@ repeat wait()
 				   TCharacter.HumanoidRootPart.CFrame
 				   wait()
 			   end
-			   Player.CharacterAdded:wait(2)
+			   player.CharacterAdded:wait(1)
 			   wait(0.2)
 getRoot().CFrame= getPlr(Target).Character.Head.CFrame
 wait(0.05)
@@ -8609,7 +8607,7 @@ cmd.add({"loopvoid", "loopv"}, {"loopvoid <player> (loopv)", "Voids the player"}
             end
 
                         
-            Player.CharacterAdded:wait(2)
+            player.CharacterAdded:wait(1)
             Player.Character.HumanoidRootPart.CFrame = CF
             --workspace.CurrentCamera.CameraType = "Custom"
 	wait(1)
@@ -8698,8 +8696,8 @@ else
 		end
 			
 		wait(4)
-		CF = Player.Character.HumanoidRootPart.CFrame
-		Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+   CF = Player.Character.HumanoidRootPart.CFrame
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 						wait(2)
 until Loopbring == false
 end
@@ -9217,7 +9215,7 @@ else
 					until Tool.Parent ~= Character or not TPlayer or not TRootPart or THumanoid.Health <= 0 or os.time() > Timer + .20
 					Player.Character = nil
 					NewHumanoid.Health = 0
-					Player.CharacterAdded:wait(2)
+					player.CharacterAdded:wait(1)
 					repeat game:FindService("RunService").Heartbeat:wait() until Player.Character:FindFirstChild("HumanoidRootPart")
 					Player.Character.HumanoidRootPart.CFrame = OldCFrame
 		end
@@ -9978,7 +9976,7 @@ local TweenService = game:GetService("TweenService")
 
 -- function to teleport the player to the camera's position using tweening
 local function teleportPlayer()
-    local character = player.Character or Player.CharacterAdded:wait(2)
+    local character = player.Character or player.CharacterAdded:wait(1)
     local camera = game.Workspace.CurrentCamera
     local cameraPosition = camera.CFrame.Position
     
@@ -10885,7 +10883,7 @@ local Transparency = true --Will make you slightly transparent when you are invi
 local NoClip = false --Will make your fake character no clip.
 
 local Player = game:GetService("Players").LocalPlayer
-local RealCharacter = Player.Character or Player.CharacterAdded:wait(2)
+local RealCharacter = Player.Character or player.CharacterAdded:wait(1)
 
 local IsInvisible = false
 
@@ -11367,8 +11365,8 @@ repeat
 		   firetouchinterest(Handle, TTorso, 1)
 		   RunService.Heartbeat:wait()
 until Tool.Parent ~= Character
-   	   Player.CharacterAdded:wait(2)
-			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             Player.CharacterAdded:wait(2):waitForChild("HumanoidRootPart").CFrame = CF
+      CF = Player.Character.HumanoidRootPart.CFrame
+            player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 		end)
 
     cmd.add({"jp", "jumppower"}, {"jp <number> (jumppower)", "Makes your JumpPower whatever you want"}, function(...)
@@ -11384,7 +11382,7 @@ local RunService = game:GetService("RunService");
 local Players = game:GetService("Players");
 local LocalPlayer = game:GetService("Players").LocalPlayer;
  
-local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:wait(2);
+local Character = LocalPlayer.Character or Localplayer.CharacterAdded:wait(1);
 local Humanoid = Character:WaitForChild("Humanoid") or Character:FindFirstChildOfClass("Humanoid");
 local HRP = Humanoid.RootPart or Humanoid:FindFirstChild("HumanoidRootPart")
  
