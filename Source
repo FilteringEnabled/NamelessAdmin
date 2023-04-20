@@ -9287,22 +9287,11 @@ target = getPlr(Username)
 					game.CoreGui.PurchasePrompt.Enabled = true
 				end)
 
-cmd.add({"titan"}, {"titan", "Makes you very big only r15"}, function()
-	
-
-
-wait();
-
-Notify({
-Description = "Titan loaded... R15 needed";
-Title = "Nameless Admin";
-Duration = 5;
-
-});
-local LocalPlayer = game:GetService("Players").LocalPlayer
+cmd.add({"size"}, {"size", "Makes you big"}, function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
 local Character = LocalPlayer.Character
 local Humanoid = Character:FindFirstChildOfClass("Humanoid")
- 
+
 function rm()
 	for i,v in pairs(Character:GetDescendants()) do
 		if v:IsA("BasePart") then
@@ -9326,27 +9315,26 @@ function rm()
 		end
 	end
 end
- 
-rm()
+    rm()
 wait(0.5)
 Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
 wait(1)
- 
+
 rm()
 wait(0.5)
 Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
 wait(1)
- 
+
 rm()
 wait(0.5)
 Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
 wait(1)
- 
+
 rm()
 wait(0.5)
 Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
 wait(1)
- 
+
 rm()
 wait(0.5)
 Humanoid:FindFirstChild("HeadScale"):Destroy()
