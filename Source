@@ -251,7 +251,7 @@ coroutine.wrap(UKVHYKU_fake_script)()
 wait();
 
 Notify({
-Description = "Ty MastersMZ for showcasing Nameless Admin, btw we now have a discord https://discord.gg/mW442YxE4j. If you are using a mobile device this script won't work, you will have to use chat";
+Description = "Ty MastersMZ for showcasing Nameless Admin! If you are using a mobile device this script won't work, you will have to use chat";
 Title = "Nameless Admin";
 Duration = 4;
 
@@ -259,8 +259,7 @@ Duration = 4;
 wait(1);
 
 Notify({
-Description = "Change log: Removed reanimation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you.";
-Title = "Nameless Admin";
+Description = "Join the discord for Change Logs! https://discord.gg/mW442YxE4j";
 Duration = 3;
 
 });
