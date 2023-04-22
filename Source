@@ -261,7 +261,7 @@ coroutine.wrap(UKVHYKU_fake_script)()
 wait();
 
 Notify({
-Description = "Ty MastersMZ for showcasing Nameless Admin, btw we now have a discord https://discord.gg/mW442YxE4j. If you are using a mobile device this script won't work, you will have to use chat";
+Description = "Ty MastersMZ for showcasing Nameless Admin! If you are using a mobile device this script won't work, you will have to use chat";
 Title = "Nameless Admin";
 Duration = 4;
 
