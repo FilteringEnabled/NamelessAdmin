@@ -48,6 +48,7 @@ Loopbring = false
 Loopbanish = false
 Loopvoid = false
 Loopcuff = false
+loopgrab = false
 Loopstand = false
 Looptornado = false
 Loopmute = false
@@ -6212,6 +6213,48 @@ Sound:Play()
 Sound.Looped = true
     loadstring(game:HttpGet("https://raw.githubusercontent.com/specowos/specs-scripts/main/scripts/LOLHOO%20(fd).lua"))()
 end)
+
+cmd.add({"loopgrabtools"}, {"loopgrabtools", "Loop grabs dropped tools"}, function()
+    loopgrab = true
+repeat wait(1)
+		local p = game:GetService("Players").LocalPlayer
+local c = p.Character
+if c and c:FindFirstChild("Humanoid") then
+    for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v:IsA("Tool") then
+            c:FindFirstChild("Humanoid"):EquipTool(v)
+        end
+    end
+end
+until loopgrab == false
+end)
+
+cmd.add({"unloopgrabtools"}, {"unloopgrabtools", "Stops the loop grab command"}, function()
+loopgrab = false
+end)
+
+cmd.add({"dance"}, {"dance", "Does a random dance"}, function()
+    local dances = {"8523783050", "13052652495", "5025546871", "12764845252", "8966871214", "6149187767", "11852759484", "8847306347", "9836086127", "10565486365", "8848515310"}
+if theanim then
+    theanim:Stop()
+theanim:Destroy()
+		local animation = Instance.new("Animation")
+		animation.AnimationId = "rbxassetid://" .. dances[math.random(1, #dances)]
+		theanim = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(animation)
+		theanim:Play()
+	else
+	    	local animation = Instance.new("Animation")
+		animation.AnimationId = "rbxassetid://" .. dances[math.random(1, #dances)]
+		theanim = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(animation)
+		theanim:Play()
+		end
+end)
+
+cmd.add({"undance"}, {"undance", "Stops the dance command"}, function()
+theanim:Stop()
+theanim:Destroy()
+end)
+
 
 cmd.add({"animspoofer", "animationspoofer", "spoofanim", "animspoof"}, {"animationspoofer (animspoof, spoofanim)", "Loads up an animation spoofer, spoofs animations that use rbxassetid"}, function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/AnimSpoofer"))()
