@@ -8526,7 +8526,7 @@ loopbring = false
 						CF = Player.Character.HumanoidRootPart.CFrame
 						player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 						end
-						wait(0.8)
+						wait(1.5)
 			respawn()
 					until loopbring == false
 		end)
@@ -8866,7 +8866,7 @@ until loopvoid == false
 							Character["RightHand"].RightGrip:Destroy()
 							Character["RightHand"].RightGripAttachment:Destroy()
 						end
-						wait(0.8)
+						wait(1.5)
 			respawn()
 						end
 		end)
