@@ -18,7 +18,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.02
+currentversion = 1.01
 
 --[[ VARIABLES ]]--
 local Players = game:GetService("Players")
@@ -261,7 +261,7 @@ coroutine.wrap(UKVHYKU_fake_script)()
 wait();
 
 Notify({
-Description = "Ty MastersMZ for showcasing Nameless Admin! If you are using a mobile device this script won't work, you will have to use chat";
+Description = "Ty MastersMZ for showcasing Nameless Admin, btw we now have a discord https://discord.gg/mW442YxE4j. If you are using a mobile device this script won't work, you will have to use chat";
 Title = "Nameless Admin";
 Duration = 4;
 
@@ -269,7 +269,7 @@ Duration = 4;
 wait(1);
 
 Notify({
-Description = "Join the discord for updates logs! https://discord.gg/mW442YxE4j";
+Description = "Change log: Removed reanimation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you.";
 Title = "Nameless Admin";
 Duration = 3;
 
@@ -8457,8 +8457,6 @@ loopbring = false
 			else
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-			wait(0.4)
-			respawn()
 						local Character = Player.Character        
 						local PlayerGui = Player:waitForChild("PlayerGui")
 						local Backpack = Player:waitForChild("Backpack")
@@ -8528,6 +8526,8 @@ loopbring = false
 						CF = Player.Character.HumanoidRootPart.CFrame
 						player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 						end
+						wait(0.4)
+			respawn()
 					until loopbring == false
 		end)
 
@@ -8711,14 +8711,14 @@ else
 	Character["RightHand"].RightGrip:Destroy()
 	Character["RightHand"].RightGripAttachment:Destroy()
 end
-wait(0.3)
+wait(0.8)
 respawn()
 until loopvoid == false
 		end)
 
 		cmd.add({"lvoid", "legvoid"}, {"lvoid <player> (legvoid)", "Leg resize void"}, function(...)
 				Target = (...)
-									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-249,0)
+									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 						local Character = Player.Character
 						local PlayerGui = Player:waitForChild("PlayerGui")
@@ -8790,7 +8790,7 @@ until loopvoid == false
 							Character["RightHand"].RightGrip:Destroy()
 							Character["RightHand"].RightGripAttachment:Destroy()
 						end
-						wait(0.3)
+						wait(0.8)
 						respawn()
 		end)
 
@@ -8802,8 +8802,6 @@ until loopvoid == false
 			else
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-			wait(0.4)
-			respawn()
 						local Character = Player.Character        
 						local PlayerGui = Player:waitForChild("PlayerGui")
 						local Backpack = Player:waitForChild("Backpack")
@@ -8868,10 +8866,8 @@ until loopvoid == false
 							Character["RightHand"].RightGrip:Destroy()
 							Character["RightHand"].RightGripAttachment:Destroy()
 						end
-							
-						wait(4)
-						CF = Player.Character.HumanoidRootPart.CFrame
-						player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
+						wait(0.2)
+			respawn()
 						end
 		end)
 
