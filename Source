@@ -8554,8 +8554,7 @@ loopbring = false
 						end
 					end
 					 end
-					 wait(0.9)
-			respawn()
+
 					until loopkill == false
 		end)
 
@@ -8894,8 +8893,6 @@ until loopvoid == false
 						end
 					end
 					 end
-					 wait(0.9)
-			respawn()
 		end)
 
 
