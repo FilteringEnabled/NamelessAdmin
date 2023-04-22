@@ -8632,8 +8632,7 @@ loopbring = false
 						end
 					end
 					 end
-					 wait(0.9)
-			respawn()
+				wait(1)
 					until loopkill == false
 		end)
 
@@ -8972,8 +8971,6 @@ until loopvoid == false
 						end
 					end
 					 end
-					 wait(0.9)
-			respawn()
 		end)
 
 
