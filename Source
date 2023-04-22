@@ -8365,7 +8365,7 @@ loopbring = false
 			repeat wait(1)
 			if Target == "all" or Target == "others" then
 			    					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
-				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
 			else
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
@@ -8725,7 +8725,7 @@ until loopvoid == false
 
 			if Target == "all" or Target == "others" then
 			    					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
-				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
 			else
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
