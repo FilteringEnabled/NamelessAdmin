@@ -8520,6 +8520,18 @@ loopbring = false
 					until loopbring == false
 		end)
 
+		cmd.add({"getmass"}, {"getmass", "Get your mass"}, function(...)
+			local mass = game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyMass 
+			wait();
+		
+			Notify({
+			Description = "Your mass is " .. mass;
+			Title = "Nameless Admin";
+			Duration = 5;
+			
+			});
+		end)
+
 		cmd.add({"looplkill", "looplegkill"}, {"looplkill <player> (looplegkill)", "Leg resize loop kill"}, function(...)
 			loopkill = true
 			Target = (...)
