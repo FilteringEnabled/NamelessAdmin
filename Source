@@ -5608,6 +5608,58 @@ cmd.add({"clip", "c"}, {"clip", "Enable your player's collision"}, function()
 	lib.disconnect("noclip")
 end)
 
+cmd.add({"r15"}, {"r15", "Prompts a message asking to make you R15"}, function()
+local avs = game:GetService("AvatarEditorService")
+avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R15)
+Notify({
+Description = "Press allow";
+Duration = 3;
+
+});
+local result = avs.PromptSaveAvatarCompleted:Wait()
+if result == Enum.AvatarPromptResult.Success
+then
+Notify({
+Description = "You are now R15";
+Duration = 3;
+
+});
+respawn()
+else
+Notify({
+Description = "An error has occured";
+Duration = 3;
+
+});
+end
+end)
+
+cmd.add({"r6"}, {"r6", "Prompts a message asking to make you R6"}, function()
+    local avs = game:GetService("AvatarEditorService")
+avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R6)
+Notify({
+Description = "Press allow";
+Duration = 3;
+
+});
+local result = avs.PromptSaveAvatarCompleted:Wait()
+if result == Enum.AvatarPromptResult.Success
+then
+Notify({
+Description = "You are now R6";
+Duration = 3;
+
+});
+respawn()
+else
+Notify({
+Description = "An error has occured";
+Duration = 3;
+
+});
+end
+end)
+
 cmd.add({"freecam", "fc", "fcam"}, {"freecam [speed] (fc, fcam)", "Enable free camera"}, function(speed)
 	if not speed then speed = 5 end
 	if connections["freecam"] then lib.disconnect("freecam") camera.CameraSubject = character 	wrap(function() character.PrimaryPart.Anchored = false end) end
