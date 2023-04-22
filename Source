@@ -12336,7 +12336,8 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 TextButton.Parent = ScreenGui
-TextButton.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton.BackgroundTransparency = 0.14
 TextButton.Position = UDim2.new(0.490357012, 0, 0.0132450182, 0)
 TextButton.Size = UDim2.new(0, 29, 0, 28)
 TextButton.Font = Enum.Font.SourceSansBold
