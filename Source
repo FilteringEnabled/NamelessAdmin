@@ -5621,6 +5621,7 @@ if result == Enum.AvatarPromptResult.Success
 then
 Notify({
 Description = "You are now R15";
+Title = "Nameless Admin";
 Duration = 3;
 
 });
@@ -5628,6 +5629,7 @@ respawn()
 else
 Notify({
 Description = "An error has occured";
+Title = "Nameless Admin";
 Duration = 3;
 
 });
@@ -5647,6 +5649,7 @@ if result == Enum.AvatarPromptResult.Success
 then
 Notify({
 Description = "You are now R6";
+Title = "Nameless Admin";
 Duration = 3;
 
 });
@@ -5654,6 +5657,7 @@ respawn()
 else
 Notify({
 Description = "An error has occured";
+Title = "Nameless Admin";
 Duration = 3;
 
 });
