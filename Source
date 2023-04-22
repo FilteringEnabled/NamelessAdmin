@@ -269,7 +269,7 @@ Duration = 4;
 wait(1);
 
 Notify({
-Description = "Change log: Removed reanimation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you.";
+Description = "Join the discord for updates logs! https://discord.gg/mW442YxE4j";
 Title = "Nameless Admin";
 Duration = 3;
 
@@ -8434,6 +8434,547 @@ end)
 			end
 			end
 		end)
+
+		cmd.add({"unlooplbring", "unlooplegbring"}, {"unlooplbring <player> (unlooplegbring)", "Stop the looplbring command"}, function()
+loopbring = false
+		end)
+
+		cmd.add({"unlooplvoid", "unlooplegvoid"}, {"unlooplvoid <player> (unlooplegvoid)", "Stop the looplvoid command"}, function()
+			loopvoid = false
+					end)
+			
+					cmd.add({"unlooplkill", "unlooplegkill"}, {"unlooplkill <player> (unlooplegkill)", "Stop the looplkill command"}, function()
+						loopkill = false
+								end)
+
+		cmd.add({"looplbring", "looplegbring"}, {"looplbring <player> (looplegbring)", "Leg resize loop bring"}, function(...)
+			loopbring = true
+			Target = (...)
+
+			repeat wait(1)
+			if Target == "all" or Target == "others" then
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+			else
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+			wait(0.4)
+			respawn()
+						local Character = Player.Character        
+						local PlayerGui = Player:waitForChild("PlayerGui")
+						local Backpack = Player:waitForChild("Backpack")
+						local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
+						local RootPart = Character and Humanoid and Humanoid.RootPart or false
+						local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
+						if not Humanoid or not RootPart or not RightArm then
+							return
+						end
+						Humanoid:UnequipTools()
+						local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
+						if not MainTool or not MainTool:FindFirstChild("Handle") then
+							return
+						end
+						local TPlayer = getPlr(Target)
+						local TCharacter = TPlayer and TPlayer.Character
+						local THumanoid = TCharacter and TCharacter:FindFirstChildWhichIsA("Humanoid") or false
+						local TRootPart = TCharacter and THumanoid and THumanoid.RootPart or false
+						if not THumanoid or not TRootPart then
+							return
+						end
+						Character.Humanoid.Name = "DAttach"
+						local l = Character["DAttach"]:Clone()
+						l.Parent = Character
+						l.Name = "Humanoid"
+						wait()
+						Character["DAttach"]:Destroy()
+						game.Workspace.CurrentCamera.CameraSubject = Character
+						Character.Animate.Disabled = true
+						wait()
+						Character.Animate.Disabled = false
+						Character.Humanoid:EquipTool(MainTool)
+						wait()
+						CF = Player.Character.PrimaryPart.CFrame
+						if firetouchinterest then
+							local flag = false
+							task.defer(function()
+								MainTool.Handle.AncestryChanged:wait()
+								flag = true
+							end)
+							repeat
+								firetouchinterest(MainTool.Handle, TRootPart, 0)
+								firetouchinterest(MainTool.Handle, TRootPart, 1)
+								wait()
+								Player.Character.HumanoidRootPart.CFrame = CF
+							until flag
+						else
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame = CF
+							wait()
+						end
+						wait(.3)
+						Player.Character:SetPrimaryPartCFrame(CF)
+						if Humanoid.RigType == Enum.HumanoidRigType.R6 then
+							Character["Right Arm"].RightGrip:Destroy()
+						else
+							Character["RightHand"].RightGrip:Destroy()
+							Character["RightHand"].RightGripAttachment:Destroy()
+						end
+							
+						wait(4)
+						CF = Player.Character.HumanoidRootPart.CFrame
+						player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
+						end
+					until loopbring == false
+		end)
+
+		cmd.add({"looplkill", "looplegkill"}, {"looplkill <player> (looplegkill)", "Leg resize loop kill"}, function(...)
+			loopkill = true
+			Target = (...)
+
+			repeat wait(1)
+			if Target == "all" or Target == "others" then
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+			else
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+			local function Kill()
+						if not getPlr(Target) then
+						end
+						
+						repeat game:FindService("RunService").Heartbeat:wait() until getPlr(Target).Character and getPlr(Target).Character:FindFirstChildOfClass("Humanoid") and getPlr(Target).Character:FindFirstChildOfClass("Humanoid").Health > 0
+						local Character
+						local Humanoid
+						local RootPart
+						local Tool
+						local Handle
+						
+						local TPlayer = getPlr(Target)
+						local TCharacter = TPlayer.Character
+						local THumanoid
+						local TRootPart
+						
+						if Player.Character and Player.Character and Player.Character.Name == Player.Name then
+							Character = Player.Character
+						else
+						end
+						if Character:FindFirstChildOfClass("Humanoid") then
+							Humanoid = Character:FindFirstChildOfClass("Humanoid")
+						else
+						end
+						if Humanoid and Humanoid.RootPart then
+							RootPart = Humanoid.RootPart
+						else
+						end
+						if Character:FindFirstChildOfClass("Tool") then
+							Tool = Character:FindFirstChildOfClass("Tool")
+						elseif Player.Backpack:FindFirstChildOfClass("Tool") and Humanoid then
+							Tool = Player.Backpack:FindFirstChildOfClass("Tool")
+							Humanoid:EquipTool(Player.Backpack:FindFirstChildOfClass("Tool"))
+						else
+						end
+						if Tool and Tool:FindFirstChild("Handle") then
+							Handle = Tool.Handle
+						else
+						end
+						
+						--Target
+						if TCharacter:FindFirstChildOfClass("Humanoid") then
+							THumanoid = TCharacter:FindFirstChildOfClass("Humanoid")
+						else
+							return Message("Error",">   Missing Target Humanoid")
+						end
+						if THumanoid.RootPart then
+							TRootPart = THumanoid.RootPart
+						else
+							return Message("Error",">   Missing Target RootPart")
+						end
+						
+						if THumanoid.Sit then
+							return Message("Error",">   Target is seated")
+						end
+						
+						local OldCFrame = RootPart.CFrame
+						
+						Humanoid:Destroy()
+						local NewHumanoid = Humanoid:Clone()
+						NewHumanoid.Parent = Character
+						NewHumanoid:UnequipTools()
+						NewHumanoid:EquipTool(Tool)
+						Tool.Parent = workspace
+					
+						local Timer = os.time()
+					
+						repeat
+							if (TRootPart.CFrame.p - RootPart.CFrame.p).Magnitude < 500 then
+								Tool.Grip = CFrame.new()
+								Tool.Grip = Handle.CFrame:ToObjectSpace(TRootPart.CFrame):Inverse()
+							end
+							firetouchinterest(Handle,TRootPart,0)
+							firetouchinterest(Handle,TRootPart,1)
+							game:FindService("RunService").Heartbeat:wait()
+						until Tool.Parent ~= Character or not TPlayer or not TRootPart or THumanoid.Health <= 0 or os.time() > Timer + .20
+						Player.Character = nil
+						NewHumanoid.Health = 0
+						player.CharacterAdded:wait(1)
+						repeat game:FindService("RunService").Heartbeat:wait() until Player.Character:FindFirstChild("HumanoidRootPart")
+						Player.Character.HumanoidRootPart.CFrame = OldCFrame
+			end
+				  
+					if not LoopKill then
+						Kill()
+					else
+						while LoopKill do
+							Kill()
+						end
+					end
+					 end
+					until loopkill == false
+		end)
+
+
+		cmd.add({"looplvoid", "looplegvoid"}, {"looplvoid <player> (looplegvoid)", "Leg resize loop void"}, function(...)
+			loopvoid = true
+			Target = (...)
+			repeat wait(1)
+			Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+local Character = Player.Character
+local PlayerGui = Player:waitForChild("PlayerGui")
+local Backpack = Player:waitForChild("Backpack")
+local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
+local RootPart = Character and Humanoid and Humanoid.RootPart or false
+local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
+if not Humanoid or not RootPart or not RightArm then
+	return
+end
+
+Humanoid:UnequipTools()
+local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
+if not MainTool or not MainTool:FindFirstChild("Handle") then
+	return
+end
+
+local TPlayer = getPlr(Target)
+local TCharacter = TPlayer and TPlayer.Character
+
+local THumanoid = TCharacter and TCharacter:FindFirstChildWhichIsA("Humanoid") or false
+local TRootPart = TCharacter and THumanoid and THumanoid.RootPart or false
+if not THumanoid or not TRootPart then
+	return
+end
+
+Character.Humanoid.Name = "DAttach"
+local l = Character["DAttach"]:Clone()
+l.Parent = Character
+l.Name = "Humanoid"
+wait()
+Character["DAttach"]:Destroy()
+game.Workspace.CurrentCamera.CameraSubject = Character
+Character.Animate.Disabled = true
+wait()
+Character.Animate.Disabled = false
+Character.Humanoid:EquipTool(MainTool)
+wait()
+CF = Player.Character.PrimaryPart.CFrame
+XC = TCharacter.HumanoidRootPart.CFrame.X
+ZC = TCharacter.HumanoidRootPart.CFrame.Z
+if firetouchinterest then
+	local flag = false
+	task.defer(function()
+		MainTool.Handle.AncestryChanged:wait()
+		flag = true
+	end)
+	repeat
+		firetouchinterest(MainTool.Handle, TRootPart, 0)
+		firetouchinterest(MainTool.Handle, TRootPart, 1)
+		wait()
+		Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
+	until flag
+else
+	Player.Character.HumanoidRootPart.CFrame =
+	TCharacter.HumanoidRootPart.CFrame
+	wait()
+	Player.Character.HumanoidRootPart.CFrame =
+	TCharacter.HumanoidRootPart.CFrame
+	wait()
+	Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
+	wait()
+end
+wait(.3)
+Player.Character:SetPrimaryPartCFrame(CF)
+if Humanoid.RigType == Enum.HumanoidRigType.R6 then
+	Character["Right Arm"].RightGrip:Destroy()
+else
+	Character["RightHand"].RightGrip:Destroy()
+	Character["RightHand"].RightGripAttachment:Destroy()
+end
+wait(0.3)
+respawn()
+until loopvoid == false
+		end)
+
+		cmd.add({"lvoid", "legvoid"}, {"lvoid <player> (legvoid)", "Leg resize void"}, function(...)
+				Target = (...)
+									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-249,0)
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+						local Character = Player.Character
+						local PlayerGui = Player:waitForChild("PlayerGui")
+						local Backpack = Player:waitForChild("Backpack")
+						local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
+						local RootPart = Character and Humanoid and Humanoid.RootPart or false
+						local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
+						if not Humanoid or not RootPart or not RightArm then
+							return
+						end
+						
+						Humanoid:UnequipTools()
+						local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
+						if not MainTool or not MainTool:FindFirstChild("Handle") then
+							return
+						end
+						
+						local TPlayer = getPlr(Target)
+						local TCharacter = TPlayer and TPlayer.Character
+						
+						local THumanoid = TCharacter and TCharacter:FindFirstChildWhichIsA("Humanoid") or false
+						local TRootPart = TCharacter and THumanoid and THumanoid.RootPart or false
+						if not THumanoid or not TRootPart then
+							return
+						end
+						
+						Character.Humanoid.Name = "DAttach"
+						local l = Character["DAttach"]:Clone()
+						l.Parent = Character
+						l.Name = "Humanoid"
+						wait()
+						Character["DAttach"]:Destroy()
+						game.Workspace.CurrentCamera.CameraSubject = Character
+						Character.Animate.Disabled = true
+						wait()
+						Character.Animate.Disabled = false
+						Character.Humanoid:EquipTool(MainTool)
+						wait()
+						CF = Player.Character.PrimaryPart.CFrame
+						XC = TCharacter.HumanoidRootPart.CFrame.X
+						ZC = TCharacter.HumanoidRootPart.CFrame.Z
+						if firetouchinterest then
+							local flag = false
+							task.defer(function()
+								MainTool.Handle.AncestryChanged:wait()
+								flag = true
+							end)
+							repeat
+								firetouchinterest(MainTool.Handle, TRootPart, 0)
+								firetouchinterest(MainTool.Handle, TRootPart, 1)
+								wait()
+								Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
+							until flag
+						else
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
+							wait()
+						end
+						wait(.3)
+						Player.Character:SetPrimaryPartCFrame(CF)
+						if Humanoid.RigType == Enum.HumanoidRigType.R6 then
+							Character["Right Arm"].RightGrip:Destroy()
+						else
+							Character["RightHand"].RightGrip:Destroy()
+							Character["RightHand"].RightGripAttachment:Destroy()
+						end
+						wait(0.3)
+						respawn()
+		end)
+
+		cmd.add({"lbring", "legbring"}, {"lbring <player> (legbring)", "Leg resize bring"}, function(...)
+			Target = (...)
+
+			if Target == "all" or Target == "others" then
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+			else
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+			wait(0.4)
+			respawn()
+						local Character = Player.Character        
+						local PlayerGui = Player:waitForChild("PlayerGui")
+						local Backpack = Player:waitForChild("Backpack")
+						local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
+						local RootPart = Character and Humanoid and Humanoid.RootPart or false
+						local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
+						if not Humanoid or not RootPart or not RightArm then
+							return
+						end
+						Humanoid:UnequipTools()
+						local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
+						if not MainTool or not MainTool:FindFirstChild("Handle") then
+							return
+						end
+						local TPlayer = getPlr(Target)
+						local TCharacter = TPlayer and TPlayer.Character
+						local THumanoid = TCharacter and TCharacter:FindFirstChildWhichIsA("Humanoid") or false
+						local TRootPart = TCharacter and THumanoid and THumanoid.RootPart or false
+						if not THumanoid or not TRootPart then
+							return
+						end
+						Character.Humanoid.Name = "DAttach"
+						local l = Character["DAttach"]:Clone()
+						l.Parent = Character
+						l.Name = "Humanoid"
+						wait()
+						Character["DAttach"]:Destroy()
+						game.Workspace.CurrentCamera.CameraSubject = Character
+						Character.Animate.Disabled = true
+						wait()
+						Character.Animate.Disabled = false
+						Character.Humanoid:EquipTool(MainTool)
+						wait()
+						CF = Player.Character.PrimaryPart.CFrame
+						if firetouchinterest then
+							local flag = false
+							task.defer(function()
+								MainTool.Handle.AncestryChanged:wait()
+								flag = true
+							end)
+							repeat
+								firetouchinterest(MainTool.Handle, TRootPart, 0)
+								firetouchinterest(MainTool.Handle, TRootPart, 1)
+								wait()
+								Player.Character.HumanoidRootPart.CFrame = CF
+							until flag
+						else
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame =
+							TCharacter.HumanoidRootPart.CFrame
+							wait()
+							Player.Character.HumanoidRootPart.CFrame = CF
+							wait()
+						end
+						wait(.3)
+						Player.Character:SetPrimaryPartCFrame(CF)
+						if Humanoid.RigType == Enum.HumanoidRigType.R6 then
+							Character["Right Arm"].RightGrip:Destroy()
+						else
+							Character["RightHand"].RightGrip:Destroy()
+							Character["RightHand"].RightGripAttachment:Destroy()
+						end
+							
+						wait(4)
+						CF = Player.Character.HumanoidRootPart.CFrame
+						player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
+						end
+		end)
+
+		cmd.add({"lkill", "legkill"}, {"lkill <player> (legkill)", "Leg resize kill"}, function(...)
+			Target = (...)
+
+			if Target == "all" or Target == "others" then
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+			else
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+			local function Kill()
+						if not getPlr(Target) then
+						end
+						
+						repeat game:FindService("RunService").Heartbeat:wait() until getPlr(Target).Character and getPlr(Target).Character:FindFirstChildOfClass("Humanoid") and getPlr(Target).Character:FindFirstChildOfClass("Humanoid").Health > 0
+						local Character
+						local Humanoid
+						local RootPart
+						local Tool
+						local Handle
+						
+						local TPlayer = getPlr(Target)
+						local TCharacter = TPlayer.Character
+						local THumanoid
+						local TRootPart
+						
+						if Player.Character and Player.Character and Player.Character.Name == Player.Name then
+							Character = Player.Character
+						else
+						end
+						if Character:FindFirstChildOfClass("Humanoid") then
+							Humanoid = Character:FindFirstChildOfClass("Humanoid")
+						else
+						end
+						if Humanoid and Humanoid.RootPart then
+							RootPart = Humanoid.RootPart
+						else
+						end
+						if Character:FindFirstChildOfClass("Tool") then
+							Tool = Character:FindFirstChildOfClass("Tool")
+						elseif Player.Backpack:FindFirstChildOfClass("Tool") and Humanoid then
+							Tool = Player.Backpack:FindFirstChildOfClass("Tool")
+							Humanoid:EquipTool(Player.Backpack:FindFirstChildOfClass("Tool"))
+						else
+						end
+						if Tool and Tool:FindFirstChild("Handle") then
+							Handle = Tool.Handle
+						else
+						end
+						
+						--Target
+						if TCharacter:FindFirstChildOfClass("Humanoid") then
+							THumanoid = TCharacter:FindFirstChildOfClass("Humanoid")
+						else
+							return Message("Error",">   Missing Target Humanoid")
+						end
+						if THumanoid.RootPart then
+							TRootPart = THumanoid.RootPart
+						else
+							return Message("Error",">   Missing Target RootPart")
+						end
+						
+						if THumanoid.Sit then
+							return Message("Error",">   Target is seated")
+						end
+						
+						local OldCFrame = RootPart.CFrame
+						
+						Humanoid:Destroy()
+						local NewHumanoid = Humanoid:Clone()
+						NewHumanoid.Parent = Character
+						NewHumanoid:UnequipTools()
+						NewHumanoid:EquipTool(Tool)
+						Tool.Parent = workspace
+					
+						local Timer = os.time()
+					
+						repeat
+							if (TRootPart.CFrame.p - RootPart.CFrame.p).Magnitude < 500 then
+								Tool.Grip = CFrame.new()
+								Tool.Grip = Handle.CFrame:ToObjectSpace(TRootPart.CFrame):Inverse()
+							end
+							firetouchinterest(Handle,TRootPart,0)
+							firetouchinterest(Handle,TRootPart,1)
+							game:FindService("RunService").Heartbeat:wait()
+						until Tool.Parent ~= Character or not TPlayer or not TRootPart or THumanoid.Health <= 0 or os.time() > Timer + .20
+						Player.Character = nil
+						NewHumanoid.Health = 0
+						player.CharacterAdded:wait(1)
+						repeat game:FindService("RunService").Heartbeat:wait() until Player.Character:FindFirstChild("HumanoidRootPart")
+						Player.Character.HumanoidRootPart.CFrame = OldCFrame
+			end
+				  
+					if not LoopKill then
+						Kill()
+					else
+						while LoopKill do
+							Kill()
+						end
+					end
+					 end
+		end)
+
 
 cmd.add({"loopvoid", "loopv"}, {"loopvoid <player> (loopv)", "Voids the player"}, function(...)
 	local Username = (...)
