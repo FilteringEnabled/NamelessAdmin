@@ -718,6 +718,7 @@ Title = "Nameless Admin";
 Duration = 7;
 
 });
+else
 	Target = (...)
 	local RunService = game:FindService("RunService")
 
@@ -781,24 +782,12 @@ Duration = 7;
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		 Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	   end
 
 	    Humanoid:Destroy()
@@ -2982,24 +2971,12 @@ else
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		 Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	   end
 
 	    Humanoid:Destroy()
@@ -8707,24 +8684,12 @@ end)
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		  Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	   end
 
 	   local fun = Instance.new("BodyAngularVelocity")
@@ -8821,24 +8786,12 @@ Looptornado = false
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		 Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	   end
 
 	    Humanoid:Destroy()
@@ -8929,24 +8882,12 @@ Loopcuff = false
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		  Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	   end
 
 	    Humanoid:Destroy()
@@ -11429,6 +11370,7 @@ Title = "Nameless Admin";
 Duration = 7;
 
 });
+else
 			Target = (...)
 						   		   local OldPos = getRoot().CFrame
 	local RunService = game:FindService("RunService")
@@ -11493,24 +11435,13 @@ Duration = 7;
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
+		 Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
+end
 	   end
 
 	    Humanoid:Destroy()
@@ -11529,7 +11460,7 @@ repeat
 until Tool.Parent ~= Character
       CF = Player.Character.HumanoidRootPart.CFrame
             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
-			   end
+			   
 	end)
 
     cmd.add({"jp", "jumppower"}, {"jp <number> (jumppower)", "Makes your JumpPower whatever you want"}, function(...)
