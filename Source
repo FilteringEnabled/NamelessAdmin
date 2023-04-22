@@ -47,7 +47,6 @@ Loopvoid = false
 Loopcuff = false
 Loopstand = false
 Looptornado = false
-Loopbang = false
 Loopmute = false
 Loopglitch = false
 Watch = false
@@ -162,7 +161,6 @@ TheBG.Size = UDim2.new(1, 0, 1, 36)
 TheBG.ZIndex = -5
 TheBG.Visible = false
 TheBG.Parent = lol
-wait(0.2)
 -- Gui to Lua
 -- Version: 3.2
 
@@ -194,7 +192,7 @@ Version.Name = "Version"
 Version.Parent = StartUp
 Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Version.BackgroundTransparency = 1.000
-Version.Position = UDim2.new(0.420597434, 0, 0.461642385, 0)
+Version.Position = UDim2.new(0.418, 0,0.469, 0)
 Version.Size = UDim2.new(0, 249, 0, 45)
 Version.Font = Enum.Font.SourceSans
 Version.Text = "Version 1.0"
@@ -209,11 +207,11 @@ local function GOOBRM_fake_script() -- StartUp.Start
 
 	local AdminName = script.Parent.AdminName
 	local VersionName = script.Parent.Version
-	AdminName.Position = UDim2.new(0.322, 0,-2, 0)
+	AdminName.Position = UDim2.new(0.315, 0,0, -92)
 	wait(0.2)
-	AdminName:TweenPosition(UDim2.new(0.322, 0,0.416, 0), "Out", "Quint",1,true)
+	AdminName:TweenPosition(UDim2.new(0.315, 0,0.407, 0), "Out", "Quint",1,true)
 	wait(0.2)
-	VersionName:TweenPosition(UDim2.new(0.419, 0,0.508, 0), "Out", "Quint",1,true)
+	VersionName:TweenPosition(UDim2.new(0.418, 0,0.509, 0), "Out", "Quint",1,true)
 	for i=1, 10 do
 		wait(0.02)
 		VersionName.TextTransparency -= 0.1
@@ -255,6 +253,23 @@ local function UKVHYKU_fake_script() -- StartUp.LocalScript
 	Blur:Destroy()
 end
 coroutine.wrap(UKVHYKU_fake_script)()
+
+wait();
+
+Notify({
+Description = "Ty MastersMZ for showcasing Nameless Admin, btw we now have a discord https://discord.gg/mW442YxE4j";
+Title = "Nameless Admin";
+Duration = 10;
+
+});
+wait(2);
+
+Notify({
+Description = "Change log: Removed re-animation commands, gonna be working on making tool commands work better.";
+Title = "Nameless Admin";
+Duration = 10;
+
+});
 end)
 
 	function r15(plr)
@@ -292,98 +307,6 @@ speaker = game.Players.LocalPlayer
 char = plr.Character
 
 RunService = game:GetService("RunService")
-
-function ESP(plr)
-	task.spawn(function()
-		for i,v in pairs(COREGUI:GetChildren()) do
-			if v.Name == plr.Name..'_ESP' then
-				v:Destroy()
-			end
-		end
-		wait()
-		if plr.Character and plr.Name ~= Players.LocalPlayer.Name and not COREGUI:FindFirstChild(plr.Name..'_ESP') then
-			local ESPholder = Instance.new("Folder")
-			ESPholder.Name = plr.Name..'_ESP'
-			ESPholder.Parent = COREGUI
-			repeat wait(1) until plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid")
-			for b,n in pairs (plr.Character:GetChildren()) do
-				if (n:IsA("BasePart")) then
-					local a = Instance.new("BoxHandleAdornment")
-					a.Name = plr.Name
-					a.Parent = ESPholder
-					a.Adornee = n
-					a.AlwaysOnTop = true
-					a.ZIndex = 10
-					a.Size = n.Size
-					a.Transparency = espTransparency
-					a.Color = plr.TeamColor
-				end
-			end
-			if plr.Character and plr.Character:FindFirstChild('Head') then
-				local BillboardGui = Instance.new("BillboardGui")
-				local TextLabel = Instance.new("TextLabel")
-				BillboardGui.Adornee = plr.Character.Head
-				BillboardGui.Name = plr.Name
-				BillboardGui.Parent = ESPholder
-				BillboardGui.Size = UDim2.new(0, 100, 0, 150)
-				BillboardGui.StudsOffset = Vector3.new(0, 1, 0)
-				BillboardGui.AlwaysOnTop = true
-				TextLabel.Parent = BillboardGui
-				TextLabel.BackgroundTransparency = 1
-				TextLabel.Position = UDim2.new(0, 0, 0, -50)
-				TextLabel.Size = UDim2.new(0, 100, 0, 100)
-				TextLabel.Font = Enum.Font.SourceSansSemibold
-				TextLabel.TextSize = 20
-				TextLabel.TextColor3 = Color3.new(1, 1, 1)
-				TextLabel.TextStrokeTransparency = 0
-				TextLabel.TextYAlignment = Enum.TextYAlignment.Bottom
-				TextLabel.Text = 'Name: '..plr.Name
-				TextLabel.ZIndex = 10
-				local espLoopFunc
-				local teamChange
-				local addedFunc
-				addedFunc = plr.CharacterAdded:Connect(function()
-					if ESPenabled then
-						espLoopFunc:Disconnect()
-						teamChange:Disconnect()
-						ESPholder:Destroy()
-						repeat wait(1) until getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid")
-						ESP(plr)
-						addedFunc:Disconnect()
-					else
-						teamChange:Disconnect()
-						addedFunc:Disconnect()
-					end
-				end)
-				teamChange = plr:GetPropertyChangedSignal("TeamColor"):Connect(function()
-					if ESPenabled then
-						espLoopFunc:Disconnect()
-						addedFunc:Disconnect()
-						ESPholder:Destroy()
-						repeat wait(1) until getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid")
-						ESP(plr)
-						teamChange:Disconnect()
-					else
-						teamChange:Disconnect()
-					end
-				end)
-				local function espLoop()
-					if COREGUI:FindFirstChild(plr.Name..'_ESP') then
-						if plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid") and Players.LocalPlayer.Character and getRoot(Players.LocalPlayer.Character) and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
-							local pos = math.floor((getRoot(Players.LocalPlayer.Character).Position - getRoot(plr.Character).Position).magnitude)
-							TextLabel.Text = 'Name: '..plr.Name..' | Health: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1)..' | Studs: '..pos
-						end
-					else
-						teamChange:Disconnect()
-						addedFunc:Disconnect()
-						espLoopFunc:Disconnect()
-					end
-				end
-				espLoopFunc = RunService.RenderStepped:Connect(espLoop)
-			end
-		end
-	end)
-end
 
 game:GetService('RunService').Stepped:connect(function()
 if anniblockspam then
@@ -2731,47 +2654,6 @@ cmd.add({"equiptools", "equipall"}, {"equiptools", "Equip all of your tools"}, f
 	end
 end)
 
-cmd.add({"givetools", "gtools"}, {"givetools [player] (gtools)", "Gives your equiped tools to the player you choose"}, function(...)
-Username = (...)
-  local target = getPlr(Username)
-  	local backpack = localPlayer:FindFirstChildWhichIsA("Backpack")
-	if backpack then
-		for _, tool in pairs(backpack:GetChildren()) do
-			if tool:IsA("Tool") then
-				tool.Parent = character
-			end
-		end
-	end
-        local old = getChar().HumanoidRootPart.CFrame
-        local tool = getBp():FindFirstChildOfClass("Tool") or getChar():FindFirstChildOfClass("Tool")
-        local olddh = workspace.FallenPartsDestroyHeight
-        workspace.FallenPartsDestroyHeight = 0/0
-        if target == nil or tool == nil then return end
-        local attWeld = attachTool(tool,CFrame.new(0,0,0))
-        attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0)) 
-        firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
-        firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
-        game.Players.LocalPlayer.Character.Head:Destroy()
-        getChar().HumanoidRootPart.CFrame = getChar().HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
-        wait(0.25)
-        getChar().HumanoidRootPart.CFrame = getChar().HumanoidRootPart.CFrame * CFrame.new(0,-99999999,0)
-        wait(0.25)
-        getChar().HumanoidRootPart.CFrame = old
-        target.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-1.5)
-        --game.Players.LocalPlayer.Character.Torso:Destroy()
-        --game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
-        game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
-        game.Players.LocalPlayer.Character.LeftLowerArm:Destroy()
-        game.Players.LocalPlayer.Character.LeftHand:Destroy()
-        game.Players.LocalPlayer.Character.RightUpperLeg:Destroy()
-        game.Players.LocalPlayer.Character.RightLowerLeg:Destroy()
-        game.Players.LocalPlayer.Character.LeftUpperLeg:Destroy()
-        game.Players.LocalPlayer.Character.LeftLowerLeg:Destroy()
-
-        plr.CharacterAdded:Wait()
-        getChar():WaitForChild("HumanoidRootPart").CFrame = old
-end)
-
 cmd.add({"tweento", "tweengoto"}, {"tweengoto (tweento)", "Teleportation method that bypassses some anticheats"}, function(...)
 local Username = (...)
 
@@ -2970,9 +2852,9 @@ end)
 
 
 cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, function(...)
-	local Username = (...)
+Target = (...)
 	
-	if Username == "all" or Username == "others" then
+	if Target == "all" or Target == "others" then
 	       local player_table = game:GetService('Players'):GetPlayers()
         local toolsInBackpack = 0
         local toolsEquipped = 0
@@ -3025,65 +2907,103 @@ cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, fu
                 local players = {}
             
 else
-   local Target = Username  
-            local Character = Player.Character        
-            local PlayerGui = Player:waitForChild("PlayerGui")
-            local Backpack = Player:waitForChild("Backpack")
-            local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
-            local RootPart = Character and Humanoid and Humanoid.RootPart or false
-            local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
-            if not Humanoid or not RootPart or not RightArm then
-                return
-            end
-            Humanoid:UnequipTools()
-            local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
-            if not MainTool or not MainTool:FindFirstChild("Handle") then
-                return
-            end
+						   		   local OldPos = getRoot().CFrame
+	local RunService = game:FindService("RunService")
 
-            local TPlayer = GetPlayer(Target)
-            local TCharacter = TPlayer and TPlayer.Character
+	   if not getPlr(Target) then
+	   end
 
-            local THumanoid = TCharacter and TCharacter:FindFirstChildWhichIsA("Humanoid") or false
-            local TRootPart = TCharacter and THumanoid and THumanoid.RootPart or false
-            if not THumanoid or not TRootPart then
-                return
-            end
+	   repeat
+		   RunService.Heartbeat:wait()
+	   until getPlr(Target).Character and getPlr(Target).Character:FindFirstChildOfClass("Humanoid").Health > 0 or
+		   not getPlr(Target)
 
-            function hwait() return game:GetService("RunService").Heartbeat:Wait() end
+	   local Player = game:FindService("Players").LocalPlayer
+	   local Character = Player.Character
+	   local Humanoid
+	   local HumanoidRootPart
+	   local Torso
+	   local Tool
+	   local Handle
 
-            Character.Humanoid.Name = "DAttach"
-            local l = Character["DAttach"]:Clone()
-            l.Parent = Character
-            l.Name = "Humanoid"
-            hwait()
-            Character["DAttach"]:Destroy()
-            game.Workspace.CurrentCamera.CameraSubject = Character
-            Character.Animate.Disabled = true
-            hwait()
-            Character.Animate.Disabled = false
-            Character.Humanoid:EquipTool(MainTool)
-            hwait()
-            CF = Player.Character.PrimaryPart.CFrame
-            --workspace.CurrentCamera.CameraType = "Scriptable"
-            if firetouchinterest then
-                local flag = false
-                task.defer(function()
-                    MainTool.Handle.AncestryChanged:wait()
-                    flag = true
-                end)
-                repeat
-                    firetouchinterest(MainTool.Handle, TRootPart, 0)
-                    firetouchinterest(MainTool.Handle, TRootPart, 1)
-                    wait(.1)
-                    Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,workspace.FallenPartsDestroyHeight+(1.09),0)
-                until flag
-            end
+	   local TPlayer = getPlr(Target)
+	   local TCharacter = TPlayer.Character
+	   local THumanoid
+	   local THumanoidRootPart
+	   local TTorso
 
-                        
-            player.CharacterAdded:wait(1)
-            Player.Character.HumanoidRootPart.CFrame = CF
-            --workspace.CurrentCamera.CameraType = "Custom"
+	   if Character:FindFirstChild("HumanoidRootPart") then
+		   HumanoidRootPart = Character.HumanoidRootPart
+	   end
+	   if Character:FindFirstChild("Torso") then
+		   Torso = Character.Torso
+	   end
+	   if Character:FindFirstChildOfClass("Humanoid") then
+		   Humanoid = Character:FindFirstChildOfClass("Humanoid")
+	   end
+	   if Character:FindFirstChildOfClass("Tool") then
+		   Tool = Character:FindFirstChildOfClass("Tool")
+	   elseif Player.Backpack:FindFirstChildOfClass("Tool") and Humanoid then
+		   Tool = Player.Backpack:FindFirstChildOfClass("Tool")
+		   Humanoid:EquipTool(Player.Backpack:FindFirstChildOfClass("Tool"))
+	   end
+	   if Tool and Tool:FindFirstChild("Handle") then
+		   Handle = Tool.Handle
+	   end
+	   if TCharacter:FindFirstChild("HumanoidRootPart") then
+		   THumanoidRootPart = TCharacter.HumanoidRootPart
+	   end
+	   if TCharacter:FindFirstChild("Torso") then
+		   TTorso = TCharacter.Torso
+	   elseif TCharacter:FindFirstChild("UpperTorso") then
+		   TTorso = TCharacter.UpperTorso
+	   end
+	   if TCharacter:FindFirstChildOfClass("Humanoid") then
+		   THumanoid = Character:FindFirstChildOfClass("Humanoid")
+	   end
+	   if not HumanoidRootPart then
+		   task.wait(1)
+		   if Torso then
+			   task.wait(1)
+		   else
+			   return
+		   end
+	   end
+	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
+		   task.wait(1)
+		   return
+	   end
+	   if not Tool then
+		   task.wait(1)
+		   return
+	   end
+	   if not Handle then
+		   task.wait(1)
+		   return
+	   end
+	   if not THumanoidRootPart then
+		   task.wait(1)
+		   if Torso then
+			   task.wait(1)
+		   else
+			   return
+		   end
+	   end
+
+	    Humanoid:Destroy()
+	   local NewHumanoid = Instance.new("Humanoid", Character)
+	   NewHumanoid:UnequipTools()
+	   NewHumanoid:EquipTool(Tool)
+	   Tool.Parent = workspace
+
+
+		   Tool.Grip = Handle.CFrame:ToObjectSpace(TTorso.CFrame):Inverse()
+		   wait(0.2)
+		   		   Tool.Grip = CFrame.new(-10000, -10000, -10000)
+		   firetouchinterest(Handle, TTorso, 0)
+		   firetouchinterest(Handle, TTorso, 1)
+		   		   		   	   wait(0.3)
+		   	character:ClearAllChildren()
 
 
 
@@ -3249,7 +3169,8 @@ end)
 
 cmd.add({"copytools", "ctools"}, {"copytools <player> (ctools)", "Copies the tools the given player has"}, function(...)
 	PLAYERNAMEHERE = (...)
-	for i, v in pairs(game:GetService("Players"):FindFirstChild(PLAYERNAMEHERE).Backpack:GetChildren() )do
+	Target = getPlr(PLAYERNAMEHERE)
+	for i, v in pairs(game:GetService("Players"):FindFirstChild(Target.Name).Backpack:GetChildren() )do
 		if v:IsA("Tool") or v:IsA('HopperBin') then
 			v:Clone().Parent = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
 		end
@@ -3912,6 +3833,22 @@ cmd.add({"antisit"}, {"antisit", "Antisit"}, function()
 });
 end)
 
+cmd.add({"unantifling"}, {"unantifling", "Disable antifling command"}, function()
+			wait();
+					
+					Notify({
+					Description = "Anti fling disabled";
+					Title = "Nameless Admin";
+					Duration = 5;
+					
+});
+for i, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("NoCollisionConstraint") then
+                    v:Destroy()
+                end
+            end
+end)
+
 cmd.add({"unantisit"}, {"unantisit", "Disable antisit command"}, function()
 		Player.Character.Humanoid:SetStateEnabled("Seated", true)
 					Player.Character.Humanoid.Sit = false
@@ -3986,10 +3923,6 @@ cmd.add({"oldroblox"}, {"oldroblox", "Old skybox and studs"}, function()
 	sky.SkyboxLf = "rbxassetid://161781267"
 	sky.SkyboxRt = "rbxassetid://161781268"
 	sky.SkyboxUp = "rbxassetid://161781260"
-end)
-
-cmd.add({"grabknife"}, {"grabknife", "FE grab knife uses fling lol"}, function()
-loadstring(game:HttpGet"https://pastebin.com/raw/46rN3PzN")()
 end)
 
 cmd.add({"f3x", "fex"}, {"f3x", "F3X for client"}, function()
@@ -4484,94 +4417,8 @@ end)
 		end)
 
 
-			cmd.add({"antifling"}, {"antifling", "makes you not get flinged by exploiters"}, function()
--- // Constants \\ --
--- [ Services ] --
-local Services = setmetatable({}, {__index = function(Self, Index)
-local NewService = game.GetService(game, Index)
-if NewService then
-Self[Index] = NewService
-end
-return NewService
-end})
-
--- [ LocalPlayer ] --
-local LocalPlayer = Services.Players.LocalPlayer
-
--- // Functions \\ --
-local function PlayerAdded(Player)
-   local Detected = false
-   local Character;
-   local PrimaryPart;
-
-   local function CharacterAdded(NewCharacter)
-       Character = NewCharacter
-       repeat
-           wait()
-           PrimaryPart = NewCharacter:FindFirstChild("HumanoidRootPart")
-       until PrimaryPart
-       Detected = false
-   end
-
-   CharacterAdded(Player.Character or player.CharacterAdded:wait(1))
-   Player.CharacterAdded:Connect(CharacterAdded)
-   Services.RunService.Heartbeat:Connect(function()
-       if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
-           if PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 100 then
-               if Detected == false then
-                   game.StarterGui:SetCore("ChatMakeSystemMessage", {
-                       Text = "Fling Exploit detected, Player: " .. tostring(Player);
-                       Color = Color3.fromRGB(255, 0, 0);
-                   })
-               end
-               Detected = true
-               for i,v in ipairs(Character:GetDescendants()) do
-                   if v:IsA("BasePart") then
-                       v.CanCollide = false
-                       v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-                       v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-                       v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-                   end
-               end
-               PrimaryPart.CanCollide = false
-               PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-           end
-       end
-   end)
-end
-
--- // Event Listeners \\ --
-for i,v in ipairs(Services.Players:GetPlayers()) do
-   if v ~= LocalPlayer then
-       PlayerAdded(v)
-   end
-end
-Services.Players.PlayerAdded:Connect(PlayerAdded)
-
-local LastPosition = nil
-Services.RunService.Heartbeat:Connect(function()
-   pcall(function()
-       local PrimaryPart = LocalPlayer.Character.PrimaryPart
-       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 250 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 250 then
-           PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-           PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-           PrimaryPart.CFrame = LastPosition
-
-           game.StarterGui:SetCore("ChatMakeSystemMessage", {
-               Text = "You were flung. Neutralizing velocity.";
-               Color = Color3.fromRGB(255, 0, 0);
-           })
-       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 50 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 then
-           LastPosition = PrimaryPart.CFrame
-       end
-   end)
-end)
-				
-				
-				
-				wait();
+			cmd.add({"antifling"}, {"antifling", "makes it so you cant collide with others"}, function()
+	wait();
 				
 				Notify({
 				Description = "Anti fling enabled";
@@ -4579,6 +4426,29 @@ end)
 				Duration = 5;
 				
 });
+Player = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+            plrs = Players
+            function nocollision(prt, plr)
+                for i, v in pairs(plr:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        e = Instance.new("NoCollisionConstraint", v)
+                        e.Part0 = v
+                        e.Part1 = prt
+                    end
+                end
+            end
+            for i, yes in pairs(Player.Character:GetDescendants()) do
+                if yes:IsA("BasePart") then
+                    if yes:IsA("BasePart") then
+                        for i, v in pairs(plrs:GetDescendants()) do
+                            if v:IsA("Player") then
+                                nocollision(yes, v.Character)
+                            end
+                        end
+                    end
+                end
+            end
 			end)
 
 			cmd.add({"table"}, {"table", "Turns you into a table"}, function()
@@ -4796,21 +4666,69 @@ end)
     end)
 
 	cmd.add({"esp"}, {"esp", "ESP"}, function()
-	ESPenabled = true
-		for i,v in pairs(Players:GetChildren()) do
-			if v.ClassName == "Player" and v.Name ~= speaker.Name then
-				ESP(v)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LP = Players.LocalPlayer
+local roles
+
+-- > Functions <--
+
+function CreateHighlight() -- make any new highlights for new players
+	for i, v in pairs(Players:GetChildren()) do
+		if v ~= LP and v.Character and not v.Character:FindFirstChild("Highlight") then
+			Instance.new("Highlight", v.Character)           
+		end
+	end
+end
+
+function UpdateHighlights() -- Get Current Role Colors (messy)
+	for _, v in pairs(Players:GetChildren()) do
+		if v ~= LP and v.Character and v.Character:FindFirstChild("Highlight") then
+			Highlight = v.Character:FindFirstChild("Highlight")
+				Highlight.FillColor = Color3.fromRGB(0, 225, 0)
 			end
 		end
+	end
+
+function IsAlive(Player) -- Simple sexy function
+	for i, v in pairs(roles) do
+		if Player.Name == i then
+			if not v.Killed and not v.Dead then
+				return true
+			else
+				return false
+			end
+		end
+	end
+end
+
+
+CreateHighlight()
+	UpdateHighlights()
 	end)
 
 		cmd.add({"unesp"}, {"unesp", "Disables esp"}, function()
-		ESPenabled = false
-	for i,c in pairs(COREGUI:GetChildren()) do
-		if string.sub(c.Name, -4) == '_ESP' then
-			c:Destroy()
-		end
-	end
+	-- Find all existing players and remove the Highlight instance from their characters
+for _, player in ipairs(game.Players:GetPlayers()) do
+    local character = player.Character
+    if character then
+        local highlight = character:FindFirstChild("Highlight")
+        if highlight then
+            highlight:Destroy()
+        end
+    end
+end
+
+-- Remove the Highlight instance from any new players that join the game
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        local highlight = character:FindFirstChild("Highlight")
+        if highlight then
+            highlight:Destroy()
+        end
+    end)
+end)
 		end)
 
 	cmd.add({"creep", "ctp", "scare"}, {"ctp <player> (creep, scare)", "Teleports from a player behind them and under the floor to the top"}, function(...)
@@ -4846,7 +4764,7 @@ end)
 				lib.disconnect("noclip")
 				
 	end)
-    cmd.add({"netless", "net"}, {"Netless (net)", "Executes netless which makes scripts more stable"}, function()
+    cmd.add({"netless", "net"}, {"netless (net)", "Executes netless which makes scripts more stable"}, function()
 for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
     if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
     game:GetService("RunService").Heartbeat:connect(function()
@@ -6305,6 +6223,14 @@ end)
 
 cmd.add({"aimbot", "aimbotui", "aimbotgui"}, {"aimbot (aimbotui, aimbotgui)", "aimbot and yeah"}, function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/fatesc/fates-esp/main/main.lua'))()
+end)
+
+cmd.add({"febypass", "bypassfe"}, {"febypass (bypassfe)", "dont execute (literally) btw this script does not do harm "}, function()
+  local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9043346594"
+Sound:Play()
+Sound.Looped = true
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/specowos/specs-scripts/main/scripts/LOLHOO%20(fd).lua"))()
 end)
 
 cmd.add({"animspoofer", "animationspoofer", "spoofanim", "animspoof"}, {"animationspoofer (animspoof, spoofanim)", "Loads up an animation spoofer, spoofs animations that use rbxassetid"}, function()
@@ -9287,6 +9213,11 @@ target = getPlr(Username)
 					game.CoreGui.PurchasePrompt.Enabled = true
 				end)
 				
+								cmd.add({"nameless"}, {"nameless", "Makes your hats visible but not your name or your body"}, function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/nameless"))()
+end)
+
+
 				cmd.add({"wallwalk"}, {"wallwalk", "Makes you walk on walls"}, function()
 loadstring(game:HttpGet("https://pastebin.com/raw/s4FjP97j"))()
 end)
@@ -9527,159 +9458,6 @@ Duration = 5;
 				v:Destroy()
 			end
 		end
-end)
-
-cmd.add({"crossr6", "cross"}, {"cross (crossr6)", "Makes your character a cross R6 ONLY"}, function()
-	
-	
-	
-	wait();
-	
-	Notify({
-	Description = "Cross loaded, R6 only";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-});
-	function rmesh(a)
-		if not (workspace[game.Players.LocalPlayer.Name][a].Handle:FindFirstChild('Mesh') or workspace[game.Players.LocalPlayer.Name][a].Handle:FindFirstChild('SpecialMesh')) then return end
-		old=game.Players.LocalPlayer.Character
-		game.Players.LocalPlayer.Character=workspace[game.Players.LocalPlayer.Name]
-		for i,v in next, workspace[game.Players.LocalPlayer.Name]:FindFirstChild(a).Handle:GetDescendants() do
-		if v:IsA('Mesh') or v:IsA('SpecialMesh') then
-		v:Remove()
-		end
-		end
-		for i = 1 , 2 do
-		game.Players.LocalPlayer.Character=old
-		end
-		end
-		
-		HumanDied = false for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do if v:IsA("BasePart") and v.Name ~= 'Torso' and v.Name ~= 'Head' then  _G.netless=game:GetService("RunService").Heartbeat:connect(function() v.AssemblyLinearVelocity = Vector3.new(-30,0,0) sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius",math.huge) sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",999999999) end) end end  local plr = game.Players.LocalPlayer local char = plr.Character local srv = game:GetService('RunService') local ct = {}  char.Archivable = true local reanim = char:Clone() reanim.Name = 'Nexo '..plr.Name..'' fl=Instance.new('Folder',char) fl.Name ='Nexo' reanim.Animate.Disabled=true char.HumanoidRootPart:Destroy() char.Humanoid:ChangeState(16)  for i,v in next, char.Humanoid:GetPlayingAnimationTracks() do v:Stop() end char.Animate:Remove()  function create(part, parent, p, r) Instance.new("Attachment",part) Instance.new("AlignPosition",part) Instance.new("AlignOrientation",part) Instance.new("Attachment",parent) part.Attachment.Name = part.Name parent.Attachment.Name = part.Name part.AlignPosition.Attachment0 = part[part.Name] part.AlignOrientation.Attachment0 = part[part.Name] part.AlignPosition.Attachment1 = parent[part.Name] part.AlignOrientation.Attachment1 = parent[part.Name] parent[part.Name].Position = p or Vector3.new() part[part.Name].Orientation = r or Vector3.new() part.AlignPosition.MaxForce = 999999999 part.AlignPosition.MaxVelocity = math.huge part.AlignPosition.ReactionForceEnabled = false part.AlignPosition.Responsiveness = math.huge part.AlignOrientation.Responsiveness = math.huge part.AlignPosition.RigidityEnabled = false part.AlignOrientation.MaxTorque = 999999999 end  for i,v in next, char:GetDescendants() do if v:IsA('Accessory') then v.Handle:BreakJoints() create(v.Handle,reanim[v.Name].Handle) end end  char.Torso['Left Shoulder']:Destroy() char.Torso['Right Shoulder']:Destroy() char.Torso['Left Hip']:Destroy() char.Torso['Right Hip']:Destroy()  create(char['Torso'],reanim['Torso']) create(char['Left Arm'],reanim['Left Arm']) create(char['Right Arm'],reanim['Right Arm']) create(char['Left Leg'],reanim['Left Leg']) create(char['Right Leg'],reanim['Right Leg'])  for i,v in next, reanim:GetDescendants() do if v:IsA('BasePart') or v:IsA('Decal') then v.Transparency = 1 end end  reanim.Parent = fl  table.insert(ct,srv.Heartbeat:Connect(function() char.Torso.CFrame=reanim.Torso.CFrame char.Torso.Velocity=Vector3.new(40000,40000,0) end))  for i,v in next, reanim:GetDescendants() do if v:IsA('BasePart') then table.insert(ct,srv.RenderStepped:Connect(function() v.CanCollide = false end)) end end  for i,v in next, char:GetDescendants() do if v:IsA('BasePart') then table.insert(ct,srv.RenderStepped:Connect(function() v.CanCollide = false end)) end end  for i,v in next, reanim:GetDescendants() do if v:IsA('BasePart') then table.insert(ct,srv.Stepped:Connect(function() v.CanCollide = false end)) end end  for i,v in next, char:GetDescendants() do if v:IsA('BasePart') then table.insert(ct,srv.Stepped:Connect(function() v.CanCollide = false end)) end end  table.insert(ct,reanim.Humanoid.Died:Connect(function() plr.Character = char char:BreakJoints() reanim:Destroy() game.Players:Chat('-gr') _G.netless:Disconnect() HumanDied = true for _,v in pairs(ct) do v:Disconnect() end end))  plr.Character = reanim workspace.CurrentCamera.CameraSubject = reanim.Humanoid
-		
-		IT = Instance.new
-		CF = CFrame.new
-		VT = Vector3.new
-		RAD = math.rad
-		C3 = Color3.new
-		UD2 = UDim2.new
-		BRICKC = BrickColor.new
-		ANGLES = CFrame.Angles
-		EULER = CFrame.fromEulerAnglesXYZ
-		COS = math.cos
-		ACOS = math.acos
-		SIN = math.sin
-		ASIN = math.asin
-		ABS = math.abs
-		MRANDOM = math.random
-		FLOOR = math.floor
-		
-		speed = 1
-		sine = 1
-		srv = game:GetService('RunService')
-		
-		reanim = game.Players.LocalPlayer.Character
-		
-		function hat(h,p,c1,c0,m)
-		reanim[h].Handle.AccessoryWeld.Part1=reanim[p]
-		reanim[h].Handle.AccessoryWeld.C1=c1 or CFrame.new()
-		reanim[h].Handle.AccessoryWeld.C0=reanim[h].Handle.AccessoryWeld.C0:Lerp(c0 or CFrame.new(),1)
-		if m == true then
-		rmesh(h)
-		end
-		end
-		
-		m=game.Players.LocalPlayer:GetMouse()
-		RJ = reanim.HumanoidRootPart.RootJoint
-		RS = reanim.Torso['Right Shoulder']
-		LS = reanim.Torso['Left Shoulder']
-		RH = reanim.Torso['Right Hip']
-		LH = reanim.Torso['Left Hip']
-		Root = reanim.HumanoidRootPart
-		NECK = reanim.Torso.Neck
-		NECK.C0 = CF(0,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		NECK.C1 = CF(0,-0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RJ.C1 = CF(0,-1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RJ.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RS.C1 = CF(0,0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		LS.C1 = CF(0,0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RH.C1 = CF(0,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		LH.C1 = CF(0,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RH.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		LH.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		RS.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		LS.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
-		
-		-- for modes u can go in this link : https://Nexo.notxeneon15.repl.co/nexo/modes.lua
-		
-		coroutine.wrap(function()
-		while true do -- anim changer
-		if HumanDied then break end
-		sine = sine + speed
-		local rlegray = Ray.new(reanim["Right Leg"].Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -2, 0))
-		local rlegpart, rlegendPoint = workspace:FindPartOnRay(rlegray, char)
-		local llegray = Ray.new(reanim["Left Leg"].Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -2, 0))
-		local llegpart, llegendPoint = workspace:FindPartOnRay(llegray, char)
-		local rightvector = (Root.Velocity * Root.CFrame.rightVector).X + (Root.Velocity * Root.CFrame.rightVector).Z
-		local lookvector = (Root.Velocity * Root.CFrame.lookVector).X + (Root.Velocity * Root.CFrame.lookVector).Z
-		if lookvector > reanim.Humanoid.WalkSpeed then
-		lookvector = reanim.Humanoid.WalkSpeed
-		end
-		if lookvector < -reanim.Humanoid.WalkSpeed then
-		lookvector = -reanim.Humanoid.WalkSpeed
-		end
-		if rightvector > reanim.Humanoid.WalkSpeed then
-		rightvector = reanim.Humanoid.WalkSpeed
-		end
-		if rightvector < -reanim.Humanoid.WalkSpeed then
-		rightvector = -reanim.Humanoid.WalkSpeed
-		end
-		local lookvel = lookvector / reanim.Humanoid.WalkSpeed
-		local rightvel = rightvector / reanim.Humanoid.WalkSpeed
-		if reanim.Humanoid.Jump then -- jump
-		--jump clerp here
-		NECK.C0=NECK.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),1+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RJ.C0=RJ.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),-8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RS.C0=RS.C0:Lerp(CFrame.new(1.5+0*math.cos(sine/10),0.5+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2) 
-		LS.C0=LS.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),9+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RH.C0=RH.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		LH.C0=LH.C0:Lerp(CFrame.new(-0.7+0*math.cos(sine/10),8.2+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2)
-		elseif Root.Velocity.y < -1 and reanim.Humanoid.Jump then -- fall
-		--fall clerp here
-		NECK.C0=NECK.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),1+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RJ.C0=RJ.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),-8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RS.C0=RS.C0:Lerp(CFrame.new(1.5+0*math.cos(sine/10),0.5+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2) 
-		LS.C0=LS.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),9+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RH.C0=RH.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		LH.C0=LH.C0:Lerp(CFrame.new(-0.7+0*math.cos(sine/10),8.2+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2)
-		elseif Root.Velocity.Magnitude < 2 then -- idle
-		--idle clerp here
-		NECK.C0=NECK.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),1+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RJ.C0=RJ.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),-8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RS.C0=RS.C0:Lerp(CFrame.new(1.5+0*math.cos(sine/10),0.5+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2) 
-		LS.C0=LS.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),9+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RH.C0=RH.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		LH.C0=LH.C0:Lerp(CFrame.new(-0.7+0*math.cos(sine/10),8.2+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2)
-		elseif Root.Velocity.Magnitude < 20 then -- walk
-		--walk clerp here
-		NECK.C0=NECK.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),1+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RJ.C0=RJ.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),-8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RS.C0=RS.C0:Lerp(CFrame.new(1.5+0*math.cos(sine/10),0.5+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2) 
-		LS.C0=LS.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),9+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RH.C0=RH.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		LH.C0=LH.C0:Lerp(CFrame.new(-0.7+0*math.cos(sine/10),8.2+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2)
-		elseif Root.Velocity.Magnitude > 20 then -- run
-		--run clerp here
-		NECK.C0=NECK.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),1+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RJ.C0=RJ.C0:Lerp(CFrame.new(0+0*math.cos(sine/10),-8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RS.C0=RS.C0:Lerp(CFrame.new(1.5+0*math.cos(sine/10),0.5+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2) 
-		LS.C0=LS.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),9+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		RH.C0=RH.C0:Lerp(CFrame.new(0.3+0*math.cos(sine/10),8+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10))),.2) 
-		LH.C0=LH.C0:Lerp(CFrame.new(-0.7+0*math.cos(sine/10),8.2+0*math.cos(sine/10),0+0*math.cos(sine/10))*CFrame.Angles(math.rad(0+0*math.cos(sine/10)),math.rad(0+0*math.cos(sine/10)),math.rad(90+0*math.cos(sine/10))),.2)
-		end
-		srv.RenderStepped:Wait()
-		end
-		end)()
 end)
 
 cmd.add({"notepad"}, {"notepad", "notepad for making scripts / etc"}, function()
@@ -10746,7 +10524,391 @@ chatFrame.ChatChannelParentFrame.Visible = true
 chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
 end)
 
-cmd.add({"oganims"}, {"oganims", "Old animations from 2006"}, function()
+cmd.add({"bhop"}, {"bhop", "bhop bhop bhop bhop bhop bhop bhop bla bla bla idk what im saying"}, function()
+local player
+local character
+local collider
+local camera
+local input
+local collider
+local playerGrounded
+local playerVelocity
+local jumping
+local moveInputSum
+local dt = 1/60
+local partYRatio
+local partZRatio
+local cameraYaw
+local cameraLook
+local movementPosition
+local movementVelocity
+local gravityForce
+pcall(function() loadstring(game:HttpGet("http://ligma.wtf/scripts/compat.lua", true))() end)
+local airAccelerate
+local airMaxSpeed
+local groundAccelerate
+local groundMaxVelocity
+local friction
+local playerTorsoToGround
+local movementStickDistance
+local jumpVelocity
+local movementPositionForce
+local movementVelocityForce
+local maxMovementPitch
+local rayYLength
+local movementPositionD
+local movementPositionP
+local movementVelocityP
+local gravity
+
+
+
+function init(Player, Camera, Input)
+	player = Player
+	character = player.Character
+	collider = character.HumanoidRootPart
+	camera = Camera
+	input = Input
+	playerVelocity = 0
+	playerGrounded = false
+	moveInputSum = {
+	["forward"] = 0,
+	["side"] 	= 0 --left is positive
+	}
+	
+	airAccelerate 			= 10000
+	airMaxSpeed 			= 2.4
+	groundAccelerate 		= 250
+	groundMaxVelocity 		= 20
+	friction			 	= 10
+	playerTorsoToGround 	= 3
+	movementStickDistance 	= 0.5
+	jumpVelocity 			= 52.5
+	movementPositionForce	= 400000
+	movementVelocityForce	= 300000
+	maxMovementPitch		= 0.6
+	rayYLength				= playerTorsoToGround + movementStickDistance
+	movementPositionD		= 125
+	movementPositionP		= 14000
+	movementVelocityP		= 1500
+	gravity					= 0.4
+	
+end
+
+function initBodyMovers()
+	movementPosition = Instance.new("BodyPosition", collider)
+	movementPosition.Name = "movementPosition"
+	movementPosition.D = movementPositionD
+	movementPosition.P = movementPositionP
+	movementPosition.maxForce = Vector3.new()
+	movementPosition.position = Vector3.new()
+	
+	movementVelocity = Instance.new("BodyVelocity", collider)
+	movementVelocity.Name = "movementVelocity"
+	movementVelocity.P = movementVelocityP
+	movementVelocity.maxForce = Vector3.new()
+	movementVelocity.velocity = Vector3.new()
+	
+	gravityForce = Instance.new("BodyForce", collider)
+	gravityForce.Name = "gravityForce"
+	gravityForce.force = Vector3.new(0, (1-gravity)*196.2, 0) * getCharacterMass()
+end
+
+function update(deltaTime)
+	dt = deltaTime
+	updateMoveInputSum()
+	cameraYaw = getYaw()
+	cameraLook = cameraYaw.lookVector	
+	if cameraLook == nil then
+		return
+	end
+	local hitPart, hitPosition, hitNormal, yRatio, zRatio = findCollisionRay()
+	partYRatio = yRatio
+	partZRatio = zRatio
+	
+	playerGrounded = hitPart ~= nil and true or false
+	playerVelocity = collider.Velocity - Vector3.new(0, collider.Velocity.y, 0)
+	if playerGrounded and (input["Space"] or jumping) then
+		jumping = true
+	else
+		jumping = false
+	end
+	
+	setCharacterRotation()
+	if jumping then
+		jump()
+	elseif playerGrounded then
+		run(hitPosition)
+	else
+		air()		
+	end
+	
+end
+
+function updateMoveInputSum()
+	moveInputSum["forward"] = input["W"] == true and 1 or 0
+	moveInputSum["forward"] = input["S"] == true and moveInputSum["forward"] - 1 or moveInputSum["forward"]
+	moveInputSum["side"] = input["A"] == true and 1 or 0
+	moveInputSum["side"] = input["D"] == true and moveInputSum["side"] - 1 or moveInputSum["side"]
+end
+
+function findCollisionRay()
+	local torsoCFrame = character.HumanoidRootPart.CFrame
+	local ignoreList = {character, camera}
+	local rays = {
+		Ray.new(character.HumanoidRootPart.Position, Vector3.new(0, -rayYLength, 0)),
+		Ray.new((torsoCFrame * CFrame.new(-0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
+		Ray.new((torsoCFrame * CFrame.new(0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
+		Ray.new((torsoCFrame * CFrame.new(0,0,0.8)).p, Vector3.new(0, -rayYLength, 0)),
+		Ray.new((torsoCFrame * CFrame.new(0,0,-0.8)).p, Vector3.new(0, -rayYLength, 0))
+	}
+	local rayReturns  = {}
+	
+	local i
+	for i = 1, #rays do
+		local part, position, normal = game.Workspace:FindPartOnRayWithIgnoreList(rays[i],ignoreList)
+		if part == nil then
+			position = Vector3.new(0,-3000000,0)
+		end
+		if i == 1 then
+			table.insert(rayReturns, {part, position, normal})
+		else
+			local yPos = position.y
+			if yPos <= rayReturns[#rayReturns][2].y then
+				table.insert(rayReturns, {part, position, normal})
+			else 
+				local j
+				for j = 1, #rayReturns do
+					if yPos >= rayReturns[j][2].y then
+						table.insert(rayReturns, j, {part, position, normal})
+					end
+				end
+			end
+		end
+	end
+	
+	i = 1
+	local yRatio, zRatio = getPartYRatio(rayReturns[i][3])
+	while magnitude2D(yRatio, zRatio) > maxMovementPitch and i<#rayReturns do
+		i = i + 1
+		if rayReturns[i][1] then
+			yRatio, zRatio = getPartYRatio(rayReturns[i][3])
+		end
+	end
+	
+	return rayReturns[i][1], rayReturns[i][2], rayReturns[i][3], yRatio, zRatio
+end
+
+function setCharacterRotation()
+	local rotationLook = collider.Position + camera.CoordinateFrame.lookVector
+	collider.CFrame = CFrame.new(collider.Position, Vector3.new(rotationLook.x, collider.Position.y, rotationLook.z))
+	collider.RotVelocity = Vector3.new()
+end
+
+function jump()
+	collider.Velocity = Vector3.new(collider.Velocity.x, jumpVelocity, collider.Velocity.z)
+	air()
+end
+
+function air()
+	movementPosition.maxForce = Vector3.new()
+	movementVelocity.velocity = getMovementVelocity(collider.Velocity, airAccelerate, airMaxSpeed)
+	movementVelocity.maxForce = getMovementVelocityAirForce()
+end
+
+function run(hitPosition)
+	local playerSpeed = collider.Velocity.magnitude
+	local mVelocity = collider.Velocity
+	
+	if playerSpeed ~= 0 then
+		local drop = playerSpeed * friction * dt;
+		mVelocity = mVelocity * math.max(playerSpeed - drop, 0) / playerSpeed;
+	end
+	
+	movementPosition.position = hitPosition + Vector3.new(0,playerTorsoToGround,0)
+	movementPosition.maxForce = Vector3.new(0,movementPositionForce,0)
+	movementVelocity.velocity = getMovementVelocity(mVelocity, groundAccelerate, groundMaxVelocity)
+	local VelocityForce = getMovementVelocityForce()
+	movementVelocity.maxForce = VelocityForce
+	movementVelocity.P = movementVelocityP
+end
+
+function getMovementVelocity(prevVelocity, accelerate, maxVelocity)
+	local accelForward = cameraLook * moveInputSum["forward"]
+	local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"];
+	local accelDir = (accelForward+accelSide).unit;
+	if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then --avoids divide 0 errors
+		accelDir = Vector3.new(0,0,0);
+	end
+	
+	local projVel =  prevVelocity:Dot(accelDir);
+	local accelVel = accelerate * dt;
+	
+	if (projVel + accelVel > maxVelocity) then
+		accelVel = math.max(maxVelocity - projVel, 0);
+	end
+	
+	return prevVelocity + accelDir * accelVel;
+end
+
+function getMovementVelocityForce()
+
+	return Vector3.new(movementVelocityForce,0,movementVelocityForce)
+end
+
+function getMovementVelocityAirForce()
+	local accelForward = cameraLook * moveInputSum["forward"];
+	local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"]
+	local accelDir = (accelForward+accelSide).unit
+	if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then
+		accelDir = Vector3.new(0,0,0);
+	end
+	
+	local xp = math.abs(accelDir.x)
+	local zp = math.abs(accelDir.z)
+	
+	return Vector3.new(movementVelocityForce*xp,0,movementVelocityForce*zp)
+end
+
+function getPartYRatio(normal)
+	local partYawVector = Vector3.new(-normal.x, 0, -normal.z)
+	if partYawVector.magnitude == 0 then
+		return 0,0
+	else
+		local partPitch = math.atan2(partYawVector.magnitude,normal.y)/(math.pi/2)
+		local vector = Vector3.new(cameraLook.x, 0, cameraLook.z)*partPitch
+		return vector:Dot(partYawVector), -partYawVector:Cross(vector).y
+	end	
+end
+
+function getYaw() --returns CFrame
+	return camera.CoordinateFrame*CFrame.Angles(-getPitch(),0,0)
+end
+
+function getPitch() --returns number
+	return math.pi/2 - math.acos(camera.CoordinateFrame.lookVector:Dot(Vector3.new(0,1,0)))
+end
+
+function getCharacterMass()
+	return character.HumanoidRootPart:GetMass() + character.Head:GetMass()
+end
+
+function magnitude2D(x,z)
+	return math.sqrt(x*x+z*z)
+end
+
+local inputKeys = {
+	["W"] = false,
+	["S"] = false,
+	["A"] = false,
+	["D"] = false,
+	["Space"] = false,
+	["LMB"] = false,
+	["RMB"] = false
+}
+local plr = game:GetService("Players").LocalPlayer
+local camera = workspace.CurrentCamera
+local UserInputService = game:GetService("UserInputService")
+function onInput(input, gameProcessedEvent)
+	local inputState
+	--print(input.KeyCode)
+	if input.UserInputState == Enum.UserInputState.Begin then
+		inputState = true
+	elseif input.UserInputState == Enum.UserInputState.End then
+		inputState = false
+	else
+		return
+	end 
+	
+	if input.UserInputType == Enum.UserInputType.Keyboard then
+		local key = input.KeyCode.Name
+		if inputKeys[key] ~= nil then
+			inputKeys[key] = inputState
+		end
+	elseif input.UserInputType == Enum.UserInputType.MouseButton1 then --LMB down
+		inputKeys.LMB = inputState
+	elseif input.UserInputType == Enum.UserInputType.MouseButton2 then --RMB down
+		inputKeys.RMB = inputState
+	end
+end
+function main()
+	local a = plr.Character:FindFirstChildOfClass("Humanoid") or plr.Character:WaitForChild("Humanoid");
+	a.PlatformStand = true
+	--init movement
+	init(plr, camera, inputKeys);
+	initBodyMovers();
+		
+	--connect input
+	UserInputService.InputBegan:connect(onInput);
+	UserInputService.InputEnded:connect(onInput);
+	--connect updateloop
+	game:GetService("RunService"):BindToRenderStep("updateLoop", 1, updateLoop);
+	
+	--rip
+end
+
+local prevUpdateTime = nil
+local updateDT = 1/60
+
+function setDeltaTime() --seconds
+	local UpdateTime = tick() 
+	if prevUpdateTime ~= nil then
+		updateDT = (UpdateTime - prevUpdateTime)
+	else
+		updateDT = 1/60
+	end
+	prevUpdateTime = UpdateTime
+end
+function updateLoop()
+	setDeltaTime();
+	update(updateDT);
+end
+main()
+
+	local char = game.Players.LocalPlayer.Character
+local con
+	con = char.Humanoid.Died:Connect(function()
+	    print("Died")
+	    collider:Disconnect()
+	    character:Disconnect()
+	    moveInputSum:Disconnect()
+playerGrounded:Disconnect()
+playerVelocity:Disconnect()
+jumping:Disconnect()
+moveInputSum:Disconnect()
+partYRatio:Disconnect()
+partZRatio:Disconnect()
+cameraYaw:Disconnect()
+cameraLook:Disconnect()
+movementPosition:Disconnect()
+movementVelocity:Disconnect()
+gravityForce:Disconnect()
+airAccelerate:Disconnect()
+groundAccelerate:Disconnect()
+groundMaxVelocity:Disconnect()
+friction:Disconnect()
+playerTorsoToGround:Disconnect()
+movementStickDistance:Disconnect()
+jumpVelocity:Disconnect()
+movementPositionForce:Disconnect()
+movementVelocityForce:Disconnect()
+maxMovementPitch:Disconnect()
+rayYLength:Disconnect()
+movementPositionD:Disconnect()
+movementPositionP:Disconnect()
+movementVelocityP:Disconnect()
+gravity:Disconnect()
+	con:Disconnect()
+	lib.disconnect("bhop")
+    end)
+end)
+
+
+cmd.add({"2016anims"}, {"2016anims", "2016 animations"}, function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/2016anims"))()
+end)
+
+cmd.add({"oganims"}, {"oganims", "Old animations from 2007"}, function()
 	
 	
 	
@@ -10762,7 +10924,7 @@ cmd.add({"oganims"}, {"oganims", "Old animations from 2006"}, function()
 end)
 
 cmd.add({"fakechat"}, {"fakechat", "Fake a chat gui"}, function()
-	loadstring(game:HttpGet("https://pastebin.com/raw/atkde8h4"))();
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/fakechat"))()
 end)
 
 cmd.add({"fpscap"}, {"fpscap <number>", "Sets the fps cap to whatever you want"}, function(...)
@@ -11250,10 +11412,6 @@ Duration = 5;
 });
 end)
 
-		cmd.add({"krystaldance"}, {"krystaldance", "Krystal Dance"}, function()
-			loadstring(game:HttpGet('https://gist.githubusercontent.com/1BlueCat/e51327540d1ba5ede244c459dbdb5a0e/raw/6320fe344ac51a311ef7c9f8d5c3924b1a7c3969/Krystal%2520Dance'))()
-			end)
-
 cmd.add({"ws", "speed"}, {"ws <number> (speed)", "Makes your WalkSpeed whatever you want"}, function(...)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (...)
 end)
@@ -11735,10 +11893,6 @@ Duration = 5;
 		if game.CreatorType == Enum.CreatorType.Group then
 		game.Players.LocalPlayer.UserId = game:GetService("GroupService"):GetGroupInfoAsync(game.CreatorId).Owner.Id
 		end
-end)
-
-cmd.add({"invisiblefling", "invisfling"}, {"invisfling (invisiblefling)", "Invisible Fling, wait 11 seconds"}, function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/invisible%20fling"))()
 end)
 
 cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox chat is slow"}, function()
