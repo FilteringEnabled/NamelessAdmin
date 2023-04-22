@@ -8462,7 +8462,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 			 local c = game.Players.LocalPlayer.Character
 			 game.Players.LocalPlayer.Character = nil
 				 game.Players.LocalPlayer.Character = c
-				 wait(game.Players.RespawnTime - 0.4)
+				 wait(game.Players.RespawnTime - 0.5)
 		 local TPlayer = getPlr(Target)
 			 Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
 						TRootPart = TPlayer.Character.HumanoidRootPart
