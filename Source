@@ -112,17 +112,7 @@ cmd.run = function(args)
 		end
 	end)
 	if not success then
-			
-
-
-wait();
-
-Notify({
-Description = msg;
-Title = "NAMELESS ADMIN ERROR";
-Duration = 7;
-
-});
+	print(msg)
 	end
 end
 
