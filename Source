@@ -259,7 +259,7 @@ wait();
 Notify({
 Description = "Ty MastersMZ for showcasing Nameless Admin, btw we now have a discord https://discord.gg/mW442YxE4j";
 Title = "Nameless Admin";
-Duration = 10;
+Duration = 7;
 
 });
 wait(2);
@@ -267,7 +267,7 @@ wait(2);
 Notify({
 Description = "Change log: Removed re-animation commands, gonna be working on making tool commands work better.";
 Title = "Nameless Admin";
-Duration = 10;
+Duration = 5;
 
 });
 end)
