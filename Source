@@ -17,6 +17,9 @@ local opt = {
 	},
 }
 
+-- [[ Version ]] -- 
+currentversion = 1.01
+
 --[[ VARIABLES ]]--
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
@@ -195,7 +198,7 @@ Version.BackgroundTransparency = 1.000
 Version.Position = UDim2.new(0.418, 0,0.469, 0)
 Version.Size = UDim2.new(0, 249, 0, 45)
 Version.Font = Enum.Font.SourceSans
-Version.Text = "Version 1.0"
+Version.Text = currentversion
 Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 Version.TextSize = 70.000
 Version.TextTransparency = 1.000
@@ -265,7 +268,7 @@ Duration = 7;
 wait(2);
 
 Notify({
-Description = "Change log: Removed re-animation commands, gonna be working on making tool commands work better.";
+Description = "Change log: Removed re-animation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you.";
 Title = "Nameless Admin";
 Duration = 5;
 
@@ -706,6 +709,15 @@ cmd.add({"script", "ls", "s", "run"}, {"script <source> (ls, s, run)", "Run the 
 end)
 
 cmd.add({"stand"}, {"stand <player>", "Makes a player your stand"}, function(...)
+    	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
+		 wait();
+
+Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 	Target = (...)
 	local RunService = game:FindService("RunService")
 
@@ -805,7 +817,7 @@ repeat
 until Tool.Parent ~= Character
   local OldPos = getRoot().CFrame
 	   	   player.CharacterAdded:wait(1)
-		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
+end
 end)
 
 cmd.add({"valk"}, {"valk", "Only works on dollhouse"}, function()
@@ -3545,6 +3557,8 @@ end)
 
 
 cmd.add({"tornado"}, {"tornado <player>", "Tornados the player to be in the sky"}, function(...)
+			   		 
+			   		  
 			   		   local OldPos = getRoot().CFrame
 	Target = (...)
 	local RunService = game:FindService("RunService")
@@ -3609,26 +3623,15 @@ cmd.add({"tornado"}, {"tornado <player>", "Tornados the player to be in the sky"
 		   end
 	   end
 	   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-		   task.wait(1)
-		   return
-	   end
-	   if not Tool then
-		   task.wait(1)
-		   return
-	   end
-	   if not Handle then
-		   task.wait(1)
-		   return
-	   end
-	   if not THumanoidRootPart then
-		   task.wait(1)
-		   if Torso then
-			   task.wait(1)
-		   else
-			   return
-		   end
-	   end
+		 wait();
 
+Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
+	   end
 	   local fun = Instance.new("BodyAngularVelocity")
 	   fun.Name = "funfunfun"
 	   fun.MaxTorque = Vector3.new(0, math.huge, 0)
@@ -11417,6 +11420,15 @@ cmd.add({"ws", "speed"}, {"ws <number> (speed)", "Makes your WalkSpeed whatever 
 end)
 
 		cmd.add({"cuff", "jail"}, {"cuff <player> (jail)", "Cuffs the player"}, function(...)
+			   if Humanoid.RigType == Enum.HumanoidRigType.R15 then
+		 wait();
+
+Notify({
+Description = "This command only works on R6";
+Title = "Nameless Admin";
+Duration = 7;
+
+});
 			Target = (...)
 						   		   local OldPos = getRoot().CFrame
 	local RunService = game:FindService("RunService")
@@ -11517,7 +11529,8 @@ repeat
 until Tool.Parent ~= Character
       CF = Player.Character.HumanoidRootPart.CFrame
             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
-		end)
+			   end
+	end)
 
     cmd.add({"jp", "jumppower"}, {"jp <number> (jumppower)", "Makes your JumpPower whatever you want"}, function(...)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = (...)
