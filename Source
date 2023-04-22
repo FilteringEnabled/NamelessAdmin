@@ -268,7 +268,7 @@ Duration = 7;
 wait(2);
 
 Notify({
-Description = "Change log: Removed re-animation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you.";
+Description = "Change log: Removed reanimation commands, made a notification if you are r15 and using a tool command that only works on R6, it would tell you. ALSO THIS ADMIN SCRIPT DOES NOT SUPPORT MOBILE.";
 Title = "Nameless Admin";
 Duration = 5;
 
