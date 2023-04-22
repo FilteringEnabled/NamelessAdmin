@@ -3177,26 +3177,6 @@ cmd.add({"httpget", "hl", "get"}, {"httpget <url>", "Run the contents of a given
 	loadstring(game:HttpGet(url, true))()
 end)
 
-cmd.add({"soundspam", "playallsounds"}, {"soundspam (playallsounds)", "Repeatedly play all sounds"}, function()
-	if SoundService.RespectFilteringEnabled == true then lib.messageOut("soundspam", "Sounds will not replicate") return end
-	local sounds = {}
-	for i, v in pairs(getinstances and getinstances() or game:GetDescendants()) do
-		pcall(function()
-			if v:IsA("Sound") and v:IsDescendantOf(workspace) then
-				table.insert(sounds, v)
-			end
-		end)
-	end
-	local c = lib.connect("spam", RunService.RenderStepped:Connect(function() end))
-	while c.Connected do
-		for _, sound in pairs(sounds) do
-			sound:Play()
-			sound.TimePosition = sound.TimeLength/3
-		end
-		wait(0.15)
-	end
-end)
-
 cmd.add({"skydive", "sky"}, {"skydive <player> (sky)", "Skydives the player"}, function(...)
 	local Target = (...)
             local Character = Player.Character
