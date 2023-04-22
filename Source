@@ -10103,7 +10103,7 @@ webImport("ui/main")
 end)
 
 cmd.add({"remotespy", "simplespy"}, {"remotespy (simplespy)", "executes simplespy v3"}, function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
 end)
 
 cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (unanchorednograv)", "Makes unanchored parts have 0 gravity"}, function()
