@@ -18,7 +18,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.01
+currentversion = 1.03
 
 -- [[ Adonis ]] -- 
 local Encrypt = function(str, key)
@@ -9983,17 +9983,17 @@ else
 			Loopkill = true
 			repeat wait()
 				local function Kill()
-					if not getPlr(Target) then
+					if not getPlr(Username) then
 					end
 					
-					repeat game:FindService("RunService").Heartbeat:wait() until getPlr(Target).Character and getPlr(Target).Character:FindFirstChildOfClass("Humanoid") and getPlr(Target).Character:FindFirstChildOfClass("Humanoid").Health > 0
+					repeat game:FindService("RunService").Heartbeat:wait() until getPlr(Username).Character and getPlr(Username).Character:FindFirstChildOfClass("Humanoid") and getPlr(Username).Character:FindFirstChildOfClass("Humanoid").Health > 0
 					local Character
 					local Humanoid
 					local RootPart
 					local Tool
 					local Handle
 					
-					local TPlayer = getPlr(Target)
+					local TPlayer = getPlr(Username)
 					local TCharacter = TPlayer.Character
 					local THumanoid
 					local TRootPart
