@@ -6,19 +6,8 @@ if (not game.IsLoaded(game)) then
     wait(1.5)
 end -- executes when game has loaded
 
-local opt = {
-	prefix = ';',			-- change ';' to anything u want the prefix to be
-	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
-	ui = {					-- never did anything with this
-		
-	},
-	keybinds = {			-- never did anything with this
-		
-	},
-}
-
 -- [[ Version ]] -- 
-currentversion = 1.01
+currentversion = 1.02
 
 -- [[ Adonis ]] -- 
 local Encrypt = function(str, key)
