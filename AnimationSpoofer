@@ -1,0 +1,335 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local screenxD = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Container = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
+local Topbar = Instance.new("Frame")
+local Icon = Instance.new("ImageLabel")
+local Exit = Instance.new("TextButton")
+local ImageLabel = Instance.new("ImageLabel")
+local Minimize = Instance.new("TextButton")
+local ImageLabel_2 = Instance.new("ImageLabel")
+local TopBar = Instance.new("Frame")
+local ImageLabel_3 = Instance.new("ImageLabel")
+local ImageLabel_4 = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local UIGradient_2 = Instance.new("UIGradient")
+local scroll = Instance.new("ScrollingFrame")
+local uilist = Instance.new("UIListLayout")
+
+--Properties:
+
+screenxD.Name = "🗿"
+screenxD.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenxD.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = screenxD
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 0.140
+Frame.BorderColor3 = Color3.fromRGB(139, 139, 139)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.651976228, 0, 0.542930365, 0)
+Frame.Size = UDim2.new(0, 402, 0, 262)
+
+local drag = Instance.new("Frame",screenxD)
+drag.BackgroundColor3 = Color3.fromRGB(114,137,218)
+drag.BorderSizePixel = 1
+drag.BackgroundTransparency = 1
+drag.Position = UDim2.new(0.107,0,0.216,0)
+drag.Size = UDim2.new(0,256,0,20)
+
+Container.Name = "Container"
+Container.Parent = Frame
+Container.AnchorPoint = Vector2.new(0.5, 1)
+Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Container.BackgroundTransparency = 0.500
+Container.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Container.BorderSizePixel = 0
+Container.ClipsDescendants = true
+Container.Position = UDim2.new(0.5, 0, 0.996153831, -5)
+Container.Size = UDim2.new(1, -10, 1.00769234, -30)
+
+UICorner.CornerRadius = UDim.new(0, 9)
+UICorner.Parent = Container
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(12, 4, 20)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(12, 4, 20)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(12, 4, 20))}
+UIGradient.Parent = Container
+
+Topbar.Name = "Topbar"
+Topbar.Parent = Frame
+Topbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Topbar.BackgroundTransparency = 1.000
+Topbar.Size = UDim2.new(1, 0, 0, 25)
+
+Icon.Name = "Icon"
+Icon.Parent = Topbar
+Icon.AnchorPoint = Vector2.new(0, 0.5)
+Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Icon.BackgroundTransparency = 1.000
+Icon.Position = UDim2.new(0, 10, 0.5, 0)
+Icon.Size = UDim2.new(0, 13, 0, 13)
+Icon.Image = "rbxgameasset://Images/menuIcon"
+
+Exit.Name = "Exit"
+Exit.Parent = Topbar
+Exit.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+Exit.BackgroundTransparency = 0.500
+Exit.BorderSizePixel = 0
+Exit.Position = UDim2.new(0.870000005, 0, 0, 0)
+Exit.Size = UDim2.new(-0.00899999961, 40, 1.04299998, -10)
+Exit.Font = Enum.Font.Gotham
+Exit.Text = "X"
+Exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+Exit.TextSize = 13.000
+
+ImageLabel.Parent = Exit
+ImageLabel.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.Position = UDim2.new(0.999998331, 0, 0, 0)
+ImageLabel.Size = UDim2.new(0, 9, 0, 16)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=8650484523"
+ImageLabel.ImageColor3 = Color3.fromRGB(12, 4, 20)
+ImageLabel.ImageTransparency = 0.500
+
+Minimize.Name = "Minimize"
+Minimize.Parent = Topbar
+Minimize.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+Minimize.BackgroundTransparency = 0.500
+Minimize.BorderSizePixel = 0
+Minimize.Position = UDim2.new(0.804174006, 0, 0, 0)
+Minimize.Size = UDim2.new(0.00100000005, 27, 1.04299998, -10)
+Minimize.Font = Enum.Font.Gotham
+Minimize.Text = "-"
+Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
+Minimize.TextSize = 18.000
+
+ImageLabel_2.Parent = Minimize
+ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_2.BackgroundTransparency = 1.000
+ImageLabel_2.Position = UDim2.new(-0.448, 0,0, 0)
+ImageLabel_2.Size = UDim2.new(0, 12,0, 15)
+ImageLabel_2.Image = "http://www.roblox.com/asset/?id=10555881849"
+ImageLabel_2.ImageColor3 = Color3.fromRGB(12, 4, 20)
+ImageLabel_2.ImageTransparency = 0.500
+
+TopBar.Name = "TopBar"
+TopBar.Parent = Topbar
+TopBar.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+TopBar.BackgroundTransparency = 0.500
+TopBar.BorderSizePixel = 0
+TopBar.Position = UDim2.new(0.268202901, 0, -0.00352294743, 0)
+TopBar.Size = UDim2.new(0, 186, 0, 16)
+
+ImageLabel_3.Parent = TopBar
+ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_3.BackgroundTransparency = 1.000
+ImageLabel_3.Position = UDim2.new(1, 0,0.059, 0)
+ImageLabel_3.Size = UDim2.new(0, 12,0, 15)
+ImageLabel_3.Image = "http://www.roblox.com/asset/?id=8650484523"
+ImageLabel_3.ImageColor3 = Color3.fromRGB(12, 4, 20)
+ImageLabel_3.ImageTransparency = 0.500
+
+ImageLabel_4.Parent = TopBar
+ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_4.BackgroundTransparency = 1.000
+ImageLabel_4.Position = UDim2.new(-0.0817726701, 0, 0, 0)
+ImageLabel_4.Size = UDim2.new(0, 16, 0, 16)
+ImageLabel_4.Image = "http://www.roblox.com/asset/?id=10555881849"
+ImageLabel_4.ImageColor3 = Color3.fromRGB(12, 4, 20)
+ImageLabel_4.ImageTransparency = 0.500
+
+Title.Name = "Title"
+Title.Parent = TopBar
+Title.AnchorPoint = Vector2.new(0, 0.5)
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(-0.150533721, 32, 0.415876389, 0)
+Title.Size = UDim2.new(0.522161067, 80, 1.11675644, -7)
+Title.Font = Enum.Font.SourceSansLight
+Title.Text = "Animation Spoofer"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 17.000
+Title.TextWrapped = true
+
+UICorner_2.CornerRadius = UDim.new(0, 9)
+UICorner_2.Parent = Frame
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(12, 4, 20)), ColorSequenceKeypoint.new(0.38, Color3.fromRGB(4, 4, 4)), ColorSequenceKeypoint.new(0.52, Color3.fromRGB(4, 4, 4)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(4, 4, 4)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(12, 4, 20))}
+UIGradient_2.Parent = Frame
+
+scroll.Parent = Frame
+scroll.AnchorPoint = Vector2.new(0.5, 0.5)
+scroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scroll.BackgroundTransparency = 1.000
+scroll.BorderColor3 = Color3.fromRGB(16, 16, 16)
+scroll.BorderSizePixel = 0
+scroll.Position = UDim2.new(0.5, 0, 0.530534327, 0)
+scroll.Size = UDim2.new(1, -10, 0.931297719, -10)
+scroll.BottomImage = "rbxgameasset://Images/scrollBottom (1)"
+scroll.MidImage = "rbxgameasset://Images/scrollMid"
+scroll.ScrollBarThickness = 4
+scroll.TopImage = "rbxgameasset://Images/scrollTop"
+
+uilist.Parent = scroll
+uilist.SortOrder = Enum.SortOrder.LayoutOrder
+uilist.Padding = UDim.new(0, 3)
+
+-- Scripts:
+
+local function WKBCA_fake_script() -- Exit.LocalScript 
+	local script = Instance.new('LocalScript', Exit)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(WKBCA_fake_script)()
+local function XGNJS_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+	
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+	
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(XGNJS_fake_script)()
+
+local UIS = game:GetService("UserInputService")
+local function dragify(Frame,boool)
+	local frametomove = Frame
+	local dragToggle,dragInput,dragStart,startPos
+	local dragSpeed = 0
+	local function updateInput(input)
+		local Delta = input.Position - dragStart
+		frametomove.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+	end
+	Frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frametomove.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)	
+		end
+	end)
+	Frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	UIS.InputChanged:Connect(function(input)
+		if input == dragInput and dragToggle then
+			updateInput(input)
+		end
+	end)
+end
+dragify(drag)
+
+local function createbutton(id)
+	local str = string.match(tostring(id) , "%d+")
+	local button = Instance.new("TextButton",scroll)
+	button.BorderSizePixel = 0
+	button.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+	button.BackgroundTransparency = 0.9
+	button.Size = UDim2.new(1,0,0,50)
+	button.Text = ""
+	local name = Instance.new("TextLabel",button)
+	name.BackgroundTransparency = 1
+	name.Size = UDim2.new(1,0,0.5,0)
+	name.TextSize = 14
+	name.Font = Enum.Font.Gotham
+	name.TextColor3 = Color3.fromRGB(255,255,255)
+	name.TextXAlignment = Enum.TextXAlignment.Center
+	local id = name:Clone()
+	id.Parent = button
+	id.AnchorPoint = Vector2.new(0,1)
+	id.Position = UDim2.new(0,0,1,0)
+	id.Text = str
+	name.Text = game:GetService("MarketplaceService"):GetProductInfo(tonumber(str)).Name
+	button.Activated:Connect(function()
+		setclipboard(str)
+	end)
+end
+
+local animationtabl = {}
+
+while true do
+	local localPlayer = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
+	if localPlayer then
+		local a = localPlayer:GetPlayingAnimationTracks()
+		for i, track in pairs(a) do
+			task.spawn(function()
+				local pass = true
+				for _,v in pairs(animationtabl) do
+					if v == track.Animation.AnimationId then
+						pass = false
+					end
+				end
+				if pass then
+					table.insert(animationtabl,track.Animation.AnimationId)
+					createbutton(track.Animation.AnimationId)
+				end
+			end)
+		end
+	end
+	task.wait()
+end
