@@ -222,20 +222,6 @@ local wait = function(int)
 	return (tick() - t), t
 end
 spawn(function()
-	local lol = Instance.new("ScreenGui")
-lol.Parent = game.Players.LocalPlayer.PlayerGui
-lol.ResetOnSpawn = false
-lol.Name = "uhhhh"
-local TheBG = Instance.new("Frame")
-TheBG.Name = "TheBG"
-TheBG.BackgroundColor3 = Color3.fromHex("#0A0A0C")
-TheBG.BackgroundTransparency = 0.54
-TheBG.ClipsDescendants = true
-TheBG.Position = UDim2.new(0, 0, -1, -36)
-TheBG.Size = UDim2.new(1, 0, 1, 36)
-TheBG.ZIndex = -5
-TheBG.Visible = false
-TheBG.Parent = lol
 -- Gui to Lua
 -- Version: 3.2
 
@@ -12803,8 +12789,6 @@ end
 --[[ GUI FUNCTIONALITY ]]--
 mouse.KeyDown:Connect(function(k)
 	if k:lower() == opt.prefix then
-	    	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = true
-	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, 0, -36),"Out","Quint",.5)
 		gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
@@ -12818,7 +12802,6 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 		end)
 	end
 	gui.barDeselect()
-    game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, -1, -36),"In","Quint",.4)
 	  wait(0.35)
     for i, v in ipairs(cmdAutofill:GetChildren()) do
         if v:IsA("Frame") then
@@ -12826,7 +12809,6 @@ cmdInput.FocusLost:Connect(function(enterPressed)
         end
         end
 		wait(0.15)
-		game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = false
 end)
 
 cmdInput.Changed:Connect(function(p)
