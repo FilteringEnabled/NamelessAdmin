@@ -9,6 +9,16 @@ end -- executes when game has loaded
 -- [[ Version ]] -- 
 currentversion = 1.02
 
+local opt = {
+	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
+	ui = {					-- never did anything with this
+		
+	},
+	keybinds = {			-- never did anything with this
+		
+	},
+}
+
 -- [[ Adonis ]] -- 
 local Encrypt = function(str, key)
     local byte = string.byte
