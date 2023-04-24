@@ -10,6 +10,7 @@ end -- executes when game has loaded
 currentversion = 1.02
 
 local opt = {
+prefix = '-'			-- You can change this, just dont remove this line unless you want the command bar to not work lol
 	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
 	ui = {					-- never did anything with this
 		
