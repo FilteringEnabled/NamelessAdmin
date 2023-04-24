@@ -115,7 +115,7 @@ local IYLOADED = false -- This is used for the ;iy command that executes infinit
 local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
 local Character = game.Players.LocalPlayer.Character
 local Clicked = true
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NotificationUI"))();
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
 local Notify = AkaliNotif.Notify;
 _G.Spam = false
 --[[ FOR LOOP COMMANDS ]]--
@@ -222,20 +222,33 @@ local wait = function(int)
 	return (tick() - t), t
 end
 spawn(function()
-	local lol = Instance.new("ScreenGui")
-lol.Parent = game.Players.LocalPlayer.PlayerGui
-lol.ResetOnSpawn = false
-lol.Name = "uhhhh"
-local TheBG = Instance.new("Frame")
-TheBG.Name = "TheBG"
-TheBG.BackgroundColor3 = Color3.fromHex("#0A0A0C")
-TheBG.BackgroundTransparency = 0.64
-TheBG.ClipsDescendants = true
-TheBG.Position = UDim2.new(0, 0, -1, -36)
-TheBG.Size = UDim2.new(1, 0, 1, 36)
-TheBG.ZIndex = -5
-TheBG.Visible = false
-TheBG.Parent = lol
+    -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local uhhhh = Instance.new("ScreenGui")
+local lalala = Instance.new("Frame")
+local UIGradient = Instance.new("UIGradient")
+
+--Properties:
+
+uhhhh.Name = "boomb"
+uhhhh.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+uhhhh.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+uhhhh.ResetOnSpawn = false
+
+lalala.Parent = uhhhh
+lalala.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lalala.BackgroundTransparency = 1
+lalala.Size = UDim2.new(0, 1846, 0, 904)
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(5, 0, 8))}
+UIGradient.Rotation = 90
+UIGradient.Parent = lalala
+
+local StarterGui = uhhhh
+StarterGui.IgnoreGuiInset = true
 -- Gui to Lua
 -- Version: 3.2
 
@@ -3985,8 +3998,8 @@ GUI.Name = "GUI"
 GUI.Parent = game.CoreGui --game.Players.LocalPlayer:WaitForChild("PlayerGui")
 On.Name = "On"
 On.Parent = GUI
-On.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-On.BackgroundTransparency = 0.1
+On.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+On.BackgroundTransparency = 0.14
 On.BorderSizePixel = 0
 On.Position = UDim2.new(0.880059958, 0, 0.328616381, 0)
 On.Size = UDim2.new(0, 160, 0, 20)
@@ -5079,40 +5092,6 @@ end)
 
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
      game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin | .gg/mW442YxE4j', 'All')
-end)
-
-cmd.add({"darkbubblechat", "darkbc"}, {"darkbubblechat (darkbc)", "dark bubble chat"}, function()
-
-
-textcolour = Color3.new(255, 255, 255)
-
-game:GetService("Chat").BubbleChatEnabled = true
-
-local settings = {
-	
-}
-
-while wait() do
-    pcall(function()
-    	game:GetService("Chat"):SetBubbleChatSettings({
-            TextColor3 = textcolour,
-            BubbleDuration = 20,
-            MaxBubbles = 20,
-            BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-            TextSize = 16,
-            Font = Enum.Font.Ubuntu, --Enum.Font.GothamSemibold
-            Transparency = .1,
-            CornerRadius = UDim.new(0, 30),
-            TailVisible = true,
-            Padding = 8, -- in pixels
-            MaxWidth = 500, --in pixels
-            VerticalStudsOffset = 0,
-                    BubblesSpacing = 3,
-                    MinimizeDistance = 250,
-            MaxDistance = 500,
-        })
-    end)
-end
 end)
 
 cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
@@ -6389,7 +6368,7 @@ end)
 
 
 cmd.add({"animspoofer", "animationspoofer", "spoofanim", "animspoof"}, {"animationspoofer (animspoof, spoofanim)", "Loads up an animation spoofer, spoofs animations that use rbxassetid"}, function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/AnimSpoofer"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/AnimationSpoofer"))()
 end)
 
 cmd.add({"tooldance", "td"}, {"tooldance <mode> <size>", "Make your tools dance\nModes: tor/sph/inf/rng/whl/wht/voi"}, function(mode, size)
@@ -7561,7 +7540,7 @@ cmd.add({"copyaudio", "getaudio"}, {"copyaudio <player>", "Copy all sounds a pla
 end)
 
 cmd.add({"pp", "penis"}, {"penis (pp)", "benis :flushed:"}, function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/PP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/pp"))()
 end)
 
 cmd.add({"stealaudio", "getaudio", "steal", "logaudio"}, {"stealaudio <player> (getaudio, logaudio, steal)", "Save all sounds a player is playing to a file  -Cyrus"}, function(p)
@@ -8857,7 +8836,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 			loopkill = true
 			Target = (...)
 
-			repeat wait(1)
+			repeat wait()
 			if Target == "all" or Target == "others" then
 			    					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 				loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
@@ -9956,7 +9935,6 @@ else
 						Kill()
 					end
 				end
-				wait(2)
 			until Loopkill == false
 		end
 		end)
@@ -10264,200 +10242,7 @@ Duration = 5;
 end)
 
 cmd.add({"notepad"}, {"notepad", "notepad for making scripts / etc"}, function()
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local ScreenGui = Instance.new("ScreenGui")
-local ChatLogs = Instance.new("Frame")
-local Container = Instance.new("Frame")
-local Logs = Instance.new("ScrollingFrame")
-local TextBox = Instance.new("TextBox")
-local UICorner = Instance.new("UICorner")
-local Topbar = Instance.new("Frame")
-local Icon = Instance.new("ImageLabel")
-local Exit = Instance.new("TextButton")
-local ImageLabel = Instance.new("ImageLabel")
-local Minimize = Instance.new("TextButton")
-local ImageLabel_2 = Instance.new("ImageLabel")
-local TopBar = Instance.new("Frame")
-local ImageLabel_3 = Instance.new("ImageLabel")
-local ImageLabel_4 = Instance.new("ImageLabel")
-local Title = Instance.new("TextLabel")
-local UICorner_2 = Instance.new("UICorner")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = false
-
-ChatLogs.Name = "ChatLogs"
-ChatLogs.Parent = ScreenGui
-ChatLogs.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-ChatLogs.BackgroundTransparency = 0.140
-ChatLogs.BorderColor3 = Color3.fromRGB(139, 139, 139)
-ChatLogs.BorderSizePixel = 0
-ChatLogs.Position = UDim2.new(0.42958656, 0, 0.297947407, 0)
-ChatLogs.Size = UDim2.new(0, 400, 0, 260)
-ChatLogs.Active = true
-ChatLogs.Draggable = true
-
-Container.Name = "Container"
-Container.Parent = ChatLogs
-Container.AnchorPoint = Vector2.new(0.5, 1)
-Container.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-Container.BackgroundTransparency = 0.100
-Container.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Container.BorderSizePixel = 0
-Container.ClipsDescendants = true
-Container.Position = UDim2.new(0.5, 0, 0.996153831, -5)
-Container.Size = UDim2.new(1, -10, 1, -30)
-
-Logs.Name = "Logs"
-Logs.Parent = Container
-Logs.AnchorPoint = Vector2.new(0.5, 0.5)
-Logs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Logs.BackgroundTransparency = 1.000
-Logs.BorderColor3 = Color3.fromRGB(16, 16, 16)
-Logs.BorderSizePixel = 0
-Logs.Position = UDim2.new(0.5, 0, 0.5, 0)
-Logs.Size = UDim2.new(1, -10, 1, -10)
-Logs.BottomImage = "rbxgameasset://Images/scrollBottom (1)"
-Logs.MidImage = "rbxgameasset://Images/scrollMid"
-Logs.ScrollBarThickness = 4
-Logs.TopImage = "rbxgameasset://Images/scrollTop"
-
-TextBox.Parent = Logs
-TextBox.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-TextBox.BackgroundTransparency = 0.100
-TextBox.BorderSizePixel = 0
-TextBox.Size = UDim2.new(0, 377, 0, 215)
-TextBox.ClearTextOnFocus = false
-TextBox.Font = Enum.Font.SourceSans
-TextBox.MultiLine = true
-TextBox.PlaceholderText = "Enter your text here"
-TextBox.Text = ""
-TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.TextSize = 19.000
-TextBox.TextXAlignment = Enum.TextXAlignment.Left
-TextBox.TextYAlignment = Enum.TextYAlignment.Top
-
-UICorner.CornerRadius = UDim.new(0, 9)
-UICorner.Parent = Container
-
-Topbar.Name = "Topbar"
-Topbar.Parent = ChatLogs
-Topbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Topbar.BackgroundTransparency = 1.000
-Topbar.Size = UDim2.new(1, 0, 0, 25)
-
-Icon.Name = "Icon"
-Icon.Parent = Topbar
-Icon.AnchorPoint = Vector2.new(0, 0.5)
-Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Icon.BackgroundTransparency = 1.000
-Icon.Position = UDim2.new(0, 10, 0.5, 0)
-Icon.Size = UDim2.new(0, 13, 0, 13)
-Icon.Image = "rbxgameasset://Images/menuIcon"
-
-Exit.Name = "Exit"
-Exit.Parent = Topbar
-Exit.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-Exit.BackgroundTransparency = 0.150
-Exit.BorderSizePixel = 0
-Exit.Position = UDim2.new(0.875, 0, 0, 0)
-Exit.Size = UDim2.new(-0.00949996989, 40, 1.04300046, -10)
-Exit.Font = Enum.Font.Gotham
-Exit.Text = "X"
-Exit.TextColor3 = Color3.fromRGB(255, 255, 255)
-Exit.TextSize = 13.000
-
-ImageLabel.Parent = Exit
-ImageLabel.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-ImageLabel.BackgroundTransparency = 1.000
-ImageLabel.Position = UDim2.new(0.999998331, 0, 0, 0)
-ImageLabel.Size = UDim2.new(0, 7, 0, 16)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel.ImageTransparency = 0.150
-
-Minimize.Name = "Minimize"
-Minimize.Parent = Topbar
-Minimize.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-Minimize.BackgroundTransparency = 0.150
-Minimize.BorderSizePixel = 0
-Minimize.Position = UDim2.new(0.8125, 0, 0, 0)
-Minimize.Size = UDim2.new(0, 25, 1.04300046, -10)
-Minimize.Font = Enum.Font.Gotham
-Minimize.Text = "-"
-Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
-Minimize.TextSize = 18.000
-
-ImageLabel_2.Parent = Minimize
-ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_2.BackgroundTransparency = 1.000
-ImageLabel_2.Position = UDim2.new(-0.395148933, 0, 0, 0)
-ImageLabel_2.Size = UDim2.new(0, 10, 0, 14)
-ImageLabel_2.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_2.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_2.ImageTransparency = 0.150
-
-TopBar.Name = "TopBar"
-TopBar.Parent = Topbar
-TopBar.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-TopBar.BackgroundTransparency = 0.150
-TopBar.BorderSizePixel = 0
-TopBar.Position = UDim2.new(0.258215338, 0, 0.0364770517, 0)
-TopBar.Size = UDim2.new(0, 186, 0, 16)
-
-ImageLabel_3.Parent = TopBar
-ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_3.BackgroundTransparency = 1.000
-ImageLabel_3.Position = UDim2.new(1, 0, -0.00346946716, 0)
-ImageLabel_3.Size = UDim2.new(0, 14, 0, 16)
-ImageLabel_3.Image = "http://www.roblox.com/asset/?id=8650484523"
-ImageLabel_3.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_3.ImageTransparency = 0.150
-
-ImageLabel_4.Parent = TopBar
-ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel_4.BackgroundTransparency = 1.000
-ImageLabel_4.Position = UDim2.new(-0.0763963237, 0, 0, 0)
-ImageLabel_4.Size = UDim2.new(0, 15, 0, 16)
-ImageLabel_4.Image = "http://www.roblox.com/asset/?id=10555881849"
-ImageLabel_4.ImageColor3 = Color3.fromRGB(28, 28, 28)
-ImageLabel_4.ImageTransparency = 0.150
-
-Title.Name = "Title"
-Title.Parent = TopBar
-Title.AnchorPoint = Vector2.new(0, 0.5)
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.BorderSizePixel = 0
-Title.Position = UDim2.new(-0.150533721, 32, 0.415876389, 0)
-Title.Size = UDim2.new(0.522161067, 80, 1.11675644, -7)
-Title.Font = Enum.Font.SourceSansLight
-Title.Text = "Notepad"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 17.000
-Title.TextWrapped = true
-
-UICorner_2.CornerRadius = UDim.new(0, 9)
-UICorner_2.Parent = ChatLogs
-
--- Scripts:
-
-local function WKEHM_fake_script() -- Exit.LocalScript 
-	local script = Instance.new('LocalScript', Exit)
-
-	local Noob = script.Parent.Parent.Parent.Parent
-	script.Parent.MouseButton1Click:Connect(function()
-	Noob:Destroy()
-		end)
-end
-coroutine.wrap(WKEHM_fake_script)()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Notepad"))()
 end)
 
 cmd.add({"rc7"}, {"rc7", "RC7 Internal UI"}, function()
@@ -11194,7 +10979,7 @@ cmd.add({"fullbright", "fullb"}, {"fullbright (fullb)", "Makes games that are re
 end)
 
 cmd.add({"givehat", "givehatui"}, {"givehat (givehatui)", "Executes a hat giver gui check in console for hat names"}, function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/hatgiver"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/GiveHat"))()
 end)
 
 cmd.add({"fireproximityprompts", "fpp"}, {"fireproximityprompts (fpp)", "Fires every Touch Interest that's in workspace"}, function()
@@ -12712,7 +12497,7 @@ end)
 --[[ GUI VARIABLES ]]--
 local ScreenGui
 if not RunService:IsStudio() then
-	ScreenGui = game:GetObjects("rbxassetid://13137909723")[1]
+	ScreenGui = game:GetObjects("rbxassetid://13237130511")[1]
 else
 	repeat wait() until player:FindFirstChild("AdminUI", true)
 	ScreenGui = player:FindFirstChild("AdminUI", true)
@@ -13030,11 +12815,13 @@ end
 --[[ GUI FUNCTIONALITY ]]--
 mouse.KeyDown:Connect(function(k)
 	if k:lower() == opt.prefix then
-	    	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = true
-	game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, 0, -36),"Out","Quint",.5)
 		gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
+		for i=1,10 do
+		    wait(0.000051)
+		 game:GetService("Players").qipu.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
+		    end
 	end
 end)
 
@@ -13045,15 +12832,16 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 		end)
 	end
 	gui.barDeselect()
-    game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG:TweenPosition(UDim2.new(0, 0, -1, -36),"In","Quint",.4)
-	  wait(0.35)
+		for i=1,10 do
+		    wait(0.000051)
+		 game:GetService("Players").qipu.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
+		    end
+	wait(0.25)
     for i, v in ipairs(cmdAutofill:GetChildren()) do
         if v:IsA("Frame") then
             v.Visible = false
         end
         end
-		wait(0.15)
-		game.Players.LocalPlayer.PlayerGui.uhhhh.TheBG.Visible = false
 end)
 
 cmdInput.Changed:Connect(function(p)
