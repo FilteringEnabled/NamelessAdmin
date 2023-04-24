@@ -12820,7 +12820,7 @@ mouse.KeyDown:Connect(function(k)
 		cmdInput:CaptureFocus()
 		for i=1,10 do
 		    wait(0.000051)
-		 game:GetService("Players").qipu.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
+		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 	end
 end)
@@ -12834,7 +12834,7 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 	gui.barDeselect()
 		for i=1,10 do
 		    wait(0.000051)
-		 game:GetService("Players").qipu.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
+		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
 		    end
 	wait(0.25)
     for i, v in ipairs(cmdAutofill:GetChildren()) do
