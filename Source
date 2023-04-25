@@ -2103,16 +2103,7 @@ anniblockspam = true
 end)
 
 cmd.add({"febtools"}, {"febtools", "Move parts that are your hats"}, function()
-   --[[
-NOTES:
-Some hats and hair won't have collison because roblox.
-Due to roblox physics players might get flung when touching parts.
-Fixed bug where hats with same name wouldn't work.
-AND THIS WON'T WORK IN ALL GAMES.
-
-Made by Rouxhaver
-]]
-
+-- ty rouxhaver
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
@@ -5287,8 +5278,8 @@ local Players, StarterGui, OldNamecall = game:GetService("Players"), game:GetSer
 --// Global Variables
 
 getgenv().ED_AntiKick = {
-	SendNotifications = true, -- Set to true if you want to get notified for every event
-	CheckCaller = false -- Set to true if you want to disable kicking by other executed scripts
+	SendNotifications = true,
+	CheckCaller = false 
 }
 
 --// Main
@@ -12032,14 +12023,6 @@ cmd.add({"uafollow", "unanchoredfollow"}, {"uafollow (unanchoredfollow)", "Makes
 	Duration = 5;
 	
 });
---[[ FE Unanchored Parts Follow
-    Script made by Cyclically | Credits to dhruvil123 for a few parts of the script
-    also credits to "Discordgotbanned" in discord for giving me motivation to fix this script
-    https://v3rmillion.net/member.php?action=profile&uid=785986
-    Don't edit script unless you know what you're doing. If you wanna add this into a script
-
-    the floating unanchored parts around u will stop floating when a player is near but it will come back when they get far away again, this is due roblox's gay ass networkownershit
-]]
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local unanchoredparts = {}
 local movers = {}
