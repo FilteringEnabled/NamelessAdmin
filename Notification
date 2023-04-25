@@ -10,7 +10,7 @@ NotifGui.Parent = RunService:IsStudio() and Player.PlayerGui or game:GetService(
 
 local Container = Instance.new("Frame");
 Container.Name = "Container";
-Container.Position = UDim2.new(0.809, 20,0.93, -20);
+Container.Position = UDim2.new(0.774, 20,0.932, -20);
 Container.Size = UDim2.new(0, 278,0, 78);
 Container.BackgroundTransparency = 1;
 Container.Parent = NotifGui;
@@ -90,7 +90,7 @@ RunService:BindToRenderStep("UpdateList", 0, Update);
 
 local TitleSettings = {
 	Font = Enum.Font.SourceSansBold;
-	Size = 14;
+	Size = 26;
 }
 
 local DescriptionSettings = {
@@ -192,7 +192,7 @@ return {
 				Y += 8;
 			end
 			local NewLabel = Round2px();
-			NewLabel.Size = UDim2.new(1, 0, 0, Y);
+			NewLabel.Size = UDim2.new(0, 278,0, 78);
 			NewLabel.Position = UDim2.new(-1, 20, 0, CalculateBounds(CachedObjects).Y + (Padding * #CachedObjects));
 			if (Title) then
 				local NewTitle = TitleLabel(Title);
