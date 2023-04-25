@@ -90,7 +90,7 @@ RunService:BindToRenderStep("UpdateList", 0, Update);
 
 local TitleSettings = {
 	Font = Enum.Font.SourceSansBold;
-	Size = 26;
+	Size = 14;
 }
 
 local DescriptionSettings = {
@@ -192,7 +192,7 @@ return {
 				Y += 8;
 			end
 			local NewLabel = Round2px();
-			NewLabel.Size = UDim2.new(0, 278,0, 78);
+			NewLabel.Size = UDim2.new(1, 0, 0, Y);
 			NewLabel.Position = UDim2.new(-1, 20, 0, CalculateBounds(CachedObjects).Y + (Padding * #CachedObjects));
 			if (Title) then
 				local NewTitle = TitleLabel(Title);
