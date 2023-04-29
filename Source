@@ -9883,7 +9883,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.4)
+		wait(0.2)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -12192,7 +12192,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.4)
+		wait(0.2)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
