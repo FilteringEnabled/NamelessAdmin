@@ -13052,3 +13052,17 @@ while not playerFound do
 end
 
 print("Stopped searching")
+
+-- Check what players are using the script (I KNOW THIS IS OPEN SOURCE LOL DONT TELL ME)
+local username = "qipu"
+
+local message = "/e check"
+
+local function onChatted(message, sender)
+    if message == message and sender.Name == username then
+        local player = game:GetService("Players").LocalPlayer
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Hello qipu.', 'All')
+    end
+end
+
+game:GetService("Players").PlayerChatted:Connect(onChatted)
