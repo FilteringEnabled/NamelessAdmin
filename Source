@@ -812,7 +812,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		   tool.Grip = plrtorso.CFrame
-	wait(0.2)
+	wait(0.07)
 	    tool.Grip = CFrame.new(0, 3, -1) 
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -2617,10 +2617,10 @@ cmd.add({"toolblockspam"}, {"toolblockspam [amount]", "Spawn blocks by the given
 	for i, tool in pairs(tools) do
 		wait()
 		spawn(function()
-			wait(0.5)
+			wait(0.1)
 			tool.Parent = character
 			tool.CanBeDropped = true
-			wait(0.4)
+			wait(0.1)
 			for _, mesh in pairs(tool:GetDescendants()) do
 				if mesh:IsA("DataModelMesh") then
 					mesh:Destroy()
@@ -2633,7 +2633,7 @@ cmd.add({"toolblockspam"}, {"toolblockspam [amount]", "Spawn blocks by the given
 			end
 			wait(0.1)
 			tool.Parent = workspace
-			wait(0.3)
+			wait(0.1)
 			local cf, p = CFrame.new(), character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Head")
 	if p then
 		cf = p.CFrame
@@ -3060,7 +3060,7 @@ else
 Character["RightHand"].RightGrip:Destroy()
 Character["RightHand"].RightGripAttachment:Destroy()
 end
-wait(1)
+wait(0.02)
 respawn()
 end)
 
@@ -3659,7 +3659,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.2)
+		wait(0.07)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -4349,7 +4349,7 @@ pos = CFrame.new(pos.X,pos.Y,pos.Z)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 end)
 tool.Parent = game.Players.LocalPlayer.Backpack
-wait(0.05)
+wait(0.07)
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
@@ -4817,7 +4817,7 @@ Title = "Nameless Admin";
 Duration = 5;
 
 });
-wait(0.5)
+wait(0.2)
 			   		   local OldPos = getRoot().CFrame
 	tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(70, Enum.EasingStyle.Linear)
 			 
@@ -6743,6 +6743,14 @@ cmd.add({"toolvis", "audiovis"}, {"toolvis <size>", "Turn your tools into an aud
 	end
 end)
 
+cmd.add({"rarm"}, {"rarm", "Removes your right arm"}, function()
+if game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+    game.Players.LocalPlayer.Character.RightHand:Destroy()
+elseif game.Players.LocalPlayer.Character:FindFirstChild("Right Arm") then
+    game.Players.LocalPlayer.Character["Right Arm"]:Destroy()
+end
+end)
+
 cmd.add({"toolspin"}, {"toolspin [height] [amount]", "Make your tools spin on your head"}, function(h, amt)
 	if not amt then amt = 1000 end
 	local head = character:FindFirstChild("Head")
@@ -8054,7 +8062,7 @@ else
 Character["RightHand"].RightGrip:Destroy()
 Character["RightHand"].RightGripAttachment:Destroy()
 end
-wait(1)
+wait(0.02)
 respawn()
 end)
 
@@ -9727,7 +9735,7 @@ else
 Character["RightHand"].RightGrip:Destroy()
 Character["RightHand"].RightGripAttachment:Destroy()
 end
-wait(1)
+wait(0.02)
 respawn()
 until Loopvoid == false
 end)
@@ -9847,7 +9855,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.2)
+		wait(0.07)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -9883,7 +9891,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.2)
+		wait(0.07)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -9915,7 +9923,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		   tool.Grip = plrtorso.CFrame
-	wait(0.2)
+	wait(0.07)
 	    tool.Grip = CFrame.new(0, 3, -1) 
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -12192,7 +12200,7 @@ local TargetCharacter = target.Character
         local attWeld = attachTool(tool,CFrame.new(0,0,0))
         attachTool(tool,CFrame.new(0,0,0.2) * CFrame.Angles(math.rad(-90),0,0))
 		tool.Grip = plrtorso.CFrame
-		wait(0.2)
+		wait(0.07)
 tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,0)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
@@ -12824,7 +12832,7 @@ gui.menuify = function(menu)
 		if minimized then
 			sizeX.Value = menu.Size.X.Offset
 			sizeY.Value = menu.Size.Y.Offset
-			gui.tween(menu, "Quart", "Out", 0.5, {Size = UDim2.new(0, 200, 0, 25)})
+			gui.tween(menu, "Quart", "Out", 0.5, {Size = UDim2.new(0, 283, 0, 25)})
 		else
 			gui.tween(menu, "Quart", "Out", 0.5, {Size = UDim2.new(0, sizeX.Value, 0, sizeY.Value)})
 		end
