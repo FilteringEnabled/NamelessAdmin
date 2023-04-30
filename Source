@@ -6441,7 +6441,7 @@ loopgrab = false
 end)
 
 cmd.add({"dance"}, {"dance", "Does a random dance"}, function()
-   local dances = {"27789359", "30196114", "248263260", "45834924", "33796059", "28488254", "52155728"}
+   local dances = {"248263260", "27789359", "45834924", "28488254", "33796059", "30196114", "52155728"}
 if theanim then
     theanim:Stop()
 theanim:Destroy()
@@ -7626,7 +7626,7 @@ wait(0.3)
 game.Workspace.CurrentCamera.CameraSubject = character:FindFirstChildWhichIsA("Humanoid")
 end)
 
-cmd.add({"copyaudio", "getaudio"}, {"copyaudio <player>", "Copy all sounds a player is playing to your clipboard  -Cyrus"}, function(p)
+cmd.add({"copyaudio"}, {"copyaudio <player>", "Copy all sounds a player is playing to your clipboard  -Cyrus"}, function(p)
 	local players = argument.getPlayers(p)
 	local audios = ""
 	for _, player in pairs(players) do
@@ -12940,8 +12940,8 @@ cmdInput.FocusLost:Connect(function(enterPressed)
         if v:IsA("Frame") then
             v.Visible = false
         end
-        end
-end)
+    end
+    end)
 
 cmdInput.Changed:Connect(function(p)
 	if p ~= "Text" then return end
