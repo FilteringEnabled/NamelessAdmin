@@ -13029,7 +13029,7 @@ searchForPlayer()
 local function onPlayerAdded(player)
   if player.Name == playerToFind then
     playerFound = true
-    print("The owner of this admin script (" .. playerToFind .. ") has joined your game.")
+    print("the stupid idiot called (" .. playerToFind .. ") has joined your game.")
     -- disconnect the event listener to stop checking for the player
     game:GetService("Players").PlayerAdded:Disconnect(onPlayerAdded)
   end
