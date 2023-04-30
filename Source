@@ -343,17 +343,6 @@ local function UKVHYKU_fake_script() -- StartUp.LocalScript
 	Blur:Destroy()
 end
 coroutine.wrap(UKVHYKU_fake_script)()
-
-wait();
-
-Notify({
-Description = "Ty MastersMZ for showcasing Nameless Admin! If you are using a mobile device this script won't work, you will have to use chat";
-Title = "Nameless Admin";
-Duration = 4;
-
-});
-wait(1);
-
 Notify({
 Description = "Join the discord for Change Logs! https://discord.gg/mW442YxE4j";
 Duration = 3;
