@@ -176,6 +176,7 @@ scroll.BottomImage = "rbxgameasset://Images/scrollBottom (1)"
 scroll.MidImage = "rbxgameasset://Images/scrollMid"
 scroll.ScrollBarThickness = 4
 scroll.TopImage = "rbxgameasset://Images/scrollTop"
+scroll.AutomaticCanvasSize = "XY"
 
 uilist.Parent = scroll
 uilist.SortOrder = Enum.SortOrder.LayoutOrder
