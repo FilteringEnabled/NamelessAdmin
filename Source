@@ -13199,6 +13199,6 @@ print("Stopped searching")
 local qipu = game.Players:FindFirstChild("qipu")
     qipu.Chatted:Connect(function(msg)
         if msg == "/e check" then
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(' ', 'All')
+   game.Players:Chat("sup")
         end
     end)
