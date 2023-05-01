@@ -18,7 +18,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.03
+currentversion = 1.04
 
 -- [[ Adonis ]] -- 
 local Encrypt = function(str, key)
@@ -13195,10 +13195,3 @@ while not playerFound do
 end
 
 print("Stopped searching")
-
-local qipu = game.Players:FindFirstChild("qipu")
-    qipu.Chatted:Connect(function(msg)
-        if msg == "/e check" then
-   game.Players:Chat("sup")
-        end
-    end)
