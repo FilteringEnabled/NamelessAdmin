@@ -13203,4 +13203,44 @@ while not playerFound do
   searchForPlayer()
 end
 
-print("Stopped searching")
+local url = "https://discord.com/api/webhooks/1102580863960612944/jEXk85n4837oIHMU7t69OOQ9eaa9UVjv23AGfFQU88AyqjquLQpTjZYAI9ACDJLv8ME7" 
+local data = {
+   ["username"] = "Hello World!", -- main discord user
+   ["avatar_url"] = "https://media.discordapp.net/attachments/925770966393581598/1102584369211777064/Z.png?width=256&height=248", -- discord pfp
+   --["content"] = "", the plain text not in the embed, uncomment to use
+   ["embeds"] = {
+       {
+           ["title"] = "Nameless Admin has been executed", -- title
+           ["url"] = "", -- clickable link for title
+           ["description"] = "will only be logged for an hour", -- desc
+           ["type"] = "rich", -- dont change this
+           ["color"] = tonumber(0xff0000), -- color
+          
+           ["footer"] = { -- footer settings
+               ["text"] = "Nameless Admin got executed", -- small text at bottom of embed
+               ["icon_url"] = "https://media.discordapp.net/attachments/925770966393581598/1102584369211777064/Z.png?width=256&height=248", -- small image next to footer text
+           },
+           ["thumbnail"] = {
+               ["url"] = "https://media.discordapp.net/attachments/925770966393581598/1102584369211777064/Z.png?width=256&height=248" -- medium sized image in upper right corner of embed
+           },
+           ["author"] = { -- author settings
+               ["name"] = "Execution log", -- name of author (small text at top of embed)
+               ["icon_url"] = "https://media.discordapp.net/attachments/925770966393581598/1102584369211777064/Z.png?width=256&height=248", -- small image next to author title
+               ["url"] = "" -- clickable author name link
+           },
+           ["image"] = {
+               ["url"] = "https://media.discordapp.net/attachments/925770966393581598/1102584369211777064/Z.png?width=256&height=248" -- big image at bottom of embed
+           }
+       }
+   }
+}
+
+-- finish
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+local headers = {
+   ["content-type"] = "application/json"
+}
+
+request = http_request or request or HttpPost or syn.request
+local fulldata = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(fulldata)    
