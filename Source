@@ -5259,6 +5259,17 @@ cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
 end)
 
+cmd.add({"discord"}, {"discord", "discord server link"}, function()
+wait();
+
+Notify({
+Description = "discord.gg/mW442YxE4j";
+Title = "Nameless Admin";
+Duration = 15;
+
+});
+end)
+
 cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
      game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin | .gg/mW442YxE4j', 'All')
 end)
@@ -5268,8 +5279,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/m
 end)
 
 cmd.add({"removedn", "nodn", "nodpn"}, {"removedn (nodn, nodpn)", "Removes all display names"}, function()
-	
-
 
 wait();
 
