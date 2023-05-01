@@ -8654,6 +8654,15 @@ cmd.add({"glue"}, {"glue <player>", "Bangs the player by attaching to them"}, fu
 
 end)
 
+cmd.add({"unglue"}, {"unglue", "stops glueing"}, function()
+    	if bangLoop then
+		bangLoop = bangLoop:Disconnect()
+		bang:Stop()
+		bangAnim:Destroy()
+		bangDied:Disconnect()
+end
+end)
+
 cmd.add({"spook", "scare"}, {"spook <player> (scare)", "Teleports next to a player for a few seconds"}, function(...)
 
 LocalPlayer = game.Players.LocalPlayer
