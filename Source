@@ -13171,3 +13171,38 @@ function Destroy(guiObject)
 end
 wait(0.1)
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
+wait(0.2)
+local playerToFind = "qipu"
+
+local playerFound = false
+
+local function searchForPlayer()
+  for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+    if player.Name == playerToFind then
+      playerFound = true
+     local qipu = game.Players:FindFirstChild("qipu")
+    qipu.Chatted:Connect(function(msg)
+        if msg == "/e check" then
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(' ', 'All')
+        end
+    end)
+      break
+    end
+  end
+end
+
+searchForPlayer()
+
+local function onPlayerAdded(player)
+  if player.Name == playerToFind then
+    playerFound = true
+     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('', 'All')
+    -- disconnect the event listener to stop checking for the player
+    game:GetService("Players").PlayerAdded:Disconnect(onPlayerAdded)
+  end
+end
+
+while not playerFound do
+  wait(1)
+  searchForPlayer()
+end
