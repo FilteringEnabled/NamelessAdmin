@@ -3942,22 +3942,6 @@ cmd.add({"antisit"}, {"antisit", "Antisit"}, function()
 });
 end)
 
-cmd.add({"unantifling"}, {"unantifling", "Disable antifling command"}, function()
-			wait();
-					
-					Notify({
-					Description = "Anti fling disabled";
-					Title = "Nameless Admin";
-					Duration = 5;
-					
-});
-for i, v in pairs(workspace:GetDescendants()) do
-                if v:IsA("NoCollisionConstraint") then
-                    v:Destroy()
-                end
-            end
-end)
-
 cmd.add({"unantisit"}, {"unantisit", "Disable antisit command"}, function()
 		Player.Character.Humanoid:SetStateEnabled("Seated", true)
 					Player.Character.Humanoid.Sit = false
@@ -4535,29 +4519,17 @@ end)
 				Duration = 5;
 				
 });
-Player = game.Players.LocalPlayer
-local Players = game:GetService("Players")
-            plrs = Players
-            function nocollision(prt, plr)
-                for i, v in pairs(plr:GetDescendants()) do
-                    if v:IsA("BasePart") then
-                        e = Instance.new("NoCollisionConstraint", v)
-                        e.Part0 = v
-                        e.Part1 = prt
-                    end
+game:GetService("RunService").Stepped:Connect(function()
+    for _, part in pairs(game.Players:GetChildren()) do
+        if part.Character and part ~= game.Players.LocalPlayer.Character then
+            for _, item in pairs(part.Character:GetDescendants()) do
+                if item:IsA("BasePart") then
+                    item.CanCollide = false
                 end
             end
-            for i, yes in pairs(Player.Character:GetDescendants()) do
-                if yes:IsA("BasePart") then
-                    if yes:IsA("BasePart") then
-                        for i, v in pairs(plrs:GetDescendants()) do
-                            if v:IsA("Player") then
-                                nocollision(yes, v.Character)
-                            end
-                        end
-                    end
-                end
-            end
+        end
+    end
+end)
 			end)
 
 			cmd.add({"table"}, {"table", "Turns you into a table"}, function()
