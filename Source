@@ -3079,7 +3079,7 @@ end)
 
 cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, function(...)
 	Target = (...)
-				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
 local Backpack = Player:waitForChild("Backpack")
@@ -8052,7 +8052,7 @@ cmd.add({"headbring", "hbring"}, {"headbring <player> (headbring)", "Need an rth
 end)
 
 cmd.add({"headvoid", "hvoid"}, {"headvoid <player> (hvoid)", "Need an rthro head"}, function(...)
-					Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+					Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 
 	for i,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetChildren()) do
 		if string.find(v.Name,"Scale") and v.Name ~= "HeadScale" then
@@ -9202,7 +9202,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 				 game.Players.LocalPlayer.Character = c
 				 wait(game.Players.RespawnTime - 0.5)
 		 local TPlayer = getPlr(Target)
-			 Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+			 Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 						TRootPart = TPlayer.Character.HumanoidRootPart
 						local Character = Player.Character
 						local PlayerGui = Player:WaitForChild("PlayerGui")
@@ -9455,7 +9455,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 			loopvoid = true
 			Target = (...)
 			repeat wait(1)
-			Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+			Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
@@ -9534,7 +9534,7 @@ until loopvoid == false
 
 		cmd.add({"lvoid", "legvoid"}, {"lvoid <player> (legvoid)", "Leg resize void"}, function(...)
 				Target = (...)
-									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 						local Character = Player.Character
 						local PlayerGui = Player:waitForChild("PlayerGui")
@@ -9796,7 +9796,7 @@ cmd.add({"loopvoid", "loopv"}, {"loopvoid <player> (loopv)", "Voids the player"}
 		Loopvoid = true
 
 	repeat wait()
-				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-349,0)
+				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 				local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
 local Backpack = Player:waitForChild("Backpack")
