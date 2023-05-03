@@ -3076,6 +3076,35 @@ cmd.add({"vr", "clovr", "vrscript", "fevr"}, {"vr (clovr, vrscript, fevr)", "FE 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/CloVR"))();
 end)
 
+cmd.add({"flash"}, {"flash <player>", "Flashes the targets screen"}, function(...)
+            Username = (...)
+            Target = getPlr(Username)
+            
+            
+                local pooCF = CFrame.new(5616.67969, 37.0454788, -17259.5176, 0.999995291, -6.67297755e-08, 0.00300924503, 6.65793536e-08, 1, 5.00816135e-08, -0.00300924503, -4.98810273e-08, 0.999995291)
+                local oldCF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                local newHum = game.Players.LocalPlayer.Character.Humanoid:Clone()
+                newHum.Parent = game.Players.LocalPlayer.Character
+                game.Players.LocalPlayer.Character.Humanoid:Destroy()
+                local tool = game.Players.LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
+                tool.Handle.Massless = true
+                tool.Parent = game.Players.LocalPlayer.Character
+                wait()
+                firetouchinterest(tool.Handle, Target.Character['Head'],0)
+                repeat wait() until tool.Parent ~= game.Players.LocalPlayer.Character
+                for i= 1,35,1 do
+                print('pee'..i)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,9e+18,0)
+                wait(.05)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
+                wait(.05)
+                end
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
+                game.Players.LocalPlayer.CharacterAdded:Wait()
+                repeat wait(0) until game.Players.LocalPlayer.Character.HumanoidRootPart
+                wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
+end)
 
 cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, function(...)
 	Target = (...)
@@ -3217,32 +3246,27 @@ cmd.add({"annoy"}, {"annoy <player>", "Annoys the given player"}, function(...)
 end)
 
 cmd.add({"banish", "punish", "jail"}, {"punish <player> (banish, jail)", "Banishes the player using a void script, can make them not respawn if the game is old"}, function(...)
-	namelol = (...)
-user = getPlr(namelol)
-            plr = user.name
-            Target = plr
-            Player.Character.Humanoid.Name = 1
-            local l = Player.Character["1"]:Clone()
-            l.Parent = Player.Character
-            l.Name = "Humanoid"
-            task.wait()
-            Player.Character["1"]:Destroy()
-            game.Workspace.CurrentCamera.CameraSubject = Player.Character
-            Player.Character.Animate.Disabled = true
-            task.wait()
-            Player.Character.Animate.Disabled = false
-            for i, v in pairs(game:FindService "Players".LocalPlayer.Backpack:GetChildren()) do
-                Player.Character.Humanoid:EquipTool(v)
-            end
-            task.wait()
-            Player.Character.HumanoidRootPart.CFrame = Players[Target].Character.HumanoidRootPart.CFrame
-            task.wait()
-            Player.Character.HumanoidRootPart.CFrame = Players[Target].Character.HumanoidRootPart.CFrame
-            task.wait(0.7)
-            Player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-100000, 1000000000000000000000, -100000))
-            task.wait()
-			task.wait(4)
-			game.Players.LocalPlayer.Character.Humanoid.Health = 0
+   Username = (...)
+            Target = getPlr(Username)
+            
+            
+            local oldCF = LocalPlayer.Character.HumanoidRootPart.CFrame
+                local newHum = LocalPlayer.Character.Humanoid:Clone()
+                newHum.Parent = LocalPlayer.Character
+                LocalPlayer.Character.Humanoid:Destroy()
+                local tool = game.Players.LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
+                tool.Handle.Massless = true
+                tool.Parent = game.Players.LocalPlayer.Character
+                wait()
+                firetouchinterest(tool.Handle, Target.Character['Head'],0)
+                repeat wait() until tool.Parent ~= LocalPlayer.Character
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF * CFrame.Angles(math.rad(45),0,0)
+                wait(0.1)
+                            Player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-100000, 1000000000000000000000, -100000))
+                LocalPlayer.CharacterAdded:Wait()
+                repeat wait(0) until LocalPlayer.Character.HumanoidRootPart
+                wait(.5)
+                LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
 end)
 
 cmd.add({"sync"}, {"sync", "Syncs all in-game audios"}, function()
@@ -6491,6 +6515,33 @@ Sound:Play()
 Sound.Looped = true
     loadstring(game:HttpGet("https://raw.githubusercontent.com/specowos/specs-scripts/main/scripts/LOLHOO%20(fd).lua"))()
 end)
+
+cmd.add({"checkgrabber"}, {"checkgrabber", "Checks if anyone is using a grab tools script"}, function()
+  local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        local boombox = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Tool' or game.Players.LocalPlayer.Backpack:FindFirstChildOfClass'Tool'
+        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(1000))
+        boombox.Parent = game.Players.LocalPlayer.Character
+        wait(.3)
+        boombox.Parent = workspace
+        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(oldpos)
+        wait(.5)
+        if boombox.Parent == workspace then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(boombox)
+                wait(.3)
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+        else
+                wait(.2)
+                local grabber = game.Players:GetPlayerFromCharacter(boombox.Parent) or boombox.Parent.Parent
+                game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(grabber.Character.Head.CFrame + Vector3.new(0,3,0))
+                Notify({
+Description = "Player: " .. grabber.DisplayName.." [@"..grabber.Name.."] is grabbing";
+Duration = 3;
+
+});
+        end
+end)
+
+
 
 cmd.add({"loopgrabtools"}, {"loopgrabtools", "Loop grabs dropped tools"}, function()
     loopgrab = true
