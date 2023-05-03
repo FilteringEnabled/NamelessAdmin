@@ -9813,7 +9813,8 @@ Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 			loopvoid = true
 			Target = (...)
 			repeat wait(1)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+			Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-642,0)
+								loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
 local Backpack = Player:waitForChild("Backpack")
@@ -9860,23 +9861,29 @@ if firetouchinterest then
 		MainTool.Handle.AncestryChanged:wait()
 		flag = true
 	end)
+	end
 	repeat
 		firetouchinterest(MainTool.Handle, TRootPart, 0)
 		firetouchinterest(MainTool.Handle, TRootPart, 1)
-		wait()
-		Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 	until flag
+	Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 	wait(0.2)
 Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
-end
-wait(2)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(1.4)
 respawn()
 until loopvoid == false
 		end)
 
 		cmd.add({"lvoid", "legvoid"}, {"lvoid <player> (legvoid)", "Leg resize void"}, function(...)
 				Target = (...)
-					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
+				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-633,0)
+									loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 						local Character = Player.Character
 						local PlayerGui = Player:waitForChild("PlayerGui")
 						local Backpack = Player:waitForChild("Backpack")
@@ -9923,13 +9930,21 @@ until loopvoid == false
 								MainTool.Handle.AncestryChanged:wait()
 								flag = true
 							end)
+							end
 							repeat
 								firetouchinterest(MainTool.Handle, TRootPart, 0)
 								firetouchinterest(MainTool.Handle, TRootPart, 1)
 								wait()
-								Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 							until flag
-						end
+						Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+	wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 						wait(2)
 						respawn()
 		end)
