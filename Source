@@ -7456,6 +7456,7 @@ cmd.add({"toolfling", "push"}, {"toolfling (push)", "Tool fling"}, function(plr)
 end)
 
 cmd.add({"lfling"}, {"lfling <player>", "Fling the given player using leg resize"}, function(plr)
+OldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 local Character = game.Players.LocalPlayer.Character
 
 local Hum = {
@@ -7706,6 +7707,9 @@ for _,x in next, Targets do
    end
 end
 respawn()
+ player.CharacterAdded:wait(1)
+            repeat game:FindService("RunService").Heartbeat:wait() until Player.Character:FindFirstChild("HumanoidRootPart")
+            Player.Character.HumanoidRootPart.CFrame = OldCFrame
 end)
 
 cmd.add({"fling"}, {"fling <player>", "Fling the given player"}, function(plr)
