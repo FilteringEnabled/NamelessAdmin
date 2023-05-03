@@ -7481,7 +7481,7 @@ Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
 Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
 Character.LeftLowerLeg.LeftKneeRigAttachment:Destroy()
 Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
-for i=1,2 do
+for i=1,5 do
     Remove()
     Character.Humanoid[Hum[i]]:Destroy()
 end
