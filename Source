@@ -18,7 +18,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.05
+currentversion = 1.06
 
 -- [[ Adonis ]] -- 
 local Encrypt = function(str, key)
@@ -4057,6 +4057,40 @@ cmd.add({"unantisit"}, {"unantisit", "Disable antisit command"}, function()
 });
 end)
 
+cmd.add({"lay"}, {"lay", "zzzzzzzz"}, function()
+local Human = 	game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+	if not Human then
+		return
+	end
+	Human.Sit = true
+	task.wait(.04)
+	Human.RootPart.CFrame = Human.RootPart.CFrame * CFrame.Angles(math.pi * .5, 0, 0)
+	for _, v in ipairs(Human:GetPlayingAnimationTracks()) do
+		v:Stop()
+	end
+end)
+
+cmd.add({"fall"}, {"fall", "get up NOW"}, function()
+local Human = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+	if not Human then
+		return
+	end
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(math.pi * .5, 1000, 0)
+	Human.Sit = true
+	task.wait(0.01)
+
+local Human = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+	if not Human then
+		return
+	end
+	Human.Sit = true
+	task.wait(.1)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(math.pi * .5, 0, 0)
+	for _, v in ipairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
+		v:Stop()
+	end
+end)
+
 cmd.add({"sit"}, {"sit", "Sit your player"}, function()
 	local hum = character:FindFirstChildWhichIsA("Humanoid")
 	if hum then
@@ -5930,6 +5964,40 @@ cmd.add({"functionspy"}, {"functionspy", "Check console"}, function()
 	end
 	coroutine.wrap(PRML_fake_script)()	
 end)
+
+cmd.add({"cfly"}, {"cfly [speed]", "CFrame fly"}, function(...)
+CFspeed = (...)
+if CFspeed == nil then
+    CFspeed = 50
+    end
+	game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = true
+	local Head = game.Players.LocalPlayer.Character:WaitForChild("Head")
+	Head.Anchored = true
+	if CFloop then CFloop:Disconnect() end
+	CFloop = game:GetService("RunService").Heartbeat:Connect(function(deltaTime)
+		local moveDirection = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').MoveDirection * (CFspeed * deltaTime)
+		local headCFrame = Head.CFrame
+		local cameraCFrame = workspace.CurrentCamera.CFrame
+		local cameraOffset = headCFrame:ToObjectSpace(cameraCFrame).Position
+		cameraCFrame = cameraCFrame * CFrame.new(-cameraOffset.X, -cameraOffset.Y, -cameraOffset.Z + 1)
+		local cameraPosition = cameraCFrame.Position
+		local headPosition = headCFrame.Position
+
+		local objectSpaceVelocity = CFrame.new(cameraPosition, Vector3.new(headPosition.X, cameraPosition.Y, headPosition.Z)):VectorToObjectSpace(moveDirection)
+		Head.CFrame = CFrame.new(headPosition) * (cameraCFrame - cameraPosition) * CFrame.new(objectSpaceVelocity)
+	end)
+end)
+
+cmd.add({"uncfly"}, {"uncfly", "CFrame fly disabler"}, function()
+if CFloop then
+		CFloop:Disconnect()
+game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
+		local Head = game.Players.LocalPlayer.Character:WaitForChild("Head")
+		Head.Anchored = false
+end
+end)
+
+
 
 local flyPart
 cmd.add({"fly"}, {"fly [speed]", "Enable flight"}, function(...)
