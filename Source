@@ -3140,7 +3140,6 @@ end)
 
 cmd.add({"void"}, {"void <player>", "Kill the given players without FE god"}, function(...)
 	Target = (...)
-				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
 local Backpack = Player:waitForChild("Backpack")
@@ -3191,8 +3190,9 @@ repeat
 	firetouchinterest(MainTool.Handle, TRootPart, 0)
 	firetouchinterest(MainTool.Handle, TRootPart, 1)
 	wait()
-	Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 until flag
+				wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 else
 Player.Character.HumanoidRootPart.CFrame =
 TCharacter.HumanoidRootPart.CFrame
@@ -8434,8 +8434,6 @@ cmd.add({"headbring", "hbring"}, {"headbring <player> (headbring)", "Need an rth
 end)
 
 cmd.add({"headvoid", "hvoid"}, {"headvoid <player> (hvoid)", "Need an rthro head"}, function(...)
-					Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
-
 	for i,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetChildren()) do
 		if string.find(v.Name,"Scale") and v.Name ~= "HeadScale" then
 			repeat wait(HeadGrowSpeed) until game.Players.LocalPlayer.Character.Head:FindFirstChild("OriginalSize")
@@ -8495,27 +8493,11 @@ repeat
 	firetouchinterest(MainTool.Handle, TRootPart, 0)
 	firetouchinterest(MainTool.Handle, TRootPart, 1)
 	wait()
-	Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 until flag
-else
-Player.Character.HumanoidRootPart.CFrame =
-TCharacter.HumanoidRootPart.CFrame
-wait()
-Player.Character.HumanoidRootPart.CFrame =
-TCharacter.HumanoidRootPart.CFrame
-wait()
-Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
-wait()
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 end
-wait(.3)
-Player.Character:SetPrimaryPartCFrame(CF)
-if Humanoid.RigType == Enum.HumanoidRigType.R6 then
-Character["Right Arm"].RightGrip:Destroy()
-else
-Character["RightHand"].RightGrip:Destroy()
-Character["RightHand"].RightGripAttachment:Destroy()
-end
-wait(0.02)
+wait(2)
 respawn()
 end)
 
@@ -9584,7 +9566,6 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 				 game.Players.LocalPlayer.Character = c
 				 wait(game.Players.RespawnTime - 0.5)
 		 local TPlayer = getPlr(Target)
-			 Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 						TRootPart = TPlayer.Character.HumanoidRootPart
 						local Character = Player.Character
 						local PlayerGui = Player:WaitForChild("PlayerGui")
@@ -9624,13 +9605,8 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 								firetouchinterest(MainTool.Handle, TRootPart, 1)
 								wait()
 							until flag
-						else
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
+							wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 						end
 		 l.Parent = game.Players.LocalPlayer.Character
 		 l.Name = "Humanoid"
@@ -9837,7 +9813,6 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 			loopvoid = true
 			Target = (...)
 			repeat wait(1)
-			Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
@@ -9891,32 +9866,16 @@ if firetouchinterest then
 		wait()
 		Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 	until flag
-else
-	Player.Character.HumanoidRootPart.CFrame =
-	TCharacter.HumanoidRootPart.CFrame
-	wait()
-	Player.Character.HumanoidRootPart.CFrame =
-	TCharacter.HumanoidRootPart.CFrame
-	wait()
-	Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
-	wait()
+	wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 end
-wait(.3)
-Player.Character:SetPrimaryPartCFrame(CF)
-if Humanoid.RigType == Enum.HumanoidRigType.R6 then
-	Character["Right Arm"].RightGrip:Destroy()
-else
-	Character["RightHand"].RightGrip:Destroy()
-	Character["RightHand"].RightGripAttachment:Destroy()
-end
-wait(0.8)
+wait(2)
 respawn()
 until loopvoid == false
 		end)
 
 		cmd.add({"lvoid", "legvoid"}, {"lvoid <player> (legvoid)", "Leg resize void"}, function(...)
 				Target = (...)
-									Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 					loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 						local Character = Player.Character
 						local PlayerGui = Player:waitForChild("PlayerGui")
@@ -9970,25 +9929,8 @@ until loopvoid == false
 								wait()
 								Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 							until flag
-						else
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
-							Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
-							wait()
 						end
-						wait(.3)
-						Player.Character:SetPrimaryPartCFrame(CF)
-						if Humanoid.RigType == Enum.HumanoidRigType.R6 then
-							Character["Right Arm"].RightGrip:Destroy()
-						else
-							Character["RightHand"].RightGrip:Destroy()
-							Character["RightHand"].RightGripAttachment:Destroy()
-						end
-						wait(0.6)
+						wait(2)
 						respawn()
 		end)
 
@@ -10047,25 +9989,9 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/rob
 								wait()
 								Player.Character.HumanoidRootPart.CFrame = CF
 							until flag
-						else
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
-							Player.Character.HumanoidRootPart.CFrame =
-							TCharacter.HumanoidRootPart.CFrame
-							wait()
-							Player.Character.HumanoidRootPart.CFrame = CF
 							wait()
 						end
-						wait(.3)
-						Player.Character:SetPrimaryPartCFrame(CF)
-						if Humanoid.RigType == Enum.HumanoidRigType.R6 then
-							Character["Right Arm"].RightGrip:Destroy()
-						else
-							Character["RightHand"].RightGrip:Destroy()
-							Character["RightHand"].RightGripAttachment:Destroy()
-						end
-						wait(0.9)
+						wait(2)
 			respawn()
 						end
 		end)
@@ -10178,7 +10104,6 @@ cmd.add({"loopvoid", "loopv"}, {"loopvoid <player> (loopv)", "Voids the player"}
 		Loopvoid = true
 
 	repeat wait()
-				Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-649,0)
 				local Character = Player.Character
 local PlayerGui = Player:waitForChild("PlayerGui")
 local Backpack = Player:waitForChild("Backpack")
@@ -10231,25 +10156,10 @@ repeat
 	wait()
 	Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
 until flag
-else
-Player.Character.HumanoidRootPart.CFrame =
-TCharacter.HumanoidRootPart.CFrame
-wait()
-Player.Character.HumanoidRootPart.CFrame =
-TCharacter.HumanoidRootPart.CFrame
-wait()
-Player.Character.HumanoidRootPart.CFrame = CFrame.new(XC,-99,ZC)
-wait()
+wait(0.2)
+Player.Character.HumanoidRootPart.CFrame = CFrame.new(0,-1000,0)
 end
-wait(.3)
-Player.Character:SetPrimaryPartCFrame(CF)
-if Humanoid.RigType == Enum.HumanoidRigType.R6 then
-Character["Right Arm"].RightGrip:Destroy()
-else
-Character["RightHand"].RightGrip:Destroy()
-Character["RightHand"].RightGripAttachment:Destroy()
-end
-wait(0.02)
+wait(2)
 respawn()
 until Loopvoid == false
 end)
