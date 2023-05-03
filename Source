@@ -4619,6 +4619,7 @@ end)
 				
 });
 game:GetService("RunService").Stepped:Connect(function()
+    wait(8)
     for _, part in pairs(game.Players:GetChildren()) do
         if part.Character and part ~= game.Players.LocalPlayer.Character then
             for _, item in pairs(part.Character:GetDescendants()) do
