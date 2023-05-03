@@ -3245,6 +3245,19 @@ cmd.add({"annoy"}, {"annoy <player>", "Annoys the given player"}, function(...)
 		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
+cmd.add({"seat"}, {"seat", "Finds a seat and automatically sits on it"}, function()
+       local seats = {}
+        for i,v in next, game:GetDescendants() do
+                if v:IsA'Seat' then
+                        table.insert(seats, v)
+                end
+        end
+        wait(0.07)
+        for i=1, 8 do
+        seats[math.random(1, #seats)]:Sit(game.Players.LocalPlayer.Character.Humanoid)
+        end
+        end)
+
 cmd.add({"banish", "punish", "jail"}, {"punish <player> (banish, jail)", "Banishes the player using a void script, can make them not respawn if the game is old"}, function(...)
    Username = (...)
             Target = getPlr(Username)
