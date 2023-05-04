@@ -13478,7 +13478,7 @@ cmd.add({"countua", "countunanchoreed"}, {"countua (countunanchored)", "Counts a
 end)
 
 cmd.add({"httpspy"}, {"httspy", "HTTP Spy"}, function()
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/topitbopit/rblx/main/http_spy.lua'))()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/HttpSpy'))()
 end)
 
 cmd.add({"keystroke"}, {"keystroke", "Executes a keystroke ui script"}, function()
