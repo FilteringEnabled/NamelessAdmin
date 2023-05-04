@@ -20,87 +20,6 @@ local opt = {
 -- [[ Version ]] -- 
 currentversion = 1.06
 
--- [[ Adonis ]] -- 
-local Encrypt = function(str, key)
-    local byte = string.byte
-    local sub = string.sub
-    local char = string.char
-
-    local endStr = {}
-
-    for i = 1, #str do
-        local keyPos = (i % #key) + 1
-        endStr[i] = char(((byte(sub(str, i, i)) + byte(sub(key, keyPos, keyPos)))%126) + 1)
-    end
-
-    endStr = table.concat(endStr)
-    return endStr
-end
-
-local Require = function(received)
-    local client_loader = getcallingscript()
-    local client_values = received.Parent.Special
-    local client_remote = string.split(client_values.Value, "\\")[1]
-    local client_encode = string.split(client_values.Value, "\\")[2]
-    local client_module = received
-    local client_signal = Instance.new("BindableEvent")
-    local client_handle = nil
-
-    local client_args = {
-        Mode = "Fire",
-        Module = client_module,
-        Loader = client_loader,
-        Sent = 0,
-        Received = 0
-    }
-
-    client_remote = game:FindFirstChild(client_remote, true)
-
-    client_handle = client_remote.OnClientEvent:Connect(function(_, name, key)
-        if string.find(name, "GIVE_KEY") then
-            client_handle:Disconnect()
-            client_handle = nil
-            client_signal:Fire(key)
-            client_signal:Destroy()
-            client_signal = nil
-        end
-    end)
-
-    client_remote:FireServer(client_args, client_encode .. "GET_KEY")
-
-    client_signal.Event:Once(function(client_key)
-        local client_code = Encrypt("ClientCheck", client_key)
-
-        while true do
-            client_args.Sent = client_args.Sent + 1
-
-            local args = {
-                [1] = client_args,
-                [2] = client_code,
-                [3] = {
-                    Received = client_args.Received,
-                    Sent = client_args.Sent - 1
-                },
-                [4] = client_encode,
-                -- [5] = math.random()
-            }
-
-            client_remote:FireServer(unpack(args))
-            task.wait(3)
-        end
-    end)
-end
-
-
-local old
-old = hookfunction(getrenv().require, function(module, ...)
-    if module.Name == "Client" and module.Parent:FindFirstChild("Special") then
-        task.spawn(Require, module)
-        return coroutine.yield()
-    end
-    return old(module, ...)
-end)
-
 --[[ VARIABLES ]]--
 PlaceId, JobId = game.PlaceId, game.JobId
 local Players = game:GetService("Players")
@@ -1739,6 +1658,24 @@ end)
 cmd.add({"commands", "cmds"}, {"commands (cmds)", "Open the command list"}, function()
 	gui.commands()
 end)
+
+cmd.add({"rjre", "rejoinrefresh"}, {"rjre (rejoinrefresh)", "Rejoins and teleports you to the position where you were before"}, function()
+
+    queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+
+	
+	if not DONE then
+      DONE = true
+      local qot = print("a")
+      local hrp = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+      if hrp then
+        qot = "task.spawn(function() end) repeat wait() until game and game:IsLoaded() local lp = game:GetService('Players').LocalPlayer local char = lp.Character or lp.CharacterAdded:Wait() repeat char:WaitForChild('HumanoidRootPart').CFrame = CFrame.new("..tostring(hrp.CFrame)..") wait() until (Vector3.new("..tostring(hrp.Position)..") - char:WaitForChild('HumanoidRootPart').Position).Magnitude < 10"
+      end
+      queueteleport(qot)
+      game:GetService("TeleportService"):TeleportCancel()
+		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+    end
+		end)
 
 cmd.add({"rejoin", "rj"}, {"rejoin (rj)", "Rejoin the game"}, function()
 	game:GetService("TeleportService"):Teleport(game.PlaceId)
@@ -13996,39 +13933,46 @@ function Destroy(guiObject)
 	end
 end
 wait(0.1)
+
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
 wait(0.2)
-local playerToFind = "qipu"
+local ScreenGui = Instance.new("ScreenGui")
+local TextClickButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
 
-local playerFound = false
+--Properties:
 
-local function searchForPlayer()
-  for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-    if player.Name == playerToFind then
-      playerFound = true
-     local qipu = game.Players:FindFirstChild("qipu")
-    qipu.Chatted:Connect(function(msg)
-        if msg == "/e check" then
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(' ', 'All')
-        end
-    end)
-      break
-    end
-  end
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+TextClickButton.Parent = ScreenGui
+TextClickButton.BackgroundColor3 = Color3.fromRGB(4, 4, 4)
+TextClickButton.BackgroundTransparency = 1
+TextClickButton.Position = UDim2.new(0.48909232, 0, 0, 0)
+TextClickButton.Size = UDim2.new(0, 32, 0, 33)
+TextClickButton.Font = Enum.Font.SourceSansBold
+TextClickButton.Text = "NA"
+TextClickButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextClickButton.TextSize = 20.000
+TextClickButton.TextWrapped = true
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = TextClickButton
+
+for i=1, 86 do
+wait(0.004)
+TextClickButton.BackgroundTransparency -= 0.01
 end
 
-searchForPlayer()
-
-local function onPlayerAdded(player)
-  if player.Name == playerToFind then
-    playerFound = true
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('', 'All')
-    -- disconnect the event listener to stop checking for the player
-    game:GetService("Players").PlayerAdded:Disconnect(onPlayerAdded)
-  end
-end
-
-while not playerFound do
-  wait(1)
-  searchForPlayer()
-end
+TextClickButton.MouseButton1Click:Connect(function()
+	gui.barSelect()
+		cmdInput.Text = ''
+		cmdInput:CaptureFocus()
+		wait(0.00005)
+							cmdInput.Text = ''
+		for i=1,10 do
+		    wait(0.000051)
+		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
+		    end
+end)
