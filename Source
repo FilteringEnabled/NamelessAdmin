@@ -4536,8 +4536,8 @@ tool.Parent = Players.LocalPlayer.Backpack
 					end)
 
 			cmd.add({"dex"}, {"dex", "Using this you can see the parts / guis / scripts etc with this. A really good and helpful script."}, function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/wally-rblx/awesome-explorer/main/source.lua"))()
-			end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+end)
 		
 			cmd.add({"antikill"}, {"antikill", "Makes exploiters not be able to kill you"}, function()
 					Player.Character.Humanoid:SetStateEnabled("Seated", false)
