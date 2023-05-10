@@ -18,7 +18,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.06
+currentversion = 1.07
 
 --[[ VARIABLES ]]--
 PlaceId, JobId = game.PlaceId, game.JobId
