@@ -699,7 +699,15 @@ end
 
 --[ SCRIPT ]--
 cmd.add({"script", "ls", "s", "run"}, {"script <source> (ls, s, run)", "Run the code requested"}, function(source)
-	loadstring(source)()
+	loadstring(game:HttpGet(source))()
+end)
+
+cmd.add({"executor"}, {"executor", "Very simple executor"}, function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/executor"))()
+end)
+
+cmd.add({"scripthub"}, {"scripthub", "Thanks to scriptblox api"}, function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/ScriptHub"))()
 end)
 
 cmd.add({"stand"}, {"stand <player>", "Makes a player your stand"}, function(...)
