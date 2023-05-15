@@ -4967,6 +4967,54 @@ end)
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/qipurblx/Script/main/Gravity%20Gun"))()
 			end)
 
+            cmd.add({"flingnpcs"}, {"flingnpcs", "Flings NPCs"}, function()
+
+local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+          hum.HipHeight = 1024
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+            cmd.add({"voidnpcs"}, {"voidnpcs", "Voids NPCs"}, function()
+
+local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+          hum.HipHeight = -1024
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+cmd.add({"bringnpcs"}, {"bringnpcs", "Brings NPCs"}, function()
+
+local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            rootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        end      
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
 cmd.add({"controlnpcs", "cnpcs"}, {"controlnpcs (cnpcs)", "Keybind: CTRL + LEFTCLICK"}, function()
 	
 
