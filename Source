@@ -9203,19 +9203,63 @@ cmd.add({"unfollow", "unstalk", "unwalk", "unpathfind"}, {"unfollow", "Stop all 
 	lib.disconnect("follow")
 end)
 
-cmd.add({"fechat"}, {"fechat", "/e chat displayname"}, function()
+cmd.add({"bubblechat"}, {"bubblechat <player>", "fake chat as your target"}, function(...)
+	Players = game:GetService("Players")
+
+	local getPlr = function(Name)
+		if Name:lower() == "random" then
+			return Players:GetPlayers()[math.random(#Players:GetPlayers())]
+		else
+			Name = Name:lower():gsub("%s", "")
+			for _, x in next, Players:GetPlayers() do
+				if x.Name:lower():match(Name) then
+					return x
+				elseif x.DisplayName:lower():match("^" .. Name) then
+					return x
+				end
+			end
+		end
+	end
+	
+	for i,lplr in pairs(game:GetService("Players"):GetPlayers()) do
+		lplr.Character.Humanoid.DisplayName = lplr.DisplayName.."\n\@"..lplr.Name
+		lplr.Character.Humanoid.NameDisplayDistance = math.huge
+		lplr.CharacterAdded:Connect(function()
+			lplr.Humanoid.Character:WaitForChild("Humanoid").DisplayName = lplr.DisplayName.."\n\@"..lplr.Name
+			lplr.Character.Humanoid.NameDisplayDistance = math.huge
+		end)
+	end
+	
+	game:GetService("Players").PlayerAdded:Connect(function(lplr)
+		repeat
+			wait()
+		until lplr.Character ~= nil
+		lplr.Character:WaitForChild("Humanoid").DisplayName = lplr.DisplayName.."\n\@"..lplr.Name
+		lplr.Character.Humanoid.NameDisplayDistance = math.huge
+		lplr.CharacterAdded:Connect(function()
+			lplr.Character:WaitForChild("Humanoid").DisplayName = lplr.DisplayName.."\n\@"..lplr.Name
+			lplr.Character.Humanoid.NameDisplayDistance = math.huge
+		end)
+	end)
+	
+	players = game:GetService("Players")
+	local_player = players.LocalPlayer
+	character = local_player.Character
+	
+	character.LowerTorso.Root:Destroy()
+	
+	victim = nil
 	
 	
-	
-	wait();
-	
-	Notify({
-	Description = "FEChat enabled, /e chat displayname to use";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-});
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/scripts/main/FE%20chat%20for%20someone.Lua"))()
+	Username = (...)
+	Target = getPlr(Username)
+					victim = Target.Character
+	character.HumanoidRootPart.CanCollide = false
+	while task.wait() do
+		if victim ~= nil then
+			character.HumanoidRootPart.CFrame = CFrame.new(victim.Head.CFrame.Position)
+		end
+	end	
 end)
 
 cmd.add({"translatechat"}, {"translatechat", "translates the chat using google translate api"}, function()
