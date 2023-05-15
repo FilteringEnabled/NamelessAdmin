@@ -13628,6 +13628,23 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/mgamingpro/HomebrewA
     cmd.add({"fatesadmin"}, {"fatesadmin", "Executes fates admin"}, function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
     end)
+
+ cmd.add({"savetools", "stools"}, {"savetools (stools)", "puts your tools in players.localplayer"}, function()
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    if (v:IsA("Tool")) then
+        v.Parent = game.Players.LocalPlayer
+    end
+end
+end)
+
+ cmd.add({"loadtools", "ltools"}, {"loadtools (ltools)", "puts your tools back in the backpack"}, function()
+for _,v in pairs(game.Players.LocalPlayer:GetChildren()) do
+    if (v:IsA("Tool")) then
+        v.Parent = game.Players.LocalPlayer.Backpack
+    end
+end
+end)
+
     
     cmd.add({"grabtools", "gt"}, {"grabtools", "Grabs any dropped tools"}, function()
 		local p = game:GetService("Players").LocalPlayer
@@ -14554,4 +14571,3 @@ TextClickButton.MouseButton1Click:Connect(function()
 		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
-
