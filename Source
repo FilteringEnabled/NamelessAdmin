@@ -5875,14 +5875,7 @@ TeleportService:TeleportToPlaceInstance(game.PlaceId,id)
 end)
 
 cmd.add({"serverhop", "shop"}, {"serverhop (shop)", "Serverhop"}, function()
-	rejoining = true
-	if syn.queue_on_teleport then
-		syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
-	end
-	
-
-
-wait();
+				wait();
 
 Notify({
 Description = "Searching";
@@ -5890,33 +5883,25 @@ Title = "Nameless Admin";
 Duration = 5;
 
 });
-local Decision = fast
-	local GUIDs = {}
-	local maxPlayers = 0
-	local pagesToSearch = 100
-	if Decision == "fast" then pagesToSearch = 5 end
-	local Http = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="))
-	for i = 1,pagesToSearch do
-		for i,v in pairs(Http.data) do
-			if v.playing ~= v.maxPlayers and v.id ~= game.JobId then
-				maxPlayers = v.maxPlayers
-				table.insert(GUIDs, {id = v.id, users = v.playing})
-			end
-		end
-		
-
-
-wait();
-
-Notify({
+				local Number = 0
+				local SomeSRVS = {}
+				for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+					if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+						if v.playing > Number then
+							Number = v.playing
+							SomeSRVS[1] = v.id
+						end
+					end
+				end
+				if #SomeSRVS > 0 then
+				Notify({
 Description = "Searched, please wait while we are teleporting you";
 Title = "Nameless Admin";
 Duration = 5;
 
 });
-		if Http.nextPageCursor ~= null then Http = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100&cursor="..Http.nextPageCursor)) else break end
-	end
-	game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, GUIDs[math.random(1,#GUIDs)].id, cmdlp)
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, SomeSRVS[1])
+				end
 end)
 
 cmd.add({"functionspy"}, {"functionspy", "Check console"}, function()
