@@ -13842,43 +13842,47 @@ end
 end)
 
 cmd.add({"tpua", "bringua"}, {"tpua <player> (bringua)", "brings every unanchored part on the map"}, function(...)
-	
-	
-	
+	local heartbeat = game:GetService("RunService").Heartbeat
+spawn(function()
+    while true do heartbeat:Wait()
+            game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+            sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.pow(math.huge,math.huge)*math.huge)
+            game:GetService("RunService").Stepped:wait()
+end
+end)
+
+execute = function(name)
+    for index, part in pairs(game:GetDescendants()) do
+    if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false and part:IsDescendantOf(game.Players.LocalPlayer.Character) == false and part.Name == "Torso" == false and part.Name == "Head" == false and part.Name == "Right Arm" == false and part.Name == "Left Arm" == false and part.Name == "Right Leg" == false and part.Name == "Left Leg" == false and part.Name == "HumanoidRootPart" == false then --// Checks Part Properties
+    part.CFrame = CFrame.new(game.workspace[name].Head.Position) --TP Part To User
+    if spam == true and part:FindFirstChild("BodyGyro") == nil then
+    local bodyPos = Instance.new("BodyPosition")
+    bodyPos.Position = part.Position
+    bodyPos.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bodyPos.P = 1e6
+    bodyPos.Parent = part
+    end
+    end
+    end
+
+
+
+end
+
+User = (...)
+Target = getPlr(User)
+TargetName = Target.Name
+
+execute(TargetName)
 	wait();
 	
 	Notify({
-	Description = "Tping unanchored parts to the player, if it doesnt teleport walk over to the unanchored part";
+	Description = "Unanchored parts have been teleported to " .. TargetName .. "" ;
 	Title = "Nameless Admin";
 	Duration = 5;
 	
 });
-	frozenParts = {}
 
-	Username = (...)
-		if sethidden then
-			local players = getPlr(Username)
-				local Forces = {}
-				for _,part in pairs(workspace:GetDescendants()) do
-					if players.Character:FindFirstChild('Head') and part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false and not part:IsDescendantOf(game.Players.LocalPlayer.Character) and part.Name == "Torso" == false and part.Name == "Head" == false and part.Name == "Right Arm" == false and part.Name == "Left Arm" == false and part.Name == "Right Leg" == false and part.Name == "Left Leg" == false and part.Name == "HumanoidRootPart" == false then
-						for i,c in pairs(part:GetChildren()) do
-							if c:IsA("BodyPosition") or c:IsA("BodyGyro") then
-								c:Destroy()
-							end
-						end
-						local ForceInstance = Instance.new("BodyPosition")
-						ForceInstance.Parent = part
-						ForceInstance.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-						table.insert(Forces, ForceInstance)
-						if not table.find(frozenParts,part) then
-							table.insert(frozenParts,part)
-						end
-					end
-				end
-				for i,c in pairs(Forces) do
-					c.Position = players.Character.Head.Position
-				end
-		end
 	end)
 
 	cmd.add({"freezeua", "thawua"}, {"freezeua (thawua)", "freezes every unanchored part on the map"}, function()
@@ -14016,11 +14020,6 @@ for _,part in pairs(workspace:GetDescendants()) do
 	end
 	end
 end)
-
-cmd.add({"uagui", "unanchoredgui"}, {"uagui (unanchoreedgui)", "Unanchored gui"}, function()
-	loadstring(game:HttpGet("https://pastebin.com/raw/WkZwcGjf", true))()
-	end)
-
 
 cmd.add({"countua", "countunanchoreed"}, {"countua (countunanchored)", "Counts all unanchored parts in the console"}, function()
 	b = 0
