@@ -56,6 +56,7 @@ Looptornado = false
 Loopmute = false
 Loopglitch = false
 Watch = false
+local Admin = {}
 
 -- [[ HAT ORBIT ]]
 local Offset = 10
@@ -275,9 +276,9 @@ end)
 		end
 	end
 	
-	function getRoot(char)
-	local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
-	return rootPart
+	function getRoot(character)
+	local root = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
+	return root
 end
 
 local getPlr = function(Name)
@@ -296,13 +297,9 @@ local getPlr = function(Name)
 end
 
 plr = game.Players.LocalPlayer
-
 COREGUI = game:GetService("CoreGui")
-
 speaker = game.Players.LocalPlayer
-
 char = plr.Character
-
 RunService = game:GetService("RunService")
 
 game:GetService('RunService').Stepped:connect(function()
@@ -5650,9 +5647,56 @@ Duration = 15;
 });
 end)
 
-cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function()
-     game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Nameless Admin | .gg/mW442YxE4j', 'All')
+cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function(...)
+
+	function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
+	end
+	local Player = getPlr(...)
+	if Player ~= nil and not Admin[Player.UserId] then
+		Admin[Player.UserId] = {Player = Player}
+		ChatMessage("/w "..Player.Name.." [Nameless Admin] You've got admin. Prefix: ';'")
+		wait(0.2)
+		ChatMessage("/w "..Player.Name.." [Nameless Admin Commands] glue, unglue, fling, fling2, spinfling, unspinfling, fcd, fti, fpp, fireremotes, holdhat")
+		ChatMessage("/w "..Player.Name.." reset, commitoof, seizure, unseizure, toolorbit, lay, fall, toolspin, hatspin, sit, joke, kanye")
+
+		Notify({
+			Description = "" .. Player.Name .. " has now been whitelisted to use commands";
+			Title = "Nameless Admin";
+			Duration = 15;
+			
+			});
+	else
+		Notify({
+			Description = "No player found";
+			Title = "Nameless Admin";
+			Duration = 15;
+			
+			});
+	end
 end)
+
+cmd.add({"unadmin"}, {"unadmin <player>", "removes someone from being admin"}, function(...)
+	function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
+	end
+	local Player = getPlr(...)
+			if Player ~= nil and Admin[Player.UserId] then
+				Admin[Player.UserId] = nil
+				ChatMessage("/w "..Player.Name.." You can no longer use commands")
+					Notify({
+				Description = "" .. Player.Name .. " is no longer an admin";
+				Title = "Nameless Admin";
+				Duration = 15;
+				
+				});
+			else
+						Notify({
+				Description = "Player not found";
+				Title = "Nameless Admin";
+				Duration = 15;
+				
+				});
+			end
+	end)
 
 cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/2016MODE"))()
@@ -13946,6 +13990,29 @@ localPlayer.Chatted:Connect(function(str)
 	lib.parseCommand(str)
 end)
 
+-- [[ Admin Player]]
+function AdminChatted(Message, Player)
+	Player.Chatted:Connect(function(Message, Player)
+		lib.parseCommand(Message, Player)
+	end)
+end
+
+function CheckPermissions(Player)
+	Player.Chatted:Connect(function(Message)
+		if Admin[Player.UserId] then
+			AdminChatted(Message, Player)
+		end
+	end)
+end
+Players.PlayerAdded:Connect(function(Player)
+	CheckPermissions(Player)
+end)
+for i,v in pairs(Players:GetPlayers()) do
+	if v ~= LocalPlayer then
+		CheckPermissions(v)
+	end
+end
+
 --[[ GUI VARIABLES ]]--
 local ScreenGui
 if not RunService:IsStudio() then
@@ -14411,3 +14478,4 @@ TextClickButton.MouseButton1Click:Connect(function()
 		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
+
