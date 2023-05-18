@@ -9,8 +9,18 @@ end -- executes when game has loaded
 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
 local Notify = AkaliNotif.Notify;
 
+if not isfolder('Nameless-Admin') then
+makefolder('Nameless-Admin')
+else
+end
+
+if not isfile("Nameless-Admin\\Prefix.txt") then
+writefile("Nameless-Admin\\Prefix.txt", ';')
+else
+end
+
 local opt = {
-	prefix = ';',			-- change ';' to anything u want the prefix to be
+	prefix = readfile("Nameless-Admin\\Prefix.txt", ';'),			-- change ';' to anything u want the prefix to be
 	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
 	ui = {					-- never did anything with this
 		
@@ -753,6 +763,132 @@ end)
 
 cmd.add({"httpget", "hl", "get"}, {"httpget <url> (hl, get)", "Run the contents of a given URL"}, function(url)
 	loadstring(game:HttpGet(url, true))()
+end)
+
+alreadyantilag = false
+cmd.add({"lag"}, {"lag <player>", "Chat lag"}, function(...)
+
+	-- anti lag
+	if alreadyantilag == false then
+	local Players = game:GetService("Players")
+	
+	local Player = Players.LocalPlayer
+	local PlayerGui = Player.PlayerGui
+	
+	local Chat = PlayerGui:FindFirstChild("Chat") 
+	local MessageDisplay = Chat and Chat:FindFirstChild("Frame_MessageLogDisplay", true)
+	local Scroller = MessageDisplay and MessageDisplay:FindFirstChild("Scroller")
+	
+	local Gsub = string.gsub
+	local Lower = string.lower
+	
+	if not Scroller then return end
+	
+	for _, x in next, Scroller:GetChildren() do
+		local MessageTextLabel = x:FindFirstChildWhichIsA("TextLabel")
+			
+		if MessageTextLabel then
+			local Message = Gsub(MessageTextLabel.Text, "^%s+", "")
+			
+			if Message:match(" ") then
+				x:Destroy()
+			end
+		end
+	end
+	
+	local ChatAdded = Scroller.ChildAdded:Connect(function(x)
+		local MessageTextLabel = x:FindFirstChildWhichIsA("TextLabel")
+		local SenderTextButton = MessageTextLabel and MessageTextLabel:FindFirstChildWhichIsA("TextButton")
+		if MessageTextLabel and SenderTextButton then
+			repeat task.wait() until not MessageTextLabel.Text:match("__+")
+			local Message = Gsub(MessageTextLabel.Text, "^%s+", "")
+			
+			if Message:match(" ") then
+				x:Destroy()
+			end
+		end
+	end)
+	alreadyantilag = true
+else
+end
+
+	-- the lag itself
+	Target = (...)
+	TargetName = getPlr(Target).Name
+	
+	local Message = "HELP" 
+	local Unicode = " "
+	MSG = Message .. Unicode:rep(160 - #Message)
+	
+	if Target == "all" or Target == "others" then
+		for i = 1, 5 do
+			game:GetService("ReplicatedStorage"):FindFirstChild("SayMessageRequest", true):FireServer(MSG, "All")
+			wait(0.1)
+		end
+	else
+		for i = 1, 5 do
+			game:GetService("ReplicatedStorage"):FindFirstChild("SayMessageRequest", true):FireServer("/w " .. TargetName .. " " .. MSG, "All")
+			wait(0.1)
+		end
+	end
+end)
+
+cmd.add({"prefix"}, {"prefix <prefix>", "Changes the admin prefix"}, function(...)
+PrefixChange = (...)
+
+if PrefixChange == nil then
+Notify({
+Description = "Please enter a valid prefix";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+elseif PrefixChange == "p" or PrefixChange == "[" or PrefixChange == "P" then
+	Notify({
+		Description = "idk why but this prefix breaks changing the prefix so pick smthing else alr?";
+		Title = "Nameless Admin";
+		Duration = 5;
+		
+		});
+	else
+opt.prefix = PrefixChange
+Notify({
+Description = "Prefix set to " .. PrefixChange .. "";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+end
+end)
+
+
+cmd.add({"saveprefix"}, {"saveprefix <prefix>", "Saves the prefix to what u want"}, function(...)
+PrefixChange = (...)
+
+if PrefixChange == nil then
+Notify({
+Description = "Please enter a valid prefix";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+elseif PrefixChange == "p" or PrefixChange == "[" or PrefixChange == "P" then
+	Notify({
+		Description = "idk why but this prefix breaks changing the prefix so pick smthing else alr?";
+		Title = "Nameless Admin";
+		Duration = 5;
+		
+		});
+	else
+writefile("Nameless-Admin\\Prefix.txt", PrefixChange)
+opt.prefix = PrefixChange
+Notify({
+Description = "Prefix saved to '" .. PrefixChange .. "'";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+end
 end)
 
 --[ UTILITY ]--
@@ -10132,19 +10268,41 @@ local Chat = game:GetService('Players').LocalPlayer.Chatted
 end)
 
 cmd.add({"cbring", "clientbring"}, {"clientbring <player> (cbring)", "Brings the player on your client"}, function(...)
-Username = (...)
+	Username = (...)
 
-target = getPlr(Username)
-
-	bringc[target] = game:GetService("RunService").RenderStepped:Connect(function()
-				if target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-target.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3
-				end
-end)
+	if connections["noclip"] then lib.disconnect("noclip") return end
+	lib.connect("noclip", RunService.Stepped:Connect(function()
+		if not character then return end
+		for i, v in pairs(character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.CanCollide = false
+			end
+		end
+	end))
+	
+	if Username == "all" or Username == "others" then
+		bringc = game:GetService("RunService").RenderStepped:Connect(function()
+			for i, target in pairs(game:GetService("Players"):GetChildren()) do
+			if target.Name == game.Players.LocalPlayer.Name then
+			else
+			target.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 5
+			end
+			end
+			end)
+	else
+	target = getPlr(Username)
+	
+		bringc = game:GetService("RunService").RenderStepped:Connect(function()
+					if target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
+	target.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3
+					end
+	end)
+	end
 end)
 
 cmd.add({"uncbring", "unclientbring"}, {"unclientbring (uncbring)", "Disable Client bring command"}, function()
-			bringc[target]:Disconnect()
+	bringc:Disconnect()
+	if connections["noclip"] then lib.disconnect("noclip") return end
 end)
 
 	cmd.add({"mute", "muteboombox"}, {"mute <player> (muteboombox)", "Mutes the players boombox"}, function(...)
@@ -12154,9 +12312,10 @@ workspace.CurrentCamera:remove()
 	speaker.Character.Head.Anchored = false
 end)
 
-cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(...)
+cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(h, d)
 	
-
+Username = h
+Plr = getPlr(h)
 
 wait();
 
@@ -12166,56 +12325,59 @@ Title = "Nameless Admin";
 Duration = 5;
 
 });
-	_G.HeadSize = (...)
+	_G.HeadSize = d
 	_G.Disabled = true
 	
-	game:GetService('RunService').RenderStepped:connect(function()
-	if _G.Disabled then
-	for i,v in next, game:GetService('Players'):GetPlayers() do
-	if v.Name ~= game:GetService('Players').LocalPlayer.Name then
-	pcall(function()
-	v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
-	v.Character.HumanoidRootPart.Transparency = 0.7
-	v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
-	v.Character.HumanoidRootPart.Material = "Neon"
-	v.Character.HumanoidRootPart.CanCollide = false
-	end)
+
+	if Username == "all" or Username == "others" then
+		if _G.Disabled then
+		for i,v in next, game:GetService('Players'):GetPlayers() do
+		if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+		v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+		v.Character.HumanoidRootPart.Transparency = 0.7
+		v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+		v.Character.HumanoidRootPart.Material = "Neon"
+		v.Character.HumanoidRootPart.CanCollide = false
+		end
 	end
-	end
-	end
-	end)
+end
+else
+		if _G.Disabled then
+		Plr.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+		Plr.Character.HumanoidRootPart.Transparency = 0.7
+		Plr.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+		Plr.Character.HumanoidRootPart.Material = "Neon"
+		Plr.Character.HumanoidRootPart.CanCollide = false
+end
+end
 end)
 
-cmd.add({"unhitbox", "unhbox"}, {"unhitbox", "Disables hitbox"}, function(...)
+
+cmd.add({"unhitbox", "unhbox"}, {"unhitbox", "Disables hitbox"}, function(h)
+	Username = h
+	Plr = getPlr(h)
+
+		_G.HeadSize = 5
+		_G.Disabled = false
+		
 	
-
-
-wait();
-
-Notify({
-Description = "Hitbox disabled";
-Title = "Nameless Admin";
-Duration = 5;
-
-});
-	_G.HeadSize = 0
-	_G.Disabled = false
-	
-	game:GetService('RunService').RenderStepped:connect(function()
-	if _G.Disabled then
-	for i,v in next, game:GetService('Players'):GetPlayers() do
-	if v.Name ~= game:GetService('Players').LocalPlayer.Name then
-	pcall(function()
-	v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
-	v.Character.HumanoidRootPart.Transparency = 0.7
-	v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
-	v.Character.HumanoidRootPart.Material = "Neon"
-	v.Character.HumanoidRootPart.CanCollide = false
-	end)
+		if Username == "all" or Username == "others" then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+			if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+			v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+			v.Character.HumanoidRootPart.Transparency = 1
+			v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+			v.Character.HumanoidRootPart.Material = "Neon"
+			v.Character.HumanoidRootPart.CanCollide = false
+			end
 	end
+	else
+			Plr.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+			Plr.Character.HumanoidRootPart.Transparency = 1
+			Plr.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+			Plr.Character.HumanoidRootPart.Material = "Neon"
+			Plr.Character.HumanoidRootPart.CanCollide = false
 	end
-	end
-	end)
 end)
 
 cmd.add({"breakcars", "bcars"}, {"breakcars (bcars)", "Breaks any car"}, function()
@@ -13266,166 +13428,153 @@ end
 end)
 
 cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or something"}, function()
---[[Invisibility Toggle
+	Keybind = "E"
 
-You can find the orginal concept here: https://v3rmillion.net/showthread.php?tid=544634
-
-This method clones the character locally, teleports the real character to a safe location, then sets the character to the clone.
-Basically, your real character is in the sky while you are on the ground.
-
-
-Because of the way this works, games with a decent anti-cheat will fuck this up.
-If you turn it off, you have to go to a safe place before going invisible.
-
-Written by: BitingTheDust ; https://v3rmillion.net/member.php?action=profile&uid=1628149
-]]
---Settings:
-local ScriptStarted = false
-local Keybind = "E" --Set to whatever you want, has to be the name of a KeyCode Enum.
-local Transparency = true --Will make you slightly transparent when you are invisible. No reason to disable.
-local NoClip = false --Will make your fake character no clip.
-
-local Player = game:GetService("Players").LocalPlayer
-local RealCharacter = Player.Character or player.CharacterAdded:wait(1)
-
-local IsInvisible = false
-
-RealCharacter.Archivable = true
-local FakeCharacter = RealCharacter:Clone()
-local Part
-Part = Instance.new("Part", workspace)
-Part.Anchored = true
-Part.Size = Vector3.new(200, 1, 200)
-Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
-Part.CanCollide = true
-FakeCharacter.Parent = workspace
-FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
-
-for i, v in pairs(RealCharacter:GetChildren()) do
-  if v:IsA("LocalScript") then
-      local clone = v:Clone()
-      clone.Disabled = true
-      clone.Parent = FakeCharacter
-  end
-end
-if Transparency then
-  for i, v in pairs(FakeCharacter:GetDescendants()) do
-      if v:IsA("BasePart") then
-          v.Transparency = 0.7
-      end
-  end
-end
-local CanInvis = true
-function RealCharacterDied()
-  CanInvis = false
-  RealCharacter:Destroy()
-  RealCharacter = Player.Character
-  CanInvis = true
-  isinvisible = false
-  FakeCharacter:Destroy()
-  workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
-
-  RealCharacter.Archivable = true
-  FakeCharacter = RealCharacter:Clone()
-  Part:Destroy()
-  Part = Instance.new("Part", workspace)
-  Part.Anchored = true
-  Part.Size = Vector3.new(200, 1, 200)
-  Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
-  Part.CanCollide = true
-  FakeCharacter.Parent = workspace
-  FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
-
-  for i, v in pairs(RealCharacter:GetChildren()) do
-      if v:IsA("LocalScript") then
-          local clone = v:Clone()
-          clone.Disabled = true
-          clone.Parent = FakeCharacter
-      end
-  end
-  if Transparency then
-      for i, v in pairs(FakeCharacter:GetDescendants()) do
-          if v:IsA("BasePart") then
-              v.Transparency = 0.7
-          end
-      end
-  end
- RealCharacter.Humanoid.Died:Connect(function()
- RealCharacter:Destroy()
- FakeCharacter:Destroy()
- end)
- Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
-end
-RealCharacter.Humanoid.Died:Connect(function()
- RealCharacter:Destroy()
- FakeCharacter:Destroy()
- end)
-Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
-local PseudoAnchor
-game:GetService "RunService".RenderStepped:Connect(
-  function()
-      if PseudoAnchor ~= nil then
-          PseudoAnchor.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
-      end
-       if NoClip then
-      FakeCharacter.Humanoid:ChangeState(11)
-       end
-  end
-)
-
-PseudoAnchor = FakeCharacter.HumanoidRootPart
-local function Invisible()
-  if IsInvisible == false then
-      local StoredCF = RealCharacter.HumanoidRootPart.CFrame
-      RealCharacter.HumanoidRootPart.CFrame = FakeCharacter.HumanoidRootPart.CFrame
-      FakeCharacter.HumanoidRootPart.CFrame = StoredCF
-      RealCharacter.Humanoid:UnequipTools()
-      Player.Character = FakeCharacter
-      workspace.CurrentCamera.CameraSubject = FakeCharacter.Humanoid
-      PseudoAnchor = RealCharacter.HumanoidRootPart
-      for i, v in pairs(FakeCharacter:GetChildren()) do
-          if v:IsA("LocalScript") then
-              v.Disabled = false
-          end
-      end
-
-      IsInvisible = true
-  else
-      local StoredCF = FakeCharacter.HumanoidRootPart.CFrame
-      FakeCharacter.HumanoidRootPart.CFrame = RealCharacter.HumanoidRootPart.CFrame
-     
-      RealCharacter.HumanoidRootPart.CFrame = StoredCF
-     
-      FakeCharacter.Humanoid:UnequipTools()
-      Player.Character = RealCharacter
-      workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
-      PseudoAnchor = FakeCharacter.HumanoidRootPart
-      for i, v in pairs(FakeCharacter:GetChildren()) do
-          if v:IsA("LocalScript") then
-              v.Disabled = true
-          end
-      end
-      IsInvisible = false
-  end
-end
-
-game:GetService("UserInputService").InputBegan:Connect(
-  function(key, gamep)
-      if gamep then
-          return
-      end
-      if key.KeyCode.Name:lower() == Keybind:lower() and CanInvis and RealCharacter and FakeCharacter then
-          if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
-              Invisible()
-          end
-      end
-  end
-)
-local Sound = Instance.new("Sound",game:GetService("SoundService"))
-Sound.SoundId = "rbxassetid://232127604"
-Sound:Play()
+	local CS = game:GetService("CollectionService")
+	local UIS = game:GetService("UserInputService")
 	
-
+	if invisRunning then return end
+		invisRunning = true
+		-- Full credit to AmokahFox @V3rmillion
+		local Player = game.Players.LocalPlayer
+		repeat wait(.1) until game.Players.LocalPlayer.Character
+		local Character = game.Players.LocalPlayer.Character
+		Character.Archivable = true
+		local IsInvis = false
+		local IsRunning = true
+		local InvisibleCharacter = Character:Clone()
+		InvisibleCharacter.Parent = game.Lighting
+		local Void = workspace.FallenPartsDestroyHeight
+		InvisibleCharacter.Name = ""
+		local CF
+	
+		local invisFix = game:GetService("RunService").Stepped:Connect(function()
+			pcall(function()
+				local IsInteger
+				if tostring(Void):find'-' then
+					IsInteger = true
+				else
+					IsInteger = false
+				end
+				local Pos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+				local Pos_String = tostring(Pos)
+				local Pos_Seperate = Pos_String:split(', ')
+				local X = tonumber(Pos_Seperate[1])
+				local Y = tonumber(Pos_Seperate[2])
+				local Z = tonumber(Pos_Seperate[3])
+				if IsInteger == true then
+					if Y <= Void then
+						Respawn()
+					end
+				elseif IsInteger == false then
+					if Y >= Void then
+						Respawn()
+					end
+				end
+			end)
+		end)
+	
+		for i,v in pairs(InvisibleCharacter:GetDescendants())do
+			if v:IsA("BasePart") then
+				if v.Name == "HumanoidRootPart" then
+					v.Transparency = 1
+				else
+					v.Transparency = .5
+				end
+			end
+		end
+	
+		function Respawn()
+			IsRunning = false
+			if IsInvis == true then
+				pcall(function()
+					Player.Character = Character
+					wait()
+					Character.Parent = workspace
+					Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+					IsInvis = false
+					InvisibleCharacter.Parent = nil
+					invisRunning = false
+				end)
+			elseif IsInvis == false then
+				pcall(function()
+					Player.Character = Character
+					wait()
+					Character.Parent = workspace
+					Character:FindFirstChildWhichIsA'Humanoid':Destroy()
+					TurnVisible()
+				end)
+			end
+		end
+	
+		local invisDied
+		invisDied = InvisibleCharacter:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+			Respawn()
+			invisDied:Disconnect()
+			end)
+			
+		function TurnVisible()
+			if IsInvis == false then return end
+			invisFix:Disconnect()
+			invisDied:Disconnect()
+			CF = workspace.CurrentCamera.CFrame
+			Character = Character
+			local CF_1 = Player.Character.HumanoidRootPart.CFrame
+			Character.HumanoidRootPart.CFrame = CF_1
+			InvisibleCharacter.Parent = game.Lighting
+			Player.Character = Character
+			Character.Parent = workspace
+			IsInvis = false
+			Player.Character.Animate.Disabled = true
+			Player.Character.Animate.Disabled = false
+			invisDied = Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+				Respawn()
+				invisDied:Disconnect()
+			end)
+			invisRunning = false
+			end
+	
+			
+	
+	local CS = game:GetService("CollectionService")
+	local UIS = game:GetService("UserInputService")
+	
+	UIS.InputBegan:Connect(function(input, gameProcessed)
+		if input.UserInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == Enum.KeyCode.E and not gameProcessed then
+		  if IsInvis == false then
+			  IsInvis = true
+		CF = game.Workspace.CurrentCamera.CFrame
+		local CF_1 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+		Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
+		game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+		wait(.1)
+		game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+		InvisibleCharacter = InvisibleCharacter
+		Character.Parent = game.Lighting
+		InvisibleCharacter.Parent = game.Workspace
+		InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
+		Player.Character = InvisibleCharacter
+		local workspace = game.Workspace
+	Players = game:GetService("Players")
+	local speaker = game.Players.LocalPlayer
+	workspace.CurrentCamera:remove()
+		wait(.1)
+		game.Workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+		game.Workspace.CurrentCamera.CameraType = "Custom"
+		game.Players.LocalPlayer.CameraMinZoomDistance = 0.5
+		game.Players.LocalPlayer.CameraMaxZoomDistance = 400
+		game.Players.LocalPlayer.CameraMode = "Classic"
+		game.Players.LocalPlayer.Character.Head.Anchored = false
+		game.Players.LocalPlayer.Character.Animate.Disabled = true
+		game.Players.LocalPlayer.Character.Animate.Disabled = false
+	elseif IsInvis == true then
+	TurnVisible()
+	IsInvis = false
+	end
+	   end
+	   end
+				end)
 
 wait();
 
@@ -14436,6 +14585,8 @@ mouse.KeyDown:Connect(function(k)
 		gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
+				wait(0.00005)
+							cmdInput.Text = ''
 		for i=1,10 do
 		    wait(0.000051)
 		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
@@ -14567,7 +14718,7 @@ TextClickButton.MouseButton1Click:Connect(function()
 	gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
-		wait(0.00005)
+		wait(0.0000005)
 							cmdInput.Text = ''
 		for i=1,10 do
 		    wait(0.000051)
