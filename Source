@@ -126,7 +126,6 @@ cmd.run = function(args)
 		end
 	end)
 	if not success then
-	print(msg)
 	end
 end
 
@@ -135,16 +134,8 @@ lib = {}
 lib.wrap = function(f)
 	return coroutine.wrap(f)()
 end
-wrap = lib.wrap
 
-lib.messageOut = function(title, msg)
-	StarterGui:SetCore("SendNotification", 
-		{
-			Title = title,
-			Text = msg
-		}
-	)
-end
+wrap = lib.wrap
 
 local wait = function(int)
 	if not int then int = 0 end
@@ -154,20 +145,15 @@ local wait = function(int)
 	until (tick() - t) >= int
 	return (tick() - t), t
 end
-spawn(function()
-    -- Gui to Lua
--- Version: 3.2
 
--- Instances:
+-- shadow
 
 local uhhhh = Instance.new("ScreenGui")
 local lalala = Instance.new("Frame")
 local UIGradient = Instance.new("UIGradient")
 
---Properties:
-
 uhhhh.Name = "boomb"
-uhhhh.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+uhhhh.Parent = game.Players.LocalPlayer.PlayerGui
 uhhhh.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 uhhhh.ResetOnSpawn = false
 
@@ -182,10 +168,8 @@ UIGradient.Parent = lalala
 
 local StarterGui = uhhhh
 StarterGui.IgnoreGuiInset = true
--- Gui to Lua
--- Version: 3.2
 
--- Instances:
+-- start up gui
 
 local StartUp = Instance.new("ScreenGui")
 local AdminName = Instance.new("TextLabel")
@@ -220,8 +204,6 @@ Version.Text = currentversion
 Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 Version.TextSize = 70.000
 Version.TextTransparency = 1.000
-
--- Scripts:
 
 local function GOOBRM_fake_script() -- StartUp.Start 
 	local script = Instance.new('LocalScript', StartUp)
@@ -279,7 +261,7 @@ Description = "Join the discord for Change Logs! https://discord.gg/mW442YxE4j";
 Duration = 3;
 
 });
-end)
+
 
 	function r15(plr)
 		if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
@@ -537,64 +519,6 @@ lib.lock = function(instance, par)
 end
 lock = lib.lock
 locks = {}
-if hookfunction then	-- i believe this was for hiding stuff like bodyvelocity
-	local pseudo = Instance.new("Motor6D")
-	_1 = hookfunction(pseudo.IsA, function(...)
-		local p, ret = ({...})[1], _1(...)
-		if checkcaller() then return ret end
-		if locks[p] then
-			return false
-		end
-		return ret
-	end)
-	_2 = hookfunction(pseudo.FindFirstChildWhichIsA, function(...)
-		local p = _2(...)
-		if checkcaller() then return p end
-		if locks[p] then
-			return nil
-		end
-		return p
-	end)
-	_3 = hookfunction(pseudo.FindFirstChildOfClass, function(...)
-		local p = _3(...)
-		if checkcaller() then return p end
-		if locks[p] then
-			return nil
-		end
-		return p
-	end)
-	_4 = hookfunction(pseudo.Destroy, function(...)
-		local args = {...}
-		if checkcaller() then return _4(...) end
-		if locks[args[1]] then return end
-		return
-	end)
-	
-	local mt = getrawmetatable(game)
-	local _ni = mt.__newindex
-	local _nc = mt.__namecall
-	local _i = mt.__index
-	setreadonly(mt, false)
-	
-	mt.__index = newcclosure(function(t, i)
-		if locks[t] and not checkcaller() then
-			return _i(pseudo, i)
-		end
-		return _i(t, i)
-	end)
-	mt.__newindex = newcclosure(function(t, i, v)
-		if locks[t] and not checkcaller() then
-			return _ni(pseudo, i, v)
-		end
-		return _ni(t, i, v)
-	end)
-	mt.__namecall = newcclosure(function(t, ...)
-		if locks[t] and not checkcaller() then
-			return _nc(pseudo, ...)
-		end
-		return _nc(t, ...)
-	end)
-end
 
 lib.find = function(t, v)	-- mmmmmm
 	for i, e in pairs(t) do
@@ -14589,7 +14513,7 @@ mouse.KeyDown:Connect(function(k)
 							cmdInput.Text = ''
 		for i=1,10 do
 		    wait(0.000051)
-		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
+		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 	end
 end)
@@ -14603,7 +14527,7 @@ cmdInput.FocusLost:Connect(function(enterPressed)
 	gui.barDeselect()
 		for i=1,10 do
 		    wait(0.000051)
-		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
+		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
 		    end
 	wait(0.25)
     for i, v in ipairs(cmdAutofill:GetChildren()) do
@@ -14722,6 +14646,6 @@ TextClickButton.MouseButton1Click:Connect(function()
 							cmdInput.Text = ''
 		for i=1,10 do
 		    wait(0.000051)
-		 game:GetService("Players").LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
+		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
