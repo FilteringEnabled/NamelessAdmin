@@ -3105,9 +3105,7 @@ cmd.add({"droptools"}, {"dropalltools", "Drop all of your tools"}, function()
 			tool.Parent = workspace
 		end
 	end
-	wait()
-	respawn()
-end)
+	end)
 
 cmd.add({"notools"}, {"notools", "Remove your tools"}, function()
 	for _, tool in pairs(character:GetChildren()) do
