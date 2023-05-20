@@ -6054,18 +6054,7 @@ cmd.add({"reset"}, {"reset", "Makes your health be 0"}, function()
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
 end)
 
-cmd.add({"discord"}, {"discord", "discord server link"}, function()
-wait();
-
-Notify({
-Description = "discord.gg/mW442YxE4j";
-Title = "Nameless Admin";
-Duration = 15;
-
-});
-end)
-
-cmd.add({"admin"}, {"admin", "sends the admin name in chat"}, function(...)
+cmd.add({"admin"}, {"admin", "whitelist someone to allow them to use commands"}, function(...)
 
 	function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
 	end
@@ -6682,39 +6671,80 @@ cmd.add({"functionspy"}, {"functionspy", "Check console"}, function()
 	coroutine.wrap(PRML_fake_script)()	
 end)
 
-cmd.add({"cfly"}, {"cfly [speed]", "CFrame fly"}, function(...)
-CFspeed = (...)
-if CFspeed == nil then
-    CFspeed = 50
-    end
-	game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = true
-	local Head = game.Players.LocalPlayer.Character:WaitForChild("Head")
-	Head.Anchored = true
-	if CFloop then CFloop:Disconnect() end
-	CFloop = game:GetService("RunService").Heartbeat:Connect(function(deltaTime)
-		local moveDirection = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').MoveDirection * (CFspeed * deltaTime)
-		local headCFrame = Head.CFrame
-		local cameraCFrame = workspace.CurrentCamera.CFrame
-		local cameraOffset = headCFrame:ToObjectSpace(cameraCFrame).Position
-		cameraCFrame = cameraCFrame * CFrame.new(-cameraOffset.X, -cameraOffset.Y, -cameraOffset.Z + 1)
-		local cameraPosition = cameraCFrame.Position
-		local headPosition = headCFrame.Position
+cmd.add({"mobilefly", "mfly"}, {"mobilefly [speed] (mfly)", "Fly that works on mobile"}, function(...)
+	local controlModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild('PlayerModule'):WaitForChild("ControlModule"))
+speed = (...)
 
-		local objectSpaceVelocity = CFrame.new(cameraPosition, Vector3.new(headPosition.X, cameraPosition.Y, headPosition.Z)):VectorToObjectSpace(moveDirection)
-		Head.CFrame = CFrame.new(headPosition) * (cameraCFrame - cameraPosition) * CFrame.new(objectSpaceVelocity)
+	if speed == nil then
+		speed = 69
+	else
+	end
+
+	local bv = Instance.new("BodyVelocity")
+	bv.Name = "VelocityHandler"
+	bv.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+	bv.MaxForce = Vector3.new(0,0,0)
+	bv.Velocity = Vector3.new(0,0,0)
+	
+	local bg = Instance.new("BodyGyro")
+	bg.Name = "GyroHandler"
+	bg.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	bg.P = 1000
+	bg.D = 50
+	
+	local Signal1
+	Signal1 = game.Players.LocalPlayer.CharacterAdded:Connect(function(NewChar)
+	local bv = Instance.new("BodyVelocity")
+	bv.Name = "VelocityHandler"
+	bv.Parent = NewChar:WaitForChild("Humanoid").RootPart
+	bv.MaxForce = Vector3.new(0,0,0)
+	bv.Velocity = Vector3.new(0,0,0)
+	
+	local bg = Instance.new("BodyGyro")
+	bg.Name = "GyroHandler"
+	bg.Parent = NewChar:WaitForChild("Humanoid").HumanoidRootPart
+	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	bg.P = 1000
+	bg.D = 50
+	end)
+	
+	local camera = game.Workspace.CurrentCamera
+	
+	local Signal2
+	Signal2 = game:GetService"RunService".RenderStepped:Connect(function()
+	if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character.Humanoid.RootPart and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("VelocityHandler") and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("GyroHandler") then
+	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.MaxForce = Vector3.new(9e9,9e9,9e9)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.CFrame = camera.CoordinateFrame
+	local direction = controlModule:GetMoveVector()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = Vector3.new()
+	if direction.X > 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	end
+	if direction.X < 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	end
+	if direction.Z > 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
+	end
+	if direction.Z < 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
+	end
+	end
 	end)
 end)
 
-cmd.add({"uncfly"}, {"uncfly", "CFrame fly disabler"}, function()
-if CFloop then
-		CFloop:Disconnect()
-game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
-		local Head = game.Players.LocalPlayer.Character:WaitForChild("Head")
-		Head.Anchored = false
-end
+cmd.add({"unmobilefly", "unmfly"}, {"unmobilefly (unmfly)", "CFrame fly disabler"}, function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler:Destroy()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler:Destroy()
+	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+	Signal1:Disconnect()
+	Signal2:Disconnect()
 end)
-
-
 
 local flyPart
 cmd.add({"fly"}, {"fly [speed]", "Enable flight"}, function(...)
@@ -9878,6 +9908,21 @@ cmd.add({"hatresize"}, {"hatresize", "Makes your hats very big r15 only"}, funct
 });
 
 loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/hat%20resize'))()
+end)
+
+cmd.add({"discord"}, {"discord", "discord server link"}, function()
+	wait();
+	
+	Notify({
+	Description = "discord.gg/mW442YxE4j";
+	Title = "Nameless Admin";
+	Duration = 15;
+	
+	});
+	end)
+
+cmd.add({"exit"}, {"exit", "Close down roblox"}, function()
+game:Shutdown()
 end)
 
 cmd.add({"legresize"}, {"legresize", "Makes your legs very big r15 only"}, function()
@@ -13764,6 +13809,93 @@ Title = "Nameless Admin";
 Duration = 10;
 
 });
+
+if table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) then 
+	wait();
+	
+	Notify({
+	Description = "Nameless Admin has detected you using mobile you now have a invisible button click it to enable / disable invisibility";
+	Title = "Nameless Admin";
+	Duration = 7;
+	
+	});
+	-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local TextButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+TextButton.Parent = ScreenGui
+TextButton.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+TextButton.BackgroundTransparency = 0.140
+TextButton.Position = UDim2.new(0, 0, 0, 350)
+TextButton.Size = UDim2.new(0, 53, 0, 50)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "Become Invisible"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextSize = 15.000
+TextButton.TextWrapped = true
+
+UICorner.Parent = TextButton
+
+UIAspectRatioConstraint.Parent = TextButton
+UIAspectRatioConstraint.AspectRatio = 1.060
+
+-- Scripts:
+
+local function FEPVI_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	IsInvis = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if IsInvis == false then
+			IsInvis = true
+			script.Parent.Text = "Become Visible"
+			CF = game.Workspace.CurrentCamera.CFrame
+			local CF_1 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
+			game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+			wait(.1)
+			game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+			InvisibleCharacter = InvisibleCharacter
+			Character.Parent = game.Lighting
+			InvisibleCharacter.Parent = game.Workspace
+			InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
+			Player.Character = InvisibleCharacter
+			local workspace = game.Workspace
+		Players = game:GetService("Players")
+		local speaker = game.Players.LocalPlayer
+		workspace.CurrentCamera:remove()
+			wait(.1)
+			game.Workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+			game.Workspace.CurrentCamera.CameraType = "Custom"
+			game.Players.LocalPlayer.CameraMinZoomDistance = 0.5
+			game.Players.LocalPlayer.CameraMaxZoomDistance = 400
+			game.Players.LocalPlayer.CameraMode = "Classic"
+			game.Players.LocalPlayer.Character.Head.Anchored = false
+			game.Players.LocalPlayer.Character.Animate.Disabled = true
+			game.Players.LocalPlayer.Character.Animate.Disabled = false
+		elseif IsInvis == true then
+			IsInvis = false
+			script.Parent.Text = "Become Invisible"
+			TurnVisible()
+		end
+	end)
+end
+coroutine.wrap(FEPVI_fake_script)()
+
+else
+end
 end)
 
 cmd.add({"unchatspy"}, {"unchat", "Unspies on chat, enables chat, spies whispers etc."}, function()
