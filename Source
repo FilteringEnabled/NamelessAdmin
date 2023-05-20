@@ -13739,7 +13739,6 @@ cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or somet
 			end)
 			
 		function TurnVisible()
-			if IsInvis == false then return end
 			invisFix:Disconnect()
 			invisDied:Disconnect()
 			CF = workspace.CurrentCamera.CFrame
@@ -13756,7 +13755,6 @@ cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or somet
 				Respawn()
 				invisDied:Disconnect()
 			end)
-			invisRunning = false
 			end
 	
 			
@@ -13858,42 +13856,41 @@ local function FEPVI_fake_script() -- TextButton.LocalScript
 
 	IsInvis = false
 	script.Parent.MouseButton1Click:Connect(function()
-		if IsInvis == false then
-			IsInvis = true
-			script.Parent.Text = "Become Visible"
-			CF = game.Workspace.CurrentCamera.CFrame
-			local CF_1 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-			Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
-			game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-			wait(.1)
-			game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-			InvisibleCharacter = InvisibleCharacter
-			Character.Parent = game.Lighting
-			InvisibleCharacter.Parent = game.Workspace
-			InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
-			Player.Character = InvisibleCharacter
-			local workspace = game.Workspace
-		Players = game:GetService("Players")
-		local speaker = game.Players.LocalPlayer
-		workspace.CurrentCamera:remove()
-			wait(.1)
-			game.Workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
-			game.Workspace.CurrentCamera.CameraType = "Custom"
-			game.Players.LocalPlayer.CameraMinZoomDistance = 0.5
-			game.Players.LocalPlayer.CameraMaxZoomDistance = 400
-			game.Players.LocalPlayer.CameraMode = "Classic"
-			game.Players.LocalPlayer.Character.Head.Anchored = false
-			game.Players.LocalPlayer.Character.Animate.Disabled = true
-			game.Players.LocalPlayer.Character.Animate.Disabled = false
-		elseif IsInvis == true then
-			IsInvis = false
-			script.Parent.Text = "Become Invisible"
-			TurnVisible()
-		end
-	end)
-end
+			  if IsInvis == false then
+			  IsInvis = true
+		CF = game.Workspace.CurrentCamera.CFrame
+		local CF_1 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+		Character:MoveTo(Vector3.new(0,math.pi*1000000,0))
+		game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+		wait(.1)
+		game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+		InvisibleCharacter = InvisibleCharacter
+		Character.Parent = game.Lighting
+		InvisibleCharacter.Parent = game.Workspace
+		InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
+		Player.Character = InvisibleCharacter
+		local workspace = game.Workspace
+	Players = game:GetService("Players")
+	local speaker = game.Players.LocalPlayer
+	workspace.CurrentCamera:remove()
+		wait(.1)
+		game.Workspace.CurrentCamera.CameraSubject = speaker.Character:FindFirstChildWhichIsA('Humanoid')
+		game.Workspace.CurrentCamera.CameraType = "Custom"
+		game.Players.LocalPlayer.CameraMinZoomDistance = 0.5
+		game.Players.LocalPlayer.CameraMaxZoomDistance = 400
+		game.Players.LocalPlayer.CameraMode = "Classic"
+		game.Players.LocalPlayer.Character.Head.Anchored = false
+		game.Players.LocalPlayer.Character.Animate.Disabled = true
+		game.Players.LocalPlayer.Character.Animate.Disabled = false
+					script.Parent.Text = "Become Visible"
+	elseif IsInvis == true then
+	TurnVisible()
+	IsInvis = false
+				script.Parent.Text = "Become Invisible"
+			end
+		end)
+	end
 coroutine.wrap(FEPVI_fake_script)()
-
 else
 end
 end)
