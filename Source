@@ -50,7 +50,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.09
+currentversion = 1.10
 
 --[[ VARIABLES ]]--
 PlaceId, JobId = game.PlaceId, game.JobId
@@ -2015,7 +2015,7 @@ script.Parent.Text = ("Ping: " ..game:GetService("Stats").Network.ServerStatsIte
 end)
         end)
 
-        cmd.add({"fps"}, {"fps", "Shows your ping"}, function()
+        cmd.add({"fps"}, {"fps", "Shows your fps"}, function()
 -- Gui to Lua
 -- Version: 3.2
 
@@ -2062,6 +2062,150 @@ end)
 
 cmd.add({"commands", "cmds"}, {"commands (cmds)", "Open the command list"}, function()
 	gui.commands()
+end)
+
+hiddenfling = false
+cmd.add({"walkfling", "wfling"}, {"walkfling (wfling) [THANKS TO X]", "probably the best fling lol"}, function()
+	if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+		hiddenfling = true
+	else
+		detection = Instance.new("Decal")
+		detection.Name = "juisdfj0i32i0eidsuf0iok"
+		detection.Parent = game:GetService("ReplicatedStorage")
+		local function fling()
+			local hrp, c, vel, movel = nil, nil, nil, 0.1
+			while true do
+				game:GetService("RunService").Heartbeat:Wait()
+				if hiddenfling then
+					local lp = game.Players.LocalPlayer
+					while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+						game:GetService("RunService").Heartbeat:Wait()
+						c = lp.Character
+						hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
+					end
+					if hiddenfling then
+						vel = hrp.Velocity
+						hrp.Velocity = vel * 10000 + Vector3.new(0, 10000, 0)
+						game:GetService("RunService").RenderStepped:Wait()
+						if c and c.Parent and hrp and hrp.Parent then
+							hrp.Velocity = vel
+						end
+						game:GetService("RunService").Stepped:Wait()
+						if c and c.Parent and hrp and hrp.Parent then
+							hrp.Velocity = vel + Vector3.new(0, movel, 0)
+							movel = movel * -1
+						end
+					end
+				end
+			end
+		end
+		
+		fling()
+	end
+end)
+
+cmd.add({"unwalkfling", "unwfling"}, {"unwalkfling (unwfling)", "stop the walkfling command"}, function()
+	if hiddenfling then
+	hiddenfling = false
+	end
+end)
+
+cmd.add({"fling3"}, {"fling3 <player>", "another variant of fling"}, function(...)
+	oldcframe = Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	
+User = (...)
+Target = getPlr(User)
+	
+			hiddenfling = true
+			
+if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+		hiddenfling = true
+	else
+		detection = Instance.new("Decal")
+		detection.Name = "juisdfj0i32i0eidsuf0iok"
+		detection.Parent = game:GetService("ReplicatedStorage")
+		local function fling()
+			local hrp, c, vel, movel = nil, nil, nil, 0.1
+			while true do
+				game:GetService("RunService").Heartbeat:Wait()
+				if hiddenfling then
+					local lp = game.Players.LocalPlayer
+					while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+						game:GetService("RunService").Heartbeat:Wait()
+						c = lp.Character
+						hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
+					end
+					if hiddenfling then
+						vel = hrp.Velocity
+						hrp.Velocity = vel * 10000 + Vector3.new(0, 10000, 0)
+						game:GetService("RunService").RenderStepped:Wait()
+						if c and c.Parent and hrp and hrp.Parent then
+							hrp.Velocity = vel
+						end
+						game:GetService("RunService").Stepped:Wait()
+						if c and c.Parent and hrp and hrp.Parent then
+							hrp.Velocity = vel + Vector3.new(0, movel, 0)
+							movel = movel * -1
+						end
+					end
+				end
+			end
+		end
+		fling()
+			end
+			Player.Character.Humanoid:SetStateEnabled("Seated", false)
+			Player.Character.Humanoid.Sit = true
+			if User == "all" or User == "others" then
+				for _,x in next, game.Players:GetPlayers() do
+					for i=1, 10 do
+						wait(0.017)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 4)
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -2)
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -3)
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -1)
+						wait(0.01)
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -1)
+						end
+					end
+			else
+		for i=1, 10 do
+		wait(0.017)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 4)
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -2)
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -3)
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -1)
+		wait(0.01)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -1)
+		end
+		end
+		sFLY(true)
+		speedofthevfly = 1
+		wait(0.3)
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+		wait(0.13)
+				Player.Character.Humanoid:SetStateEnabled("Seated", true)
+					Player.Character.Humanoid.Sit = false
+		FLYING = false
+			game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+			hiddenfling = false
 end)
 
 cmd.add({"settings", "options"}, {"settings (options)", "Change sertain things of Nameless Admin to your liking"}, function()
@@ -7316,8 +7460,17 @@ cmd.add({"hide", "unshow"}, {"hide <player> (unshow)", "places the selected play
 local Username = (...)
 local target = getPlr(Username)
 
+if Username == "all" or Username == "others" then
+	for i, plrs in pairs(game:GetService("Players"):GetChildren()) do
+		if plrs.Name == game.Players.LocalPlayer.Name then
+		else
+			plrs.Character.Parent = game.Lighting
+		end
+		end
+	else
 if target and target.Character then
     target.Character.Parent = game.Lighting
+end
 end
 end)
 
@@ -7337,8 +7490,16 @@ cmd.add({"unhide", "show"}, {"show <player> (unhide)", "places the selected play
 local Username = (...)
 local target = getPlr(Username)
 
+if Username == "all" or Username == "others" then
+	for i, plrs in pairs(game:GetService("Lighting"):GetChildren()) do
+		if plrs:IsA("Model") and plrs.PrimaryPart then
+			plrs.Parent = game.Workspace
+		end
+		end
+	else
 if target and target.Character then
     target.Character.Parent = game.Workspace
+end
 end
 end)
 
@@ -7950,21 +8111,6 @@ cmd.add({"unspinfling", "unsfling"}, {"unspinfling (unsfling)", "Stop the spinfl
 		child.CustomPhysicalProperties = PhysicalProperties.new(0.7, 0.3, 0.5)
 		end
 		end
-end)
-
-cmd.add({"touchfling", "tfling"}, {"touchfling (tfling)", "Fling anyone that touches you using angular velocity"}, function()
-	
-	
-	
-	wait();
-	
-	Notify({
-	Description = "Touchfling executed, press E to toggle";
-	Title = "Nameless Admin";
-	Duration = 5;
-	
-	});
-_G.KeyCode = "E" loadstring(game:HttpGet("https://shattered-gang.lol/scripts/fe/touch_fling.lua"))()
 end)
 
 cmd.add({"claimua", "claimunanchored"}, {"claimunanchored (claimua)", "Teleports to every single unanchored part meaning that the ownership is yours"}, function()
@@ -9535,24 +9681,7 @@ cmd.add({"unfollow", "unstalk", "unwalk", "unpathfind"}, {"unfollow", "Stop all 
 	lib.disconnect("follow")
 end)
 
-cmd.add({"bubblechat"}, {"bubblechat <player>", "fake chat as your target"}, function(...)
-	Players = game:GetService("Players")
-
-	local getPlr = function(Name)
-		if Name:lower() == "random" then
-			return Players:GetPlayers()[math.random(#Players:GetPlayers())]
-		else
-			Name = Name:lower():gsub("%s", "")
-			for _, x in next, Players:GetPlayers() do
-				if x.Name:lower():match(Name) then
-					return x
-				elseif x.DisplayName:lower():match("^" .. Name) then
-					return x
-				end
-			end
-		end
-	end
-	
+cmd.add({"bubblechat"}, {"bubblechat <player>", "fake chat as your target"}, function(...)	
 	for i,lplr in pairs(game:GetService("Players"):GetPlayers()) do
 		lplr.Character.Humanoid.DisplayName = lplr.DisplayName.."\n\@"..lplr.Name
 		lplr.Character.Humanoid.NameDisplayDistance = math.huge
@@ -13779,7 +13908,7 @@ cmd.add({"invisible"}, {"invisible", "Sets invisibility to scare people or somet
 		Character.Parent = game.Lighting
 		InvisibleCharacter.Parent = game.Workspace
 		InvisibleCharacter.HumanoidRootPart.CFrame = CF_1
-		Player.Character = InvisibleCharacter
+		game.Players.LocalPlayer.Character = InvisibleCharacter
 		local workspace = game.Workspace
 	Players = game:GetService("Players")
 	local speaker = game.Players.LocalPlayer
@@ -14568,7 +14697,7 @@ end
 --[[ GUI VARIABLES ]]--
 local ScreenGui
 if not RunService:IsStudio() then
-	ScreenGui = game:GetObjects("rbxassetid://13237130511")[1]
+	ScreenGui = game:GetObjects("rbxassetid://13510552309")[1]
 else
 	repeat wait() until player:FindFirstChild("AdminUI", true)
 	ScreenGui = player:FindFirstChild("AdminUI", true)
