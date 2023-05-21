@@ -13842,7 +13842,7 @@ TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 15.000
 TextButton.TextWrapped = true
 TextButton.Active = true
-TextButtion.Draggable = true
+TextButton.Draggable = true
 
 UICorner.Parent = TextButton
 
