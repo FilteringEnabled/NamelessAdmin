@@ -14816,7 +14816,6 @@ wait(0.1)
 
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
 wait(0.2)
-if NAButtonCheck == "true" then
 local ScreenGui = Instance.new("ScreenGui")
 local TextClickButton = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
@@ -14857,5 +14856,3 @@ TextClickButton.MouseButton1Click:Connect(function()
 		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
-else
-end
