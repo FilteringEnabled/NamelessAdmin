@@ -31,7 +31,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.10
+currentversion = 1.11
 
 --[[ VARIABLES ]]--
 PlaceId, JobId = game.PlaceId, game.JobId
@@ -49,6 +49,7 @@ local IYLOADED = false -- This is used for the ;iy command that executes infinit
 local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
 local Character = game.Players.LocalPlayer.Character
 local Clicked = true
+local controlModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild('PlayerModule'):WaitForChild("ControlModule"))
 _G.Spam = false
 --[[ FOR LOOP COMMANDS ]]--
 view = false
@@ -318,6 +319,73 @@ end
 end
 end)
 
+function mobilefly(speed)
+	local bv = Instance.new("BodyVelocity")
+	bv.Name = "VelocityHandler"
+	bv.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+	bv.MaxForce = Vector3.new(0,0,0)
+	bv.Velocity = Vector3.new(0,0,0)
+	
+	local bg = Instance.new("BodyGyro")
+	bg.Name = "GyroHandler"
+	bg.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	bg.P = 1000
+	bg.D = 50
+	
+	local Signal1
+	Signal1 = game.Players.LocalPlayer.CharacterAdded:Connect(function(NewChar)
+	local bv = Instance.new("BodyVelocity")
+	bv.Name = "VelocityHandler"
+	bv.Parent = NewChar:WaitForChild("Humanoid").RootPart
+	bv.MaxForce = Vector3.new(0,0,0)
+	bv.Velocity = Vector3.new(0,0,0)
+	
+	local bg = Instance.new("BodyGyro")
+	bg.Name = "GyroHandler"
+	bg.Parent = NewChar:WaitForChild("Humanoid").HumanoidRootPart
+	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	bg.P = 1000
+	bg.D = 50
+	end)
+	
+	local camera = game.Workspace.CurrentCamera
+	
+	local Signal2
+	Signal2 = game:GetService"RunService".RenderStepped:Connect(function()
+	if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character.Humanoid.RootPart and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("VelocityHandler") and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("GyroHandler") then
+	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.MaxForce = Vector3.new(9e9,9e9,9e9)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.MaxTorque = Vector3.new(9e9,9e9,9e9)
+	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.CFrame = camera.CoordinateFrame
+	local direction = controlModule:GetMoveVector()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = Vector3.new()
+	if direction.X > 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	end
+	if direction.X < 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	end
+	if direction.Z > 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
+	end
+	if direction.Z < 0 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
+	end
+	end
+	end)
+end
+
+function unmobilefly()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler:Destroy()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler:Destroy()
+	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+	Signal1:Disconnect()
+	Signal2:Disconnect()
+end
+
 function x(v)
 	if v then
 		for _,i in pairs(workspace:GetDescendants()) do
@@ -509,6 +577,16 @@ nsLoop = game:GetService("RunService").Stepped:Connect(function()
         end
     end
 end)
+
+function getTorso(x)
+	x = x or game.Players.LocalPlayer.Character
+	return x:FindFirstChild("Torso") or x:FindFirstChild("UpperTorso") or x:FindFirstChild("LowerTorso") or x:FindFirstChild("HumanoidRootPart")
+end
+
+function getRoot(char)
+	local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
+	return rootPart
+end
 
 local lp = game:GetService("Players").LocalPlayer
 
@@ -3666,66 +3744,18 @@ wait(0.02)
 respawn()
 end)
 
+annoyloop = false
 cmd.add({"annoy"}, {"annoy <player>", "Annoys the given player"}, function(...)
 	Target = (...)
- local TPlayer = getPlr(Target)
-            TRootPart = TPlayer.Character.HumanoidRootPart
-            local Character = Player.Character
-            local PlayerGui = Player:WaitForChild("PlayerGui")
-            local Backpack = Player:WaitForChild("Backpack")
-            local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
-            local RootPart = Character and Humanoid and Humanoid.RootPart or false
-            local RightArm = Character and Character:FindFirstChild("Right Arm") or Character:FindFirstChild("RightHand")
-            if not Humanoid or not RootPart or not RightArm then
-                return
-            end
-            Humanoid:UnequipTools()
-            local MainTool = Backpack:FindFirstChildWhichIsA("Tool") or false
-            if not MainTool or not MainTool:FindFirstChild("Handle") then
-                return
-            end
-            Humanoid.Name = "DAttach"
-            local l = Character["DAttach"]:Clone()
-            l.Parent = Character
-            l.Name = "Humanoid"
-            wait()
-            Character["DAttach"]:Destroy()
-            game.Workspace.CurrentCamera.CameraSubject = Character
-            Character.Animate.Disabled = true
-            wait()
-            Character.Animate.Disabled = false
-            Character.Humanoid:EquipTool(MainTool)
-            wait()
-            CF = Player.Character.PrimaryPart.CFrame
-            if firetouchinterest then
-                local flag = false
-                task.defer(function()
-                    MainTool.Handle.AncestryChanged:wait()
-                    flag = true
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 999, 0)
-		local power = 99999 -- change this amount of fling power how much you want fling power you want
-		wait(.1)
-		local bambam = Instance.new("BodyThrust")
-		bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-		bambam.Force = Vector3.new(power,0,power)
-		bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                end)
-                repeat
-                    firetouchinterest(MainTool.Handle, TRootPart, 0)
-                    firetouchinterest(MainTool.Handle, TRootPart, 1)
-                    wait()
-                until flag
-            else
-                Player.Character.HumanoidRootPart.CFrame =
-                TCharacter.HumanoidRootPart.CFrame
-                wait()
-                Player.Character.HumanoidRootPart.CFrame =
-                TCharacter.HumanoidRootPart.CFrame
-                wait()
-            end
-              local OldPos = getRoot().CFrame
-	   	   player.CharacterAdded:wait(1)
-		   			    wait(4)             CF = Player.Character.HumanoidRootPart.CFrame             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
+ local Player = getPlr(Target)
+ annoyloop = true
+       repeat wait()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame
+	   until annoyloop == false
+end)
+
+cmd.add({"unannoy"}, {"unannoy", "Stops the annoy command"}, function()
+	annoyloop = false
 end)
 
 cmd.add({"seat"}, {"seat", "Finds a seat and automatically sits on it"}, function()
@@ -6504,8 +6534,9 @@ cmd.add({"functionspy"}, {"functionspy", "Check console"}, function()
 	coroutine.wrap(PRML_fake_script)()	
 end)
 
+on = false
 cmd.add({"mobilefly", "mfly"}, {"mobilefly [speed] (mfly)", "Fly that works on mobile"}, function(...)
-	local controlModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild('PlayerModule'):WaitForChild("ControlModule"))
+on = true
 speed = (...)
 
 	if speed == nil then
@@ -6513,70 +6544,65 @@ speed = (...)
 	else
 	end
 
-	local bv = Instance.new("BodyVelocity")
-	bv.Name = "VelocityHandler"
-	bv.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-	bv.MaxForce = Vector3.new(0,0,0)
-	bv.Velocity = Vector3.new(0,0,0)
+	if table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) then 
+		wait();
+		
+		Notify({
+		Description = "Nameless Admin has detected you using mobile you now have a mfly button click it to enable / disable mobile flying (For easier use)";
+		Title = "Nameless Admin";
+		Duration = 5;
+		});
+		
 	
-	local bg = Instance.new("BodyGyro")
-	bg.Name = "GyroHandler"
-	bg.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
-	bg.P = 1000
-	bg.D = 50
+	local ScreenGui = Instance.new("ScreenGui")
+	local TextButton = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 	
-	local Signal1
-	Signal1 = game.Players.LocalPlayer.CharacterAdded:Connect(function(NewChar)
-	local bv = Instance.new("BodyVelocity")
-	bv.Name = "VelocityHandler"
-	bv.Parent = NewChar:WaitForChild("Humanoid").RootPart
-	bv.MaxForce = Vector3.new(0,0,0)
-	bv.Velocity = Vector3.new(0,0,0)
+	ScreenGui.Parent = game.CoreGui.RobloxGui
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.ResetOnSpawn = false
 	
-	local bg = Instance.new("BodyGyro")
-	bg.Name = "GyroHandler"
-	bg.Parent = NewChar:WaitForChild("Humanoid").HumanoidRootPart
-	bg.MaxTorque = Vector3.new(9e9,9e9,9e9)
-	bg.P = 1000
-	bg.D = 50
-	end)
+	TextButton.Parent = ScreenGui
+	TextButton.BackgroundColor3 = Color3.fromRGB(12, 4, 20)
+	TextButton.BackgroundTransparency = 0.140
+	TextButton.Position = UDim2.new(0.933, 0,0.621, 0)
+	TextButton.Size = UDim2.new(0.043, 0,0.083, 0)
+	TextButton.Font = Enum.Font.SourceSansBold
+	TextButton.Text = "Become Invisible"
+	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton.TextSize = 15.000
+	TextButton.TextWrapped = true
+	TextButton.Active = true
+	TextButton.Draggable = true
 	
-	local camera = game.Workspace.CurrentCamera
+	UICorner.Parent = TextButton
 	
-	local Signal2
-	Signal2 = game:GetService"RunService".RenderStepped:Connect(function()
-	if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character.Humanoid.RootPart and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("VelocityHandler") and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("GyroHandler") then
-	
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.MaxForce = Vector3.new(9e9,9e9,9e9)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.MaxTorque = Vector3.new(9e9,9e9,9e9)
-	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
-	
-	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler.CFrame = camera.CoordinateFrame
-	local direction = controlModule:GetMoveVector()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = Vector3.new()
-	if direction.X > 0 then
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	UIAspectRatioConstraint.Parent = TextButton
+	UIAspectRatioConstraint.AspectRatio = 1.060
+
+	local function FEPVI_fake_script() -- TextButton.LocalScript 
+		local script = Instance.new('LocalScript', TextButton)
+			script.Parent.MouseButton1Click:Connect(function()
+	  if on == false then
+on = true
+						script.Parent.Text = "Unfly"
+mobilefly(speed)
+		elseif on == true then
+on = false
+unmobilefly()
+script.Parent.Text = "Fly"
+			end
+		end)
 	end
-	if direction.X < 0 then
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity + camera.CFrame.RightVector*(direction.X*speed)
+	coroutine.wrap(FEPVI_fake_script)()
+	else
+		mobilefly(speed)
 	end
-	if direction.Z > 0 then
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
-	end
-	if direction.Z < 0 then
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler.Velocity - camera.CFrame.LookVector*(direction.Z*speed)
-	end
-	end
-	end)
 end)
 
 cmd.add({"unmobilefly", "unmfly"}, {"unmobilefly (unmfly)", "CFrame fly disabler"}, function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.VelocityHandler:Destroy()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.GyroHandler:Destroy()
-	game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-	Signal1:Disconnect()
-	Signal2:Disconnect()
+unmobilefly()
 end)
 
 local flyPart
@@ -10107,6 +10133,59 @@ Duration = 5;
 });
 end)
 
+cmd.add({"headsit"}, {"headsit <player>", "Head sit."}, function(...)
+	Username = (...)
+	if headSit then 
+		headSit:Disconnect()
+	end
+
+local players = getPlr(Username)
+		local sitPlr = players.Name
+
+		sitDied = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+			sitLoop = sitLoop:Disconnect()
+		end)
+				game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').Sit = true
+
+	headSit = RunService.Heartbeat:Connect(function()
+					if Players:FindFirstChild(players.Name) and players.Character ~= nil and getRoot(players.Character) and getRoot(game.Players.LocalPlayer.Character) and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').Sit == true then
+			getRoot(game.Players.LocalPlayer.Character).CFrame = players.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)* CFrame.new(0,1.6,0.4)
+			else
+			headSit:Disconnect()
+		end
+		end)
+end)
+
+cmd.add({"unheadsit"}, {"unheadsit", "Stop the headsit command"}, function()
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+end)
+
+cmd.add({"jump"}, {"jump", "jump."}, function()
+	game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+end)
+
+cmd.add({"headstand"}, {"headstand <player>", "Stand on someones head"}, function(...)
+	Username = (...)
+	if headSit then headSit:Disconnect() end
+local players = getPlr(Username)
+		local sitPlr = players.Name
+		sitDied = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+			sitLoop = sitLoop:Disconnect()
+		end)
+	headSit = RunService.Heartbeat:Connect(function()
+					if Players:FindFirstChild(players.Name) and players.Character ~= nil and getRoot(players.Character) and getRoot(game.Players.LocalPlayer.Character) then
+			getRoot(game.Players.LocalPlayer.Character).CFrame = players.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)* CFrame.new(0,4.6,0.4)
+			else
+			headSit:Disconnect()
+		end
+		end)
+end)
+
+cmd.add({"unheadstand"}, {"unheadstand <player>", "Stop the headstand command"}, function()
+headSit = headSit:Disconnect()
+sitDied:Disconnect()
+end)
+
 cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to them"}, function(...)
 	RunService = game:GetService("RunService")
 	
@@ -10168,16 +10247,7 @@ end)
 
 cmd.add({"glue"}, {"glue <player>", "Bangs the player by attaching to them"}, function(...)
 	RunService = game:GetService("RunService")
-	
-	function getTorso(x)
-		x = x or game.Players.LocalPlayer.Character
-		return x:FindFirstChild("Torso") or x:FindFirstChild("UpperTorso") or x:FindFirstChild("LowerTorso") or x:FindFirstChild("HumanoidRootPart")
-	end
-	
-	function getRoot(char)
-		local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
-		return rootPart
-	end
+
 	
 	speed = "10"
 	
@@ -10465,35 +10535,23 @@ onCharacter(LocalPlayer.Character)
 LocalPlayer.CharacterAdded:Connect(onCharacter)
 end)
 
-cmd.add({"walkspeedbypass", "wsbypass"}, {"walkspeedbypass (wsbypass)", "Bypass client sided walkspeed anticheats"}, function()
-wsbypass = true
-	lp = game.Players.LocalPlayer
-	UIS = game:GetService("UserInputService")
-	
-	
-	repeat
-	wait(0.1)
-	until lp.Character:FindFirstChild('HumanoidRootPart')
-	
-	local speed = CFrame.new(0,0,0)
-	local lastpos = lp.Character.HumanoidRootPart.Position
-	
-	
-repeat wait()
-    if lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") then
-	speed = lp.Character.HumanoidRootPart.Position - lastpos
-	if speed.Y < 0 then
-	speed = speed - Vector3.new(0, speed.Y, 0)
+cmd.add({"tpwalk", "tpwalk"}, {"tpwalk <speed>", "More undetectable walkspeed script"}, function(...)
+	TPWalk = true
+	Speed = (...)
+	while TPWalk and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.Humanoid do
+		local TPWalking = game:GetService("RunService").Heartbeat:Wait()
+		if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection.Magnitude > 0 then
+			if Speed then
+				 game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection * Speed * TPWalking * 10)
+			else
+				 game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection * TPWalking * 10)
+			end
+		end
 	end
-	lp.Character.HumanoidRootPart.CFrame = lp.Character.HumanoidRootPart.CFrame + (speed/2)
-	lastpos = lp.Character.HumanoidRootPart.Position
-	end
-	wait(0.1)
-	until wsbypass == false
 end)
 
-cmd.add({"unwalkspeedbypass", "unwsbypass"}, {"unwalkspeedbypass (unwsbypass)", "Disables the walkspeed bypass command"}, function()
-wsbypass = false
+cmd.add({"untpwalk"}, {"untpwalk", "Stops the tpwalk command"}, function()
+	TPWalk = false
 end)
 
 	cmd.add({"loopmute", "loopmuteboombox"}, {"loopmute <player> (loopmuteboombox)", "Loop mutes the players boombox"}, function(...)
