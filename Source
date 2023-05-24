@@ -9186,6 +9186,32 @@ cmd.add({"goto", "to", "tp", "teleport"}, {"goto <player/X,Y,Z>", "Teleport to t
 	local target = getPlr(Username)
 	getChar().HumanoidRootPart.CFrame = target.Character.Humanoid.RootPart.CFrame
 end)
+Stare = false
+cmd.add({"lookat", "stare"}, {"stare <player> (lookat)", "Stare at a player"}, function(...)
+	Username = (...)
+	local Target = getPlr(Username)
+	if Staring then
+		Staring:Disconnect()
+	end
+	if not Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and Target.Character:FindFirstChild("HumanoidRootPart") then return end
+	local function Stare()
+		if Players.LocalPlayer.Character.PrimaryPart and Players:FindFirstChild(Target.Name) and Target.Character ~= nil and Target.Character:FindFirstChild("HumanoidRootPart") then
+			local CharPos = Players.LocalPlayer.Character.PrimaryPart.Position
+			local tpos = Target.Character:FindFirstChild("HumanoidRootPart").Position
+			local TPos = Vector3.new(tpos.X,CharPos.Y,tpos.Z)
+			local NewCFrame = CFrame.new(CharPos,TPos)
+			Players.LocalPlayer.Character:SetPrimaryPartCFrame(NewCFrame)
+		elseif not Players:FindFirstChild(Target.Name) then
+			Staring:Disconnect()
+		end
+	end
+
+	Staring = game:GetService("RunService").RenderStepped:Connect(Stare)
+end)
+
+cmd.add({"unlookat", "unstare"}, {"unstare (unlookat)", "Stops staring"}, function()
+	Staring:Disconnect()
+end)
 
 cmd.add({"watch", "view", "specate"}, {"view <player>", "Watch the given player"}, function(...)
 game.Workspace.CurrentCamera.CameraSubject = character:FindFirstChildWhichIsA("Humanoid")
