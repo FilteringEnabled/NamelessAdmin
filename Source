@@ -726,23 +726,28 @@ cmd.add({"lag"}, {"lag <player>", "Chat lag"}, function(...)
 else
 end
 
-	-- the lag itself
 	Target = (...)
 	TargetName = getPlr(Target).Name
 	
-	local Message = "HELP" 
+	local Message = "a" 
 	local Unicode = " "
-	MSG = Message .. Unicode:rep(160 - #Message)
+	Message = Message .. Unicode:rep(200 - #Message)	
+
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SayMessageRequest = ReplicatedStorage:FindFirstChild("SayMessageRequest", true)
+
 	
 	if Target == "all" or Target == "others" then
-		for i = 1, 5 do
-			game:GetService("ReplicatedStorage"):FindFirstChild("SayMessageRequest", true):FireServer(MSG, "All")
-			wait(0.1)
+		if SayMessageRequest then
+			for i = 1, 7 do
+				SayMessageRequest:FireServer(Message, "All")
+			end
 		end
 	else
-		for i = 1, 5 do
-			game:GetService("ReplicatedStorage"):FindFirstChild("SayMessageRequest", true):FireServer("/w " .. TargetName .. " " .. MSG, "All")
-			wait(0.1)
+		if SayMessageRequest then
+			for i = 1, 7 do
+				SayMessageRequest:FireServer("/w " .. TargetName .. " " .. MSG, "All")
+			end
 		end
 	end
 end)
