@@ -169,94 +169,6 @@ UIGradient.Parent = lalala
 
 local StarterGui = uhhhh
 StarterGui.IgnoreGuiInset = true
-
--- start up gui
-
-local StartUp = Instance.new("ScreenGui")
-local AdminName = Instance.new("TextLabel")
-local Version = Instance.new("TextLabel")
-
---Properties:
-
-StartUp.Name = "StartUp"
-StartUp.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-StartUp.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-AdminName.Name = "AdminName"
-AdminName.Parent = StartUp
-AdminName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AdminName.BackgroundTransparency = 1.000
-AdminName.Position = UDim2.new(0.321999997, 0, 0.416000009, 0)
-AdminName.Size = UDim2.new(0, 546, 0, 56)
-AdminName.Font = Enum.Font.SourceSans
-AdminName.Text = "Nameless Admin"
-AdminName.TextColor3 = Color3.fromRGB(255, 255, 255)
-AdminName.TextSize = 100.000
-AdminName.TextStrokeTransparency = 0.000
-
-Version.Name = "Version"
-Version.Parent = StartUp
-Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Version.BackgroundTransparency = 1.000
-Version.Position = UDim2.new(0.418, 0,0.469, 0)
-Version.Size = UDim2.new(0, 249, 0, 45)
-Version.Font = Enum.Font.SourceSans
-Version.Text = currentversion
-Version.TextColor3 = Color3.fromRGB(255, 255, 255)
-Version.TextSize = 70.000
-Version.TextTransparency = 1.000
-
-local function GOOBRM_fake_script() -- StartUp.Start 
-	local script = Instance.new('LocalScript', StartUp)
-
-	local AdminName = script.Parent.AdminName
-	local VersionName = script.Parent.Version
-	AdminName.Position = UDim2.new(0.315, 0,0, -92)
-	wait(0.2)
-	AdminName:TweenPosition(UDim2.new(0.315, 0,0.407, 0), "Out", "Quint",1,true)
-	wait(0.2)
-	VersionName:TweenPosition(UDim2.new(0.418, 0,0.509, 0), "Out", "Quint",1,true)
-	for i=1, 10 do
-		wait(0.02)
-		VersionName.TextTransparency -= 0.1
-		VersionName.TextStrokeTransparency -= 0.1
-	end
-	wait(1)
-	for i=1, 10 do
-		wait(0.02)
-		VersionName.TextTransparency += 0.1
-		VersionName.TextStrokeTransparency += 0.1
-		AdminName.TextTransparency += 0.1
-		AdminName.TextStrokeTransparency += 0.1
-	end
-	wait(1)
-	AdminName:Destroy()
-	VersionName:Destroy()
-	script.Parent:Destroy()
-	
-	
-end
-coroutine.wrap(GOOBRM_fake_script)()
-local function UKVHYKU_fake_script() -- StartUp.LocalScript 
-	local script = Instance.new('LocalScript', StartUp)
-
-	local Blur = Instance.new("BlurEffect")
-	Blur.Name = "kewlblur"
-	Blur.Parent = game.Lighting
-	Blur.Size = 0
-	for i=1, 10 do
-		wait(0.05)
-		Blur.Size += 1
-	end
-	wait(1.44)
-	for i=1, 10 do
-		wait(0.05)
-		Blur.Size -= 1
-	end
-	wait(1)
-	Blur:Destroy()
-end
-coroutine.wrap(UKVHYKU_fake_script)()
 Notify({
 Description = "Join the discord for Change Logs! https://discord.gg/mW442YxE4j";
 Duration = 3;
@@ -14874,23 +14786,32 @@ wait(0.1)
 
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
 wait(0.2)
+	local Blur = Instance.new("BlurEffect")
+	Blur.Name = "kewlblur"
+	Blur.Parent = game.Lighting
+	Blur.Size = 0
+	for i=1, 10 do
+		wait(0.05)
+		Blur.Size += 2
+	end
 local ScreenGui = Instance.new("ScreenGui")
 local TextClickButton = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 
 --Properties:
 
-ScreenGui.Parent = game.CoreGui.RobloxGui
+ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = false
+ScreenGui.ResetOnSpawn = true
 
+TextClickButton.Name = "NamelessAdminButton"
 TextClickButton.Parent = ScreenGui
 TextClickButton.BackgroundColor3 = Color3.fromRGB(4, 4, 4)
-TextClickButton.BackgroundTransparency = 1
-TextClickButton.Position = UDim2.new(0.48909232, 0, 0, 0)
-TextClickButton.Size = UDim2.new(0, 32, 0, 33)
+TextClickButton.BackgroundTransparency = 1.000
+TextClickButton.Position = UDim2.new(0.418, 0,0, 0)
+TextClickButton.Size = UDim2.new(0, 2, 0, 33)
 TextClickButton.Font = Enum.Font.SourceSansBold
-TextClickButton.Text = "NA"
+TextClickButton.Text = "Nameless Admin " .. currentversion .. ""
 TextClickButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextClickButton.TextSize = 20.000
 TextClickButton.TextWrapped = true
@@ -14898,19 +14819,35 @@ TextClickButton.TextWrapped = true
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = TextClickButton
 
-for i=1, 86 do
-wait(0.004)
-TextClickButton.BackgroundTransparency -= 0.01
+local function PZORYLB_fake_script() -- TextClickButton.LocalScript 
+	local script = Instance.new('LocalScript', TextClickButton)
+	textclickbutton = script.Parent
+	textclickbutton.Size = UDim2.new(0, 2,0, 33)
+	textclickbutton.BackgroundTransparency = 0.14
+	textclickbutton:TweenSize(UDim2.new(0, 251,0, 33), "Out", "Quint",1,true)
+	wait(2)
+	textclickbutton:TweenSize(UDim2.new(0, 32, 0, 33), "Out", "Quint",1,true)
+	textclickbutton:TweenPosition(UDim2.new(0.48909232, 0, 0, 0), "Out", "Quint",1,true)
+	wait(0.4)
+	textclickbutton.Text = "NA"
+	textclickbutton.Active = true
+gui.draggable(textclickbutton)
 end
+coroutine.wrap(PZORYLB_fake_script)()
 
 TextClickButton.MouseButton1Click:Connect(function()
 	gui.barSelect()
 		cmdInput.Text = ''
 		cmdInput:CaptureFocus()
-		wait(0.0000005)
-							cmdInput.Text = ''
 		for i=1,10 do
 		    wait(0.000051)
 		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
+wait(1.64)
+	for i=1, 10 do
+		wait(0.05)
+		Blur.Size -= 2
+	end
+	wait(1)
+	Blur:Destroy()
