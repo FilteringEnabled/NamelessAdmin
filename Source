@@ -10,7 +10,7 @@ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fi
 local Notify = AkaliNotif.Notify;
 
 
--- folder check
+if makefolder then
 if not isfolder('Nameless-Admin') then
 makefolder('Nameless-Admin')
 else
@@ -23,6 +23,8 @@ end
 
 if not isfolder('Nameless-Admin\\Plugins') then
 	makefolder('Nameless-Admin\\Plugins')
+	else
+	end
 	else
 	end
 
@@ -14368,11 +14370,13 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
     end
 end)
 
-		-- executes all plugins in Plugins folder
+if listfiles then
 		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
 			loadstring(readfile(listfiles("Nameless-Admin/Plugins")[i]))();
 			wait(0.1)
 
+			end
+			else
 			end
 
 --[[ FUNCTIONALITY ]]--
