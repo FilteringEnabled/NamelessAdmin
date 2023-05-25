@@ -16,18 +16,20 @@ makefolder('Nameless-Admin')
 else
 end
 
-if not isfile("Nameless-Admin\\Prefix.txt") then
-writefile("Nameless-Admin\\Prefix.txt", ';')
-else
-end
-
 if not isfolder('Nameless-Admin\\Plugins') then
 	makefolder('Nameless-Admin\\Plugins')
 	else
 	end
-	else
-	end
+else
+end
 
+if writefile then
+if not isfile("Nameless-Admin\\Prefix.txt") then
+writefile("Nameless-Admin\\Prefix.txt", ';')
+else
+end
+else
+end
 local opt = {
 	prefix = readfile("Nameless-Admin\\Prefix.txt", ';'),			-- change ';' to anything u want the prefix to be
 	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
