@@ -181,10 +181,11 @@ UIGradient.Parent = lalala
 local StarterGui = uhhhh
 StarterGui.IgnoreGuiInset = true
 Notify({
-Description = "Join the discord for Change Logs! https://discord.gg/mW442YxE4j";
-Duration = 3;
+Description = "Plugins have been added, join the discord to learn more. | https://discord.gg/mW442YxE4j";
+Duration = 7;
 
 });
+
 
 
 	function r15(plr)
