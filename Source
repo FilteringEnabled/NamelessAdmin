@@ -14374,12 +14374,14 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
     end
 end)
 
-if listfiles then
-		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
+if not table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) then 
+	if listfiles then
+	for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
 			loadstring(readfile(listfiles("Nameless-Admin/Plugins")[i]))();
 			wait(0.1)
 
 			end
+		end
 			else
 			end
 
