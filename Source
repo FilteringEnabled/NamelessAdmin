@@ -9,6 +9,8 @@ end -- executes when game has loaded
 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
 local Notify = AkaliNotif.Notify;
 
+
+-- folder check
 if not isfolder('Nameless-Admin') then
 makefolder('Nameless-Admin')
 else
@@ -18,6 +20,11 @@ if not isfile("Nameless-Admin\\Prefix.txt") then
 writefile("Nameless-Admin\\Prefix.txt", ';')
 else
 end
+
+if not isfolder('Nameless-Admin\\Plugins') then
+	makefolder('Nameless-Admin\\Plugins')
+	else
+	end
 
 local opt = {
 	prefix = readfile("Nameless-Admin\\Prefix.txt", ';'),			-- change ';' to anything u want the prefix to be
@@ -31,7 +38,7 @@ local opt = {
 }
 
 -- [[ Version ]] -- 
-currentversion = 1.11
+currentversion = 1.12
 
 --[[ VARIABLES ]]--
 PlaceId, JobId = game.PlaceId, game.JobId
@@ -677,6 +684,11 @@ end)
 
 cmd.add({"httpget", "hl", "get"}, {"httpget <url> (hl, get)", "Run the contents of a given URL"}, function(url)
 	loadstring(game:HttpGet(url, true))()
+end)
+
+cmd.add({"resizechat", "rc"}, {"resizechat (rc)", "Makes chat resizable and draggable"}, function()
+require(game:GetService("Chat").ClientChatModules.ChatSettings).WindowResizable = true
+require(game:GetService("Chat").ClientChatModules.ChatSettings).WindowDraggable = true
 end)
 
 alreadyantilag = false
@@ -5710,8 +5722,6 @@ wait()
             player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
    end)
 
-
-
 cmd.add({"hatsleash", "hl"}, {"hatsleash", "Makes you be able to carry your hats"}, function()
 	for _, v in pairs(game.Players.LocalPlayer.Character:getChildren()) do
         if v.ClassName == "Accessory" then
@@ -6476,7 +6486,7 @@ speed = (...)
 	local UICorner = Instance.new("UICorner")
 	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 	
-	ScreenGui.Parent = game.CoreGui.RobloxGui
+	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	
@@ -6486,12 +6496,13 @@ speed = (...)
 	TextButton.Position = UDim2.new(0.933, 0,0.621, 0)
 	TextButton.Size = UDim2.new(0.043, 0,0.083, 0)
 	TextButton.Font = Enum.Font.SourceSansBold
-	TextButton.Text = "Become Invisible"
+	TextButton.Text = "Fly"
 	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TextButton.TextSize = 15.000
 	TextButton.TextWrapped = true
 	TextButton.Active = true
 	TextButton.Draggable = true
+	TextButton.TextScaled = true
 	
 	UICorner.Parent = TextButton
 	
@@ -13646,7 +13657,7 @@ local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
@@ -13662,6 +13673,7 @@ TextButton.TextSize = 15.000
 TextButton.TextWrapped = true
 TextButton.Active = true
 TextButton.Draggable = true
+TextScaled = true
 
 UICorner.Parent = TextButton
 
@@ -14356,6 +14368,12 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
     end
 end)
 
+		-- executes all plugins in Plugins folder
+		for i,v in pairs(listfiles("Nameless-Admin\\Plugins")) do
+			loadstring(readfile(listfiles("Nameless-Admin\\Plugins")[i]))();
+			break;
+			end
+
 --[[ FUNCTIONALITY ]]--
 localPlayer.Chatted:Connect(function(str)
 	lib.parseCommand(str)
@@ -14817,14 +14835,6 @@ wait(0.1)
 
 game:GetService("CoreGui").RobloxGui.NotificationFrame.Visible = false
 wait(0.2)
-	local Blur = Instance.new("BlurEffect")
-	Blur.Name = "kewlblur"
-	Blur.Parent = game.Lighting
-	Blur.Size = 0
-	for i=1, 10 do
-		wait(0.05)
-		Blur.Size += 2
-	end
 local ScreenGui = Instance.new("ScreenGui")
 local TextClickButton = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
@@ -14875,10 +14885,3 @@ TextClickButton.MouseButton1Click:Connect(function()
 		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
 end)
-wait(1.64)
-	for i=1, 10 do
-		wait(0.05)
-		Blur.Size -= 2
-	end
-	wait(1)
-	Blur:Destroy()
