@@ -14369,9 +14369,10 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
 end)
 
 		-- executes all plugins in Plugins folder
-		for i,v in pairs(listfiles("Nameless-Admin\\Plugins")) do
-			loadstring(readfile(listfiles("Nameless-Admin\\Plugins")[i]))();
-			break;
+		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
+			loadstring(readfile(listfiles("Nameless-Admin/Plugins")[i]))();
+			wait(0.1)
+
 			end
 
 --[[ FUNCTIONALITY ]]--
