@@ -1,4 +1,4 @@
-# NamelessAdmin
+# Nameless Admin
 
 Nameless Admin is an admin script that has existed since 2019.
 
