@@ -7,6 +7,7 @@ Our Discord: https://discord.gg/ACk4JyVJ6x
 
 # Developers
 • qipu
+
 • 0866 (UI Developer)
 
 # Credits
