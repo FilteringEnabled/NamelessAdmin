@@ -6,7 +6,8 @@ Our Discord: https://discord.gg/ACk4JyVJ6x
 • Over 300+ commands aswell as open source.
 
 # Developers
-qipu
+• qipu
+• 0866 (UI Developer)
 
 # Credits
 • Spec
