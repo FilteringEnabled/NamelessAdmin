@@ -3669,12 +3669,17 @@ end)
 
 annoyloop = false
 cmd.add({"annoy"}, {"annoy <player>", "Annoys the given player"}, function(...)
-	Target = (...)
- local Player = getPlr(Target)
- annoyloop = true
-       repeat wait()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame
-	   until annoyloop == false
+	annoyloop = true
+	User = (...)
+	Target = getPlr(User)
+			  local SaveCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+repeat wait()
+					  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame + Vector3.new(math.random(-2,2),math.random(0,2),math.random(-2,2))
+					  game:GetService('RunService').RenderStepped:Wait()
+					  wait(.1)
+			  until annoyloop == false
+			  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = SaveCFrame
+
 end)
 
 cmd.add({"unannoy"}, {"unannoy", "Stops the annoy command"}, function()
