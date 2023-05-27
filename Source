@@ -10181,14 +10181,21 @@ end)
 
 loopws = false
 cmd.add({"loopwalkspeed", "loopws"}, {"loopwalkspeed <speed> (loopws)", "Loop walkspeed"}, function(...)
+	speed = (...)
 	loopws = true
 	repeat wait()
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (...)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	local detectdied = game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
+wait(game.Players.RespawnTime + 0.4)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+end)
 	until loopws == false
 end)
 
 cmd.add({"unloopwalkspeed", "unloopws"}, {"unloopwalkspeed <speed> (unloopws)", "Disable loop walkspeed"}, function(...)
 	loopws = false
+	detectdied:Disconnect()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end)
 
 cmd.add({"bang", "fuck"}, {"bang <player> <speed>", "Bangs the player by attaching to them"}, function(h,d)
