@@ -10185,7 +10185,7 @@ cmd.add({"loopwalkspeed", "loopws"}, {"loopwalkspeed <speed> (loopws)", "Loop wa
 	loopws = true
 	repeat wait()
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
-	local detectdied = game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
+	detectdied = game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
 wait(game.Players.RespawnTime + 0.4)
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
 end)
