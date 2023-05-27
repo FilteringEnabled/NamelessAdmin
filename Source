@@ -9,29 +9,25 @@ end -- executes when game has loaded
 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
 local Notify = AkaliNotif.Notify;
 
+-- custom functions and stuff
+local CustomFunctionSupport = isfile and isfolder and writefile and readfile
 
-if makefolder then
+if CustomFunctionSupport then
 if not isfolder('Nameless-Admin') then
 makefolder('Nameless-Admin')
-else
 end
 
 if not isfolder('Nameless-Admin\\Plugins') then
 	makefolder('Nameless-Admin\\Plugins')
-	else
-	end
-else
 end
 
-if writefile then
 if not isfile("Nameless-Admin\\Prefix.txt") then
 writefile("Nameless-Admin\\Prefix.txt", ';')
 else
 end
-else
 end
 local opt = {
-	prefix = readfile("Nameless-Admin\\Prefix.txt", ';'),			-- change ';' to anything u want the prefix to be
+	prefix = readfile("Nameless-Admin\\Prefix.txt", ';'),
 	tupleSeparator = ',',	-- ;ff me,others,all | ;ff me/others/all
 	ui = {					-- never did anything with this
 		
@@ -115,6 +111,7 @@ end)
 local bringc = {}
 
 --[[ COMMAND FUNCTIONS ]]--
+commandcount = 0
 cmd = {}
 cmd.add = function(...)
 	local vars = {...}
@@ -126,6 +123,7 @@ cmd.add = function(...)
 			Aliases[cmdName:lower()] = {func, info}
 		end
 	end
+	commandcount = commandcount + 1
 end
 
 cmd.run = function(args)
@@ -180,13 +178,6 @@ UIGradient.Parent = lalala
 
 local StarterGui = uhhhh
 StarterGui.IgnoreGuiInset = true
-Notify({
-Description = "Plugins have been added, join the discord to learn more. | https://discord.gg/mW442YxE4j";
-Duration = 7;
-
-});
-
-
 
 	function r15(plr)
 		if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
@@ -751,6 +742,10 @@ cmd.add({"lag"}, {"lag <player>", "Chat lag"}, function()
 		alreadyantilag = true
 	else
 	end
+end)
+
+cmd.add({"plugins"}, {"plugins", "Check what kind of plugins you have, add plugins using a gui, delete a plugin."}, function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/NamelessAdminPlugin"))();
 end)
 
 cmd.add({"prefix"}, {"prefix <prefix>", "Changes the admin prefix"}, function(...)
@@ -2039,6 +2034,16 @@ end)
 
 cmd.add({"commands", "cmds"}, {"commands (cmds)", "Open the command list"}, function()
 	gui.commands()
+end)
+
+cmd.add({"commandcount", "cc"}, {"commandcount (cc)", "Counds how many commands NA has"}, function()
+
+Notify({
+	Description = "Nameless Admin currently has ".. commandcount .. " commands";
+	Title = "Nameless Admin";
+	Duration = 5;
+	
+	});
 end)
 
 hiddenfling = false
@@ -5141,6 +5146,99 @@ local npcs = {}
       if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
         table.insert(npcs,{hum,hum.HipHeight})
           hum.HipHeight = -1024
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+cmd.add({"npcfollow"}, {"npcfollow", "Makes NPCS follow you"}, function()
+	local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+	local target = game.Players.LocalPlayer.Character
+				local targetPart = target:FindFirstChild("Head")
+				local targetPos = targetPart.Position
+				hum:MoveTo(targetPos)
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+cmd.add({"sitnpcs"}, {"sitnpcs", "Makes NPCS sit"}, function()
+	local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            hum.Sit = true
+        end      
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+cmd.add({"unsitnpcs"}, {"unsitnpcs", "Makes NPCS unsit"}, function()
+	local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            hum.Sit = true
+        end      
+        end
+    end
+    for _,hum in pairs(workspace:GetDescendants()) do
+      disappear(hum)
+    end
+end)
+
+cmd.add({"vehiclespeed", "vspeed"}, {"vehiclespeed <amount> (vspeed)", "Change the vehicle speed"}, function(...)
+	if vehicleloopspeed then
+		vehicleloopspeed:Disconnect()
+	end
+	local UserInputService = game:GetService("UserInputService")
+	local GuiService = game:GetService("GuiService")
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	
+	local intens = (...)
+	
+	vehicleloopspeed = game:GetService("RunService").Stepped:Connect(function()
+		   local Humanoid = workspace.CurrentCamera.CameraSubject;
+		   if Humanoid:IsA("Humanoid") then
+			   Humanoid.SeatPart:ApplyImpulse(Humanoid.SeatPart.CFrame.LookVector * Vector3.new(intens, intens, intens))
+		   elseif Humanoid:IsA("BasePart") then
+			   Humanoid:ApplyImpulse(Humanoid.CFrame.LookVector * Vector3.new(intens, intens, intens))
+		   end
+	end)
+end)
+
+cmd.add({"unvehiclespeed", "unvspeed"}, {"unvehiclespeed (unvspeed)", "Stops the vehiclespeed command"}, function()
+	vehicleloopspeed = vehicleloopspeed:Disconnect()
+end)
+
+cmd.add({"killnpcs"}, {"killnpcs", "Kills NPCs"}, function()
+	local npcs = {}
+
+    local function disappear(hum)
+      if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+        table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            hum.Health = 0
+        end      
         end
     end
     for _,hum in pairs(workspace:GetDescendants()) do
@@ -9706,6 +9804,22 @@ cmd.add({"discord"}, {"discord", "discord server link"}, function()
 	Duration = 15;
 	
 	});
+	if httprequest then
+		httprequest({
+			Url = 'http://127.0.0.1:6463/rpc?v=1',
+			Method = 'POST',
+			Headers = {
+				['Content-Type'] = 'application/json',
+				Origin = 'https://discord.com'
+			},
+			Body = HttpService:JSONEncode({
+				cmd = 'INVITE_BROWSER',
+				nonce = HttpService:GenerateGUID(false),
+				args = {code = 'ACk4JyVJ6x'}
+			})
+		})
+	end
+	setclipboard("discord.gg/mW442YxE4j")
 	end)
 
 cmd.add({"exit"}, {"exit", "Close down roblox"}, function()
@@ -10237,8 +10351,6 @@ end
 end)
 
 cmd.add({"spook", "scare"}, {"spook <player> (scare)", "Teleports next to a player for a few seconds"}, function(...)
-
-LocalPlayer = game.Players.LocalPlayer
 Username = (...)
 Target = getPlr(Username)
 
@@ -10253,6 +10365,31 @@ local oldCF = LocalPlayer.Character.HumanoidRootPart.CFrame
                         LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
                 end
         
+end)
+
+loopspook = false
+cmd.add({"loopspook", "loopscare"}, {"loopspook <player> (loopscare)", "Teleports next to a player for a few seconds and then again and again"}, function(...)
+	loopspook = true
+repeat wait()
+	Username = (...)
+	Target = getPlr(Username)
+	
+	local oldCF = LocalPlayer.Character.HumanoidRootPart.CFrame
+	  Target = getPlr(Username)    
+					distancepl = 2
+					if Target.Character and Target.Character:FindFirstChild('Humanoid') then
+							LocalPlayer.Character.HumanoidRootPart.CFrame =
+									Target.Character.HumanoidRootPart.CFrame +  Target.Character.HumanoidRootPart.CFrame.lookVector * distancepl
+							LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LocalPlayer.Character.HumanoidRootPart.Position, Target.Character.HumanoidRootPart.Position)
+							wait(.5)
+							LocalPlayer.Character.HumanoidRootPart.CFrame = oldCF
+					end
+					wait(0.3)
+until loopspook == false
+end)
+
+cmd.add({"unloopspook", "unloopscare"}, {"unloopspook <player> (unloopscare)", "Stops the loopspook command"}, function()
+	loopspook = false
 end)
 
 cmd.add({"unbang", "unfuck"}, {"unbang", "Unbangs the player"}, function()
@@ -12153,10 +12290,11 @@ cmd.add({"remotespy", "simplespy"}, {"remotespy (simplespy)", "executes simplesp
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
 end)
 
+cmd.add({"gravity", "grav"}, {"gravity <amount> (grav)", "sets game gravity to whatever u want"}, function(...)
+game.Workspace.Gravity = (...)
+end)
+
 cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (unanchorednograv)", "Makes unanchored parts have 0 gravity"}, function()
-	
-	
-	
 	wait();
 	
 	Notify({
@@ -12165,7 +12303,41 @@ cmd.add({"uanograv", "unanchorednograv", "unanchorednogravity"}, {"uanograv (una
 	Duration = 5;
 	
 });
-	loadstring(game:HttpGet("https://pastebin.com/raw/MHdBcJQL", true))()
+spawn(function()
+	while true do
+		game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+		game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+		game:GetService("RunService").Stepped:wait()
+	end
+end)
+local function zeroGrav(part)
+    if part:FindFirstChild("BodyForce") then return end
+    local temp = Instance.new("BodyForce")
+    temp.Force = part:GetMass() * Vector3.new(0,workspace.Gravity,0)
+    temp.Parent = part
+end
+
+for i,v in ipairs(workspace:GetDescendants()) do
+    if v:IsA("Part") and v.Anchored == false then
+        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+            zeroGrav(v)
+        end
+    end
+end
+
+workspace.DescendantAdded:Connect(function(part)
+    if part:IsA("Part") and part.Anchored == false then
+        if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+            zeroGrav(part)
+        end
+    end
+end)
+end)
+
+cmd.add({"funfact"}, {"funfact", "Says a random fun fact"}, function()
+local GetURL = game:HttpGet("https://uselessfacts.jsph.pl/random.json?language=en")
+	local HTTP = game:GetService("HttpService"):JSONDecode(GetURL)
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(HTTP.text,"All")
 end)
 
 cmd.add({"fireclickdetectors", "fcd"}, {"fireclickdetectors (fcd)", "Fires every click detector that's in workspace"}, function()
@@ -13949,7 +14121,7 @@ Duration = 5;
 });
 end)
 
-cmd.add({"ws", "speed"}, {"ws <number> (speed)", "Makes your WalkSpeed whatever you want"}, function(...)
+cmd.add({"ws", "speed", "walkspeed"}, {"walkspeed <number> (speed, ws)", "Makes your WalkSpeed whatever you want"}, function(...)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (...)
 end)
 
@@ -13977,7 +14149,7 @@ tool.Grip = CFrame.new(0, -7, -3)
         firetouchinterest(target.Character.Humanoid.RootPart,tool.Handle,1)
 	end)
 
-    cmd.add({"jp", "jumppower"}, {"jp <number> (jumppower)", "Makes your JumpPower whatever you want"}, function(...)
+    cmd.add({"jp", "jumppower"}, {"jumppower <number> (jp)", "Makes your JumpPower whatever you want"}, function(...)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = (...)
         end)
 
@@ -14358,16 +14530,20 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
     end
 end)
 
-if not table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) then 
-	if listfiles then
-	for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
+local PluginsLoaded = 0
+	if CustomFunctionSupport then
+		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
 			loadstring(readfile(listfiles("Nameless-Admin/Plugins")[i]))();
-			wait(0.1)
-
-			end
+PluginsLoaded = PluginsLoaded + 1
 		end
-			else
-			end
+	end
+
+		Notify({
+			Description = "Loaded " .. PluginsLoaded .. " plugins";
+			Title = "Nameless Admin";
+			Duration = 3;
+			
+			});
 
 --[[ FUNCTIONALITY ]]--
 localPlayer.Chatted:Connect(function(str)
@@ -14728,10 +14904,13 @@ mouse.KeyDown:Connect(function(k)
 		cmdInput:CaptureFocus()
 				wait(0.00005)
 							cmdInput.Text = ''
+							if game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency == 1 then
 		for i=1,10 do
 		    wait(0.000051)
 		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
+		else
+		end
 	end
 end)
 
