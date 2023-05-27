@@ -10248,7 +10248,19 @@ headSit = headSit:Disconnect()
 sitDied:Disconnect()
 end)
 
-cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to them"}, function(...)
+loopws = false
+cmd.add({"loopwalkspeed", "loopws"}, {"loopwalkspeed <speed> (loopws)", "Loop walkspeed"}, function(...)
+	loopws = true
+	repeat wait()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (...)
+	until loopws == false
+end)
+
+cmd.add({"unloopwalkspeed", "unloopws"}, {"unloopwalkspeed <speed> (unloopws)", "Disable loop walkspeed"}, function(...)
+	loopws = false
+end)
+
+cmd.add({"bang", "fuck"}, {"bang <player> <speed>", "Bangs the player by attaching to them"}, function(h,d)
 	RunService = game:GetService("RunService")
 	
 	function getTorso(x)
@@ -10261,9 +10273,13 @@ cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to th
 		return rootPart
 	end
 	
-	speed = "10"
+	speed = d
+
+	if speed == nil then
+speed = 10
+	end
 	
-	Username = (...)
+	Username = h
 	
 	local players = getPlr(Username)
 			bangAnim = Instance.new("Animation")
