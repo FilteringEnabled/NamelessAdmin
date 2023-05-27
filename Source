@@ -10270,7 +10270,7 @@ cmd.add({"bang", "fuck"}, {"bang <player>", "Bangs the player by attaching to th
 			if not r15(game.Players.LocalPlayer) then
 				bangAnim.AnimationId = "rbxassetid://148840371"
 			else
-				bangAnim.AnimationId = "rbxassetid://5918726674"
+				bangAnim.AnimationId = "rbxassetid://569145055"
 			end
 			bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
 			bang:Play(.1, 1, 1)
