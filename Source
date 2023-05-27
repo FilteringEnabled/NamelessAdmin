@@ -14904,13 +14904,10 @@ mouse.KeyDown:Connect(function(k)
 		cmdInput:CaptureFocus()
 				wait(0.00005)
 							cmdInput.Text = ''
-							if game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency == 1 then
 		for i=1,10 do
 		    wait(0.000051)
 		 game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 		    end
-		else
-		end
 	end
 end)
 
