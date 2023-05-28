@@ -10226,7 +10226,33 @@ cmd.add({"unloopwalkspeed", "unloopws"}, {"unloopwalkspeed <speed> (unloopws)", 
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end)
 
-cmd.add({"headbang", "mouthbang", "hb"}, {"headbang <player> <mouthbang, hb>", "Bang them in the mouth because you are gay"}, function(h,d)
+cmd.add({"waveat", "wat"}, {"waveat <player> (wat)", "Wave to a player"}, function(...)
+-- r6 / 128777973
+-- r15 / 507770239
+Player = (...)
+Target = getPlr(Player)
+local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+targetcframe = Target.Character.HumanoidRootPart.CFrame
+WaveAnim = Instance.new("Animation")
+			if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
+				WaveAnim.AnimationId = "rbxassetid://507770239"
+			else
+				WaveAnim.AnimationId = "rbxassetid://128777973"
+			end
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetcframe * CFrame.new(0, 0, -3)
+			local CharPos = game.Players.LocalPlayer.Character.PrimaryPart.Position
+					local tpos = Target.Character:FindFirstChild("HumanoidRootPart").Position
+					local TPos = Vector3.new(tpos.X,CharPos.Y,tpos.Z)
+					local NewCFrame = CFrame.new(CharPos,TPos)
+					Players.LocalPlayer.Character:SetPrimaryPartCFrame(NewCFrame)
+wave = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(WaveAnim)
+wave:Play(-1, 5, -1)
+wait(1.6)
+wave:Stop()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+end)
+
+cmd.add({"headbang", "mouthbang", "hb"}, {"headbang <player> (mouthbang, hb)", "Bang them in the mouth because you are gay"}, function(h,d)
 RunService = game:GetService("RunService")
 
 	speed = d
