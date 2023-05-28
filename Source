@@ -3769,20 +3769,25 @@ local TPlayer = getPlr(Target)
 end)
 
 cmd.add({"sync"}, {"sync", "Syncs all in-game audios"}, function()
-	if game.SoundService.RespectFilteringEnabled == false then
-		for i,v in pairs(game:GetDescendants()) do
-		if v:IsA("Sound") then
-		v:Play()
-		end
-		end
-		else
-		Notify({
-		Description = "This game has RFE on, meaning this wont replicate.";
-		Title = "Nameless Admin";
-		Duration = 7;
-		
-		});
-		end
+massplay = true
+if game:GetService("SoundService").RespectFilteringEnabled == false then
+repeat wait() do 
+for _, sound in next, game.Workspace:GetDescendants() do
+if sound:IsA("Sound") then
+sound.Volume = 10
+sound:Play()
+end
+end
+end
+until massplay == false
+else
+Notify({
+Description = "Sorry, wont replicate for this game, try another game.";
+Title = "Nameless Admin";
+Duration = 5;
+
+});
+end
 end)
 
 cmd.add({"infvoid"}, {"infvoid <player>", "Makes a players avatar glitch"}, function(...)
