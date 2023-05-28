@@ -2048,9 +2048,16 @@ end)
 
 hiddenfling = false
 cmd.add({"walkfling", "wfling"}, {"walkfling (wfling) [THANKS TO X]", "probably the best fling lol"}, function()
+	Notify({
+		Description = "Walkfling enabled";
+		Title = "Nameless Admin";
+		Duration = 5;
+		
+		});
 	if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
 		hiddenfling = true
 	else
+		hiddenfling = true
 		detection = Instance.new("Decal")
 		detection.Name = "juisdfj0i32i0eidsuf0iok"
 		detection.Parent = game:GetService("ReplicatedStorage")
@@ -2087,9 +2094,13 @@ cmd.add({"walkfling", "wfling"}, {"walkfling (wfling) [THANKS TO X]", "probably 
 end)
 
 cmd.add({"unwalkfling", "unwfling"}, {"unwalkfling (unwfling)", "stop the walkfling command"}, function()
-	if hiddenfling then
-	hiddenfling = false
-	end
+	Notify({
+		Description = "Walkfling disabled";
+		Title = "Nameless Admin";
+		Duration = 5;
+		
+		});
+		hiddenfling = false
 end)
 
 cmd.add({"fling3"}, {"fling3 <player>", "another variant of fling"}, function(...)
