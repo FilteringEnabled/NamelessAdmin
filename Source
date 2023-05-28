@@ -2241,12 +2241,16 @@ end)
 
 --[ LOCALPLAYER ]--
 local function respawn()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, -499, 0)
-end
+cf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+player.CharacterAdded:wait(1); wait(0.2);
+	character:WaitForChild("HumanoidRootPart").CFrame = cf
+	end
 
 local function refresh()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, -499, 0)
-	player.CharacterAdded:wait(1); wait(0.2);
+cf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+player.CharacterAdded:wait(1); wait(0.2);
 	character:WaitForChild("HumanoidRootPart").CFrame = cf
 end
 
