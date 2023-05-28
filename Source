@@ -56,7 +56,6 @@ local IYLOADED = false -- This is used for the ;iy command that executes infinit
 local Humanoid = Character and Character:FindFirstChildWhichIsA("Humanoid") or false
 local Character = game.Players.LocalPlayer.Character
 local Clicked = true
-local controlModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild('PlayerModule'):WaitForChild("ControlModule"))
 _G.Spam = false
 --[[ FOR LOOP COMMANDS ]]--
 view = false
@@ -235,6 +234,7 @@ end
 end)
 
 function mobilefly(speed)
+	local controlModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild('PlayerModule'):WaitForChild("ControlModule"))
 	local bv = Instance.new("BodyVelocity")
 	bv.Name = "VelocityHandler"
 	bv.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
