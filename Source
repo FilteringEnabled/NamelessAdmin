@@ -3768,6 +3768,7 @@ local TPlayer = getPlr(Target)
 			   player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
 end)
 
+massplay = false
 cmd.add({"sync"}, {"sync", "Syncs all in-game audios"}, function()
 massplay = true
 if game:GetService("SoundService").RespectFilteringEnabled == false then
@@ -3788,6 +3789,10 @@ Duration = 5;
 
 });
 end
+end)
+
+cmd.add({"unsync"}, {"unsync", "Unsyncs all in-game audios"}, function()
+	massplay = false
 end)
 
 cmd.add({"infvoid"}, {"infvoid <player>", "Makes a players avatar glitch"}, function(...)
@@ -10221,6 +10226,63 @@ cmd.add({"unloopwalkspeed", "unloopws"}, {"unloopwalkspeed <speed> (unloopws)", 
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end)
 
+cmd.add({"headbang", "mouthbang", "hb"}, {"headbang <player> <mouthbang, hb>", "Bang them in the mouth because you are gay"}, function(h,d)
+	
+	RunService = game:GetService("RunService")
+	
+		speed = d
+	
+		if speed == nil then
+	speed = 10
+		end
+		
+		Username = h
+		
+		local players = getPlr(Username)
+				bangAnim = Instance.new("Animation")
+				if not r15(game.Players.LocalPlayer) then
+					bangAnim.AnimationId = "rbxassetid://148840371"
+				else
+					bangAnim.AnimationId = "rbxassetid://5918726674"
+				end
+				bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
+				bang:Play(.1, 1, 1)
+				if speed then
+					bang:AdjustSpeed(speed)
+				else
+					bang:AdjustSpeed(3)
+				end
+				local bangplr = players.Name
+				bangDied = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
+					bangLoop = bangLoop:Disconnect()
+					bang:Stop()
+					bangAnim:Destroy()
+					bangDied:Disconnect()
+				end)
+				local bangOffet = CFrame.new(0, 2, -1.1)
+				bangLoop = RunService.Stepped:Connect(function()
+					pcall(function()
+						local otherRoot = getTorso(game.Players[bangplr].Character)
+						getRoot(game.Players.LocalPlayer.Character).CFrame = otherRoot.CFrame * bangOffet
+						local CharPos = game.Players.LocalPlayer.Character.PrimaryPart.Position
+						local tpos = players.Character:FindFirstChild("HumanoidRootPart").Position
+						local TPos = Vector3.new(tpos.X,CharPos.Y,tpos.Z)
+						local NewCFrame = CFrame.new(CharPos,TPos)
+						Players.LocalPlayer.Character:SetPrimaryPartCFrame(NewCFrame)
+					end)
+				end)
+	
+end)
+
+cmd.add({"unheadbang", "unmouthbang", "unhb"}, {"unheadbang (unmouthbang, unhb)", "Bang them in the mouth because you are gay"}, function(h,d)
+	if bangLoop then
+		bangLoop = bangLoop:Disconnect()
+		bang:Stop()
+		bangAnim:Destroy()
+		bangDied:Disconnect()
+end
+end)
+
 cmd.add({"bang", "fuck"}, {"bang <player> <speed>", "Bangs the player by attaching to them"}, function(h,d)
 	RunService = game:GetService("RunService")
 	
@@ -10247,7 +10309,7 @@ speed = 10
 			if not r15(game.Players.LocalPlayer) then
 				bangAnim.AnimationId = "rbxassetid://148840371"
 			else
-				bangAnim.AnimationId = "rbxassetid://13576201382"
+				bangAnim.AnimationId = "rbxassetid://5918726674"
 			end
 			bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
 			bang:Play(.1, 1, 1)
