@@ -10197,8 +10197,10 @@ cmd.add({"loopwalkspeed", "loopws"}, {"loopwalkspeed <speed> (loopws)", "Loop wa
 	repeat wait()
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
 	detectdied = game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
+		if loopws == true then
 wait(game.Players.RespawnTime + 0.4)
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+		end
 end)
 	until loopws == false
 end)
@@ -10206,6 +10208,7 @@ end)
 cmd.add({"unloopwalkspeed", "unloopws"}, {"unloopwalkspeed <speed> (unloopws)", "Disable loop walkspeed"}, function(...)
 	loopws = false
 	detectdied:Disconnect()
+	wait(0.6)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end)
 
@@ -10235,7 +10238,7 @@ speed = 10
 			if not r15(game.Players.LocalPlayer) then
 				bangAnim.AnimationId = "rbxassetid://148840371"
 			else
-				bangAnim.AnimationId = "rbxassetid://569145055"
+				bangAnim.AnimationId = "rbxassetid://13576201382"
 			end
 			bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
 			bang:Play(.1, 1, 1)
