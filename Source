@@ -14598,19 +14598,41 @@ cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox ch
 end)
 
 local PluginsLoaded = 0
-	if CustomFunctionSupport then
-		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
+PluginsErrored = 0
+
+local success, result = pcall(function()
+    		for i,v in pairs(listfiles("Nameless-Admin/Plugins")) do
 			loadstring(readfile(listfiles("Nameless-Admin/Plugins")[i]))();
 PluginsLoaded = PluginsLoaded + 1
-		end
-	end
+end
+end)
 
-		Notify({
+if not success then
+	PluginsErrored = PluginsErrored + 1
+	Notify({
+		Description = "Plugin error: " .. result .. "";
+		Title = "Nameless Admin";
+		Duration = 3;
+		
+		});
+end
+
+
+if PluginsErrored == 0 then
+	Notify({
 			Description = "Loaded " .. PluginsLoaded .. " plugins";
 			Title = "Nameless Admin";
 			Duration = 3;
 			
 			});
+else
+	Notify({
+	Description = "Loaded " .. PluginsLoaded .. " plugins, although " .. PluginsErrored .. " plugins have errored";
+	Title = "Nameless Admin";
+			Duration = 3;
+			
+			});
+end
 
 --[[ FUNCTIONALITY ]]--
 localPlayer.Chatted:Connect(function(str)
