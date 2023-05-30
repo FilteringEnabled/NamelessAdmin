@@ -831,21 +831,16 @@
  cmd.add({"gotocampos", "tocampos", "tcp"}, {"gotocampos (tocampos, tcp)", "Teleports you to your camera position works with free cam but freezes you"}, function()
  local player = game.Players.LocalPlayer
  local UserInputService = game:GetService("UserInputService")
- 
- -- function to teleport the player to the camera's position
- local function teleportPlayer()
+  local function teleportPlayer()
 	 local character = player.Character or player.CharacterAdded:wait(1)
 	 local camera = game.Workspace.CurrentCamera
 	 local cameraPosition = camera.CFrame.Position
 	 character:SetPrimaryPartCFrame(CFrame.new(cameraPosition))
  end
- 
- 
 		 local camera = game.Workspace.CurrentCamera
 		 repeat wait() until camera.CFrame ~= CFrame.new()
  
 		 teleportPlayer()
-  
  end)
  
  cmd.add({"kanye"}, {"kanye", "Random kanye quote"}, function()
@@ -856,10 +851,9 @@
 		  game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(final3.." - Kanye West", 'All')
  end)
  
+ -- [[ HAT ORBIT COMMANDS ]] --
  cmd.add({"hatorbit", "ho"}, {"hatorbit (ho)", "Hat orbit"}, function()
-	 
- 
- 
+	-- [[ patched theres no point in using it ]] --
  wait();
  
  Notify({
@@ -2503,7 +2497,8 @@
  end)
  
  cmd.add({"febtools"}, {"febtools", "Move parts that are your hats"}, function()
- -- ty rouxhaver
+ -- [[ THANKS TO ROUXHAVER FOR THIS ]] --
+ -- check out his github - https://github.com/rouxhaver
  local Players = game:GetService("Players")
  local RunService = game:GetService("RunService")
  local LocalPlayer = Players.LocalPlayer
@@ -3090,7 +3085,7 @@
 	 Target = (...)
  
  if Target == "all" or Target == "others" then
-	 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+	 print("Patched")
  else
  local function Kill()
 			 if not getPlr(Target) then
@@ -3317,9 +3312,7 @@
  end)
  
  cmd.add({"breaklayeredclothing", "blc"}, {"breaklayeredclothing (blc)", "Streches your layered clothing"}, function()
- 
- 
- 
+	-- its literally just leg resize with swim
  wait();
  
  Notify({
@@ -3365,143 +3358,10 @@
  Noclipping = RunService.Stepped:Connect(NoclipLoop)
  loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
  end)
- 
- cmd.add({"car"}, {"car [requested]", "Car script as requested by Pampers"}, function()
- --compatibility for games who change service names
- local Playr = game:GetService("Players")
- local Run = game:GetService("RunService")
- local Core = game:GetService("CoreGui")
- local LocalPlayer = Playr.LocalPlayer
- 
- local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lozarth/IreXion-UI-Library/main/IreXion.lua"))()
- 
- local Gui = Library:AddGui({
-	 Title = {"FE Car", "Made by Lozarth"},
-	 ThemeColor = Color3.fromRGB(0,91,150),
-	 ToggleKey = Enum.KeyCode.RightShift,
- })
- 
- local Tab = Gui:AddTab("Main")
- 
- local Category = Tab:AddCategory("Main")
- 
- local Label = Category:AddLabel("Go into R6 for this script to work.")
- 
- local Button = Category:AddButton("Enable FE Car", function()
-	 LocalPlayer.Character.Humanoid.WalkSpeed=70 LocalPlayer.Character.Humanoid.JumpPower=0.0001 Float_Height="-1.03" AnimationId="129342287" local a=Instance.new("Animation") a.AnimationId="rbxassetid://"..AnimationId local a=LocalPlayer.Character.Humanoid:LoadAnimation(a) a:Play() a:AdjustSpeed(1) for a,a in pairs(LocalPlayer.Character:GetDescendants())do if a.ClassName=="Part"then a.CustomPhysicalProperties=PhysicalProperties.new(0,0,0)end end local a=1 G=game _=wait p=G:GetService("Players").LocalPlayer.Character p:FindFirstChild("Humanoid").HipHeight=Float_Height _(1.5) t=.4 for a=1,a do repeat p:FindFirstChild("Humanoid").HipHeight=Float_Height-n _(t) p:FindFirstChild("Humanoid").HipHeight=Float_Height+n _(t)until p:FindFirstChild("Humanoid").Health==0 end
- end)
- 
- local Category = Tab:AddCategory("Settings")
- 
- local Box = Category:AddBox("Slide", function(str)
-	 for a,a in pairs(LocalPlayer.Character:GetDescendants())do if a.ClassName=="Part"then a.CustomPhysicalProperties=PhysicalProperties.new(str,0,0)end end 
- end)
- 
- local Box = Category:AddBox("Hipheight", function(str)
-	 Float_Height=str local a=1 G=game _=wait p=G:GetService("Players").LocalPlayer.Character p:FindFirstChild("Humanoid").HipHeight=Float_Height _(1.5) t=.4 for a=1,a do repeat p:FindFirstChild("Humanoid").HipHeight=Float_Height-n _(t) p:FindFirstChild("Humanoid").HipHeight=Float_Height+n _(t)until p:FindFirstChild("Humanoid").Health==0 end
- end)
- 
- local Slider = Category:AddSlider("Walkspeed", 1, 500, 16, function(val)
-	 LocalPlayer.Character.Humanoid.WalkSpeed = val
- end)
- 
- local Category = Tab:AddCategory("Settings Presets")
- 
- local Button = Category:AddButton("Default Car Settings Preset", function()
-	 for a,a in pairs(LocalPlayer.Character:GetDescendants())do if a.ClassName=="Part"then a.CustomPhysicalProperties=PhysicalProperties.new(0,0,0)end end
-	 LocalPlayer.Character.Humanoid.WalkSpeed = 70
-	 Float_Height="-1.03" local a=1 G=game _=wait p=G:GetService("Players").LocalPlayer.Character p:FindFirstChild("Humanoid").HipHeight=Float_Height _(1.5) t=.4 for a=1,a do repeat p:FindFirstChild("Humanoid").HipHeight=Float_Height-n _(t) p:FindFirstChild("Humanoid").HipHeight=Float_Height+n _(t)until p:FindFirstChild("Humanoid").Health==0 end
- end)
- 
- local Button = Category:AddButton("Extreme Car Settings Preset", function()
-	 for a,a in pairs(LocalPlayer.Character:GetDescendants())do if a.ClassName=="Part"then a.CustomPhysicalProperties=PhysicalProperties.new(0.5,0,0)end end
-	 LocalPlayer.Character.Humanoid.WalkSpeed = 500
-	 Float_Height="-1.03" local a=1 G=game _=wait p=G:GetService("Players").LocalPlayer.Character p:FindFirstChild("Humanoid").HipHeight=Float_Height _(1.5) t=.4 for a=1,a do repeat p:FindFirstChild("Humanoid").HipHeight=Float_Height-n _(t) p:FindFirstChild("Humanoid").HipHeight=Float_Height+n _(t)until p:FindFirstChild("Humanoid").Health==0 end
- end)
- 
- if game.PlaceId == 2041312716 then
- local Tab = Gui:AddTab("Ragdoll Engine")
- 
- local Category = Tab:AddCategory("Ragdoll Engine Features")
- local Button = Category:AddButton("Push Aura", function()
-	 
- Run.RenderStepped:Connect(function()
-		 LocalPlayer.Character.Push.PushEvent:FireServer()
-	 end)
- end)
- 
- local Label = Category:AddLabel("Useful for flinging people when you hit them with your car")
- local Label = Category:AddLabel("Or just flinging people who come close.")
- local Label = Category:AddLabel("Equip Push tool before clicking to work.")
- 
- local Button = Category:AddButton("Anti-Ragdoll", function()
-	 LocalPlayer.Character:FindFirstChild("Local Ragdoll"):Destroy()
- end)
- end
- 
- local Tab = Gui:AddTab("Discord")
- 
- local Category = Tab:AddCategory("Discord")
- 
- local Button = Category:AddButton("Join Discord", function()
-	 setclipboard("https://discord.gg/hsdcAFZY9E")
-	 Library:Notify("Invite prompted! If it did not work the invite was copied to your clipboard.")
-	 local json = {
-	["cmd"] = "INVITE_BROWSER",
-	["args"] = {
-		["code"] = "hsdcAFZY9E"
-	},
-	["nonce"] = 'a'
- }
- spawn(function()
-	print(syn.request({
-		Url = 'http://127.0.0.1:6463/rpc?v=1',
-		Method = 'POST',
-		Headers = {
-			['Content-Type'] = 'application/json',
-			['Origin'] = 'https://discord.com'
-		},
-		Body = game:GetService('HttpService'):JSONEncode(json),
-	}).Body)
- end)
- end)
- 
- local Tab = Gui:AddTab("Close")
- 
- local Category = Tab:AddCategory("Close")
- 
- local Button = Category:AddButton("Close GUI", function()
-	 Core["FE Car Made by Lozarth"]:Destroy()
- end)
- 
- Library:Notify("Join Discord server?", function(bool)
-	 if bool == true then
-		 setclipboard("https://discord.gg/hsdcAFZY9E")
-	 Library:Notify("Invite prompted! If it did not work the invite was copied to your clipboard.")
-	 local json = {
-	["cmd"] = "INVITE_BROWSER",
-	["args"] = {
-		["code"] = "hsdcAFZY9E"
-	},
-	["nonce"] = 'a'
- }
- spawn(function()
-	print(syn.request({
-		Url = 'http://127.0.0.1:6463/rpc?v=1',
-		Method = 'POST',
-		Headers = {
-			['Content-Type'] = 'application/json',
-			['Origin'] = 'https://discord.com'
-		},
-		Body = game:GetService('HttpService'):JSONEncode(json),
-	}).Body)
- end)
- end
- end)
- end)
+
  
  cmd.add({"fpsbooster", "lowgraphics", "boostfps", "lowg"}, {"fpsbooster (lowgraphics, boostfps, lowg)", "Low graphics mode if the game is laggy"}, function()
-	 local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+	 local decalsyeeted = true
 	 local g = game
 	 local w = g.Workspace
 	 local l = g.Lighting
@@ -3576,6 +3436,7 @@
  end)
  
  cmd.add({"vr", "clovr", "vrscript", "fevr"}, {"vr (clovr, vrscript, fevr)", "FE VR SCRIPT AKA CLOVR"}, function()
+	-- [[ should be patched ]] --
  loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/CloVR"))();
  end)
  
@@ -3945,7 +3806,7 @@
  cmd.add({"copytools", "ctools"}, {"copytools <player> (ctools)", "Copies the tools the given player has"}, function(...)
 	 PLAYERNAMEHERE = (...)
 	 Target = getPlr(PLAYERNAMEHERE)
-	 for i, v in pairs(game:GetService("Players"):FindFirstChild(Target.Name).Backpack:GetChildren() )do
+	 for i, v in pairs(Target.Backpack:GetChildren()) do
 		 if v:IsA("Tool") or v:IsA('HopperBin') then
 			 v:Clone().Parent = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
 		 end
@@ -3955,7 +3816,7 @@
  cmd.add({"bring"}, {"bring <player>", "Bring the given player(s)"}, function(...)
 	 local Target = (...) 
 	 if Target == "all" or Target == "others" then
- loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+ print("Patched")
  end
 			 local Character = Player.Character        
 			 local PlayerGui = Player:waitForChild("PlayerGui")
@@ -4025,30 +3886,6 @@
 			 wait(4)
 			 CF = Player.Character.HumanoidRootPart.CFrame
 			 player.CharacterAdded:wait(1):waitForChild("HumanoidRootPart").CFrame = CF
- end)
- 
- cmd.add({"errorlag", "animlag", "serverlag"}, {"animlag <number> (errorlag, seņrverlag)", "Repeatedly error the server with a massive string <N> at a time"}, function(n)
-	 local amt = tonumber(n) or 1
-	 local i = 1234
-	 local symbols = {"💖","❤️","🔥","👍","🎉","😜","💯","💜","😈","💦"}
-	 local function err(...)
-		 i = i + 1
-		 if i > 30000 then i = 1000 end
-		 local hum = character:FindFirstChildWhichIsA("Humanoid")
-		 local animation = Instance.new("Animation")
-		 animation.AnimationId = (symbols[math.random(1, #symbols)]):rep(i)
-		 hum:LoadAnimation(animation):Play()
-		 animation:Destroy()
-	 end
-	 lib.connect("spam", RunService.RenderStepped:Connect(function()
-		 for i = 1, amt do
-			 err()
-		 end
-	 end))
- end)
- 
- cmd.add({"httpget", "hl", "get"}, {"httpget <url>", "Run the contents of a given URL"}, function(url)
-	 loadstring(game:HttpGet(url, true))()
  end)
  
  cmd.add({"skydive", "sky"}, {"skydive <player> (sky)", "Skydives the player"}, function(...)
@@ -4164,24 +4001,6 @@
  end)
  
  cmd.add({"cartornado", "ctornado"}, {"cartornado (ctornado)", "Tornados a car just sit in the car"}, function(...)
-  -- Nameless Admin on mobile
- -- Fe Vehicle Fling Alpha
- 
- -- Start UP
- 
- local notification = Instance.new("Sound")
- notification.Parent = game:GetService("SoundService")
- notification.SoundId = "rbxassetid://9086208751"
- notification.Volume = 1 
- 
- local char = game.Players.LocalPlayer.Character
- function getRoot(char)
-  local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
-  return rootPart
- end
- 
- -- Part Detector Seat
- 
  local SPart = Instance.new("Part");
  local Player = game:GetService('Players').LocalPlayer;
  repeat game:GetService('RunService').RenderStepped:Wait() until Player.Character;
@@ -4201,11 +4020,6 @@
  FPOR:destroy()
  end
  end)
- 
- print("hi")
- 
- -- The finish touches
- -- Mobile and PC Support BODYGYRO
  
  SPart.Touched:Connect(function(hit)
 	if hit:IsA("Seat") then
@@ -4293,7 +4107,6 @@
  Spin.Parent = getRoot(speaker.Character)
  Spin.MaxTorque = Vector3.new(0, math.huge, 0) 
  Spin.AngularVelocity = Vector3.new(0,2000,0)
- print("hi")
  end
  end)
  end)
@@ -4328,34 +4141,7 @@
 	 Spin.MaxTorque = Vector3.new(0, math.huge, 0)
 	 Spin.AngularVelocity = Vector3.new(0,40,0)
  end)
- 
- cmd.add({"remotespam", "exhaust"}, {"remotespam <number>", "Repeatedly fire all remotes <N> at a time"}, function(n)
-	 local amt = tonumber(n) or 1
-	 local events, functions = {}, {}
-	 local str = ("💖"):rep(120000)
-	 for i, v in pairs(getinstances and getinstances() or game:GetDescendants()) do
-		 pcall(function()
-			 if v.Name:find("%d") == 1 then return end
-			 if v:IsA("RemoteEvent") then
-				 table.insert(events, v)
-			 elseif v:IsA("RemoteFunction") then
-				 table.insert(functions, v)
-			 end
-		 end)
-	 end
-	 lib.connect("spam", RunService.Stepped:Connect(function()
-		 for i = 1, amt do
-			 spawn(function()
-				 for _, remote in pairs(events) do
-					 remote:FireServer(str)
-				 end
-				 for _, remote in pairs(functions) do
-					 remote:InvokeServer(str)
-				 end
-			 end)
-		 end
-	 end))
- end)
+
  
  cmd.add({"unspam", "unlag", "unchatspam", "unanimlag", "unremotespam"}, {"unspam", "Stop all attempts to lag/spam"}, function()
 	 lib.disconnect("spam")
@@ -4894,32 +4680,23 @@
  pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
  haspos = true
  end
- 
  needsrespawning = true
  end
- 
  
  if needsrespawning == true then
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
  end
- 
- 
  end)
- 
+
  game.Players.LocalPlayer.CharacterAdded:connect(function()
  wait(0.6)
  needsrespawning = false
  haspos = false
  end)
 							 end)
- 
-							 cmd.add({"ball", "feball"}, {"ball (feball)", "Executes a ball that flings a person when it touches them"}, function()
-								 _G.specifictoolname = false
-								 _G.toolname = "BoomBox"
-								 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/500%20Pounds%20Converted%20%5B1%20Tool%5D.lua'))()
-							 end)
 							 
  cmd.add({"hamster"}, {"hamster <speed>", "Hamster ball"}, function(...)
+	-- [[ skidded ]] --
  local UserInputService = game:GetService("UserInputService")
  local RunService = game:GetService("RunService")
  local Camera = workspace.CurrentCamera
@@ -4964,7 +4741,6 @@
  if UserInputService:IsKeyDown("D") then
  ball.RotVelocity += Camera.CFrame.LookVector * delta * SPEED_MULTIPLIER
  end
- --ball.RotVelocity = ball.RotVelocity - Vector3.new(0,ball.RotVelocity.Y/50,0)
  end)
  
  UserInputService.JumpRequest:Connect(function()
@@ -4989,9 +4765,6 @@
 				 cmd.add({"unantiafk", "unnoafk"}, {"unantiafk (unnoafk)", "Makes you able to be kicked for being afk for 20 mins"}, function()
 					 if ANTIAFK then
 						 ANTIAFK:Disconnect()
-						 
-						 
-						 
 						 wait();
 						 
 						 Notify({
@@ -5000,10 +4773,7 @@
 						 Duration = 5;
 						 
  });
-					 else
-						 
-						 
-						 
+					 else 
 						 wait();
 						 
 						 Notify({
@@ -5017,8 +4787,6 @@
  
 			 cmd.add({"toolgui"}, {"toolgui", "cool tool ui aka replication ui made by 0866"}, function()
 				 loadstring(game:HttpGet("https://pastebin.com/raw/vr2YVyF6"))();
-				 
- 
  wait();
  
  Notify({
@@ -5048,19 +4816,18 @@
  local tool = Instance.new("Tool")
  tool.RequiresHandle = false
  tool.Name = "Tween Click TP"
- 
  local function onActivated()
 	 local mouse = Players.LocalPlayer:GetMouse()
 	 local pos = mouse.Hit + Vector3.new(0,2.5,0)
 	 local humanoidRootPart = Players.LocalPlayer.Character.HumanoidRootPart
  
 	 local tweenInfo = TweenInfo.new(
-		 1, -- duration
-		 Enum.EasingStyle.Quad, -- easing style
-		 Enum.EasingDirection.Out, -- easing direction
-		 0, -- repeat count (0 = no repeat)
-		 false, -- reverses the tween if true
-		 0 -- delay between repeats
+		 1,
+		 Enum.EasingStyle.Quad,
+		 Enum.EasingDirection.Out,
+		 0,
+		 false,
+		 0
 	 )
  
 	 local tween = TweenService:Create(humanoidRootPart, tweenInfo, {
@@ -5074,16 +4841,14 @@
  tool.Parent = Players.LocalPlayer.Backpack
 					 end)
  
-			 cmd.add({"dex"}, {"dex", "Using this you can see the parts / guis / scripts etc with this. A really good and helpful script."}, function()
+ cmd.add({"dex"}, {"dex", "Using this you can see the parts / guis / scripts etc with this. A really good and helpful script."}, function()
+	-- thanks to moon for this dex / best dex out there
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
  end)
 		 
 			 cmd.add({"antikill"}, {"antikill", "Makes exploiters not be able to kill you"}, function()
 					 Player.Character.Humanoid:SetStateEnabled("Seated", false)
 					 Player.Character.Humanoid.Sit = true
-					 
-					 
-					 
 					 wait();
 					 
 					 Notify({
@@ -5126,71 +4891,81 @@
  });
 		 end)
  
- 
+		 antiflingon = false
 			 cmd.add({"antifling"}, {"antifling", "makes it so you cant collide with others"}, function()
+				antifling = true
 	 wait();
-				 
 				 Notify({
 				 Description = "Anti fling enabled";
 				 Title = "Nameless Admin";
 				 Duration = 5;
 				 
  });
-	 for _, part in pairs(game.Players:GetChildren()) do
-		 if part.Character and part ~= game.Players.LocalPlayer.Character then
-			 for _, item in pairs(part.Character:GetDescendants()) do
-				 if item:IsA("BasePart") then
-					 item.CanCollide = false
-				 end
-			 end
-		 end
-	 end
- 
-	 LocalPlayer.CharacterAdded:Connect(function(character)
-		 for _, part in pairs(game.Players:GetChildren()) do
-			 if part.Character and part ~= game.Players.LocalPlayer.Character then
-				 for _, item in pairs(part.Character:GetDescendants()) do
-					 if item:IsA("BasePart") then
-						 item.CanCollide = false
-					 end
-				 end
-			 end
-		 end
-		 end)
+
+ function RemoveCollision(prt, plr)
+	for i, v in pairs(plr:GetDescendants()) do
+		if v:IsA("BasePart") then
+			e = Instance.new("NoCollisionConstraint", v)
+			e.Part0 = v
+			e.Part1 = prt
+		end
+	end
+end
+
+	 for i,v in pairs(game:GetService("Players"):GetChildren()) do
+			for i, yes in pairs(v.Character:GetDescendants()) do
+                if yes:IsA("BasePart") then
+                    if yes:IsA("BasePart") then
+                        for i, v in pairs(plrs:GetDescendants()) do
+                            if v:IsA("Player") then
+                                RemoveCollision(yes, v.Character)
+                            end
+                        end
+                    end
+                end
+			end
+	 v.CharacterAdded:Connect(function(character)
+		if antifling == true then
+		 for i, yes in pairs(v.Character:GetDescendants()) do
+			if yes:IsA("BasePart") then
+				if yes:IsA("BasePart") then
+					RemoveCollision(yes, character)
+					end
+				end
+			end
+	end
+end)
+end
 			 end)
- 
-			 cmd.add({"table"}, {"table", "Turns you into a table"}, function()
-				 loadstring(game:HttpGet(('https://pastebin.com/raw/UmdYd4bE'),true))()
-				 local plr = game.Players.LocalPlayer
-				 game:GetService("RunService").Stepped:Connect(function()
-					setsimulationradius(9e9,9e9)
-					plr.ReplicationFocus = workspace
-					settings().Physics.AllowSleep = false
-				 end)
-				 local runservice=game:service"RunService";
-				 local player=game:service"Players"["LocalPlayer"];
-				 local character=player["Character"];
-				 character["Head"]:FindFirstChildOfClass"SpecialMesh":Destroy();
-				 
-				 character["Humanoid"].HipHeight=-2;
-				 character["Left Leg"]:BreakJoints();
-				 character["Right Leg"]:BreakJoints();
-				 character["Left Arm"]:BreakJoints();
-				 character["Right Arm"]:BreakJoints();
-				 while runservice["Heartbeat"]:Wait() do
-					 character["Left Leg"].CFrame=character["HumanoidRootPart"].CFrame*CFrame.new(-0.5,1.5,1.5) * CFrame.Angles(math.rad(90), 0, 0);
-					 character["Right Leg"].CFrame=character["HumanoidRootPart"].CFrame*CFrame.new(0.5,1.5,1.5) * CFrame.Angles(math.rad(90), 0, 0);
-					 character["Left Arm"].CFrame=character["HumanoidRootPart"].CFrame*CFrame.new(-0.5,0,2);
-					 character["Right Arm"].CFrame=character["HumanoidRootPart"].CFrame*CFrame.new(0.5,0,2);
-				 end	
+
+			 cmd.add({"unantifling"}, {"unantifling", "removes antifling"}, function()
+				wait();
+				Notify({
+				Description = "Anti fling disabled";
+				Title = "Nameless Admin";
+				Duration = 5;
+				
+});
+				antiflingon = false
+				for i, v in pairs(game.Workspace:GetDescendants()) do
+					if v:IsA("NoCollisionConstraint") then
+						v:Destroy()
+					end
+				end
 			 end)
  
 			 cmd.add({"gravitygun"}, {"gravitygun", "Probably the best gravity gun script thats fe"}, function()
+				wait();
+				Notify({
+				Description = "Wait a few seconds for it to load";
+				Title = "Nameless Admin";
+				Duration = 5;
+				
+});
 				 loadstring(game:HttpGet("https://raw.githubusercontent.com/qipurblx/Script/main/Gravity%20Gun"))()
 			 end)
  
 			 cmd.add({"flingnpcs"}, {"flingnpcs", "Flings NPCs"}, function()
- 
  local npcs = {}
  
 	 local function disappear(hum)
@@ -5313,7 +5088,6 @@
  end)
  
  cmd.add({"bringnpcs"}, {"bringnpcs", "Brings NPCs"}, function()
- 
  local npcs = {}
  
 	 local function disappear(hum)
@@ -5343,13 +5117,9 @@
  
  });
 	 --- made by joshclark756#7155
- -- Variables
  local mouse = game.Players.LocalPlayer:GetMouse()
  local uis = game:GetService("UserInputService")
- 
- -- Connect
  mouse.Button1Down:Connect(function()
-	-- Check for Target & Left Shift
 	if mouse.Target and uis:IsKeyDown(Enum.KeyCode.LeftControl) then
  local npc = mouse.target.Parent
  local npcRootPart = npc.HumanoidRootPart
@@ -5395,9 +5165,7 @@
 	 end)
  
  cmd.add({"attachpart"}, {"attachpart", "Keybind: CTRL + LEFTCLICK"}, function()
-	 
- 
- 
+
  wait();
  
  Notify({
@@ -5520,18 +5288,14 @@
  local RunService = game:GetService("RunService")
  local LP = Players.LocalPlayer
  local roles
- 
- -- > Functions <--
- 
- function CreateHighlight() -- make any new highlights for new players
+ function CreateHighlight()
 	 for i, v in pairs(Players:GetChildren()) do
 		 if v ~= LP and v.Character and not v.Character:FindFirstChild("Highlight") then
 			 Instance.new("Highlight", v.Character)           
 		 end
 	 end
  end
- 
- function UpdateHighlights() -- Get Current Role Colors (messy)
+ function UpdateHighlights()
 	 for _, v in pairs(Players:GetChildren()) do
 		 if v ~= LP and v.Character and v.Character:FindFirstChild("Highlight") then
 			 Highlight = v.Character:FindFirstChild("Highlight")
@@ -5539,8 +5303,7 @@
 			 end
 		 end
 	 end
- 
- function IsAlive(Player) -- Simple sexy function
+ function IsAlive(Player)
 	 for i, v in pairs(roles) do
 		 if Player.Name == i then
 			 if not v.Killed and not v.Dead then
@@ -5551,14 +5314,11 @@
 		 end
 	 end
  end
- 
- 
  CreateHighlight()
 	 UpdateHighlights()
 	 end)
  
 		 cmd.add({"unesp"}, {"unesp", "Disables esp"}, function()
-	 -- Find all existing players and remove the Highlight instance from their characters
  for _, player in ipairs(game.Players:GetPlayers()) do
 	 local character = player.Character
 	 if character then
@@ -5569,7 +5329,6 @@
 	 end
  end
  
- -- Remove the Highlight instance from any new players that join the game
  game.Players.PlayerAdded:Connect(function(player)
 	 player.CharacterAdded:Connect(function(character)
 		 local highlight = character:FindFirstChild("Highlight")
@@ -5621,10 +5380,7 @@
 	 end)
 	 end
 	 end
- 
-	 
- 
- 
+
  wait();
  
  Notify({
@@ -5711,28 +5467,21 @@
 	 cmd.add({"kidnap"}, {"kidnap <player>", "Kidnaps a player"}, function(...)
  Username = (...)
 	 Target = getPlr(Username)
-		
 		 local currentCFrame = Target.Character.Head.CFrame
-	 
-	   
 	   local offset = Vector3.new(0, 0, -50)
 	   local newPosition = currentCFrame.p + offset
 	   local newCFrame = CFrame.new(newPosition, currentCFrame.lookVector)
 		 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = newCFrame
 		 wait(1)
 	   local player = game.Players.LocalPlayer
-	 
 	 local targetPlayer = Target
-	 
+
 	 local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	 
-	 -- create the teleport tween
-	 local teleportTween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, {
+	 	 local teleportTween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, {
 	   CFrame = CFrame.new()
 	 })
-	 
-	 -- start the teleport tween to the current target player
-	 function startTeleportTween()
+
+	 	 function startTeleportTween()
 	   if targetPlayer then
 		 teleportTween:Cancel()
 		 teleportTween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, {
@@ -5876,6 +5625,7 @@
 	end)
  
  cmd.add({"hatsleash", "hl"}, {"hatsleash", "Makes you be able to carry your hats"}, function()
+		-- [[ PROBABLY PATCHED ]] -- 
 	 for _, v in pairs(game.Players.LocalPlayer.Character:getChildren()) do
 		 if v.ClassName == "Accessory" then
 		  for i, k in pairs(v:GetDescendants()) do
@@ -5895,6 +5645,7 @@
  end)
  
  cmd.add({"toolleash", "tl"}, {"toolleash", "Makes you be able to carry your tools"}, function()
+	-- [[ PROBABLY PATCHED ]] -- 
 	 for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 		 v.Parent = game.Players.LocalPlayer.Character
 	 end
@@ -5913,7 +5664,6 @@
 	 wait()
 	 end
 	 end
-	 
 	 for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 		 if v.Name == "RightGrip" then
 			 v:Destroy()
@@ -5932,7 +5682,6 @@
  cmd.add({"control"}, {"control <player>", "Control a player"}, function(...)
  Target = (...)
  Control = true
- 
  repeat wait()
 	 local TPlayer = getPlr(Target)
 				TRootPart = TPlayer.Character.HumanoidRootPart
@@ -5998,7 +5747,6 @@
  end)
  
  cmd.add({"admin"}, {"admin", "whitelist someone to allow them to use commands"}, function(...)
- 
 	 function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
 	 end
 	 local Player = getPlr(...)
@@ -6008,7 +5756,6 @@
 		 wait(0.2)
 		 ChatMessage("/w "..Player.Name.." [Nameless Admin Commands] glue, unglue, fling, fling2, spinfling, unspinfling, fcd, fti, fpp, fireremotes, holdhat")
 		 ChatMessage("/w "..Player.Name.." reset, commitoof, seizure, unseizure, toolorbit, lay, fall, toolspin, hatspin, sit, joke, kanye")
- 
 		 Notify({
 			 Description = "" .. Player.Name .. " has now been whitelisted to use commands";
 			 Title = "Nameless Admin";
@@ -6026,7 +5773,7 @@
  end)
  
  cmd.add({"unadmin"}, {"unadmin <player>", "removes someone from being admin"}, function(...)
-	 function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
+	 function ChatMessage(Message, Whisper)	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "All")
 	 end
 	 local Player = getPlr(...)
 			 if Player ~= nil and Admin[Player.UserId] then
@@ -6049,28 +5796,28 @@
 	 end)
  
  cmd.add({"2016"}, {"2016", "2016 CORE GUI"}, function()
+	-- [[ PLAYERBOARD IS BUGGED BUT WILL TRY TO FIX. ]] --
  loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/2016MODE"))()
  end)
  
  cmd.add({"removedn", "nodn", "nodpn"}, {"removedn (nodn, nodpn)", "Removes all display names"}, function()
- 
+
+	-- [[ IM NOT SURE WHO MADE THIS ]] --
+
  wait();
- 
  Notify({
  Description = "Display names successfully removed";
  Title = "Nameless Admin";
  Duration = 5;
  
  });
+
 	 local Players = game:FindService("Players")
- 
  require(game:GetService("Chat"):WaitForChild("ClientChatModules").ChatSettings).PlayerDisplayNamesEnabled = false
- 
  local function rename(character,name)
 	 repeat task.wait() until character:FindFirstChildWhichIsA("Humanoid")
 	 character:FindFirstChildWhichIsA("Humanoid").DisplayName = name
  end
- 
  for i,v in next, Players:GetPlayers() do
 	 if v.Character then
 		 v.DisplayName = v.Name
@@ -6080,7 +5827,6 @@
 		 rename(char,v.Name)
 	 end)
  end
- 
  Players.PlayerAdded:Connect(function(plr)
 	 plr.DisplayName = plr.Name
 	 plr.CharacterAdded:Connect(function(char)
@@ -6090,36 +5836,24 @@
  end)
  
  cmd.add({"anticlientkick", "antickick"}, {"anticlientkick (antickick)", "Makes scripts harder to kick you still possible"}, function()
- --// Cache
- 
  local getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, stringlower = getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, string.lower
- 
- --// Loaded check
- 
  if getgenv().ED_AntiKick then return end
- 
- --// Variables
- 
  local Players, StarterGui, OldNamecall = game:GetService("Players"), game:GetService("StarterGui")
- 
- --// Global Variables
- 
  getgenv().ED_AntiKick = {
 	 SendNotifications = true,
 	 CheckCaller = false 
  }
- 
- --// Main
- 
  OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
 	 if (getgenv().ED_AntiKick.CheckCaller and not checkcaller() or true) and stringlower(getnamecallmethod()) == "kick" then
 		 if getgenv().ED_AntiKick.SendNotifications then
-			 StarterGui:SetCore("SendNotification", {
-				 Title = "Nameless Admin",
-				 Text = "The script has successfully intercepted an attempted kick.",
-				 Icon = "rbxassetid://6238540373",
-				 Duration = 2,
-			 })
+			 wait();
+	 
+	 Notify({
+	 Description = "A kick attempted was attempted and blocked.";
+	 Title = "Nameless Admin";
+	 Duration = 5;
+	 
+ });
 		 end
  
 		 return nil
@@ -6129,9 +5863,6 @@
  end))
  
  if getgenv().ED_AntiKick.SendNotifications then
-	 
- 
- 
  wait();
  
  Notify({
@@ -6145,17 +5876,7 @@
  
  
  cmd.add({"backdoorscan", "backdoor"}, {"backdoorscan (backdoor)", "Scans for any backdoors using FraktureSS"}, function()
-	 
-	 
-	 
-	 wait();
-	 
-	 Notify({
-	 Description = "Backdoor scanning...";
-	 Title = "Nameless Admin";
-	 Duration = 5;
-	 
- });
+-- [[ THANKS TO LIGHTING BOLT FOR THIS ]] --
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/L1ghtingBolt/FraktureSS/master/unobfuscated.lua"))()
  end)
  
@@ -6253,9 +5974,7 @@
 	 local output = Instance.new("TextLabel")
 	 local clear_2 = Instance.new("TextButton")
 	 local copy = Instance.new("TextButton")
-	 
-	 --Properties:
-	 
+	
 	 FunctionSpy.Name = "FunctionSpy"
 	 FunctionSpy.Parent = game.CoreGui
 	 FunctionSpy.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -6529,10 +6248,6 @@
 	 coroutine.wrap(AKIHDI_fake_script)()
 	 local function KVVJTK_fake_script() -- FakeTitle.DragScript 
 		 local script = Instance.new('LocalScript', FakeTitle)
-	 
-		 --Not made by me, check out this video: https://www.youtube.com/watch?v=z25nyNBG7Js&t=22s
-		 --Put this inside of your Frame and configure the speed if you would like.
-		 --Enjoy! Credits go to: https://www.youtube.com/watch?v=z25nyNBG7Js&t=22s
 		 
 		 local UIS = game:GetService('UserInputService')
 		 local frame = script.Parent.Parent
@@ -6617,6 +6332,7 @@
  on = false
  cmd.add({"mobilefly", "mfly"}, {"mobilefly [speed] (mfly)", "Fly that works on mobile"}, function(...)
  on = true
+ -- kind of bad mobile fly but it works after the reject character deletions enabling
  speed = (...)
  
 	 if speed == nil then
@@ -6633,7 +6349,7 @@
 		 Duration = 5;
 		 });
 		 
-	 
+	 -- creates a button that u can toggle if you're flying or not
 	 local ScreenGui = Instance.new("ScreenGui")
 	 local TextButton = Instance.new("TextButton")
 	 local UICorner = Instance.new("UICorner")
@@ -9208,54 +8924,7 @@
 	end
  end
  end)
- 
- cmd.add({"bypassedfling", "bfling", "nocolfling", "nocollisionfling"}, {"bypassedfling (bfling, nocolfling, nocollisionfling)", "Bypasses the games without collisions that try to stop flingers"}, function(...)
- --Pusher made by rouxhaver/1+1=2
- --Hat resizer and dropper made by DigitalityScripts
- 
- --This script sometimes works in games without player-collision
- 
- --INSTRUCTIONS:
- --use r15 body type
- --have a classic Rthro Head 
- --wear any Rthro Hats
- 
- --RECOMMENDED:
- --https://www.roblox.com/catalog/2493588193/Knights-of-Redcliff-Paladin-Head
- --https://www.roblox.com/catalog/4381828509/Junkbot-Hat
- --https://www.roblox.com/catalog/2493590711/Knights-of-Redcliff-Paladin-Helmet
- --https://www.roblox.com/catalog/2493718915/The-High-Seas-Beatrix-The-Pirate-Queen-Hat
- 
- loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/hat%20resize%20%2B%20drop'))()
- loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/random-sh-t/main/non%20local%20free%20cam%20start.lua"))()
- loadstring(game:HttpGet("https://raw.githubusercontent.com/rouxhaver/random-sh-t/main/Credit"))()
- 
- ToggleFreecam() -- Remove this if you don't want free cam or etcetera
- 
- player = game.Players.LocalPlayer
- 
- mouse = player:GetMouse()
- 
- for i,v in pairs(player.Character:GetChildren()) do
-	 if v:IsA("Accessory") then
-		 _ = Instance.new("SelectionBox",v)
-		 _.Adornee = v.Handle
-		 game.RunService.Heartbeat:Connect(function()
-			 v.Handle.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
-			 v.Handle.Velocity = Vector3.new(25.70,0,0)
-			 v.Handle.CanCollide = false
-		 end)
-		 if e ~= "e" then                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            game.Players.LocalPlayer:Kick() 
-		 end
-		 coroutine.wrap(function()
-			 while task.wait() do
-				 v.Handle.Position = mouse.Hit.Position + Vector3.new(math.random(-15,15),math.random(0,15),math.random(-15,15))
-				 v.Handle.Orientation = Vector3.new(math.random(-180,180),math.random(-180,180),math.random(-180,180))
-			 end
-		 end)()
-	 end
- end
- end)
+
  
  cmd.add({"commitoof", "suicide", "kys"}, {"commitoof (suicide, kys)", "FE KILL YOURSELF SCRIPT this will be bad when taken out of context"}, function()
 	 local A_1 = "Alright, im gonna do it."
@@ -9519,7 +9188,7 @@
 	  Target = (...)
  
  if Target == "all" or Target == "others" then
-	 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+	 print("Patched")
  else
  local function Kill()
 			 if not getPlr(Target) then
@@ -9625,7 +9294,7 @@
 	  end
 	  local Target = (...) 
 	  if Target == "all" or Target == "others" then
-  loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+  print("Patched")
   end
 			  local Character = Player.Character        
 			  local PlayerGui = Player:waitForChild("PlayerGui")
@@ -10945,7 +10614,7 @@
 			 repeat wait(1)
 			 if Target == "all" or Target == "others" then
 									 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
- loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+ print("Patched")
 			 else
 					 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
@@ -11189,7 +10858,7 @@
 			 repeat wait()
 			 if Target == "all" or Target == "others" then
 									 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
-				 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+				 print("Patched")
 			 else
 					 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			 local function Kill()
@@ -11433,7 +11102,7 @@
  
 			 if Target == "all" or Target == "others" then
 									 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
- loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+ print("Patched")
 			 else
 					 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
@@ -11495,7 +11164,7 @@
  
 			 if Target == "all" or Target == "others" then
 									 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
-				 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Kill%20All'))()
+				 print("Patched")
 			 else
 					 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Leg%20Resize'))()
 			 local function Kill()
@@ -11666,7 +11335,7 @@
 		 Loopbring = true
 		 repeat wait()
 			 wait(0.3)
-		 loadstring(game:HttpGet('https://raw.githubusercontent.com/DigitalityScripts/roblox-scripts/main/Bring%20All'))()
+		 print("Patched")
 		 until Loopbring == false
  else
 	 Loopbring = true
@@ -14086,10 +13755,6 @@
 		 end
 		 end
  end
-	 
-		 
- 
- 
  wait();
  
  Notify({
@@ -14101,10 +13766,7 @@
  end)
  
  
- cmd.add({"uafollow", "unanchoredfollow"}, {"uafollow (unanchoredfollow)", "Makes unanchored parts follow you"}, function()
-	 
-	 
-	 
+ cmd.add({"uafollow", "unanchoredfollow"}, {"uafollow (unanchoredfollow)", "Makes unanchored parts follow you"}, function() 
 	 wait();
 	 
 	 Notify({
@@ -14152,6 +13814,7 @@
 	 end)
  
 		 cmd.add({"iy", "i"}, {"iy {command} (i)", "Executes infinite yield scripts"}, function(...)
+			-- [[ thanks to homebrew devs for this ]] --
 			 if IYLOADED == false then
 				 local function copytable(tbl) local copy = {} for i,v in pairs(tbl) do copy[i] = v end return copy end
 				 local sandbox_env = copytable(getfenv())
@@ -14199,8 +13862,7 @@
 	 end
  end
  end)
- 
-	 
+  
 	 cmd.add({"grabtools", "gt"}, {"grabtools", "Grabs any dropped tools"}, function()
 		 local p = game:GetService("Players").LocalPlayer
  local c = p.Character
@@ -14211,9 +13873,6 @@
 		 end
 	 end
  end
-		 
- 
- 
  wait();
  
  Notify({
@@ -14257,42 +13916,25 @@
 		 end)
  
 		 cmd.add({"oofspam"}, {"oofspam", "Spams oof"}, function()
-			 _G.enabled = true -- Re-execute to turn off
- _G.speed = 100 -- Keep around 100 or it wont play
-  
- -- Variables
- local RunService = game:GetService("RunService");
- local Players = game:GetService("Players");
- local LocalPlayer = game:GetService("Players").LocalPlayer;
-  
- local Character = LocalPlayer.Character or Localplayer.CharacterAdded:wait(1);
- local Humanoid = Character:WaitForChild("Humanoid") or Character:FindFirstChildOfClass("Humanoid");
+			 _G.enabled = true
+ _G.speed = 100
  local HRP = Humanoid.RootPart or Humanoid:FindFirstChild("HumanoidRootPart")
-  
- -- Check
  if not Humanoid or not _G.enabled then
 	if Humanoid and Humanoid.Health <= 0 then
 		Humanoid:Destroy()
 	end
 	return
  end
-  
- -- Setting Up Humanoid
  Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
  Humanoid.BreakJointsOnDeath = false
  Humanoid.RequiresNeck = false
-  
  local con; con = RunService.Stepped:Connect(function()
 	if not Humanoid then return con:Disconnect() end
-	Humanoid:ChangeState(Enum.HumanoidStateType.Running)  -- Change state so not die
+	Humanoid:ChangeState(Enum.HumanoidStateType.Running)
  end)
-  
- -- Infinite Death [literally 3 lines dont make it complicated]
  LocalPlayer.Character = nil
  LocalPlayer.Character = Character
  task.wait(Players.RespawnTime + 0.1)
-  
- -- Looping Death
  while task.wait(1/_G.speed) do
 	Humanoid:ChangeState(Enum.HumanoidStateType.Dead)
  end
@@ -14301,9 +13943,6 @@
 		 
  
  cmd.add({"partgrabber"}, {"partgrabber", "Press Q"}, function()
-	 
-	 
-	 
 	 wait();
 	 
 	 Notify({
@@ -14312,15 +13951,12 @@
 	 Duration = 5;
 	 
  });
- -- ROBLOX FE PART + MOUSE FE SCRIPT
- -- Made by Rolevote.
- -- EXECUTE THIS SCRIPT ONCE PER SERVER
  local player = game.Players.LocalPlayer.Character
  local mouse = game.Players.LocalPlayer:GetMouse()
  local key = game:GetService("UserInputService")
  
- BodyAngularVelocity = true -- Want the Part/Handle to spin really fast Crazy!
- local keyyy = Enum.KeyCode.Q -- Key to run it on part
+ BodyAngularVelocity = true
+ local keyyy = Enum.KeyCode.Q
  
  
  local y = 5.7
@@ -14421,15 +14057,10 @@
 	 end
 	 end
 	 end
- 
- 
- 
  end
- 
  User = (...)
  Target = getPlr(User)
  TargetName = Target.Name
- 
  execute(TargetName)
 	 wait();
 	 
@@ -14443,9 +14074,7 @@
 	 end)
  
 	 cmd.add({"freezeua", "thawua"}, {"freezeua (thawua)", "freezes every unanchored part on the map"}, function()
- 
-		 frozenParts = {}
-		 
+ 		 frozenParts = {}
 		 if sethidden then
 				 local badnames = {
 					 "Head",
@@ -14509,9 +14138,6 @@
 		 end)
  
 		 cmd.add({"unfreezeua", "unthawua"}, {"unfreezeua (unthawua)", "unfreezes every unanchored part on the map"}, function()
-			 
-	 
-	 
 	 wait();
 	 
 	 Notify({
@@ -14536,10 +14162,7 @@
 		 end)
  
  cmd.add({"highlightua", "highlightunanchored"}, {"highlightua (hightlightunanchored)", "Highlights all unanchored parts"}, function()
-	 
-	 
-	 
-	 wait();
+ wait();
 	 
 	 Notify({
 	 Description = "Highlighted all unanchored parts";
@@ -14548,7 +14171,7 @@
 	 
  });
  for _,part in pairs(workspace:GetDescendants()) do
-	 if part:IsA("BasePart") and part.Anchored == false and part:IsDescendantOf(game.Players.LocalPlayer.Character) == false and part.Name == "Torso" == false and part.Name == "Head" == false and part.Name == "Right Arm" == false and part.Name == "Left Arm" == false and part.Name == "Right Leg" == false and part.Name == "Left Leg" == false and part.Name == "HumanoidRootPart" == false and part:FindFirstChild("Weld") == nil then --// Checks Part Properties
+	 if part:IsA("BasePart") and part.Anchored == false and part:IsDescendantOf(game.Players.LocalPlayer.Character) == false and part.Name == "Torso" == false and part.Name == "Head" == false and part.Name == "Right Arm" == false and part.Name == "Left Arm" == false and part.Name == "Right Leg" == false and part.Name == "Left Leg" == false and part.Name == "HumanoidRootPart" == false and part:FindFirstChild("Weld") == nil then --// probably could've made the check better
 		 local selectionBox = Instance.new("SelectionBox")
 		 selectionBox.Adornee = part
 		 selectionBox.Color3 = Color3.new(1,0,0)
@@ -14558,9 +14181,6 @@
  end)
  
  cmd.add({"unhighlightua", "unhighlightunanchored"}, {"unhighlightua (unhightlightunanchored)", "Unhighlights all unanchored parts"}, function()
-	 
-	 
-	 
 	 wait();
 	 
 	 Notify({
@@ -14584,15 +14204,11 @@
 	 if part:IsA("BasePart") and part.Anchored == false and part:IsDescendantOf(game.Players.LocalPlayer.Character) == false and part.Name == "Torso" == false and part.Name == "Head" == false and part.Name == "Right Arm" == false and part.Name == "Left Arm" == false and part.Name == "Right Leg" == false and part.Name == "Left Leg" == false and part.Name == "HumanoidRootPart" == false and part:FindFirstChild("Weld") == nil then --// Checks Part Properties
 		 b = b + 1
 	 end
-	 end
-	 print ("All parts checked, found", b ,"that are unanchored")
-	 
-	 
-	 
+	 end	 
 	 wait();
 	 
 	 Notify({
-	 Description = "Parts have been counted, check console.";
+	 Description = "Parts have been counted, the amount is " .. b .. "";
 	 Title = "Nameless Admin";
 	 Duration = 5;
 	 
@@ -14608,9 +14224,6 @@
  end)
  
  cmd.add({"ownerid"}, {"ownerid", "Changes the client id to the owner's. Can give special things"}, function()
-	 
- 
- 
  wait();
  
  Notify({
@@ -14655,7 +14268,7 @@
 		 });
  end
  
- -- [[ PLUGINS LOADED NOTIFY ]] --
+ -- [[ PLUGINS LOADED NOTIFICATION ]] --
  if PluginsErrored == 0 then
 	 Notify({
 			 Description = "Loaded " .. PluginsLoaded .. " plugins";
@@ -14764,6 +14377,7 @@
 		 return tostr(t)
 	 end)
  end)
+
  if not RunService:IsStudio() then
 	 local newGui = game:GetService("CoreGui"):FindFirstChildWhichIsA("ScreenGui")
 	 newGui.DescendantAdded:Connect(function(v)
@@ -14950,27 +14564,30 @@
 	 gui.draggable(menu, menu.Topbar)
 	 menu.Visible = false
  end
+
+
  gui.loadCommands = function()
-	 for i, v in pairs(cmdAutofill:GetChildren()) do
-		 if v.Name ~= "UIListLayout" then
-			 Destroy(v)
-		 end
-	 end
-	 local last = nil
-	 local i = 0
-	 for name, tbl in pairs(Commands) do
-		 local info = tbl[2]
-		 local btn = cmdExample:Clone()
-		 btn.Parent = cmdAutofill
-		 btn.Name = name
-		 btn.Input.Text = info[1]
-		 i = i + 1
-		 
-		 local size = btn.Size
-		 btn.Size = UDim2.new(0, 0, 0, 25)
-		 btn.Size = size
-	 end
- end
+	for i, v in pairs(cmdAutofill:GetChildren()) do
+		if v.Name ~= "UIListLayout" then
+			Destroy(v)
+		end
+	end
+	local last = nil
+	local i = 0
+	for name, tbl in pairs(Commands) do
+		local info = tbl[2]
+		local btn = cmdExample:Clone()
+		btn.Parent = cmdAutofill
+		btn.Name = name
+		btn.Input.Text = info[1]
+		i = i + 1
+		
+		local size = btn.Size
+		btn.Size = UDim2.new(0, 0, 0, 25)
+		btn.Size = size
+	end
+end
+
 	 gui.loadCommands()
   for i, v in ipairs(cmdAutofill:GetChildren()) do
 		 if v:IsA("Frame") then
@@ -14989,41 +14606,43 @@
 	 gui.tween(rightFill, "Sine", "In", speed or 0.3, {Position = UDim2.new(1.5, -100, 0.5, 0)})
 	 for i, v in ipairs(cmdAutofill:GetChildren()) do
 		 if v:IsA("Frame") then
-			 if i > 5 then break end
 			 wrap(function()
 				 wait(math.random(1, 200)/2000)
 				 gui.tween(v, "Back", "In", 0.35, {Size = UDim2.new(0, 0, 0, 25)})
 			 end)
 		 end
-	 end
+	end
  end
+
+ -- [[ AUTOFILL SEARCHER ]] --
  gui.searchCommands = function()
-	 local str = (cmdInput.Text:gsub(";", "")):lower()
-	 local index = 0
-	 local lastFrame
-	 for _, v in ipairs(cmdAutofill:GetChildren()) do
-		 if v:IsA("Frame") and index < 5 then
-			 local cmd = Commands[v.Name]
-			 local name = cmd and cmd[2][1] or ""
-			 v.Input.Text = str ~= "" and v.Name:find(str) == 1 and v.Name or name
-			 v.Visible = str == "" or v.Name:find(str)
-			 if v.Visible then
-				 index = index + 1
-				 local n = math.sqrt(index) * 125
-				 local yPos = (index - 1) * 28
-				 local newPos = UDim2.new(0.5, 0, 0, yPos)
-				 gui.tween(v, "Quint", "Out", 0.3, {
-					 Size = UDim2.new(0.5, n, 0, 25),
-					 Position = lastFrame and newPos or UDim2.new(0.5, 0, 0, yPos),
-				 })
-				 lastFrame = v
-			 end
-		 end
-	 end
- end
- 
- 
+	local str = (cmdInput.Text:gsub(";", "")):lower()
+	local index = 0
+	local lastFrame
+	for _, v in ipairs(cmdAutofill:GetChildren()) do
+		if v:IsA("Frame") and index < 5 then
+			local cmd = Commands[v.Name]
+			local name = cmd and cmd[2][1] or ""
+			v.Input.Text = str ~= "" and v.Name:find(str) == 1 and v.Name or name
+			v.Visible = str == "" or v.Name:find(str)
+			if v.Visible then
+				index = index + 1
+				local n = math.sqrt(index) * 125
+				local yPos = (index - 1) * 28
+				local newPos = UDim2.new(0.5, 0, 0, yPos)
+				gui.tween(v, "Quint", "Out", 0.3, {
+					Size = UDim2.new(0.5, n, 0, 25),
+					Position = lastFrame and newPos or UDim2.new(0.5, 0, 0, yPos),
+				})
+				lastFrame = v
+			end
+		end
+	end
+end
+
  --[[ GUI FUNCTIONALITY ]]--
+
+-- [[ OPEN THE COMMAND BAR ]] -- 
  mouse.KeyDown:Connect(function(k)
 	 if k:lower() == opt.prefix then
 		 gui.barSelect()
@@ -15037,7 +14656,8 @@
 			 end
 	 end
  end)
- 
+
+ -- [[ CLOSE THE COMMAND BAR ]] -- 
  cmdInput.FocusLost:Connect(function(enterPressed)
 	 if enterPressed then
 		 wrap(function()
@@ -15049,12 +14669,6 @@
 			 wait(0.000051)
 		  game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
 			 end
-	 wait(0.25)
-	 for i, v in ipairs(cmdAutofill:GetChildren()) do
-		 if v:IsA("Frame") then
-			 v.Visible = false
-		 end
-	 end
 	 end)
  
  cmdInput.Changed:Connect(function(p)
@@ -15067,12 +14681,16 @@
  gui.menuify(chatLogsFrame)
  gui.menuify(commandsFrame)
  
+ -- [[ GUI RESIZE FUNCTION ]] -- 
+
+-- table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) | searches if the player is on mobile.
  if table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService("UserInputService"):GetPlatform()) then 
  else
  gui.resizeable(chatLogsFrame, Vector2.new(173,58), Vector2.new(1000,1000))
  gui.resizeable(commandsFrame, Vector2.new(184,84), Vector2.new(1000,1000))
  end
  
+ -- [[ CMDS COMMANDS SEARCH FUNCTION ]] --
  commandsFilter.Changed:Connect(function(p)
 	 if p ~= "Text" then return end
 	 for i, v in pairs(commandsList:GetChildren()) do
@@ -15086,6 +14704,7 @@
 	 end
  end)
  
+ -- [[ CHAT TO USE COMMANDS ]] --
  local function bindToChat(plr, msg)
 	 local chatMsg = chatExample:Clone()
 	 for i, v in pairs(chatLogs:GetChildren()) do
@@ -15122,8 +14741,10 @@
 	 commandsList.CanvasSize = UDim2.new(0, 0, 0, commandsList.UIListLayout.AbsoluteContentSize.Y)
  end)
  
+ -- all this does is print i dont know why i made it a loadstring
  loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/asd"))();
  
+ -- never used this lol
  function Destroy(guiObject)
 	 if not pcall(function()guiObject.Parent = game:GetService("CoreGui")end) then
 		 guiObject.Parent = nil
@@ -15181,3 +14802,9 @@
 		  game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
 			 end
  end)
+
+ --[[
+	End of the source code.
+	Join the discord for updates or give command ideas, that could be added.
+	https://discord.gg/ACk4JyVJ6x
+--]]
