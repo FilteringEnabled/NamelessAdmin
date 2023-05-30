@@ -9960,7 +9960,7 @@ end
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
  end)
  
- cmd.add({"headbang", "mouthbang", "hb"}, {"headbang <player> (mouthbang, hb)", "Bang them in the mouth because you are gay"}, function(h,d)
+ cmd.add({"headbang", "mouthbang", "hb", "mb"}, {"headbang <player> (mouthbang, hb, mb)", "Bang them in the mouth because you are gay"}, function(h,d)
  RunService = game:GetService("RunService")
  
 	 speed = d
@@ -9992,7 +9992,7 @@ end
 				 bangAnim:Destroy()
 				 bangDied:Disconnect()
 			 end)
-			 local bangOffet = CFrame.new(0, 2, -1.1)
+			 local bangOffet = CFrame.new(0, 1, -1.1)
 			 bangLoop = RunService.Stepped:Connect(function()
 				 pcall(function()
 					 local otherRoot = game.Players[bangplr].Character.Head
