@@ -7074,7 +7074,10 @@ end
  end)
  
  cmd.add({"dance"}, {"dance", "Does a random dance"}, function()
-	local dances = {"248263260", "27789359", "45834924", "28488254", "33796059", "30196114", "52155728"}
+	dances = {"248263260", "27789359", "45834924", "28488254", "33796059", "30196114", "52155728"}
+	if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
+			dances = {"4555808220", "4555782893", "3333432454", "4049037604"}
+	end
  if theanim then
 	 theanim:Stop()
  theanim:Destroy()
@@ -10012,28 +10015,14 @@ end
  end
  end)
  
- cmd.add({"bang", "fuck"}, {"bang <player> <speed>", "Bangs the player by attaching to them"}, function(h,d)
-	 RunService = game:GetService("RunService")
-	 
-	 function getTorso(x)
-		 x = x or game.Players.LocalPlayer.Character
-		 return x:FindFirstChild("Torso") or x:FindFirstChild("UpperTorso") or x:FindFirstChild("LowerTorso") or x:FindFirstChild("HumanoidRootPart")
-	 end
-	 
-	 function getRoot(char)
-		 local rootPart = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') or game.Players.LocalPlayer.Character:FindFirstChild('Torso') or game.Players.LocalPlayer.Character:FindFirstChild('UpperTorso')
-		 return rootPart
-	 end
-	 
+ cmd.add({"bang", "fuck"}, {"bang <player> <speed>", "Bangs the player by attaching to them"}, function(h,d)	 
 	 speed = d
  
 	 if speed == nil then
  speed = 10
 	 end
-	 
 	 Username = h
-	 
-	 local players = getPlr(Username)
+	 local Target = getPlr(Username)
 			 bangAnim = Instance.new("Animation")
 			 if not r15(game.Players.LocalPlayer) then
 				 bangAnim.AnimationId = "rbxassetid://148840371"
@@ -10047,7 +10036,7 @@ end
 			 else
 				 bang:AdjustSpeed(3)
 			 end
-			 local bangplr = players.Name
+			 local bangplr = Target.Name
 			 bangDied = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
 				 bangLoop = bangLoop:Disconnect()
 				 bang:Stop()
@@ -10075,52 +10064,19 @@ end
 			 });
  end)
  
+ glueloop = false
  cmd.add({"glue"}, {"glue <player>", "Bangs the player by attaching to them"}, function(...)
-	 RunService = game:GetService("RunService")
+	glueloop = true
+User = (...)
+Target = getPlr(User)
  
-	 
-	 speed = "10"
-	 
-	 Username = (...)
-	 
-	 local players = getPlr(Username)
-			 bangAnim = Instance.new("Animation")
-			 if not r15(game.Players.LocalPlayer) then
-				 bangAnim.AnimationId = "rbxassetid://0"
-			 else
-				 bangAnim.AnimationId = "rbxassetid://0"
-			 end
-			 bang = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(bangAnim)
-			 bang:Play(.1, 1, 1)
-			 if speed then
-				 bang:AdjustSpeed(speed)
-			 else
-				 bang:AdjustSpeed(3)
-			 end
-			 local bangplr = players.Name
-			 bangDied = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Humanoid'.Died:Connect(function()
-				 bangLoop = bangLoop:Disconnect()
-				 bang:Stop()
-				 bangAnim:Destroy()
-				 bangDied:Disconnect()
-			 end)
-			 local bangOffet = CFrame.new(0, 0, 0)
-			 bangLoop = RunService.Stepped:Connect(function()
-				 pcall(function()
-					 local otherRoot = getTorso(game.Players[bangplr].Character)
-					 getRoot(game.Players.LocalPlayer.Character).CFrame = otherRoot.CFrame * bangOffet
-				 end)
-			 end)
- 
+repeat wait()
+LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+until glueloop == false
  end)
  
  cmd.add({"unglue"}, {"unglue", "stops glueing"}, function()
-		 if bangLoop then
-		 bangLoop = bangLoop:Disconnect()
-		 bang:Stop()
-		 bangAnim:Destroy()
-		 bangDied:Disconnect()
- end
+	glueloop = false
  end)
  
  cmd.add({"spook", "scare"}, {"spook <player> (scare)", "Teleports next to a player for a few seconds"}, function(...)
@@ -10175,15 +10131,9 @@ end
  end)
  
  cmd.add({"unairwalk", "unaw"}, {"unairwalk (unaw)", "Stops the airwalk command"}, function()
-	 local function SendNotification(Title, Text, Label, Length)
-		 game.StarterGui:SetCore('SendNotification', {Title = Title; Text = Text; Icon = Label; Duration = Length })
-	 end
 	 for i, v in pairs(workspace:GetChildren()) do
 		 if tostring(v) == "Airwalk" then
 			 v:Destroy()
-			 
- 
- 
  wait();
  
  Notify({
@@ -10198,9 +10148,6 @@ end
  end)
  
  cmd.add({"airwalk", "aw"}, {"airwalk (aw)", "Press space to go up, unairwalk to stop"}, function()
-	 
- 
- 
  wait();
  
  Notify({
@@ -10225,9 +10172,6 @@ end
 						 AirWPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
 						 wait (.1)
 					 end
-				 end
-				 local function SendNotification(Title, Text, Label, Length)
-					 game.StarterGui:SetCore('SendNotification', {Title = Title; Text = Text; Icon = Label; Duration = Length })
 				 end
 				 AirWalk()
 				 
@@ -10274,9 +10218,7 @@ end
 	 cmd.add({"mute", "muteboombox"}, {"mute <player> (muteboombox)", "Mutes the players boombox"}, function(...)
 		 Username = (...)
 		 if game:GetService("SoundService").RespectFilteringEnabled == true then
-			 
-	 
-	 
+
 	 wait();
 	 
 	 Notify({
@@ -10286,9 +10228,6 @@ end
 	 
 	 });
 		 else
-				 
-	 
-	 
 	 wait();
 	 
 	 Notify({
