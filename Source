@@ -10411,7 +10411,7 @@ until glueloop == false
  cmd.add({"tpwalk", "tpwalk"}, {"tpwalk <speed>", "More undetectable walkspeed script"}, function(...)
 	if TPWalk == true then
 		TPWalk = false
-		TPWalking = false
+		TPWalking = TPWalking:Disconnect()
 	end
 	 TPWalk = true
 	 Speed = (...)
