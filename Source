@@ -10409,6 +10409,10 @@ until glueloop == false
  
  TPWalk = false
  cmd.add({"tpwalk", "tpwalk"}, {"tpwalk <speed>", "More undetectable walkspeed script"}, function(...)
+	if TPWalk == true then
+		TPWalk = false
+		TPWalking = false
+	end
 	 TPWalk = true
 	 Speed = (...)
 	 TPWalking = game:GetService("RunService").Heartbeat:Wait()
@@ -12327,6 +12331,9 @@ until glueloop == false
  loophitbox = false
  cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(h, d)
 	 
+	if loophitbox == true then
+loophitbox = false
+	end
  Username = h
  Plr = getPlr(h)
  
