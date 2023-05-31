@@ -12863,7 +12863,7 @@ until glueloop == false
  chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
  end)
  
- cmd.add({"bhop"}, {"bhop", "bhop bhop bhop bhop bhop bhop bhop bla bla bla idk what im saying"}, function()
+ -- [[ bhop functions ]] -- 
  local player
  local character
  local collider
@@ -13144,6 +13144,7 @@ until glueloop == false
 	 ["LMB"] = false,
 	 ["RMB"] = false
  }
+
  local plr = game:GetService("Players").LocalPlayer
  local camera = workspace.CurrentCamera
  local UserInputService = game:GetService("UserInputService")
@@ -13201,6 +13202,8 @@ until glueloop == false
 	 setDeltaTime();
 	 update(updateDT);
  end
+
+ cmd.add({"bhop"}, {"bhop", "bhop bhop bhop bhop bhop bhop bhop bla bla bla idk what im saying"}, function()
  main()
  
 	 local char = game.Players.LocalPlayer.Character
