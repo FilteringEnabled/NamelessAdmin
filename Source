@@ -5288,21 +5288,38 @@ end
  local RunService = game:GetService("RunService")
  local LP = Players.LocalPlayer
  local roles
- function CreateHighlight()
-	 for i, v in pairs(Players:GetChildren()) do
+ function CreateAllHighlight(p)
+	 for i, v in pairs(game.Players:GetChildren()) do
 		 if v ~= LP and v.Character and not v.Character:FindFirstChild("Highlight") then
 			 Instance.new("Highlight", v.Character)           
 		 end
 	 end
  end
- function UpdateHighlights()
-	 for _, v in pairs(Players:GetChildren()) do
+ function UpdateAllHighlights()
+	 for _, v in pairs(game.Players:GetChildren()) do
 		 if v ~= LP and v.Character and v.Character:FindFirstChild("Highlight") then
 			 Highlight = v.Character:FindFirstChild("Highlight")
 				 Highlight.FillColor = Color3.fromRGB(0, 225, 0)
 			 end
 		 end
 	 end
+
+	 function CreateHighlight(p)
+		for i, v in pairs(p:GetChildren()) do
+			if v ~= LP and v.Character and not v.Character:FindFirstChild("Highlight") then
+				Instance.new("Highlight", v.Character)           
+			end
+		end
+	end
+	function UpdateHighlights(p)
+		for _, v in pairs(p:GetChildren()) do
+			if v ~= LP and v.Character and v.Character:FindFirstChild("Highlight") then
+				Highlight = v.Character:FindFirstChild("Highlight")
+					Highlight.FillColor = Color3.fromRGB(0, 225, 0)
+				end
+			end
+		end
+
  function IsAlive(Player)
 	 for i, v in pairs(roles) do
 		 if Player.Name == i then
@@ -5314,11 +5331,68 @@ end
 		 end
 	 end
  end
- CreateHighlight()
-	 UpdateHighlights()
+ CreateAllHighlight()
+	 UpdateAllHighlights(game.Players)
+
+	 Players = game.Players
+COREGUI = game.CoreGui
+
+for i,plr in pairs(game.Players:GetChildren()) do
+for i,v in pairs(COREGUI:GetChildren()) do
+			if v.Name == plr.Name..'_ESP' then
+				v:Destroy()
+			end
+if plr.Character and plr.Name ~= Players.LocalPlayer.Name and not COREGUI:FindFirstChild(plr.Name..'_ESP') then
+			local ESPholder = Instance.new("Folder")
+			ESPholder.Name = plr.Name..'_ESP'
+			ESPholder.Parent = COREGUI
+
+			if plr.Character and plr.Character:FindFirstChild('Head') then
+				local BillboardGui = Instance.new("BillboardGui")
+				local TextLabel = Instance.new("TextLabel")
+				BillboardGui.Adornee = plr.Character.Head
+				BillboardGui.Name = plr.Name
+				BillboardGui.Parent = ESPholder
+				BillboardGui.Size = UDim2.new(0, 100, 0, 150)
+				BillboardGui.StudsOffset = Vector3.new(0, 1, 0)
+				BillboardGui.AlwaysOnTop = true
+				TextLabel.Parent = BillboardGui
+				TextLabel.BackgroundTransparency = 1
+				TextLabel.Position = UDim2.new(0, 0, 0, -50)
+				TextLabel.Size = UDim2.new(0, 100, 0, 100)
+				TextLabel.Font = Enum.Font.SourceSansSemibold
+				TextLabel.TextSize = 17
+				TextLabel.TextColor3 = Color3.new(12, 4, 20)
+				TextLabel.TextStrokeTransparency = 0.3
+				TextLabel.TextYAlignment = Enum.TextYAlignment.Bottom
+				TextLabel.Text = '@'..plr.Name .. ' | ' .. plr.DisplayName .. ''
+				TextLabel.ZIndex = 10
+				local espLoopFunc
+				local teamChange
+				local addedFunc
+				end
+end
+end
+
+	addedFunc = plr.CharacterAdded:Connect(function()
+		wait(2)
+		CreateHighlight(plr)
+		UpdateHighlights(plr)
+					if ESPenabled then
+						espLoopFunc:Disconnect()
+						teamChange:Disconnect()
+						ESPholder:Destroy()
+						repeat wait(1) until plr.Character.HumanoidRootPart and plr.Character:FindFirstChildOfClass("Humanoid")
+						ESP(plr)
+					else
+						addedFunc:Disconnect()
+					end
+				end)
+end
 	 end)
  
 		 cmd.add({"unesp"}, {"unesp", "Disables esp"}, function()
+			addedFunc:Disconnect()
  for _, player in ipairs(game.Players:GetPlayers()) do
 	 local character = player.Character
 	 if character then
@@ -5337,6 +5411,12 @@ end
 		 end
 	 end)
  end)
+
+ for i,b in pairs(game.CoreGui:GetChildren()) do
+if b:IsA("Folder") then
+		b:Destroy()
+end
+ end
 		 end)
  
 	 cmd.add({"creep", "ctp", "scare"}, {"ctp <player> (creep, scare)", "Teleports from a player behind them and under the floor to the top"}, function(...)
@@ -10327,23 +10407,27 @@ until glueloop == false
  LocalPlayer.CharacterAdded:Connect(onCharacter)
  end)
  
+ TPWalk = false
  cmd.add({"tpwalk", "tpwalk"}, {"tpwalk <speed>", "More undetectable walkspeed script"}, function(...)
 	 TPWalk = true
 	 Speed = (...)
-	 while TPWalk and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.Humanoid do
-		 local TPWalking = game:GetService("RunService").Heartbeat:Wait()
+	 TPWalking = game:GetService("RunService").Heartbeat:Wait()
+	 game:GetService("RunService").Stepped:Connect(function()
+		if TPWalk == true then
 		 if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection.Magnitude > 0 then
 			 if Speed then
 				  game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection * Speed * TPWalking * 10)
 			 else
 				  game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").MoveDirection * TPWalking * 10)
 			 end
-		 end
-	 end
+			end
+		end
+	end)
  end)
  
  cmd.add({"untpwalk"}, {"untpwalk", "Stops the tpwalk command"}, function()
 	 TPWalk = false
+	 TPWalking = false
  end)
  
 	 cmd.add({"loopmute", "loopmuteboombox"}, {"loopmute <player> (loopmuteboombox)", "Loop mutes the players boombox"}, function(...)
@@ -12240,6 +12324,7 @@ until glueloop == false
 	 speaker.Character.Head.Anchored = false
  end)
  
+ loophitbox = false
  cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(h, d)
 	 
  Username = h
@@ -12255,10 +12340,16 @@ until glueloop == false
  });
 	 _G.HeadSize = d
 	 _G.Disabled = true
+
+	 if _G.HeadSize == nil then
+_G.HeadSize = 10
+	 end
 	 
+	 loophitbox = true
  
 	 if Username == "all" or Username == "others" then
-		 if _G.Disabled then
+			game:GetService("RunService").Stepped:Connect(function()
+				if loophitbox then
 		 for i,v in next, game:GetService('Players'):GetPlayers() do
 		 if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 		 v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
@@ -12267,16 +12358,20 @@ until glueloop == false
 		 v.Character.HumanoidRootPart.Material = "Neon"
 		 v.Character.HumanoidRootPart.CanCollide = false
 		 end
-	 end
- end
+		end
+	end
+end)
  else
-		 if _G.Disabled then
+			game:GetService("RunService").Stepped:Connect(function()
+								if loophitbox then
 		 Plr.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
 		 Plr.Character.HumanoidRootPart.Transparency = 0.7
 		 Plr.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 		 Plr.Character.HumanoidRootPart.Material = "Neon"
 		 Plr.Character.HumanoidRootPart.CanCollide = false
- end
+
+end
+end)
  end
  end)
  
@@ -12288,6 +12383,7 @@ until glueloop == false
 		 _G.HeadSize = 5
 		 _G.Disabled = false
 		 
+		 loophitbox = false
 	 
 		 if Username == "all" or Username == "others" then
 			 for i,v in next, game:GetService('Players'):GetPlayers() do
