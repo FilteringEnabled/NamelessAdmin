@@ -90,7 +90,7 @@
  Watch = false
  local Admin = {}
  
- -- [[ HAT ORBIT (PATCHED) ]]
+ -- [[ HAT ORBIT (PATCHED IN MOST GAMES) ]]
  local Offset = 10
  local Rotation = 0
  local Speed = 1
@@ -638,6 +638,8 @@
 	 return players
  end
  
+
+ wait(0.3)
  --[[ COMMANDS ]]--
  cmd.add({"script", "ls", "s", "run"}, {"script <source> (ls, s, run)", "Run the code requested"}, function(source)
 	 loadstring(game:HttpGet(source))()
@@ -1763,7 +1765,9 @@
 	 end
 	 
 	 local Message = function(_Title, _Text, Time)
-		game:GetService("StarterGui"):SetCore("SendNotification", {Title = _Title, Text = _Text, Duration = Time})
+print(_Title)
+print(_Text)
+print(Time)
 	 end
 	 
 	 local SkidFling = function(TargetPlayer)
@@ -2357,14 +2361,13 @@
  
  end)
  
- cmd.add({"bringto"}, {"bringto (playertobring] [playertobringto]", "Brings a player to another player"}, function(h, d)
+ cmd.add({"bringto"}, {"bringto (playertobring) [playertobringto]", "Brings a player to another player"}, function(h, d)
  local target1 = getPlr(h)
  local target2 = getPlr(d)
  
  local old = getChar().HumanoidRootPart.CFrame
  local tool = getBp():FindFirstChildOfClass("Tool") or getChar():FindFirstChildOfClass("Tool")
  
- -- Calculate the position of the tool grip based on the second player's character
  local distance = 1
  local gripPosition = target2.Character.HumanoidRootPart.Position - target2.Character.HumanoidRootPart.CFrame.lookVector * distance
  wait(0.2)
@@ -2835,17 +2838,7 @@
 		 v:Destroy()
 	 end
  end
- 
- game:GetService("StarterGui"):SetCore("SendNotification",{
-	 Title = "FE BTools Loaded",
-	 Text = "Made by rouxhaver",
-	 Icon = "rbxassetid://12561999923"
- })
- game:GetService("StarterGui"):SetCore("SendNotification",{
-	 Title = "Network Credit:",
-	 Text = "thanks to 4eyes for network stuff",
-	 Icon = "rbxassetid://12562053596"
- })
+
  
  while wait() do
 	 if vbreak == true then
@@ -3799,7 +3792,7 @@
 	
  end)
  
- cmd.add({"enableinventory", "enableinv"}, {"enableinv (enaleinventory)", "Lets you see what you have in your inventory since some games hide it"}, function(...)
+ cmd.add({"enableinventory", "enableinv"}, {"enableinv (enableinventory)", "Lets you see what you have in your inventory since some games hide it"}, function(...)
 	 game.StarterGui:SetCoreGuiEnabled(2, true)
  end)
  
@@ -4320,25 +4313,9 @@
 	 end
  end)
  
- cmd.add({"fall"}, {"fall", "get up NOW"}, function()
- local Human = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-	 if not Human then
-		 return
-	 end
-		 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(math.pi * .5, 1000, 0)
-	 Human.Sit = true
-	 task.wait(0.01)
- 
- local Human = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-	 if not Human then
-		 return
-	 end
-	 Human.Sit = true
-	 task.wait(.1)
-	 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(math.pi * .5, 0, 0)
-	 for _, v in ipairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
-		 v:Stop()
-	 end
+ cmd.add({"trip"}, {"trip", "get up NOW"}, function()
+	game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(0)
+	game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Velocity = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame.LookVector * 25
  end)
  
  cmd.add({"checkrfe"}, {"checkrfe", "Checks if the game has respect filtering enabled off"}, function()
@@ -4890,68 +4867,65 @@
 				 
  });
 		 end)
- 
-		 antiflingon = false
+
+		 AntiFling = false
 			 cmd.add({"antifling"}, {"antifling", "makes it so you cant collide with others"}, function()
-				antifling = true
-	 wait();
-				 Notify({
-				 Description = "Anti fling enabled";
-				 Title = "Nameless Admin";
-				 Duration = 5;
-				 
- });
+ AntiFling = true
 
- function RemoveCollision(prt, plr)
-	for i, v in pairs(plr:GetDescendants()) do
-		if v:IsA("BasePart") then
-			e = Instance.new("NoCollisionConstraint", v)
-			e.Part0 = v
-			e.Part1 = prt
-		end
-	end
-end
-
-	 for i,v in pairs(game:GetService("Players"):GetChildren()) do
-			for i, yes in pairs(v.Character:GetDescendants()) do
-                if yes:IsA("BasePart") then
-                    if yes:IsA("BasePart") then
-                        for i, v in pairs(plrs:GetDescendants()) do
-                            if v:IsA("Player") then
-                                RemoveCollision(yes, v.Character)
-                            end
-                        end
-                    end
-                end
-			end
-	 v.CharacterAdded:Connect(function(character)
-		if antifling == true then
-		 for i, yes in pairs(v.Character:GetDescendants()) do
-			if yes:IsA("BasePart") then
-				if yes:IsA("BasePart") then
-					RemoveCollision(yes, character)
-					end
-				end
-			end
-	end
-end)
-end
+ local function NoCollision(PLR)
+	 if AntiFling and PLR.Character then
+		 for _,x in pairs(PLR.Character:GetDescendants()) do
+			 if x:IsA("BasePart") and x.CanCollide then
+				 x.CanCollide = false
+			 end
+		 end
+	 end
+ end
+ for _,v in pairs(game.Players:GetPlayers()) do
+	 if v ~= game.Players then
+		 local antifling = game:GetService('RunService').Stepped:connect(function()
+			 NoCollision(v)
+		 end)
+	 end
+ end
+ game.Players.PlayerAdded:Connect(function()
+	 if v ~= game.Players.LocalPlayer and antifling then
+		 local antifling = game:GetService('RunService').Stepped:connect(function()
+			NoCollision(v)
+		 end)
+	 end
+ end)
+ 
+ wait();
+ Notify({
+ Description = "Anti fling enabled";
+ Title = "Nameless Admin";
+ Duration = 5;
+ 
+});
 			 end)
 
 			 cmd.add({"unantifling"}, {"unantifling", "removes antifling"}, function()
-				wait();
-				Notify({
-				Description = "Anti fling disabled";
-				Title = "Nameless Admin";
-				Duration = 5;
-				
+AntiFling = true
+
+wait();
+Notify({
+Description = "Anti fling disabled";
+Title = "Nameless Admin";
+Duration = 5;
+
 });
-				antiflingon = false
-				for i, v in pairs(game.Workspace:GetDescendants()) do
-					if v:IsA("NoCollisionConstraint") then
-						v:Destroy()
-					end
-				end
+
+for _,v in pairs(game.Players:GetPlayers()) do
+	if v ~= game.Players then
+char = v.Character
+for _,x in pairs(char:GetDescendants()) do
+	if x:IsA("BasePart") then
+		x.CanCollide = true
+	end
+end
+	end
+end
 			 end)
  
 			 cmd.add({"gravitygun"}, {"gravitygun", "Probably the best gravity gun script thats fe"}, function()
@@ -5001,9 +4975,7 @@ end
 	   if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
 		 table.insert(npcs,{hum,hum.HipHeight})
    local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
-	 local target = game.Players.LocalPlayer.Character
-				 local targetPart = target:FindFirstChild("Head")
-				 local targetPos = targetPart.Position
+				 local targetPos = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
 				 hum:MoveTo(targetPos)
 		 end
 	 end
@@ -5012,6 +4984,31 @@ end
 	 end
  end)
  
+npcfollowloop = false
+ cmd.add({"loopnpcfollow"}, {"loopnpcfollow", "Makes NPCS follow you in a loop"}, function()
+npcfollowloop = true
+
+	repeat wait(0.1)
+	local npcs = {}
+ 
+	local function disappear(hum)
+	  if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+		table.insert(npcs,{hum,hum.HipHeight})
+  local rootPart = hum.Parent:FindFirstChild("HumanoidRootPart")
+				local targetPos = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
+				hum:MoveTo(targetPos)
+		end
+	end
+	for _,hum in pairs(workspace:GetDescendants()) do
+	  disappear(hum)
+	end
+until npcfollowloop == false
+ end)
+
+ cmd.add({"unloopnpcfollow"}, {"unloopnpcfollow", "Makes NPCS not follow you in a loop"}, function()
+	npcfollowloop = false
+ end)
+
  cmd.add({"sitnpcs"}, {"sitnpcs", "Makes NPCS sit"}, function()
 	 local npcs = {}
  
@@ -5915,43 +5912,39 @@ end
  end)
  end)
  
- cmd.add({"anticlientkick", "antickick"}, {"anticlientkick (antickick)", "Makes scripts harder to kick you still possible"}, function()
- local getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, stringlower = getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, string.lower
- if getgenv().ED_AntiKick then return end
- local Players, StarterGui, OldNamecall = game:GetService("Players"), game:GetService("StarterGui")
- getgenv().ED_AntiKick = {
-	 SendNotifications = true,
-	 CheckCaller = false 
- }
- OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
-	 if (getgenv().ED_AntiKick.CheckCaller and not checkcaller() or true) and stringlower(getnamecallmethod()) == "kick" then
-		 if getgenv().ED_AntiKick.SendNotifications then
-			 wait();
-	 
-	 Notify({
-	 Description = "A kick attempted was attempted and blocked.";
-	 Title = "Nameless Admin";
-	 Duration = 5;
-	 
- });
-		 end
- 
-		 return nil
-	 end
- 
-	 return OldNamecall(...)
- end))
- 
- if getgenv().ED_AntiKick.SendNotifications then
- wait();
- 
+ cmd.add({"anticlientkick", "antickick"}, {"anticlientkick (antickick)", "Makes local scripts not able to kick you"}, function()
+	if not hookmetamethod then 
+		Notify({
+			Description = "Your executor does not support anticlientkick";
+			Title = "Nameless Admin";
+			Duration = 5;
+			
+			});
+			end
+	oldhmmi = hookmetamethod(game, "__index", function(self, method)
+		if self == LocalPlayer and method:lower() == "kick" then
+			return print("Expected ':' not '.' calling member function Kick")
+		end
+		return oldhmmi(self, method)
+	end)
+	oldhmmnc = hookmetamethod(game, "__namecall", function(self, ...)
+		if self == LocalPlayer and getnamecallmethod():lower() == "kick" then
+			return
+			Notify({
+				Description = "A kick was just attempted but was blocked";
+				Title = "Nameless Admin";
+				Duration = 5;
+				
+				});
+		end
+		return oldhmmnc(self, ...)
+			end)
  Notify({
  Description = "Anti kick executed";
  Title = "Nameless Admin";
  Duration = 5;
  
  });
- end
  end)
  
  
@@ -6006,6 +5999,32 @@ end
 					 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, SomeSRVS[1])
 				 end
  end)
+ 
+ cmd.add({"autorejoin", "autorj"}, {"autorejoin", "Rejoins the server if you get kicked / disconnected"}, function()
+	Players = game.Players
+
+	game.CoreGui:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay").DescendantAdded:Connect(function(Err)
+			if Err.Name == "ErrorTitle" then
+				Err:GetPropertyChangedSignal("Text"):Connect(function()
+					if Err.Text:sub(0, 12) == "Disconnected" then
+						if #Players:GetPlayers() <= 1 then
+							Players.LocalPlayer:Kick("\nRejoining...")
+							wait()
+							game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+						else
+							game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+						end
+					end
+				end)
+			end
+		end)
+
+		Notify({
+			Description = "Auto Rejoin is now on!";
+			Title = "Nameless Admin";
+			Duration = 5;
+			
+			}); end)
  
  cmd.add({"functionspy"}, {"functionspy", "Check console"}, function()
 	 local toLog = {
@@ -7037,9 +7056,6 @@ end
  end)
  
  cmd.add({"hide", "unshow"}, {"hide <player> (unshow)", "places the selected player to lighting"}, function(...)
-	 
-	 
-	 
 	 wait();
 	 
 	 Notify({
@@ -7056,11 +7072,22 @@ end
 	 for i, plrs in pairs(game:GetService("Players"):GetChildren()) do
 		 if plrs.Name == game.Players.LocalPlayer.Name then
 		 else
+local args = {
+    [1] = "/mute " .. plrs.Name .. "",
+    [2] = "All"
+}
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
 			 plrs.Character.Parent = game.Lighting
 		 end
 		 end
 	 else
  if target and target.Character then
+	local args = {
+		[1] = "/mute " .. target.Name .. "",
+		[2] = "All"
+	}
+	
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
 	 target.Character.Parent = game.Lighting
  end
  end
@@ -7085,6 +7112,11 @@ end
  if Username == "all" or Username == "others" then
 	 for i, plrs in pairs(game:GetService("Lighting"):GetChildren()) do
 		 if plrs:IsA("Model") and plrs.PrimaryPart then
+			local args = {
+				[1] = "/mute " .. plrs.Name .. "",
+				[2] = "All"
+			}
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
 			 plrs.Parent = game.Workspace
 		 end
 		 end
@@ -7842,7 +7874,7 @@ end
 	 game.Players.LocalPlayer.Character.Humanoid.HipHeight = (...)
  end)
  
- cmd.add({"uadelete", "unanchoreddelete"}, {"unanchoredelete (uadelete)", "Gives you btools to delete unanchored parts"}, function()
+ cmd.add({"uadelete", "unanchoreddelete"}, {"unanchoreddelete (uadelete)", "Gives you btools to delete unanchored parts"}, function()
 	 
 	 
 	 
@@ -7886,11 +7918,8 @@ end
  movetool.CanBeDropped = false
  movetool.RequiresHandle = false
  local function createnotification(title, text)
-	 game:GetService("StarterGui"):SetCore("SendNotification", {
-		 Title = title;
-		 Text = text;
-		 Duration = 1;
-	 })
+print(title)
+print(text)
  end
  movetool.Activated:Connect(function()
 	 createnotification("Move Tool", "You are moving: "..mouse.Target.Name)
@@ -8140,7 +8169,9 @@ end
 		 end
 	 
 		 local Notify = function(_Title, _Text , Time)
-			 StarterGui:SetCore("SendNotification", {Title = _Title, Text = _Text, Icon = "rbxassetid://2541869220", Duration = Time})
+print(_Title)
+print(_Text)
+print(Time)
 		 end
 	 
 		 local Tween = function(Object, Time, Style, Direction, Property)
@@ -8432,8 +8463,11 @@ end
  coroutine.wrap(ELJBIKO_fake_script)()
  end)
  
- cmd.add({"chat", "message"}, {"chat <text> (message)", "Chats you, useful if youre muted"}, function(msg)
-	  game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, 'All')
+ cmd.add({"chat", "message"}, {"chat <text> (message)", "Chats you, useful if youre muted"}, function(...)
+	local A_1 = (...)
+	local A_2 = "All"
+	local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+	Event:FireServer(A_1, A_2)
  end)
  
  cmd.add({"fixcam", "fix"}, {"fixcam", "Fix your camera"}, function()
@@ -8598,7 +8632,9 @@ end
  end
  
  local Message = function(_Title, _Text, Time)
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = _Title, Text = _Text, Duration = Time})
+	print(_Title)
+	print(_Text)
+	print(Time)
  end
  
  local SkidFling = function(TargetPlayer)
@@ -8821,8 +8857,10 @@ end
  end
  
  local Message = function(_Title, _Text, Time)
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = _Title, Text = _Text, Duration = Time})
- end
+	print(_Title)
+	print(_Text)
+	print(Time)
+end
  
  local SkidFling = function(TargetPlayer)
 	local Character = Player.Character
@@ -9010,17 +9048,17 @@ end
 
  
  cmd.add({"commitoof", "suicide", "kys"}, {"commitoof (suicide, kys)", "FE KILL YOURSELF SCRIPT this will be bad when taken out of context"}, function()
-	 local A_1 = "Alright, im gonna do it."
+	 local A_1 = "Okay.. i will do it."
 		 local A_2 = "All"
 		 local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
 		 Event:FireServer(A_1, A_2)
 		 wait(1)
-		 local A_1 = "I'm going to commit oof."
+		 local A_1 = "I will oof"
 		 local A_2 = "All"
 		 local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
 		 Event:FireServer(A_1, A_2)
 		 wait(1)
-		 local A_1 = "Goodbye cruel world."
+		 local A_1 = "Goodbye."
 		 local A_2 = "All"
 		 local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
 		 Event:FireServer(A_1, A_2)
@@ -9030,6 +9068,20 @@ end
 		 game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 		 wait(0.5)
 		 game.Players.LocalPlayer.Character.Humanoid.Health = 0
+ end)
+
+ cmd.add({"volume", "vol"}, {"volume <1-10> (vol)", "Changes your volume"}, function(vol)
+	amount = vol/10
+	UserSettings():GetService("UserGameSettings").MasterVolume = amount
+ end)
+
+ cmd.add({"sensitivity", "sens"}, {"sensitivity <1-10> (tr)", "Changes your sensitivity"}, function(ss)
+	game:GetService("UserInputService").MouseDeltaSensitivity = ss
+ end)
+
+ cmd.add({"torandom", "tr"}, {"torandom (tr)", "Teleports to a random player"}, function(...)
+target = getPlr("random")
+getChar().HumanoidRootPart.CFrame = target.Character.Humanoid.RootPart.CFrame
  end)
  
  cmd.add({"goto", "to", "tp", "teleport"}, {"goto <player/X,Y,Z>", "Teleport to the given player or X,Y,Z coordinates"}, function(...)
@@ -9713,8 +9765,8 @@ end
  end
  
  local Message = function(_Title, _Text, Time)
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = _Title, Text = _Text, Duration = Time})
- end
+
+end
  
  local SkidFling = function(TargetPlayer)
 	local Character = Player.Character
@@ -10014,6 +10066,39 @@ end
 	 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
  end)
  
+ loopwave = false
+ cmd.add({"loopwaveat", "loopwat"}, {"loopwaveat <player> (loopwat)", "Wave to a player in a loop"}, function(...)
+	loopwave = true
+	Player = (...)
+	Target = getPlr(Player)
+	local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	repeat wait()
+		wait(0.2)
+		targetcframe = Target.Character.HumanoidRootPart.CFrame
+	WaveAnim = Instance.new("Animation")
+				if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
+					WaveAnim.AnimationId = "rbxassetid://507770239"
+				else
+					WaveAnim.AnimationId = "rbxassetid://128777973"
+				end
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetcframe * CFrame.new(0, 0, -3)
+				local CharPos = game.Players.LocalPlayer.Character.PrimaryPart.Position
+						local tpos = Target.Character:FindFirstChild("HumanoidRootPart").Position
+						local TPos = Vector3.new(tpos.X,CharPos.Y,tpos.Z)
+						local NewCFrame = CFrame.new(CharPos,TPos)
+						Players.LocalPlayer.Character:SetPrimaryPartCFrame(NewCFrame)
+	wave = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(WaveAnim)
+	wave:Play(-1, 5, -1)
+	wait(1.6)
+	wave:Stop()
+			until loopwave == false
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+ end)
+
+ cmd.add({"unloopwaveat", "unloopwat"}, {"unloopwaveat <player> (unloopwat)", "Stops the loopwaveat command"}, function(...)
+	loopwave = false
+ end)
+
  cmd.add({"waveat", "wat"}, {"waveat <player> (wat)", "Wave to a player"}, function(...)
  -- r6 / 128777973
  -- r15 / 507770239
@@ -10086,7 +10171,7 @@ end
 			 end)
  end)
  
- cmd.add({"unheadbang", "unmouthbang", "unhb"}, {"unheadbang (unmouthbang, unhb)", "Bang them in the mouth because you are gay"}, function(h,d)
+ cmd.add({"unheadbang", "unmouthbang", "unhb", "unmb"}, {"unheadbang (unmouthbang, unhb, unmb)", "Bang them in the mouth because you are gay"}, function(h,d)
 	 if bangLoop then
 		 bangLoop = bangLoop:Disconnect()
 		 bang:Stop()
@@ -11545,7 +11630,7 @@ until glueloop == false
 						 until Loopstand == false
 					 end)
  
-						 cmd.add({"unloopstand"}, {"unloopstand)", "Unloop stands a player endlessly"}, function(...)
+						 cmd.add({"unloopstand"}, {"unloopstand", "Unloop stands a player endlessly"}, function(...)
 							 Loopstand = false
 						 end)
  
@@ -12162,7 +12247,7 @@ until glueloop == false
  });
  end)
  
- cmd.add({"tweengotocampos", "tweentocampos", "tweentcp"}, {"tweengotocampos (tweentocampos, tweentcp)", "Another version of goto camera position but bypassing more anti-cheats"}, function(...)
+ cmd.add({"tweengotocampos", "tweentocampos", "tweentcp"}, {"tweengotocampos (tweentcp)", "Another version of goto camera position but bypassing more anti-cheats"}, function(...)
  local player = game.Players.LocalPlayer
  local UserInputService = game:GetService("UserInputService")
  local TweenService = game:GetService("TweenService")
@@ -12328,6 +12413,10 @@ until glueloop == false
 	 speaker.Character.Head.Anchored = false
  end)
  
+ cmd.add({"console"}, {"console", "Opens developer console"}, function()
+	game.StarterGui:SetCore("DevConsoleVisible", true)
+ end)
+
  loophitbox = false
  cmd.add({"hitbox", "hbox"}, {"hitbox {amount}", "Makes everyones hitbox as much as you want"}, function(h, d)
 	 
@@ -12360,7 +12449,7 @@ _G.HeadSize = 10
 		 for i,v in next, game:GetService('Players'):GetPlayers() do
 		 if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 		 v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
-		 v.Character.HumanoidRootPart.Transparency = 0.7
+		 v.Character.HumanoidRootPart.Transparency = 0.9
 		 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 		 v.Character.HumanoidRootPart.Material = "Neon"
 		 v.Character.HumanoidRootPart.CanCollide = false
@@ -12965,352 +13054,420 @@ end)
  chatFrame.ChatChannelParentFrame.Visible = true
  chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
  end)
- 
- -- [[ bhop functions ]] -- 
- local player
- local character
- local collider
- local camera
- local input
- local collider
- local playerGrounded
- local playerVelocity
- local jumping
- local moveInputSum
- local dt = 1/60
- local partYRatio
- local partZRatio
- local cameraYaw
- local cameraLook
- local movementPosition
- local movementVelocity
- local gravityForce
- local airAccelerate
- local airMaxSpeed
- local groundAccelerate
- local groundMaxVelocity
- local friction
- local playerTorsoToGround
- local movementStickDistance
- local jumpVelocity
- local movementPositionForce
- local movementVelocityForce
- local maxMovementPitch
- local rayYLength
- local movementPositionD
- local movementPositionP
- local movementVelocityP
- local gravity
- 
- 
- 
- function init(Player, Camera, Input)
-	 player = Player
-	 character = player.Character
-	 collider = character.HumanoidRootPart
-	 camera = Camera
-	 input = Input
-	 playerVelocity = 0
-	 playerGrounded = false
-	 moveInputSum = {
-	 ["forward"] = 0,
-	 ["side"] 	= 0 --left is positive
-	 }
+
+
+ cmd.add({"bhop"}, {"bhop", "bhop bhop bhop bhop bhop bhop bhop bla bla bla idk what im saying"}, function()
+	 -- [[ bhop functions ]] -- 
+	 local player
+	 local character
+	 local collider
+	 local camera
+	 local input
+	 local collider
+	 local playerGrounded
+	 local playerVelocity
+	 local jumping
+	 local moveInputSum
+	 local dt = 1/60
+	 local partYRatio
+	 local partZRatio
+	 local cameraYaw
+	 local cameraLook
+	 local movementPosition
+	 local movementVelocity
+	 local gravityForce
+	 local airAccelerate
+	 local airMaxSpeed
+	 local groundAccelerate
+	 local groundMaxVelocity
+	 local friction
+	 local playerTorsoToGround
+	 local movementStickDistance
+	 local jumpVelocity
+	 local movementPositionForce
+	 local movementVelocityForce
+	 local maxMovementPitch
+	 local rayYLength
+	 local movementPositionD
+	 local movementPositionP
+	 local movementVelocityP
+	 local gravity
 	 
-	 airAccelerate 			= 10000
-	 airMaxSpeed 			= 2.4
-	 groundAccelerate 		= 250
-	 groundMaxVelocity 		= 20
-	 friction			 	= 10
-	 playerTorsoToGround 	= 3
-	 movementStickDistance 	= 0.5
-	 jumpVelocity 			= 52.5
-	 movementPositionForce	= 400000
-	 movementVelocityForce	= 300000
-	 maxMovementPitch		= 0.6
-	 rayYLength				= playerTorsoToGround + movementStickDistance
-	 movementPositionD		= 125
-	 movementPositionP		= 14000
-	 movementVelocityP		= 1500
-	 gravity					= 0.4
 	 
- end
- 
- function initBodyMovers()
-	 movementPosition = Instance.new("BodyPosition", collider)
-	 movementPosition.Name = "movementPosition"
-	 movementPosition.D = movementPositionD
-	 movementPosition.P = movementPositionP
-	 movementPosition.maxForce = Vector3.new()
-	 movementPosition.position = Vector3.new()
 	 
-	 movementVelocity = Instance.new("BodyVelocity", collider)
-	 movementVelocity.Name = "movementVelocity"
-	 movementVelocity.P = movementVelocityP
-	 movementVelocity.maxForce = Vector3.new()
-	 movementVelocity.velocity = Vector3.new()
-	 
-	 gravityForce = Instance.new("BodyForce", collider)
-	 gravityForce.Name = "gravityForce"
-	 gravityForce.force = Vector3.new(0, (1-gravity)*196.2, 0) * getCharacterMass()
- end
- 
- function update(deltaTime)
-	 dt = deltaTime
-	 updateMoveInputSum()
-	 cameraYaw = getYaw()
-	 cameraLook = cameraYaw.lookVector	
-	 if cameraLook == nil then
-		 return
-	 end
-	 local hitPart, hitPosition, hitNormal, yRatio, zRatio = findCollisionRay()
-	 partYRatio = yRatio
-	 partZRatio = zRatio
-	 
-	 playerGrounded = hitPart ~= nil and true or false
-	 playerVelocity = collider.Velocity - Vector3.new(0, collider.Velocity.y, 0)
-	 if playerGrounded and (input["Space"] or jumping) then
-		 jumping = true
-	 else
-		 jumping = false
+	 function init(Player, Camera, Input)
+		 player = Player
+		 character = player.Character
+		 collider = character.HumanoidRootPart
+		 camera = Camera
+		 input = Input
+		 playerVelocity = 0
+		 playerGrounded = false
+		 moveInputSum = {
+		 ["forward"] = 0,
+		 ["side"] 	= 0 --left is positive
+		 }
+		 
+		 airAccelerate 			= 10000
+		 airMaxSpeed 			= 2.4
+		 groundAccelerate 		= 250
+		 groundMaxVelocity 		= 20
+		 friction			 	= 10
+		 playerTorsoToGround 	= 3
+		 movementStickDistance 	= 0.5
+		 jumpVelocity 			= 52.5
+		 movementPositionForce	= 400000
+		 movementVelocityForce	= 300000
+		 maxMovementPitch		= 0.6
+		 rayYLength				= playerTorsoToGround + movementStickDistance
+		 movementPositionD		= 125
+		 movementPositionP		= 14000
+		 movementVelocityP		= 1500
+		 gravity					= 0.4
+		 
 	 end
 	 
-	 setCharacterRotation()
-	 if jumping then
-		 jump()
-	 elseif playerGrounded then
-		 run(hitPosition)
-	 else
-		 air()		
+	 function initBodyMovers()
+		 movementPosition = Instance.new("BodyPosition", collider)
+		 movementPosition.Name = "movementPosition"
+		 movementPosition.D = movementPositionD
+		 movementPosition.P = movementPositionP
+		 movementPosition.maxForce = Vector3.new()
+		 movementPosition.position = Vector3.new()
+		 
+		 movementVelocity = Instance.new("BodyVelocity", collider)
+		 movementVelocity.Name = "movementVelocity"
+		 movementVelocity.P = movementVelocityP
+		 movementVelocity.maxForce = Vector3.new()
+		 movementVelocity.velocity = Vector3.new()
+		 
+		 gravityForce = Instance.new("BodyForce", collider)
+		 gravityForce.Name = "gravityForce"
+		 gravityForce.force = Vector3.new(0, (1-gravity)*196.2, 0) * getCharacterMass()
 	 end
 	 
- end
- 
- function updateMoveInputSum()
-	 moveInputSum["forward"] = input["W"] == true and 1 or 0
-	 moveInputSum["forward"] = input["S"] == true and moveInputSum["forward"] - 1 or moveInputSum["forward"]
-	 moveInputSum["side"] = input["A"] == true and 1 or 0
-	 moveInputSum["side"] = input["D"] == true and moveInputSum["side"] - 1 or moveInputSum["side"]
- end
- 
- function findCollisionRay()
-	 local torsoCFrame = character.HumanoidRootPart.CFrame
-	 local ignoreList = {character, camera}
-	 local rays = {
-		 Ray.new(character.HumanoidRootPart.Position, Vector3.new(0, -rayYLength, 0)),
-		 Ray.new((torsoCFrame * CFrame.new(-0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
-		 Ray.new((torsoCFrame * CFrame.new(0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
-		 Ray.new((torsoCFrame * CFrame.new(0,0,0.8)).p, Vector3.new(0, -rayYLength, 0)),
-		 Ray.new((torsoCFrame * CFrame.new(0,0,-0.8)).p, Vector3.new(0, -rayYLength, 0))
-	 }
-	 local rayReturns  = {}
-	 
-	 local i
-	 for i = 1, #rays do
-		 local part, position, normal = game.Workspace:FindPartOnRayWithIgnoreList(rays[i],ignoreList)
-		 if part == nil then
-			 position = Vector3.new(0,-3000000,0)
+	 function update(deltaTime)
+		 dt = deltaTime
+		 updateMoveInputSum()
+		 cameraYaw = getYaw()
+		 cameraLook = cameraYaw.lookVector	
+		 if cameraLook == nil then
+			 return
 		 end
-		 if i == 1 then
-			 table.insert(rayReturns, {part, position, normal})
+		 local hitPart, hitPosition, hitNormal, yRatio, zRatio = findCollisionRay()
+		 partYRatio = yRatio
+		 partZRatio = zRatio
+		 
+		 playerGrounded = hitPart ~= nil and true or false
+		 playerVelocity = collider.Velocity - Vector3.new(0, collider.Velocity.y, 0)
+		 if playerGrounded and (input["Space"] or jumping) then
+			 jumping = true
 		 else
-			 local yPos = position.y
-			 if yPos <= rayReturns[#rayReturns][2].y then
+			 jumping = false
+		 end
+		 
+		 setCharacterRotation()
+		 if jumping then
+			 jump()
+		 elseif playerGrounded then
+			 run(hitPosition)
+		 else
+			 air()		
+		 end
+		 
+	 end
+	 
+	 function updateMoveInputSum()
+		 moveInputSum["forward"] = input["W"] == true and 1 or 0
+		 moveInputSum["forward"] = input["S"] == true and moveInputSum["forward"] - 1 or moveInputSum["forward"]
+		 moveInputSum["side"] = input["A"] == true and 1 or 0
+		 moveInputSum["side"] = input["D"] == true and moveInputSum["side"] - 1 or moveInputSum["side"]
+	 end
+	 
+	 function findCollisionRay()
+		 local torsoCFrame = character.HumanoidRootPart.CFrame
+		 local ignoreList = {character, camera}
+		 local rays = {
+			 Ray.new(character.HumanoidRootPart.Position, Vector3.new(0, -rayYLength, 0)),
+			 Ray.new((torsoCFrame * CFrame.new(-0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
+			 Ray.new((torsoCFrame * CFrame.new(0.8,0,0)).p, Vector3.new(0, -rayYLength, 0)),
+			 Ray.new((torsoCFrame * CFrame.new(0,0,0.8)).p, Vector3.new(0, -rayYLength, 0)),
+			 Ray.new((torsoCFrame * CFrame.new(0,0,-0.8)).p, Vector3.new(0, -rayYLength, 0))
+		 }
+		 local rayReturns  = {}
+		 
+		 local i
+		 for i = 1, #rays do
+			 local part, position, normal = game.Workspace:FindPartOnRayWithIgnoreList(rays[i],ignoreList)
+			 if part == nil then
+				 position = Vector3.new(0,-3000000,0)
+			 end
+			 if i == 1 then
 				 table.insert(rayReturns, {part, position, normal})
-			 else 
-				 local j
-				 for j = 1, #rayReturns do
-					 if yPos >= rayReturns[j][2].y then
-						 table.insert(rayReturns, j, {part, position, normal})
+			 else
+				 local yPos = position.y
+				 if yPos <= rayReturns[#rayReturns][2].y then
+					 table.insert(rayReturns, {part, position, normal})
+				 else 
+					 local j
+					 for j = 1, #rayReturns do
+						 if yPos >= rayReturns[j][2].y then
+							 table.insert(rayReturns, j, {part, position, normal})
+						 end
 					 end
 				 end
 			 end
 		 end
-	 end
-	 
-	 i = 1
-	 local yRatio, zRatio = getPartYRatio(rayReturns[i][3])
-	 while magnitude2D(yRatio, zRatio) > maxMovementPitch and i<#rayReturns do
-		 i = i + 1
-		 if rayReturns[i][1] then
-			 yRatio, zRatio = getPartYRatio(rayReturns[i][3])
-		 end
-	 end
-	 
-	 return rayReturns[i][1], rayReturns[i][2], rayReturns[i][3], yRatio, zRatio
- end
- 
- function setCharacterRotation()
-	 local rotationLook = collider.Position + camera.CoordinateFrame.lookVector
-	 collider.CFrame = CFrame.new(collider.Position, Vector3.new(rotationLook.x, collider.Position.y, rotationLook.z))
-	 collider.RotVelocity = Vector3.new()
- end
- 
- function jump()
-	 collider.Velocity = Vector3.new(collider.Velocity.x, jumpVelocity, collider.Velocity.z)
-	 air()
- end
- 
- function air()
-	 movementPosition.maxForce = Vector3.new()
-	 movementVelocity.velocity = getMovementVelocity(collider.Velocity, airAccelerate, airMaxSpeed)
-	 movementVelocity.maxForce = getMovementVelocityAirForce()
- end
- 
- function run(hitPosition)
-	 local playerSpeed = collider.Velocity.magnitude
-	 local mVelocity = collider.Velocity
-	 
-	 if playerSpeed ~= 0 then
-		 local drop = playerSpeed * friction * dt;
-		 mVelocity = mVelocity * math.max(playerSpeed - drop, 0) / playerSpeed;
-	 end
-	 
-	 movementPosition.position = hitPosition + Vector3.new(0,playerTorsoToGround,0)
-	 movementPosition.maxForce = Vector3.new(0,movementPositionForce,0)
-	 movementVelocity.velocity = getMovementVelocity(mVelocity, groundAccelerate, groundMaxVelocity)
-	 local VelocityForce = getMovementVelocityForce()
-	 movementVelocity.maxForce = VelocityForce
-	 movementVelocity.P = movementVelocityP
- end
- 
- function getMovementVelocity(prevVelocity, accelerate, maxVelocity)
-	 local accelForward = cameraLook * moveInputSum["forward"]
-	 local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"];
-	 local accelDir = (accelForward+accelSide).unit;
-	 if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then --avoids divide 0 errors
-		 accelDir = Vector3.new(0,0,0);
-	 end
-	 
-	 local projVel =  prevVelocity:Dot(accelDir);
-	 local accelVel = accelerate * dt;
-	 
-	 if (projVel + accelVel > maxVelocity) then
-		 accelVel = math.max(maxVelocity - projVel, 0);
-	 end
-	 
-	 return prevVelocity + accelDir * accelVel;
- end
- 
- function getMovementVelocityForce()
- 
-	 return Vector3.new(movementVelocityForce,0,movementVelocityForce)
- end
- 
- function getMovementVelocityAirForce()
-	 local accelForward = cameraLook * moveInputSum["forward"];
-	 local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"]
-	 local accelDir = (accelForward+accelSide).unit
-	 if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then
-		 accelDir = Vector3.new(0,0,0);
-	 end
-	 
-	 local xp = math.abs(accelDir.x)
-	 local zp = math.abs(accelDir.z)
-	 
-	 return Vector3.new(movementVelocityForce*xp,0,movementVelocityForce*zp)
- end
- 
- function getPartYRatio(normal)
-	 local partYawVector = Vector3.new(-normal.x, 0, -normal.z)
-	 if partYawVector.magnitude == 0 then
-		 return 0,0
-	 else
-		 local partPitch = math.atan2(partYawVector.magnitude,normal.y)/(math.pi/2)
-		 local vector = Vector3.new(cameraLook.x, 0, cameraLook.z)*partPitch
-		 return vector:Dot(partYawVector), -partYawVector:Cross(vector).y
-	 end	
- end
- 
- function getYaw() --returns CFrame
-	 return camera.CoordinateFrame*CFrame.Angles(-getPitch(),0,0)
- end
- 
- function getPitch() --returns number
-	 return math.pi/2 - math.acos(camera.CoordinateFrame.lookVector:Dot(Vector3.new(0,1,0)))
- end
- 
- function getCharacterMass()
-	 return character.HumanoidRootPart:GetMass() + character.Head:GetMass()
- end
- 
- function magnitude2D(x,z)
-	 return math.sqrt(x*x+z*z)
- end
- 
- local inputKeys = {
-	 ["W"] = false,
-	 ["S"] = false,
-	 ["A"] = false,
-	 ["D"] = false,
-	 ["Space"] = false,
-	 ["LMB"] = false,
-	 ["RMB"] = false
- }
-
- local plr = game:GetService("Players").LocalPlayer
- local camera = workspace.CurrentCamera
- local UserInputService = game:GetService("UserInputService")
- function onInput(input, gameProcessedEvent)
-	 local inputState
-	 --print(input.KeyCode)
-	 if input.UserInputState == Enum.UserInputState.Begin then
-		 inputState = true
-	 elseif input.UserInputState == Enum.UserInputState.End then
-		 inputState = false
-	 else
-		 return
-	 end 
-	 
-	 if input.UserInputType == Enum.UserInputType.Keyboard then
-		 local key = input.KeyCode.Name
-		 if inputKeys[key] ~= nil then
-			 inputKeys[key] = inputState
-		 end
-	 elseif input.UserInputType == Enum.UserInputType.MouseButton1 then --LMB down
-		 inputKeys.LMB = inputState
-	 elseif input.UserInputType == Enum.UserInputType.MouseButton2 then --RMB down
-		 inputKeys.RMB = inputState
-	 end
- end
- function main()
-	 local a = plr.Character:FindFirstChildOfClass("Humanoid") or plr.Character:WaitForChild("Humanoid");
-	 a.PlatformStand = true
-	 --init movement
-	 init(plr, camera, inputKeys);
-	 initBodyMovers();
 		 
-	 --connect input
-	 UserInputService.InputBegan:connect(onInput);
-	 UserInputService.InputEnded:connect(onInput);
-	 --connect updateloop
-	 game:GetService("RunService"):BindToRenderStep("updateLoop", 1, updateLoop);
-	 
-	 --rip
- end
- 
- local prevUpdateTime = nil
- local updateDT = 1/60
- 
- function setDeltaTime() --seconds
-	 local UpdateTime = tick() 
-	 if prevUpdateTime ~= nil then
-		 updateDT = (UpdateTime - prevUpdateTime)
-	 else
-		 updateDT = 1/60
+		 i = 1
+		 local yRatio, zRatio = getPartYRatio(rayReturns[i][3])
+		 while magnitude2D(yRatio, zRatio) > maxMovementPitch and i<#rayReturns do
+			 i = i + 1
+			 if rayReturns[i][1] then
+				 yRatio, zRatio = getPartYRatio(rayReturns[i][3])
+			 end
+		 end
+		 
+		 return rayReturns[i][1], rayReturns[i][2], rayReturns[i][3], yRatio, zRatio
 	 end
-	 prevUpdateTime = UpdateTime
- end
- function updateLoop()
-	 setDeltaTime();
-	 update(updateDT);
- end
-
- cmd.add({"bhop"}, {"bhop", "bhop bhop bhop bhop bhop bhop bhop bla bla bla idk what im saying"}, function()
+	 
+	 function setCharacterRotation()
+		 local rotationLook = collider.Position + camera.CoordinateFrame.lookVector
+		 collider.CFrame = CFrame.new(collider.Position, Vector3.new(rotationLook.x, collider.Position.y, rotationLook.z))
+		 collider.RotVelocity = Vector3.new()
+	 end
+	 
+	 function jump()
+		 collider.Velocity = Vector3.new(collider.Velocity.x, jumpVelocity, collider.Velocity.z)
+		 air()
+	 end
+	 
+	 function air()
+		 movementPosition.maxForce = Vector3.new()
+		 movementVelocity.velocity = getMovementVelocity(collider.Velocity, airAccelerate, airMaxSpeed)
+		 movementVelocity.maxForce = getMovementVelocityAirForce()
+	 end
+	 
+	 function run(hitPosition)
+		 local playerSpeed = collider.Velocity.magnitude
+		 local mVelocity = collider.Velocity
+		 
+		 if playerSpeed ~= 0 then
+			 local drop = playerSpeed * friction * dt;
+			 mVelocity = mVelocity * math.max(playerSpeed - drop, 0) / playerSpeed;
+		 end
+		 
+		 movementPosition.position = hitPosition + Vector3.new(0,playerTorsoToGround,0)
+		 movementPosition.maxForce = Vector3.new(0,movementPositionForce,0)
+		 movementVelocity.velocity = getMovementVelocity(mVelocity, groundAccelerate, groundMaxVelocity)
+		 local VelocityForce = getMovementVelocityForce()
+		 movementVelocity.maxForce = VelocityForce
+		 movementVelocity.P = movementVelocityP
+	 end
+	 
+	 function getMovementVelocity(prevVelocity, accelerate, maxVelocity)
+		 local accelForward = cameraLook * moveInputSum["forward"]
+		 local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"];
+		 local accelDir = (accelForward+accelSide).unit;
+		 if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then --avoids divide 0 errors
+			 accelDir = Vector3.new(0,0,0);
+		 end
+		 
+		 local projVel =  prevVelocity:Dot(accelDir);
+		 local accelVel = accelerate * dt;
+		 
+		 if (projVel + accelVel > maxVelocity) then
+			 accelVel = math.max(maxVelocity - projVel, 0);
+		 end
+		 
+		 return prevVelocity + accelDir * accelVel;
+	 end
+	 
+	 function getMovementVelocityForce()
+	 
+		 return Vector3.new(movementVelocityForce,0,movementVelocityForce)
+	 end
+	 
+	 function getMovementVelocityAirForce()
+		 local accelForward = cameraLook * moveInputSum["forward"];
+		 local accelSide = (cameraYaw * CFrame.Angles(0,math.rad(90),0)).lookVector * moveInputSum["side"]
+		 local accelDir = (accelForward+accelSide).unit
+		 if moveInputSum["forward"] == 0 and moveInputSum["side"] == 0 then
+			 accelDir = Vector3.new(0,0,0);
+		 end
+		 
+		 local xp = math.abs(accelDir.x)
+		 local zp = math.abs(accelDir.z)
+		 
+		 return Vector3.new(movementVelocityForce*xp,0,movementVelocityForce*zp)
+	 end
+	 
+	 function getPartYRatio(normal)
+		 local partYawVector = Vector3.new(-normal.x, 0, -normal.z)
+		 if partYawVector.magnitude == 0 then
+			 return 0,0
+		 else
+			 local partPitch = math.atan2(partYawVector.magnitude,normal.y)/(math.pi/2)
+			 local vector = Vector3.new(cameraLook.x, 0, cameraLook.z)*partPitch
+			 return vector:Dot(partYawVector), -partYawVector:Cross(vector).y
+		 end	
+	 end
+	 
+	 function getYaw() --returns CFrame
+		 return camera.CoordinateFrame*CFrame.Angles(-getPitch(),0,0)
+	 end
+	 
+	 function getPitch() --returns number
+		 return math.pi/2 - math.acos(camera.CoordinateFrame.lookVector:Dot(Vector3.new(0,1,0)))
+	 end
+	 
+	 function getCharacterMass()
+		 return character.HumanoidRootPart:GetMass() + character.Head:GetMass()
+	 end
+	 
+	 function magnitude2D(x,z)
+		 return math.sqrt(x*x+z*z)
+	 end
+	 
+	 local inputKeys = {
+		 ["W"] = false,
+		 ["S"] = false,
+		 ["A"] = false,
+		 ["D"] = false,
+		 ["Space"] = false,
+		 ["LMB"] = false,
+		 ["RMB"] = false
+	 }
+	
+	 local plr = game:GetService("Players").LocalPlayer
+	 local camera = workspace.CurrentCamera
+	 local UserInputService = game:GetService("UserInputService")
+	 function onInput(input, gameProcessedEvent)
+		 local inputState
+		 --print(input.KeyCode)
+		 if input.UserInputState == Enum.UserInputState.Begin then
+			 inputState = true
+		 elseif input.UserInputState == Enum.UserInputState.End then
+			 inputState = false
+		 else
+			 return
+		 end 
+		 
+		 if input.UserInputType == Enum.UserInputType.Keyboard then
+			 local key = input.KeyCode.Name
+			 if inputKeys[key] ~= nil then
+				 inputKeys[key] = inputState
+			 end
+		 elseif input.UserInputType == Enum.UserInputType.MouseButton1 then --LMB down
+			 inputKeys.LMB = inputState
+		 elseif input.UserInputType == Enum.UserInputType.MouseButton2 then --RMB down
+			 inputKeys.RMB = inputState
+		 end
+	 end
+	 function main()
+		 local a = plr.Character:FindFirstChildOfClass("Humanoid") or plr.Character:WaitForChild("Humanoid");
+		 a.PlatformStand = true
+		 --init movement
+		 init(plr, camera, inputKeys);
+		 initBodyMovers();
+			 
+		 --connect input
+		 UserInputService.InputBegan:connect(onInput);
+		 UserInputService.InputEnded:connect(onInput);
+		 --connect updateloop
+		 game:GetService("RunService"):BindToRenderStep("updateLoop", 1, updateLoop);
+		 
+		 --rip
+	 end
+	 
+	 local prevUpdateTime = nil
+	 local updateDT = 1/60
+	 
+	 function setDeltaTime() --seconds
+		 local UpdateTime = tick() 
+		 if prevUpdateTime ~= nil then
+			 updateDT = (UpdateTime - prevUpdateTime)
+		 else
+			 updateDT = 1/60
+		 end
+		 prevUpdateTime = UpdateTime
+	 end
+	 function updateLoop()
+		 setDeltaTime();
+		 update(updateDT);
+	 end
  main()
  end)
  
+ cmd.add({"firstp", "1stp", "firstperson"}, {"firstperson (1stp, firstp)", "Makes you 1st person mode"}, function()
+game.Players.LocalPlayer.CameraMode = "LockFirstPerson"
+ end)
+
+ cmd.add({"thirdp", "3rdp", "thirdperson"}, {"thirdperson (3rdp, thirdp)", "Makes you 3rd person mode"}, function()
+	game.Players.LocalPlayer.CameraMaxZoomDistance = 10
+	game.Players.LocalPlayer.CameraMode = "Classic"
+	 end)
+
+	 cmd.add({"maxdistance", "camdistance"}, {"maxdistance (camdistance)", "Set your maximum camera distance"}, function(...)
+		game.Players.LocalPlayer.CameraMaxZoomDistance = (...)
+	 end)
  
+	 cmd.add({"cameranoclip", "camnoclip", "cnoclip"}, {"cameranoclip (camnoclip, cnoclip)", "Makes your camera clip through walls"}, function()
+		SetConstant = (debug and debug.setconstant) or setconstant
+		GetConstants = (debug and debug.getconstants) or getconstants
+		if SetConstant or GetConstants or getgc then
+		local Popper = game.Players.LocalPlayer.PlayerScripts.PlayerModule.CameraModule.ZoomController.Popper
+		for i, v in pairs(getgc()) do
+			if type(v) == 'function' and getfenv(v).script == Popper then
+				for i, v1 in pairs(GetConstants(v)) do
+					if tonumber(v1) == .25 then
+						SetConstant(v, i, 0)
+					elseif tonumber(v1) == 0 then
+						SetConstant(v, i, .25)
+					end
+				end
+			end
+		end
+		else
+			wait();
+	 
+			Notify({
+			Description = "Sorry, your exploit does not support cameranoclip";
+			Title = "Nameless Admin";
+			Duration = 5;
+			
+		});
+			end
+	 end)
+
+	 cmd.add({"uncameranoclip", "uncamnoclip", "uncnoclip"}, {"uncameranoclip (uncamnoclip, uncnoclip)", "Makes your camera not clip through walls"}, function()
+		local SetConstant = (debug and debug.setconstant) or setconstant
+		local GetConstants = (debug and debug.getconstants) or getconstants
+		if SetConstant or GetConstants or getgc then
+		local Popper = game.Players.LocalPlayer.PlayerScripts.PlayerModule.CameraModule.ZoomController.Popper
+		for i, v in pairs(getgc()) do
+			if type(v) == 'function' and getfenv(v).script == Popper then
+				for i, v1 in pairs(GetConstants(v)) do
+					if tonumber(v1) == .25 then
+						SetConstant(v, i, 0)
+					elseif tonumber(v1) == 0 then
+						SetConstant(v, i, .25)
+					end
+				end
+			end
+		end
+		else
+			wait();
+	 
+			Notify({
+			Description = "Sorry, your exploit does not support cameranoclip and uncameranoclip";
+			Title = "Nameless Admin";
+			Duration = 5;
+			
+		});
+			end	
+	 end)
+
  cmd.add({"2016anims"}, {"2016anims", "2016 animations"}, function()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/2016anims"))()
  end)
@@ -14439,6 +14596,9 @@ end)
 	 end
  end
  
+ wait(0.3)
+
+
  --[[ GUI VARIABLES ]]--
  local ScreenGui
  if not RunService:IsStudio() then
