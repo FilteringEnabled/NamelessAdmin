@@ -13408,7 +13408,7 @@ game.Players.LocalPlayer.CameraMode = "LockFirstPerson"
 	game.Players.LocalPlayer.CameraMode = "Classic"
 	 end)
 
-	 cmd.add({"maxdistance", "camdistance"}, {"maxdistance (camdistance)", "Set your maximum camera distance"}, function(...)
+	 cmd.add({"maxzoom", "camzoom"}, {"maxzoom <amount> (camzoom)", "Set your maximum camera distance"}, function(...)
 		game.Players.LocalPlayer.CameraMaxZoomDistance = (...)
 	 end)
  
