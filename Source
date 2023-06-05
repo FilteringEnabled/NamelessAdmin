@@ -5278,7 +5278,76 @@ until npcfollowloop == false
  end
  end)
 	 end)
+
+	 active = false
+	 local MobileCameraFramework = {}
+	local players = game:GetService("Players")
+	local runservice = game:GetService("RunService")
+	local CAS = game:GetService("ContextActionService")
+	local player = players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local root = character:WaitForChild("HumanoidRootPart")
+	local humanoid = character.Humanoid
+	local camera = workspace.CurrentCamera
+	local button = script.Parent
+	
+	uis = game:GetService("UserInputService")
+	ismobile = uis.TouchEnabled
+	
+	local MAX_LENGTH = 900000
+	local active = false
+	local ENABLED_OFFSET = CFrame.new(1.7, 0, 0)
+	local DISABLED_OFFSET = CFrame.new(-1.7, 0, 0)
+	local function UpdateAutoRotate(BOOL)
+		humanoid.AutoRotate = BOOL
+	end
+	local function GetUpdatedCameraCFrame(ROOT, CAMERA)
+		return CFrame.new(root.Position, Vector3.new(CAMERA.CFrame.LookVector.X * MAX_LENGTH, root.Position.Y, CAMERA.CFrame.LookVector.Z * MAX_LENGTH))
+	end
+	local function EnableShiftlock()
+		UpdateAutoRotate(false)
+		root.CFrame = GetUpdatedCameraCFrame(root, camera)
+		camera.CFrame = camera.CFrame * ENABLED_OFFSET
+	end
+	local function DisableShiftlock()
+		UpdateAutoRotate(true)
+		camera.CFrame = camera.CFrame * DISABLED_OFFSET
+		pcall(function()
+			active:Disconnect()
+			active = nil
+		end)
+	end
+	active = false
+	function ShiftLock()
+		if not active then
+			active = runservice.RenderStepped:Connect(function()
+				EnableShiftlock()
+			end)
+		else
+			DisableShiftlock()
+		end
+	end
+cmd.add({"shiftlock", "sl"}, {"shiftlock (sl)", "Enable shiftlock"}, function()
+	local ShiftLockButton = CAS:BindAction("ShiftLOCK", ShiftLock, false, "On")
+	CAS:SetPosition("ShiftLOCK", UDim2.new(0.8, 0, 0.8, 0))
+		if not active then
+			active = runservice.RenderStepped:Connect(function()
+				EnableShiftlock()
+			end)
+		else
+			DisableShiftlock()
+		end
+	return MobileCameraFramework	
+end)
  
+cmd.add({"unshiftlock", "unsl"}, {"unshiftlock (unsl)", "Disables shiftlock if you're on mobile"}, function()
+	DisableShiftlock()
+end)
+
+cmd.add({"ctrlshiftlock", "ctrlsl"}, {"ctrlshiftlock (ctrlsl)", "Enables shift lock if you press Control"}, function()
+	game:GetService("Players").LocalPlayer.PlayerScripts.PlayerModule.CameraModule.MouseLockController.BoundKeys.Value = "LeftControl,RightControl"
+end)
+
 	 cmd.add({"esp"}, {"esp", "ESP"}, function()
  local ReplicatedStorage = game:GetService("ReplicatedStorage")
  local Players = game:GetService("Players")
