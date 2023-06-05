@@ -5284,12 +5284,7 @@ until npcfollowloop == false
 	local players = game:GetService("Players")
 	local runservice = game:GetService("RunService")
 	local CAS = game:GetService("ContextActionService")
-	local player = players.LocalPlayer
-	local character = player.Character or player.CharacterAdded:Wait()
-	local root = character:WaitForChild("HumanoidRootPart")
-	local humanoid = character.Humanoid
 	local camera = workspace.CurrentCamera
-	local button = script.Parent
 	
 	uis = game:GetService("UserInputService")
 	ismobile = uis.TouchEnabled
@@ -5305,11 +5300,19 @@ until npcfollowloop == false
 		return CFrame.new(root.Position, Vector3.new(CAMERA.CFrame.LookVector.X * MAX_LENGTH, root.Position.Y, CAMERA.CFrame.LookVector.Z * MAX_LENGTH))
 	end
 	local function EnableShiftlock()
+		local player = players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local root = character:WaitForChild("HumanoidRootPart")
+	local humanoid = character.Humanoid
 		UpdateAutoRotate(false)
 		root.CFrame = GetUpdatedCameraCFrame(root, camera)
 		camera.CFrame = camera.CFrame * ENABLED_OFFSET
 	end
 	local function DisableShiftlock()
+		local player = players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local root = character:WaitForChild("HumanoidRootPart")
+	local humanoid = character.Humanoid
 		UpdateAutoRotate(true)
 		camera.CFrame = camera.CFrame * DISABLED_OFFSET
 		pcall(function()
@@ -5319,6 +5322,10 @@ until npcfollowloop == false
 	end
 	active = false
 	function ShiftLock()
+		local player = players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local root = character:WaitForChild("HumanoidRootPart")
+	local humanoid = character.Humanoid
 		if not active then
 			active = runservice.RenderStepped:Connect(function()
 				EnableShiftlock()
