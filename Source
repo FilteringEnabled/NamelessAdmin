@@ -5328,16 +5328,7 @@ until npcfollowloop == false
 		end
 	end
 cmd.add({"shiftlock", "sl"}, {"shiftlock (sl)", "Enable shiftlock"}, function()
-	local ShiftLockButton = CAS:BindAction("ShiftLOCK", ShiftLock, false, "On")
-	CAS:SetPosition("ShiftLOCK", UDim2.new(0.8, 0, 0.8, 0))
-		if not active then
-			active = runservice.RenderStepped:Connect(function()
-				EnableShiftlock()
-			end)
-		else
-			DisableShiftlock()
-		end
-	return MobileCameraFramework	
+	EnableShiftlock()	
 end)
  
 cmd.add({"unshiftlock", "unsl"}, {"unshiftlock (unsl)", "Disables shiftlock if you're on mobile"}, function()
