@@ -4409,8 +4409,15 @@ print(Time)
  end
  end)
  
-		 cmd.add({"harked"}, {"harked", "Harked Reborn"}, function()
-			 loadstring(game:HttpGet("https://raw.githubusercontent.com/qipurblx/Scripts/main/harked"))();
+		 cmd.add({"harked", "comet"}, {"harked (comet)", "Executes Comet which is like harked"}, function()
+			 Notify({
+ Description = "Join the discord to see supported games! Use the discord command to get the invite";
+ Title = "Nameless Admin";
+ Duration = 7;
+ 
+ });
+	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/Comet"))();
 			 end)
  
 			 cmd.add({"triggerbot", "tbot"}, {"triggerbot (tbot)", "Executes a script that automatically clicks the mouse when the mouse is on a player"}, function()
