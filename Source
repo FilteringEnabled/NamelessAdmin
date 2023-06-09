@@ -7146,22 +7146,28 @@ end
 	 for i, plrs in pairs(game:GetService("Players"):GetChildren()) do
 		 if plrs.Name == game.Players.LocalPlayer.Name then
 		 else
-local args = {
-    [1] = "/mute " .. plrs.Name .. "",
-    [2] = "All"
-}
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
+			A_1 = "/mute " .. plrs.Name .. ""
+			A_2 = "All"
+
+		if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+			game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(A_1)
+			else
+	  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(A_1,A_2)
+		 end
 			 plrs.Character.Parent = game.Lighting
 		 end
 		 end
 	 else
  if target and target.Character then
-	local args = {
-		[1] = "/mute " .. target.Name .. "",
-		[2] = "All"
-	}
-	
-	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+	A_1 = "/mute " .. plrs.Name .. ""
+	A_2 = "All"
+
+if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+	game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(A_1)
+	else
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(A_1,A_2)
+ end
 	 target.Character.Parent = game.Lighting
  end
  end
@@ -7186,17 +7192,30 @@ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageReque
  if Username == "all" or Username == "others" then
 	 for i, plrs in pairs(game:GetService("Lighting"):GetChildren()) do
 		 if plrs:IsA("Model") and plrs.PrimaryPart then
-			local args = {
-				[1] = "/mute " .. plrs.Name .. "",
-				[2] = "All"
-			}
-			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
+				A_1 = "/unmute " .. plrs.Name .. ""
+				A_2 = "All"
+
+			if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+				game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(A_1)
+				else
+		  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(A_1,A_2)
+			 end
 			 plrs.Parent = game.Workspace
 		 end
 		 end
 	 else
  if target and target.Character then
 	 target.Character.Parent = game.Workspace
+	 
+	 A_1 = "/mute " .. target.Name .. ""
+	 A_2 = "All"
+
+ if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+	 game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(A_1)
+	 else
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(A_1,A_2)
+  end
  end
  end
  end)
@@ -8540,8 +8559,11 @@ print(Time)
  cmd.add({"chat", "message"}, {"chat <text> (message)", "Chats you, useful if youre muted"}, function(...)
 	local A_1 = (...)
 	local A_2 = "All"
-	local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
-	Event:FireServer(A_1, A_2)
+	if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+		game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(A_1)
+		else
+  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(A_1,A_2)
+	 end
  end)
  
  cmd.add({"fixcam", "fix"}, {"fixcam", "Fix your camera"}, function()
@@ -14599,7 +14621,11 @@ end)
  
  cmd.add({"errorchat"}, {"errorchat", "Makes the chat error appear when roblox chat is slow"}, function()
 	 for i=1,3 do 
-		 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("\0", "All")
+		 if game:GetService("TextChatService"):FindFirstChild("TextChannels") then
+			game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("\0")
+			else
+	   game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("\0", "All")
+			end
 	 end
  end)
  
