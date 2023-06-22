@@ -14702,13 +14702,7 @@ end)
 
 
  --[[ GUI VARIABLES ]]--
- local ScreenGui
- if not RunService:IsStudio() then
 	 ScreenGui = game:GetObjects("rbxassetid://13510552309")[1] -- THE COMMAND BAR | FEEL FREE TO CHANGE THE LOOK
- else
-	 repeat wait() until player:FindFirstChild("AdminUI", true)
-	 ScreenGui = player:FindFirstChild("AdminUI", true)
- end
  
  local description = ScreenGui.Description
  local cmdBar = ScreenGui.CmdBar
