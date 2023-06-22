@@ -21,7 +21,7 @@
  local Notify = Notification.Notify;
  
  -- Custom file functions checker checker
- local CustomFunctionSupport = isfile and isfolder and writefile and readfile
+ local CustomFunctionSupport = isfile and isfolder and writefile and readfile and listfiles
  
  -- Creates folder & files for Prefix & Plugins
  if CustomFunctionSupport then
@@ -14703,9 +14703,12 @@ end)
 
  --[[ GUI VARIABLES ]]--
  local ScreenGui
-
+ if not RunService:IsStudio() then
 	 ScreenGui = game:GetObjects("rbxassetid://13510552309")[1] -- THE COMMAND BAR | FEEL FREE TO CHANGE THE LOOK
-wait(0.5)
+ else
+	 repeat wait() until player:FindFirstChild("AdminUI", true)
+	 ScreenGui = player:FindFirstChild("AdminUI", true)
+ end
  
  local description = ScreenGui.Description
  local cmdBar = ScreenGui.CmdBar
