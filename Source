@@ -29,12 +29,12 @@
  makefolder('Nameless-Admin')
  end
  
- if not isfolder('Nameless-Admin\\Plugins') then
-	 makefolder('Nameless-Admin\\Plugins')
+ if not isfolder('Nameless-Admin/Plugins') then
+	 makefolder('Nameless-Admin/Plugins')
  end
  
- if not isfile("Nameless-Admin\\Prefix.txt") then
- writefile("Nameless-Admin\\Prefix.txt", ';')
+ if not isfile("Nameless-Admin/Prefix.txt") then
+ writefile("Nameless-Admin/Prefix.txt", ';')
  else
  end
  end
