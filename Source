@@ -8523,7 +8523,6 @@ print(Time)
 		 wait(0.3)
 		 script.Parent.Parent:TweenPosition(UDim2.new(0.355, 0,1.291, 0), "Out", "Quint",1,true)
 		 wait(0.9)
-		 script.Parent.Parent.Parent:Destroy()
 		 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/notificationtest"))();
 		 local Notify = AkaliNotif.Notify;
 		 Notify({
