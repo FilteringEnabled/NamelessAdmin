@@ -14702,7 +14702,7 @@ end)
 
 
  --[[ GUI VARIABLES ]]--
-	 ScreenGui = game:GetObjects("rbxassetid://13510552309")[1] -- THE COMMAND BAR | FEEL FREE TO CHANGE THE LOOK
+	 ScreenGui = game:GetObjects("rbxassetid://13510552309") -- THE COMMAND BAR | FEEL FREE TO CHANGE THE LOOK
  
  local description = ScreenGui.Description
  local cmdBar = ScreenGui.CmdBar
