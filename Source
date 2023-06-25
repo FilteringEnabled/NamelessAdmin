@@ -22,9 +22,10 @@
  
  -- Custom file functions checker checker
  local CustomFunctionSupport = isfile and isfolder and writefile and readfile and listfiles
+ local FileSupport = isfile and isfolder and writefile and readfile
  
  -- Creates folder & files for Prefix & Plugins
- if CustomFunctionSupport then
+ if FileSupport then
  if not isfolder('Nameless-Admin') then
  makefolder('Nameless-Admin')
  end
