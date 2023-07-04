@@ -638,9 +638,7 @@
 	 end
 	 return players
  end
- 
 
- wait(0.3)
  --[[ COMMANDS ]]--
  cmd.add({"script", "ls", "s", "run"}, {"script <source> (ls, s, run)", "Run the code requested"}, function(source)
 	 loadstring(game:HttpGet(source))()
@@ -14698,9 +14696,7 @@ end)
 	 end
  end
  
- wait(0.3)
-
-
+ 
  --[[ GUI VARIABLES ]]--
 local ScreenGui
  if not RunService:IsStudio() then
