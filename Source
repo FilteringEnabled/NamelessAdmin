@@ -170,29 +170,6 @@
 	 return (tick() - t), t
  end
  
- -- [[ Shadow ]] --
- 
- local uhhhh = Instance.new("ScreenGui")
- local lalala = Instance.new("Frame")
- local UIGradient = Instance.new("UIGradient")
- 
- uhhhh.Name = "boomb"
- uhhhh.Parent = game.Players.LocalPlayer.PlayerGui
- uhhhh.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
- uhhhh.ResetOnSpawn = false
- 
- lalala.Parent = uhhhh
- lalala.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
- lalala.BackgroundTransparency = 1
- lalala.Size = UDim2.new(1, 904, 1, 904)
- 
- UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(5, 0, 8))}
- UIGradient.Rotation = 90
- UIGradient.Parent = lalala
- 
- local StarterGui = uhhhh
- StarterGui.IgnoreGuiInset = true
- 
 	 function r15(plr)
 		 if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType == Enum.HumanoidRigType.R15 then
 			 return true
@@ -15034,10 +15011,6 @@ end
 		 cmdInput:CaptureFocus()
 				 wait(0.00005)
 							 cmdInput.Text = ''
-		 for i=1,10 do
-			 wait(0.000051)
-		  game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
-			 end
 	 end
  end)
 
@@ -15181,10 +15154,6 @@ end
 	 gui.barSelect()
 		 cmdInput.Text = ''
 		 cmdInput:CaptureFocus()
-		 for i=1,10 do
-			 wait(0.000051)
-		  game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency -= 0.04
-			 end
  end)
 
  --[[
