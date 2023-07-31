@@ -15022,10 +15022,6 @@ end
 		 end)
 	 end
 	 gui.barDeselect()
-		 for i=1,10 do
-			 wait(0.000051)
-		  game.Players.LocalPlayer.PlayerGui.boomb.Frame.BackgroundTransparency += 0.04
-			 end
 	 end)
  
  cmdInput.Changed:Connect(function(p)
