@@ -21,9 +21,9 @@
  local Notify = Notification.Notify;
 
  Notify({
-		 Description = "Nameless Admin is now discontinued as i have decided to step away from exploiting since i only used it to learn scripting in a more 'fun' way. Thank you all for everything :^)";
-		 Title = "Goodbye!";
-		 Duration = 10;
+		 Description = "If you ever see an admin script made by the name GrimEx, please don't use it. All the owner did was rename our admin, plus never asked for permission.";
+		 Title = "Warning";
+		 Duration = 5;
 		 
 });
  
