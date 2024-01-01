@@ -21,8 +21,8 @@
  local Notify = Notification.Notify;
 
  Notify({
-		 Description = "If you ever see an admin script made by the name GrimEx, please don't use it. All the owner did was rename our admin, plus never asked for permission.";
-		 Title = "Warning";
+		 Description = "Happy New Years!";
+		 Title = "NA";
 		 Duration = 5;
 		 
 });
