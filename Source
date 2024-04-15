@@ -21,8 +21,8 @@
  local Notify = Notification.Notify;
 
  Notify({
-		 Description = "Happy New Years!";
-		 Title = "NA";
+		 Description = "working on another admin command script, if you're interested check out github.com/lxte/cmd (currently in beta)";
+		 Title = "important";
 		 Duration = 5;
 		 
 });
@@ -15100,9 +15100,6 @@ end
 	 chatLogs.CanvasSize = UDim2.new(0, 0, 0, chatLogs.UIListLayout.AbsoluteContentSize.Y)
 	 commandsList.CanvasSize = UDim2.new(0, 0, 0, commandsList.UIListLayout.AbsoluteContentSize.Y)
  end)
- 
- -- all this does is print i dont know why i made it a loadstring
- loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/asd"))();
  
  -- never used this lol
  function Destroy(guiObject)
