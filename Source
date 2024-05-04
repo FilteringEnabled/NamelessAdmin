@@ -21,8 +21,8 @@
  local Notify = Notification.Notify;
 
  Notify({
-		 Description = "working on another admin command script, if you're interested check out github.com/lxte/cmd (currently in beta)";
-		 Title = "important";
+		 Description = "https://discord.gg/pnPVKKdpfd";
+		 Title = "Join the Discord Server!";
 		 Duration = 20;
 		 
 });
